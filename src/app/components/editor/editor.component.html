@@ -1,3 +1,10 @@
-<p>
-  editor works!
-</p>
+<div class="row">
+  <div class="col editor-wrapper">
+
+    <div *ngFor="let elem of elements">
+      <app-markdown-heading-edit [markdown]="elem"></app-markdown-heading-edit>
+    </div>
+
+  </div>
+  <div class="col preview-wrapper"></div>
+</div>

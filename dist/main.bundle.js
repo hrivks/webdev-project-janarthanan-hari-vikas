@@ -150,6 +150,8 @@ AppConstants.ENDPOINT = __WEBPACK_IMPORTED_MODULE_0__environments_environment__[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_editor_markdown_elements_heading_heading_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/heading/heading.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -175,6 +177,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 // #endregion
 var AppModule = (function () {
     function AppModule() {
@@ -190,7 +194,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_11__components_shared_alert_alert_component__["a" /* AlertComponent */],
             __WEBPACK_IMPORTED_MODULE_12__components_shared_loader_loader_component__["a" /* LoaderComponent */],
             __WEBPACK_IMPORTED_MODULE_13__components_editor_editor_component__["a" /* EditorComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__components_shared_nav_nav_component__["a" /* NavComponent */]
+            __WEBPACK_IMPORTED_MODULE_14__components_shared_nav_nav_component__["a" /* NavComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__components_editor_markdown_elements_heading_heading_component__["a" /* HeadingComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -251,7 +257,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  editor works!\n</p>\n"
+module.exports = "<div class=\"row\">\n  <div class=\"col editor-wrapper\">\n\n    <div *ngFor=\"let elem of elements\">\n      <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\n    </div>\n\n  </div>\n  <div class=\"col preview-wrapper\"></div>\n</div>"
 
 /***/ }),
 
@@ -261,6 +267,7 @@ module.exports = "<p>\n  editor works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditorComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_model__ = __webpack_require__("../../../../../src/app/model/model.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -271,10 +278,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var EditorComponent = (function () {
     function EditorComponent() {
     }
     EditorComponent.prototype.ngOnInit = function () {
+        this.elements = [];
+        this.elements.push({
+            _id: 'adfads',
+            type: __WEBPACK_IMPORTED_MODULE_1__model_model__["b" /* MarkdownElementType */].heading,
+            attribute: 2,
+            content: 'test'
+        });
     };
     return EditorComponent;
 }());
@@ -288,6 +303,82 @@ EditorComponent = __decorate([
 ], EditorComponent);
 
 //# sourceMappingURL=editor.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/heading/heading.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".hvj-markdown-element-heading textarea{\r\n    resize: none;\r\n    overflow: hidden;\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/heading/heading.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-heading\">\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\n    <span class=\"px-2\">Heading</span>\n    <div class=\"btn-group btn-group-sm\"\n         role=\"group\"\n         aria-label=\"Basic example\">\n      <button type=\"button\"\n              class=\"btn btn-faded py-1 px-2\"\n              [ngClass]=\"{'active': markdown.attribute === 1}\"\n              (click)=\"markdown.attribute=1\">1</button>\n      <button type=\"button\"\n              class=\"btn btn-faded py-0 px-2\"\n              [ngClass]=\"{'active': markdown.attribute === 2}\"\n              (click)=\"markdown.attribute=2\">2</button>\n      <button type=\"button\"\n              class=\"btn btn-faded py-0 px-2\"\n              [ngClass]=\"{'active': markdown.attribute === 3}\"\n              (click)=\"markdown.attribute=3\">3</button>\n      <button type=\"button\"\n              class=\"btn btn-faded py-0 px-2\"\n              [ngClass]=\"{'active': markdown.attribute === 4}\"\n              (click)=\"markdown.attribute=4\">4</button>\n      <button type=\"button\"\n              class=\"btn btn-faded py-0 px-2\"\n              [ngClass]=\"{'active': markdown.attribute === 5}\"\n              (click)=\"markdown.attribute=5\">5</button>\n      <button type=\"button\"\n              class=\"btn btn-faded py-0 px-2\"\n              [ngClass]=\"{'active': markdown.attribute === 6}\"\n              (click)=\"markdown.attribute=6\">6</button>\n    </div>\n  </div>\n  <textarea class=\"w-100 p-2 h{{markdown.attribute || 1}}\"\n            [(ngModel)]=\"markdown.content\"\n            rows=\"1\"\n            appAutoHeight></textarea>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/heading/heading.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeadingComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_model__ = __webpack_require__("../../../../../src/app/model/model.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var HeadingComponent = (function () {
+    function HeadingComponent() {
+        this.markdownChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+    }
+    HeadingComponent.prototype.ngOnInit = function () {
+    };
+    HeadingComponent.prototype.onChange = function () {
+        this.markdownChange.emit(this.markdown);
+    };
+    return HeadingComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_model__["a" /* MarkdownElement */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_model__["a" /* MarkdownElement */]) === "function" && _a || Object)
+], HeadingComponent.prototype, "markdown", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+], HeadingComponent.prototype, "markdownChange", void 0);
+HeadingComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-markdown-heading-edit',
+        template: __webpack_require__("../../../../../src/app/components/editor/markdown-elements/heading/heading.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/editor/markdown-elements/heading/heading.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], HeadingComponent);
+
+var _a, _b;
+//# sourceMappingURL=heading.component.js.map
 
 /***/ }),
 
@@ -542,7 +633,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top\">\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\n          type=\"button\"\n          data-toggle=\"collapse\"\n          data-target=\"#navbar-content\"\n          aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\">\n    <span class=\"fa fa-bars\"></span>\n  </button>\n  <a class=\"navbar-brand\"\n     href=\"#\">WriteMe.md</a>\n\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\n       id=\"navbar-content\">\n    <ul class=\"navbar-nav ml-4\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n           href=\"#\">Editor</a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Projects</a>\n        </li>\n      </ul>\n      \n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Profile</a>\n        </li>\n      </ul>\n    <form class=\"form-inline float-right ml-auto\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"text\"\n             placeholder=\"Username\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"password\"\n             placeholder=\"Password\">\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\n              type=\"submit\">Login</button>\n    </form>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\n          type=\"button\"\n          data-toggle=\"collapse\"\n          data-target=\"#navbar-content\"\n          aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\">\n    <span class=\"fa fa-bars\"></span>\n  </button>\n  <a class=\"navbar-brand\"\n     href=\"#\">WriteMe.md</a>\n\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\n       id=\"navbar-content\">\n    <ul class=\"navbar-nav ml-4\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n           href=\"#\">Editor</a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Projects</a>\n        </li>\n      </ul>\n      \n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Profile</a>\n        </li>\n      </ul>\n    <form class=\"form-inline float-right ml-auto\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"text\"\n             placeholder=\"Username\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"password\"\n             placeholder=\"Password\">\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\n              type=\"submit\">Login</button>\n    </form>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -579,6 +670,88 @@ NavComponent = __decorate([
 ], NavComponent);
 
 //# sourceMappingURL=nav.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/directives/auto-height/auto-height.directive.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AutoHeightDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AutoHeightDirective = (function () {
+    function AutoHeightDirective(el) {
+        this.el = el;
+    }
+    AutoHeightDirective.prototype.keyEvent = function (e) {
+        this.el.nativeElement.style.height = (this.el.nativeElement.scrollHeight) + 'px';
+    };
+    return AutoHeightDirective;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* HostListener */])('input', ['$event']),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AutoHeightDirective.prototype, "keyEvent", null);
+AutoHeightDirective = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Directive */])({
+        selector: '[appAutoHeight]'
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object])
+], AutoHeightDirective);
+
+var _a;
+//# sourceMappingURL=auto-height.directive.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/model/model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export User */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarkdownElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MarkdownElementType; });
+/** Models a User object */
+var User = (function () {
+    function User() {
+    }
+    return User;
+}());
+
+/** Models a markdown element */
+var MarkdownElement = (function () {
+    function MarkdownElement() {
+    }
+    return MarkdownElement;
+}());
+
+/** Types of markdown elements supported */
+var MarkdownElementType;
+(function (MarkdownElementType) {
+    MarkdownElementType[MarkdownElementType["heading"] = 0] = "heading";
+    MarkdownElementType[MarkdownElementType["text"] = 1] = "text";
+    MarkdownElementType[MarkdownElementType["line"] = 2] = "line";
+    MarkdownElementType[MarkdownElementType["list"] = 3] = "list";
+    MarkdownElementType[MarkdownElementType["image"] = 4] = "image";
+    MarkdownElementType[MarkdownElementType["code"] = 5] = "code";
+    MarkdownElementType[MarkdownElementType["blockquote"] = 6] = "blockquote";
+    MarkdownElementType[MarkdownElementType["table"] = 7] = "table";
+    MarkdownElementType[MarkdownElementType["html"] = 8] = "html"; // plain html
+})(MarkdownElementType || (MarkdownElementType = {}));
+//# sourceMappingURL=model.js.map
 
 /***/ }),
 

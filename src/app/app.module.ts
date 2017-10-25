@@ -20,6 +20,8 @@ import { AlertComponent } from './components/shared/alert/alert.component';
 import { LoaderComponent } from './components/shared/loader/loader.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { NavComponent } from './components/shared/nav/nav.component';
+import { HeadingComponent } from './components/editor/markdown-elements/heading/heading.component';
+import { AutoHeightDirective } from './directives/auto-height/auto-height.directive';
 
 // #endregion
 
@@ -31,7 +33,9 @@ import { NavComponent } from './components/shared/nav/nav.component';
     AlertComponent,
     LoaderComponent,
     EditorComponent,
-    NavComponent
+    NavComponent,
+    HeadingComponent,
+    AutoHeightDirective
   ],
   imports: [
     BrowserModule,
