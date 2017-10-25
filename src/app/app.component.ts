@@ -36,7 +36,7 @@ export class AppComponent {
         }
 
         // set page title
-        title.setTitle(this.activatedRoute.snapshot.firstChild.data.title || 'webdev-hari-vikas-janarthanan');
+        title.setTitle(this.activatedRoute.snapshot.firstChild.data.title || 'WriteMe.md');
       }
     });
 

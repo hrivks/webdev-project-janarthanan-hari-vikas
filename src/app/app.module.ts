@@ -18,6 +18,8 @@ import { UserService } from './services/user.service.client';
 // shared components
 import { AlertComponent } from './components/shared/alert/alert.component';
 import { LoaderComponent } from './components/shared/loader/loader.component';
+import { EditorComponent } from './components/editor/editor.component';
+import { NavComponent } from './components/shared/nav/nav.component';
 
 // #endregion
 
@@ -27,7 +29,9 @@ import { LoaderComponent } from './components/shared/loader/loader.component';
     AppComponent,
     HomeComponent,
     AlertComponent,
-    LoaderComponent
+    LoaderComponent,
+    EditorComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
