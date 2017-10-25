@@ -1,0 +1,156 @@
+/** Bootstrap Enhancements **/
+body.hvj{
+    /* overflow-x: hidden; */
+  }
+  
+  .hvj nav {
+    z-index: 1001;
+  }
+
+  .hvj .bg-faded {
+    background: #ededed;
+  }
+  
+  .hvj .border-faded {
+    border-color: #CCC;
+  }
+  
+  .hvj .bg-royal {
+    background-color: #236eaf !important;
+  }
+  
+  .hvj .fg-royal {
+    color: #236eaf !important;
+  }
+
+  .hvj .btn:not(:disabled) {
+    cursor: pointer;
+  }
+  
+  .hvj .btn-royal {
+    background-color: #236eaf;
+    border-color: #236eaf;
+    color: #fff;
+  }
+  
+  .hvj .btn-royal:hover:not(:disabled) {
+    background-color: #1A5688;
+    border-color: #1A5688;
+    color: #fff;
+  }
+  
+  .hvj .link-royal {
+    color: #236eaf !important;
+    cursor: pointer;
+  }
+  
+  .hvj .link-royal:hover {
+    color: #75aad5 !important;
+  }
+  
+  .hvj .btn-xs {
+    padding: 0;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #236eaf;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    color: #75aad5;
+  }
+  
+  
+  
+  /** Bootstrap Enhancements end **/
+  
+  .hvj .hvj-outermost {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  /** Header start */
+  .hvj nav {
+    padding-top: 0;
+    padding-bottom: 2px;
+  }
+  
+  /** Header end */
+  
+  /** Footer start */
+  .hvj .hvj-footer {
+    border-top-style: solid;
+    border-top-width: medium;
+  }
+  
+  /** Footer end */
+  
+  /** Landscape only styles starts */
+  @media screen and (orientation: landscape) {
+    .hvj-landscape-col-8 {
+      -ms-flex: 0 0 66.666667%;
+      flex: 0 0 66.666667%;
+      max-width: 66.666667%;
+    }
+  
+    .hvj-landscape-col-7 {
+      -ms-flex: 0 0 58.333333%;
+      flex: 0 0 58.333333%;
+      max-width: 58.333333%;
+    }
+  }
+  
+  @media screen and (orientation: portrait) {
+    .hvj-landscape-only {
+      display: none !important;
+    }
+  }
+  
+  /** Landscape only styles ends */
+  
+  /** Portrait only Styles start */
+  @media screen and (orientation: landscape) {
+    .hvj-portrait-only {
+      display: none !important;
+    }
+  }
+  
+  /** Portrait only Styles ends */
+  
+  /** Split screen styles */
+  .hvj .hvj-vertical-line {
+    border-right: solid thin #CCC;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  
+  .hvj .hvj-nav-border-right {
+    border-right: solid thin #CCC;
+  }
+  
+  /** Widget styles starts */
+  .hvj-widget-actions {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    background: #ffffff;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 3px;
+    padding: 0 5px;
+  }
+
+  .hvj-widget-list .ui-sortable .ui-sortable-helper {
+    box-shadow: 0px 0px 11px -3px;
+    opacity: 0.5;
+}
+
+.hvj-widget-list .ui-sortable .ui-sortable-placeholder{
+    display: block !important;
+}
+  
+  /** Widget styles ends */
+  
