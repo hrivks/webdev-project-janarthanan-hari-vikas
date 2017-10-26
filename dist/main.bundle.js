@@ -244,7 +244,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".hvj-markdown-element-editor {\r\n    position: relative;\r\n}\r\n.hvj-markdown-element-editor .hvj-markdown-element-title {\r\n    margin-bottom: -1px;\r\n    z-index: -1;\r\n    position: relative;\r\n}", ""]);
 
 // exports
 
@@ -257,7 +257,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col editor-wrapper\">\n\n    <div *ngFor=\"let elem of elements\">\n      <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\n    </div>\n\n  </div>\n  <div class=\"col preview-wrapper\"></div>\n</div>"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements; let i = index\">\r\n\r\n      <div [ngSwitch]=\"MarkdownElementType[elem.type]\">\r\n\r\n        <div class=\"my-2\" *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.heading]\">\r\n          <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\r\n        </div>\r\n\r\n        <div class=\"small\">\r\n          <i class=\"fa fa-plus\"\r\n             aria-hidden=\"true\"></i>\r\n          <span class=\"font-italics text-dark\">insert</span>\r\n          <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                (click)=\"addElement(MarkdownElementType.heading, i)\">Heading</span>\r\n          <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                (click)=\"addElement(MarkdownElementType.text, i)\">Text</span>\r\n          <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                (click)=\"addElement(MarkdownElementType.image, i)\">Image</span>\r\n          <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                (click)=\"addElement(MarkdownElementType.table, i)\">Table</span>\r\n          <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                (click)=\"addElement(MarkdownElementType.html, i)\">Html</span>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"elem.toHtml()\">\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -281,15 +281,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var EditorComponent = (function () {
     function EditorComponent() {
+        this.MarkdownElementType = __WEBPACK_IMPORTED_MODULE_1__model_model__["b" /* MarkdownElementType */];
     }
     EditorComponent.prototype.ngOnInit = function () {
         this.elements = [];
-        this.elements.push({
-            _id: 'adfads',
-            type: __WEBPACK_IMPORTED_MODULE_1__model_model__["b" /* MarkdownElementType */].heading,
-            attribute: 2,
-            content: 'test'
-        });
+        var e = new __WEBPACK_IMPORTED_MODULE_1__model_model__["a" /* MarkdownElement */](__WEBPACK_IMPORTED_MODULE_1__model_model__["b" /* MarkdownElementType */].heading);
+        e._id = 'aa';
+        e.content = 'test';
+        e.attribute = 4;
+        this.elements.push(e);
+    };
+    EditorComponent.prototype.addElement = function (type, index) {
+        var newElem = new __WEBPACK_IMPORTED_MODULE_1__model_model__["a" /* MarkdownElement */](type);
+        newElem.type = type;
+        if (!index && index >= this.elements.length) {
+            this.elements.push(newElem);
+        }
+        else {
+            this.elements.splice(index + 1, 0, newElem);
+        }
     };
     return EditorComponent;
 }());
@@ -297,7 +307,8 @@ EditorComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-editor',
         template: __webpack_require__("../../../../../src/app/components/editor/editor.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/components/editor/editor.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/components/editor/editor.component.css")],
+        encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ViewEncapsulation */].None
     }),
     __metadata("design:paramtypes", [])
 ], EditorComponent);
@@ -327,7 +338,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/markdown-elements/heading/heading.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-heading\">\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\n    <span class=\"px-2\">Heading</span>\n    <div class=\"btn-group btn-group-sm\"\n         role=\"group\"\n         aria-label=\"Basic example\">\n      <button type=\"button\"\n              class=\"btn btn-faded py-1 px-2\"\n              [ngClass]=\"{'active': markdown.attribute === 1}\"\n              (click)=\"markdown.attribute=1\">1</button>\n      <button type=\"button\"\n              class=\"btn btn-faded py-0 px-2\"\n              [ngClass]=\"{'active': markdown.attribute === 2}\"\n              (click)=\"markdown.attribute=2\">2</button>\n      <button type=\"button\"\n              class=\"btn btn-faded py-0 px-2\"\n              [ngClass]=\"{'active': markdown.attribute === 3}\"\n              (click)=\"markdown.attribute=3\">3</button>\n      <button type=\"button\"\n              class=\"btn btn-faded py-0 px-2\"\n              [ngClass]=\"{'active': markdown.attribute === 4}\"\n              (click)=\"markdown.attribute=4\">4</button>\n      <button type=\"button\"\n              class=\"btn btn-faded py-0 px-2\"\n              [ngClass]=\"{'active': markdown.attribute === 5}\"\n              (click)=\"markdown.attribute=5\">5</button>\n      <button type=\"button\"\n              class=\"btn btn-faded py-0 px-2\"\n              [ngClass]=\"{'active': markdown.attribute === 6}\"\n              (click)=\"markdown.attribute=6\">6</button>\n    </div>\n  </div>\n  <textarea class=\"w-100 p-2 h{{markdown.attribute || 1}}\"\n            [(ngModel)]=\"markdown.content\"\n            rows=\"1\"\n            appAutoHeight></textarea>\n</div>"
+module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-heading\">\r\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\r\n    <span class=\"px-2\">Heading</span>\r\n    <div class=\"btn-group btn-group-sm\"\r\n         role=\"group\"\r\n         aria-label=\"Basic example\">\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded py-1 px-2\"\r\n              [ngClass]=\"{'active': markdown.attribute === 1}\"\r\n              (click)=\"markdown.attribute=1\">1</button>\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded py-0 px-2\"\r\n              [ngClass]=\"{'active': markdown.attribute === 2}\"\r\n              (click)=\"markdown.attribute=2\">2</button>\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded py-0 px-2\"\r\n              [ngClass]=\"{'active': markdown.attribute === 3}\"\r\n              (click)=\"markdown.attribute=3\">3</button>\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded py-0 px-2\"\r\n              [ngClass]=\"{'active': markdown.attribute === 4}\"\r\n              (click)=\"markdown.attribute=4\">4</button>\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded py-0 px-2\"\r\n              [ngClass]=\"{'active': markdown.attribute === 5}\"\r\n              (click)=\"markdown.attribute=5\">5</button>\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded py-0 px-2\"\r\n              [ngClass]=\"{'active': markdown.attribute === 6}\"\r\n              (click)=\"markdown.attribute=6\">6</button>\r\n    </div>\r\n  </div>\r\n  <textarea class=\"w-100 p-2 mb-0 h{{markdown.attribute || 1}}\"\r\n            [(ngModel)]=\"markdown.content\"\r\n            rows=\"1\"\r\n            appAutoHeight></textarea>\r\n</div>"
 
 /***/ }),
 
@@ -633,7 +644,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\n          type=\"button\"\n          data-toggle=\"collapse\"\n          data-target=\"#navbar-content\"\n          aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\">\n    <span class=\"fa fa-bars\"></span>\n  </button>\n  <a class=\"navbar-brand\"\n     href=\"#\">WriteMe.md</a>\n\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\n       id=\"navbar-content\">\n    <ul class=\"navbar-nav ml-4\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n           href=\"#\">Editor</a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Projects</a>\n        </li>\n      </ul>\n      \n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Profile</a>\n        </li>\n      </ul>\n    <form class=\"form-inline float-right ml-auto\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"text\"\n             placeholder=\"Username\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"password\"\n             placeholder=\"Password\">\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\n              type=\"submit\">Login</button>\n    </form>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\r\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n          type=\"button\"\r\n          data-toggle=\"collapse\"\r\n          data-target=\"#navbar-content\"\r\n          aria-controls=\"navbarColor01\"\r\n          aria-expanded=\"false\"\r\n          aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n  <a class=\"navbar-brand\"\r\n     href=\"#\">WriteMe.md</a>\r\n\r\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\r\n       id=\"navbar-content\">\r\n    <ul class=\"navbar-nav ml-4\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n           href=\"#\">Editor</a>\r\n      </li>\r\n    </ul>\r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Projects</a>\r\n        </li>\r\n      </ul>\r\n      \r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Profile</a>\r\n        </li>\r\n      </ul>\r\n    <form class=\"form-inline float-right ml-auto\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"text\"\r\n             placeholder=\"Username\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"password\"\r\n             placeholder=\"Password\">\r\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\r\n              type=\"submit\">Login</button>\r\n    </form>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -733,8 +744,56 @@ var User = (function () {
 
 /** Models a markdown element */
 var MarkdownElement = (function () {
-    function MarkdownElement() {
+    function MarkdownElement(type) {
+        this.type = type;
+        switch (this.type) {
+            case MarkdownElementType.heading:
+                this.attribute = 1;
+                break;
+        }
     }
+    /**
+     * Get HTML of markup
+     */
+    MarkdownElement.prototype.toHtml = function () {
+        var html = '';
+        if (this.content) {
+            switch (this.type) {
+                case MarkdownElementType.heading:
+                    html = '<h' + (this.attribute || 1) + '>' + this.content + '</h' + (this.attribute || 1) + '>';
+                    break;
+            }
+        }
+        return html;
+    };
+    /**
+     * Get markdown
+     */
+    MarkdownElement.prototype.toMarkdown = function () {
+        var markdown = '';
+        if (this.content) {
+            switch (this.type) {
+                case MarkdownElementType.heading:
+                    var size = this.attribute || 1;
+                    for (var i = 0; i < this.attribute; i++) {
+                        markdown += '#';
+                    }
+                    markdown += this.content;
+                    break;
+            }
+        }
+        return markdown;
+    };
+    /**
+     * set defaults specific to type
+     */
+    MarkdownElement.prototype.setDefaults = function () {
+        switch (this.type) {
+            case MarkdownElementType.heading:
+                this.attribute = 1;
+                break;
+        }
+    };
     return MarkdownElement;
 }());
 
@@ -762,7 +821,8 @@ var MarkdownElementType;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -808,7 +868,7 @@ var AuthService = (function () {
      */
     AuthService.prototype.login = function (username, password) {
         var _this = this;
-        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */](function (observer) {
+        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"](function (observer) {
             _this.userService.findUserByCredentials(username, password)
                 .subscribe(function (data) {
                 _this.loggedInUser = data;

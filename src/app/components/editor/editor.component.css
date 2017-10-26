@@ -1,0 +1,8 @@
+.hvj-markdown-element-editor {
+    position: relative;
+}
+.hvj-markdown-element-editor .hvj-markdown-element-title {
+    margin-bottom: -1px;
+    z-index: -1;
+    position: relative;
+}

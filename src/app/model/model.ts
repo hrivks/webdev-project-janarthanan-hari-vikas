@@ -19,6 +19,67 @@ export class MarkdownElement implements IAppEntity {
     type: MarkdownElementType | string;
     attribute: string | number;
     content: string;
+
+    constructor(type: MarkdownElementType) {
+        this.type = type;
+
+        switch (this.type) {
+            case MarkdownElementType.heading:
+                this.attribute = 1;
+                break;
+        }
+    }
+
+    /**
+     * Get HTML of markup
+     */
+    toHtml(): string {
+
+        let html = '';
+        if (this.content) {
+            switch (this.type) {
+                case MarkdownElementType.heading:
+                    html = '<h' + (this.attribute || 1) + '>' + this.content + '</h' + (this.attribute || 1) + '>';
+                    break;
+            }
+        }
+
+        return html;
+    }
+
+    /**
+     * Get markdown
+     */
+    toMarkdown(): string {
+
+        let markdown = '';
+
+        if (this.content) {
+            switch (this.type) {
+                case MarkdownElementType.heading:
+                    const size = this.attribute || 1;
+                    for (let i = 0; i < this.attribute; i++) {
+                        markdown += '#';
+                    }
+                    markdown += this.content;
+                    break;
+            }
+        }
+
+        return markdown;
+    }
+
+    /**
+     * set defaults specific to type
+     */
+    setDefaults(): void {
+        switch (this.type) {
+            case MarkdownElementType.heading:
+                this.attribute = 1;
+                break;
+        }
+    }
+
 }
 
 /** Types of markdown elements supported */
