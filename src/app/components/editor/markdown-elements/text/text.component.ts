@@ -18,6 +18,7 @@ export class TextEditComponent implements OnInit, AfterViewInit {
   @ViewChild('txtInput') txtInput: ElementRef;
   @ViewChild('txtToolbar') txtToolbar: ElementRef;
   private quillEditor: any;
+  private diff: string;
 
   constructor() { }
 
@@ -35,12 +36,14 @@ export class TextEditComponent implements OnInit, AfterViewInit {
     this.quillEditor.on('text-change', () => {
       let html = $(this.txtInput.nativeElement).find('.ql-editor').html();
 
+      this.diff = html;
+
       // sanitize html
       html = html.replace(/<p><br><\/p><p><br><\/p>/g, '\n\n');
       html = html.replace(/<p>/g, '');
       html = html.replace(/<\/p>/g, '');
-      html = html.replace(/-\[x\]/g, '<br><i class="fa fa-check-square-o"/></i>');
-      html = html.replace(/-\[ \]/g, '<br><i class="fa fa-square-o"/></i>');
+      html = html.replace(/-\[x\]/g, '<br><i class="fa fa-check-square-o"></i>');
+      html = html.replace(/-\[ \]/g, '<br><i class="fa fa-square-o"></i>');
 
       this.markdown.content = html;
     });
@@ -55,7 +58,16 @@ export class TextEditComponent implements OnInit, AfterViewInit {
   }
 
   insertTaskList() {
-    const taskHtml = '\n-[x] ';
+    let taskHtml = '\n-[x] ';
+    const insertIndex = this.quillEditor.getLength() - 1;
+    if (insertIndex === 0) {
+      taskHtml = '-[x] ';
+    }
     this.quillEditor.insertText(this.quillEditor.getLength() - 1, taskHtml);
+
+    $(this.txtToolbar.nativeElement).parent().find('.note').text('remove "x" to create a unchecked task item');
+    setTimeout(() => {
+      $(this.txtToolbar.nativeElement).parent().find('.note').text('use double enter key for newline');
+    }, 3000);
   }
 }

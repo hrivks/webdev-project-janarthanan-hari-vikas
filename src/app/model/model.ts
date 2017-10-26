@@ -95,7 +95,38 @@ export class MarkdownElementText implements MarkdownElement {
     toMarkdown(): string {
         let markdown = '';
         if (this.content) {
-            markdown += this.content;
+            markdown = this.content;
+
+            // handle bold
+            markdown = markdown.replace(/<strong>/g, '**');
+            markdown = markdown.replace(/<\/strong>/g, '**');
+
+            // handle italics
+            markdown = markdown.replace(/<em>/g, '*');
+            markdown = markdown.replace(/<\/em>/g, '*');
+
+            // handle strike
+            markdown = markdown.replace(/<s>/g, '~~');
+            markdown = markdown.replace(/<\/s>/g, '~~');
+
+            // handle task list
+            markdown = markdown.replace(/<br><i class="fa fa-check-square-o"><\/i>/g, '\n-[X]');
+            markdown = markdown.replace(/<br><i class="fa fa-square-o"><\/i>/g, '\n-[ ]');
+
+            // handle bulleted list
+            let startIndex = markdown.indexOf('<ul');
+            let endIndex = 0;
+            while (startIndex > -1) {
+                endIndex = markdown.indexOf('/ul>');
+                const ulHtml = markdown.substring(startIndex, endIndex);
+                const bulletedMarkdown = ulHtml.replace('<ul>', '')
+                    .replace('</ul>', '')
+                    .replace(/<li>/g, '*')
+                    .replace(/<\/li>/g, '*');
+                markdown.replace(ulHtml, bulletedMarkdown);
+                startIndex = markdown.indexOf('<ul', endIndex);
+            }
+
         }
         return markdown;
     }

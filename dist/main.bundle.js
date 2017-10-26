@@ -262,7 +262,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements; let i = index\">\r\n\r\n      <div [ngSwitch]=\"MarkdownElementType[elem.type]\">\r\n\r\n        <!-- Markdown element : Heading -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.heading]\">\r\n          <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Text -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.text]\">\r\n          <app-markdown-text-edit [markdown]=\"elem\"></app-markdown-text-edit>\r\n        </div>\r\n\r\n\r\n        <!-- Insert toolbar -->\r\n        <div class=\"hvj-insert-toolbar small\"\r\n             (mouseenter)=\"toggleInsertToolbar(true, $event)\"\r\n             (mouseleave)=\"toggleInsertToolbar(false, $event)\">\r\n          <span>\r\n            <i class=\"fa fa-plus\"\r\n               aria-hidden=\"true\"></i>\r\n            <span class=\"font-italics text-dark\">insert</span>\r\n          </span>\r\n          <span class=\"toolbar-items fade\">\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.heading, i)\">Heading</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.text, i)\">Text</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.image, i)\">Image</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.table, i)\">Table</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.html, i)\">Html</span>\r\n          </span>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"elem.toHtml()\">\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements; let i = index\">\r\n\r\n      <div [ngSwitch]=\"MarkdownElementType[elem.type]\">\r\n\r\n        <!-- Markdown element : Heading -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.heading]\">\r\n          <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Text -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.text]\">\r\n          <app-markdown-text-edit [markdown]=\"elem\"></app-markdown-text-edit>\r\n        </div>\r\n\r\n\r\n        <!-- Insert toolbar -->\r\n        <div class=\"hvj-insert-toolbar small\"\r\n             (mouseenter)=\"toggleInsertToolbar(true, $event)\"\r\n             (mouseleave)=\"toggleInsertToolbar(false, $event)\">\r\n          <span>\r\n            <i class=\"fa fa-plus\"\r\n               aria-hidden=\"true\"></i>\r\n            <span class=\"font-italics text-dark\">insert</span>\r\n          </span>\r\n          <span class=\"toolbar-items fade\">\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.heading, i)\">Heading</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.text, i)\">Text</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.image, i)\">Image</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.table, i)\">Table</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.html, i)\">Html</span>\r\n          </span>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"elem.toHtml()\">\r\n      </div>\r\n    </div>\r\n\r\n    <hr>\r\n    <div *ngFor=\"let elem of elements\">\r\n        <div class=\"hvj-markdown-element-preview\"\r\n             [innerHtml]=\"elem.toMarkdown()\">\r\n        </div>\r\n      </div>\r\n  \r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -431,7 +431,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/markdown-elements/text/text.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-text\">\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\n    <span class=\"px-2\">Text</span>\n    <div class=\"btn-group btn-group-sm quill-toolbar p-0 m-0 border-0\"\n         #txtToolbar\n         role=\"group\">\n      <button type=\"button\"\n              class=\"btn btn-faded ql-bold\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Bold\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded ql-italic\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Italics\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded ql-underline\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Underline\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded ql-strike\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Strike\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded ql-link ml-3\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Link\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded ql-list ml-3\"\n              value=\"ordered\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Numbered List\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded ql-list\"\n              value=\"bullet\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Bulleted List\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Task List\"\n              (click)=\"insertTaskList()\">\n        <i class=\"fa fa-check\"\n           aria-hidden=\"true\"></i>\n      </button>\n    </div>\n    <span class=\"float-right pt-1 pr-1\">\n      <em class=\"text-secondary note\">use double enter key for newline</em>\n    </span>\n  </div>\n  <div class=\"hvj-markdown-element-main\">\n    <div #txtInput\n         class=\"txtInput\"></div>\n  </div>\n</div>"
+module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-text\">\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\n    <span class=\"px-2\">Text</span>\n    <div class=\"btn-group btn-group-sm quill-toolbar p-0 m-0 border-0\"\n         #txtToolbar\n         role=\"group\">\n      <!-- Bold -->\n      <button type=\"button\"\n              class=\"btn btn-faded ql-bold\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Bold\"></button>\n      <!-- Italics -->\n      <button type=\"button\"\n              class=\"btn btn-faded ql-italic\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Italics\"></button>\n      <!-- Strike -->\n      <button type=\"button\"\n              class=\"btn btn-faded ql-strike\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Strike\"></button>\n      <!-- Link -->\n      <button type=\"button\"\n              class=\"btn btn-faded ql-link ml-3\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Link\"></button>\n      <!-- Numbered list -->\n      <button type=\"button\"\n              class=\"btn btn-faded ql-list ml-3\"\n              value=\"ordered\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Numbered List\"></button>\n      <!-- Bulleted List -->\n      <button type=\"button\"\n              class=\"btn btn-faded ql-list\"\n              value=\"bullet\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Bulleted List\"></button>\n      <!-- Task List -->\n      <button type=\"button\"\n              class=\"btn btn-faded\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Task List\"\n              (click)=\"insertTaskList()\">\n        <i class=\"fa fa-check\"\n           aria-hidden=\"true\"></i>\n      </button>\n    </div>\n    <span class=\"ml-2\">\n      <em class=\"text-secondary note\">use double enter key for newline</em>\n    </span>\n  </div>\n  <div class=\"hvj-markdown-element-main\">\n    <div #txtInput\n         class=\"txtInput\"></div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -469,12 +469,13 @@ var TextEditComponent = (function () {
         });
         this.quillEditor.on('text-change', function () {
             var html = $(_this.txtInput.nativeElement).find('.ql-editor').html();
+            _this.diff = html;
             // sanitize html
             html = html.replace(/<p><br><\/p><p><br><\/p>/g, '\n\n');
             html = html.replace(/<p>/g, '');
             html = html.replace(/<\/p>/g, '');
-            html = html.replace(/-\[x\]/g, '<br><i class="fa fa-check-square-o"/></i>');
-            html = html.replace(/-\[ \]/g, '<br><i class="fa fa-square-o"/></i>');
+            html = html.replace(/-\[x\]/g, '<br><i class="fa fa-check-square-o"></i>');
+            html = html.replace(/-\[ \]/g, '<br><i class="fa fa-square-o"></i>');
             _this.markdown.content = html;
         });
         window.q = this.quillEditor;
@@ -484,8 +485,17 @@ var TextEditComponent = (function () {
         this.markdownChange.emit(this.markdown);
     };
     TextEditComponent.prototype.insertTaskList = function () {
+        var _this = this;
         var taskHtml = '\n-[x] ';
+        var insertIndex = this.quillEditor.getLength() - 1;
+        if (insertIndex === 0) {
+            taskHtml = '-[x] ';
+        }
         this.quillEditor.insertText(this.quillEditor.getLength() - 1, taskHtml);
+        $(this.txtToolbar.nativeElement).parent().find('.note').text('remove "x" to create a unchecked task item');
+        setTimeout(function () {
+            $(_this.txtToolbar.nativeElement).parent().find('.note').text('use double enter key for newline');
+        }, 3000);
     };
     return TextEditComponent;
 }());
@@ -918,7 +928,32 @@ var MarkdownElementText = (function () {
     MarkdownElementText.prototype.toMarkdown = function () {
         var markdown = '';
         if (this.content) {
-            markdown += this.content;
+            markdown = this.content;
+            // handle bold
+            markdown = markdown.replace(/<strong>/g, '**');
+            markdown = markdown.replace(/<\/strong>/g, '**');
+            // handle italics
+            markdown = markdown.replace(/<em>/g, '*');
+            markdown = markdown.replace(/<\/em>/g, '*');
+            // handle strike
+            markdown = markdown.replace(/<s>/g, '~~');
+            markdown = markdown.replace(/<\/s>/g, '~~');
+            // handle task list
+            markdown = markdown.replace(/<br><i class="fa fa-check-square-o"><\/i>/g, '\n-[X]');
+            markdown = markdown.replace(/<br><i class="fa fa-square-o"><\/i>/g, '\n-[ ]');
+            // handle bulleted list
+            var startIndex = markdown.indexOf('<ul');
+            var endIndex = 0;
+            while (startIndex > -1) {
+                endIndex = markdown.indexOf('/ul>');
+                var ulHtml = markdown.substring(startIndex, endIndex);
+                var bulletedMarkdown = ulHtml.replace('<ul>', '')
+                    .replace('</ul>', '')
+                    .replace(/<li>/g, '*')
+                    .replace(/<\/li>/g, '*');
+                markdown.replace(ulHtml, bulletedMarkdown);
+                startIndex = markdown.indexOf('<ul', endIndex);
+            }
         }
         return markdown;
     };

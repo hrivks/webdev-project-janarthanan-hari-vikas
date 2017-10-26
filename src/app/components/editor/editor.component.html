@@ -54,5 +54,13 @@
       </div>
     </div>
 
+    <hr>
+    <div *ngFor="let elem of elements">
+        <div class="hvj-markdown-element-preview"
+             [innerHtml]="elem.toMarkdown()">
+        </div>
+      </div>
+  
+
   </div>
 </div>
