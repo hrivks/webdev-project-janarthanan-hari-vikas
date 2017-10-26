@@ -3,6 +3,10 @@ body.hvj{
     
   }
   
+  .hvj b, .hvj strong {
+    font-weight: bold !important;
+  }
+
   .hvj .bg-faded {
     background: #ededed;
   }

@@ -1,39 +1,38 @@
 <div class="hvj-markdown-element-editor hvj-markdown-element-heading">
-        <div class="hvj-markdown-element-title small bg-inverse">
-                <span class="px-2">Heading</span>
-                <div class="btn-group btn-group-sm"
-                     role="group"
-                     aria-label="Basic example">
-                        <button type="button"
-                                class="btn btn-faded py-1 px-2"
-                                [ngClass]="{'active': markdown.attribute === 1}"
-                                (click)="markdown.attribute=1">1</button>
-                        <button type="button"
-                                class="btn btn-faded py-0 px-2"
-                                [ngClass]="{'active': markdown.attribute === 2}"
-                                (click)="markdown.attribute=2">2</button>
-                        <button type="button"
-                                class="btn btn-faded py-0 px-2"
-                                [ngClass]="{'active': markdown.attribute === 3}"
-                                (click)="markdown.attribute=3">3</button>
-                        <button type="button"
-                                class="btn btn-faded py-0 px-2"
-                                [ngClass]="{'active': markdown.attribute === 4}"
-                                (click)="markdown.attribute=4">4</button>
-                        <button type="button"
-                                class="btn btn-faded py-0 px-2"
-                                [ngClass]="{'active': markdown.attribute === 5}"
-                                (click)="markdown.attribute=5">5</button>
-                        <button type="button"
-                                class="btn btn-faded py-0 px-2"
-                                [ngClass]="{'active': markdown.attribute === 6}"
-                                (click)="markdown.attribute=6">6</button>
-                </div>
-        </div>
-        <div class="hvj-markdown-element-main">
-                <textarea class="w-100 p-2 mb-0 h{{markdown.attribute || 1}}"
-                          [(ngModel)]="markdown.content"
-                          rows="1"
-                          appAutoHeight></textarea>
-        </div>
+  <div class="hvj-markdown-element-title small bg-inverse">
+    <span class="px-2">Heading</span>
+    <div class="btn-group btn-group-sm"
+         role="group">
+      <button type="button"
+              class="btn btn-faded py-1 px-2"
+              [ngClass]="{'active': markdown.size === 1}"
+              (click)="markdown.size=1">1</button>
+      <button type="button"
+              class="btn btn-faded py-0 px-2"
+              [ngClass]="{'active': markdown.size === 2}"
+              (click)="markdown.size=2">2</button>
+      <button type="button"
+              class="btn btn-faded py-0 px-2"
+              [ngClass]="{'active': markdown.size === 3}"
+              (click)="markdown.size=3">3</button>
+      <button type="button"
+              class="btn btn-faded py-0 px-2"
+              [ngClass]="{'active': markdown.size === 4}"
+              (click)="markdown.size=4">4</button>
+      <button type="button"
+              class="btn btn-faded py-0 px-2"
+              [ngClass]="{'active': markdown.size === 5}"
+              (click)="markdown.size=5">5</button>
+      <button type="button"
+              class="btn btn-faded py-0 px-2"
+              [ngClass]="{'active': markdown.size === 6}"
+              (click)="markdown.size=6">6</button>
+    </div>
+  </div>
+  <div class="hvj-markdown-element-main">
+    <textarea class="w-100 p-2 mb-0 h{{markdown.size || 1}}"
+              [(ngModel)]="markdown.content"
+              rows="1"
+              appAutoHeight></textarea>
+  </div>
 </div>

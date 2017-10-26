@@ -13,73 +13,21 @@ export class User implements IAppEntity {
     email?: string;
 }
 
-/** Models a markdown element */
-export class MarkdownElement implements IAppEntity {
+/** Models common properties of a markdown element */
+export interface MarkdownElement extends IAppEntity {
     _id: string;
     type: MarkdownElementType | string;
-    attribute: string | number;
     content: string;
 
-    constructor(type: MarkdownElementType) {
-        this.type = type;
-
-        switch (this.type) {
-            case MarkdownElementType.heading:
-                this.attribute = 1;
-                break;
-        }
-    }
-
     /**
-     * Get HTML of markup
+     * Get HTML of markdown
      */
-    toHtml(): string {
-
-        let html = '';
-        if (this.content) {
-            switch (this.type) {
-                case MarkdownElementType.heading:
-                    html = '<h' + (this.attribute || 1) + '>' + this.content + '</h' + (this.attribute || 1) + '>';
-                    break;
-            }
-        }
-
-        return html;
-    }
+    toHtml(): string;
 
     /**
      * Get markdown
      */
-    toMarkdown(): string {
-
-        let markdown = '';
-
-        if (this.content) {
-            switch (this.type) {
-                case MarkdownElementType.heading:
-                    const size = this.attribute || 1;
-                    for (let i = 0; i < this.attribute; i++) {
-                        markdown += '#';
-                    }
-                    markdown += this.content;
-                    break;
-            }
-        }
-
-        return markdown;
-    }
-
-    /**
-     * set defaults specific to type
-     */
-    setDefaults(): void {
-        switch (this.type) {
-            case MarkdownElementType.heading:
-                this.attribute = 1;
-                break;
-        }
-    }
-
+    toMarkdown(): string;
 }
 
 /** Types of markdown elements supported */
@@ -93,4 +41,74 @@ export enum MarkdownElementType {
     blockquote, // quotes
     table, // table
     html // plain html
+}
+
+/** Models a markdown Heading element */
+export class MarkdownElementHeading implements MarkdownElement {
+
+    _id: string;
+    type: MarkdownElementType | string;
+    size: number;
+    content: string;
+
+    constructor() {
+        this.type = MarkdownElementType.heading;
+        this.size = 1;
+        this.content = '';
+    }
+
+    toHtml(): string {
+        let html = '';
+
+        if (this.content) {
+
+            html = '<h' + (this.size || 1) + '>' + this.content + '</h' + (this.size || 1) + '>';
+        }
+
+        return html;
+    }
+
+    toMarkdown(): string {
+        let markdown = '';
+        const size = this.size || 1;
+        markdown += '#'.repeat(size);
+        markdown += this.content;
+        return markdown;
+    }
+}
+
+export class MarkdownElementText implements MarkdownElement {
+
+    _id: string;
+    type: MarkdownElementType | string;
+    content: string; // raw HTML
+
+    constructor() {
+        this.type = MarkdownElementType.text;
+        this.content = '';
+    }
+
+    toHtml(): string {
+        return this.content || '';
+    }
+
+    toMarkdown(): string {
+        let markdown = '';
+        if (this.content) {
+            markdown += this.content;
+        }
+        return markdown;
+    }
+}
+
+/** Factory for creating markdown elements based on type */
+export class MarkdownElementFactory {
+    static create(type: MarkdownElementType): MarkdownElement {
+        switch (type) {
+            case MarkdownElementType.heading:
+                return new MarkdownElementHeading();
+            case MarkdownElementType.text:
+                return new MarkdownElementText();
+        }
+    }
 }

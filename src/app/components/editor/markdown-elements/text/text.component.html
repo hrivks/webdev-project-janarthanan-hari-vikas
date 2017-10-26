@@ -1,0 +1,62 @@
+<div class="hvj-markdown-element-editor hvj-markdown-element-text">
+  <div class="hvj-markdown-element-title small bg-inverse">
+    <span class="px-2">Text</span>
+    <div class="btn-group btn-group-sm quill-toolbar p-0 m-0 border-0"
+         #txtToolbar
+         role="group">
+      <button type="button"
+              class="btn btn-faded ql-bold"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Bold"></button>
+      <button type="button"
+              class="btn btn-faded ql-italic"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Italics"></button>
+      <button type="button"
+              class="btn btn-faded ql-underline"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Underline"></button>
+      <button type="button"
+              class="btn btn-faded ql-strike"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Strike"></button>
+      <button type="button"
+              class="btn btn-faded ql-link ml-3"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Link"></button>
+      <button type="button"
+              class="btn btn-faded ql-list ml-3"
+              value="ordered"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Numbered List"></button>
+      <button type="button"
+              class="btn btn-faded ql-list"
+              value="bullet"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Bulleted List"></button>
+      <button type="button"
+              class="btn btn-faded"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Task List"
+              (click)="insertTaskList()">
+        <i class="fa fa-check"
+           aria-hidden="true"></i>
+      </button>
+    </div>
+    <span class="float-right pt-1 pr-1">
+      <em class="text-secondary note">use double enter key for newline</em>
+    </span>
+  </div>
+  <div class="hvj-markdown-element-main">
+    <div #txtInput
+         class="txtInput"></div>
+  </div>
+</div>

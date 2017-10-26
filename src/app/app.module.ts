@@ -15,13 +15,19 @@ import { UserService } from './services/user.service.client';
 // #endregion
 
 // #region App Components
+
+// directives
+import { AutoHeightDirective } from './directives/auto-height/auto-height.directive';
+
 // shared components
 import { AlertComponent } from './components/shared/alert/alert.component';
 import { LoaderComponent } from './components/shared/loader/loader.component';
-import { EditorComponent } from './components/editor/editor.component';
 import { NavComponent } from './components/shared/nav/nav.component';
-import { HeadingComponent } from './components/editor/markdown-elements/heading/heading.component';
-import { AutoHeightDirective } from './directives/auto-height/auto-height.directive';
+
+// editor components
+import { EditorComponent } from './components/editor/editor.component';
+import { HeadingEditComponent } from './components/editor/markdown-elements/heading/heading.component';
+import { TextEditComponent } from './components/editor/markdown-elements/text/text.component';
 
 // #endregion
 
@@ -34,8 +40,9 @@ import { AutoHeightDirective } from './directives/auto-height/auto-height.direct
     LoaderComponent,
     EditorComponent,
     NavComponent,
-    HeadingComponent,
-    AutoHeightDirective
+    HeadingEditComponent,
+    AutoHeightDirective,
+    TextEditComponent
   ],
   imports: [
     BrowserModule,

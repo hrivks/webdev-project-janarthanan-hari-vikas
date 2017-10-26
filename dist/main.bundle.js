@@ -146,12 +146,13 @@ AppConstants.ENDPOINT = __WEBPACK_IMPORTED_MODULE_0__environments_environment__[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_editor_markdown_elements_heading_heading_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/heading/heading.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_editor_markdown_elements_heading_heading_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/heading/heading.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_editor_markdown_elements_text_text_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/text/text.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -172,10 +173,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 // #endregion
 // #region App Components
+// directives
+
 // shared components
 
 
 
+// editor components
 
 
 
@@ -191,12 +195,13 @@ AppModule = __decorate([
         declarations: [
             __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_6__components_home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__components_shared_alert_alert_component__["a" /* AlertComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__components_shared_loader_loader_component__["a" /* LoaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__components_editor_editor_component__["a" /* EditorComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__components_shared_alert_alert_component__["a" /* AlertComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__components_shared_loader_loader_component__["a" /* LoaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__components_editor_editor_component__["a" /* EditorComponent */],
             __WEBPACK_IMPORTED_MODULE_14__components_shared_nav_nav_component__["a" /* NavComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__components_editor_markdown_elements_heading_heading_component__["a" /* HeadingComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */]
+            __WEBPACK_IMPORTED_MODULE_16__components_editor_markdown_elements_heading_heading_component__["a" /* HeadingEditComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
+            __WEBPACK_IMPORTED_MODULE_17__components_editor_markdown_elements_text_text_component__["a" /* TextEditComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -257,7 +262,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements; let i = index\">\r\n\r\n      <div [ngSwitch]=\"MarkdownElementType[elem.type]\">\r\n\r\n        <div class=\"my-2\" *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.heading]\">\r\n          <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\r\n        </div>\r\n\r\n        <div class=\"small\">\r\n          <i class=\"fa fa-plus\"\r\n             aria-hidden=\"true\"></i>\r\n          <span class=\"font-italics text-dark\">insert</span>\r\n          <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                (click)=\"addElement(MarkdownElementType.heading, i)\">Heading</span>\r\n          <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                (click)=\"addElement(MarkdownElementType.text, i)\">Text</span>\r\n          <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                (click)=\"addElement(MarkdownElementType.image, i)\">Image</span>\r\n          <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                (click)=\"addElement(MarkdownElementType.table, i)\">Table</span>\r\n          <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                (click)=\"addElement(MarkdownElementType.html, i)\">Html</span>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"elem.toHtml()\">\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements; let i = index\">\r\n\r\n      <div [ngSwitch]=\"MarkdownElementType[elem.type]\">\r\n\r\n        <!-- Markdown element : Heading -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.heading]\">\r\n          <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Text -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.text]\">\r\n          <app-markdown-text-edit [markdown]=\"elem\"></app-markdown-text-edit>\r\n        </div>\r\n\r\n\r\n        <!-- Insert toolbar -->\r\n        <div class=\"hvj-insert-toolbar small\"\r\n             (mouseenter)=\"toggleInsertToolbar(true, $event)\"\r\n             (mouseleave)=\"toggleInsertToolbar(false, $event)\">\r\n          <span>\r\n            <i class=\"fa fa-plus\"\r\n               aria-hidden=\"true\"></i>\r\n            <span class=\"font-italics text-dark\">insert</span>\r\n          </span>\r\n          <span class=\"toolbar-items fade\">\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.heading, i)\">Heading</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.text, i)\">Text</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.image, i)\">Image</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.table, i)\">Table</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.html, i)\">Html</span>\r\n          </span>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"elem.toHtml()\">\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -281,25 +286,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var EditorComponent = (function () {
     function EditorComponent() {
-        this.MarkdownElementType = __WEBPACK_IMPORTED_MODULE_1__model_model__["b" /* MarkdownElementType */];
+        this.MarkdownElementType = __WEBPACK_IMPORTED_MODULE_1__model_model__["d" /* MarkdownElementType */];
     }
     EditorComponent.prototype.ngOnInit = function () {
         this.elements = [];
-        var e = new __WEBPACK_IMPORTED_MODULE_1__model_model__["a" /* MarkdownElement */](__WEBPACK_IMPORTED_MODULE_1__model_model__["b" /* MarkdownElementType */].heading);
+        var e = __WEBPACK_IMPORTED_MODULE_1__model_model__["a" /* MarkdownElementFactory */].create(__WEBPACK_IMPORTED_MODULE_1__model_model__["d" /* MarkdownElementType */].heading);
         e._id = 'aa';
         e.content = 'test';
-        e.attribute = 4;
+        e.size = 4;
         this.elements.push(e);
     };
+    /**
+     * Add new markdown element
+     * @param type element type
+     * @param index index at which the element must be inserted
+     */
     EditorComponent.prototype.addElement = function (type, index) {
-        var newElem = new __WEBPACK_IMPORTED_MODULE_1__model_model__["a" /* MarkdownElement */](type);
-        newElem.type = type;
+        var newElem = __WEBPACK_IMPORTED_MODULE_1__model_model__["a" /* MarkdownElementFactory */].create(type);
         if (!index && index >= this.elements.length) {
             this.elements.push(newElem);
         }
         else {
             this.elements.splice(index + 1, 0, newElem);
         }
+    };
+    /**
+     * Toggle show / hide insert toolbar buttons
+     * @param show true, to show; false to hide
+     * @param e Mouse event
+     */
+    EditorComponent.prototype.toggleInsertToolbar = function (show, e) {
+        $(e.srcElement).find('.fade').toggleClass('show', show);
     };
     return EditorComponent;
 }());
@@ -338,7 +355,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/markdown-elements/heading/heading.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-heading\">\r\n        <div class=\"hvj-markdown-element-title small bg-inverse\">\r\n                <span class=\"px-2\">Heading</span>\r\n                <div class=\"btn-group btn-group-sm\"\r\n                     role=\"group\"\r\n                     aria-label=\"Basic example\">\r\n                        <button type=\"button\"\r\n                                class=\"btn btn-faded py-1 px-2\"\r\n                                [ngClass]=\"{'active': markdown.attribute === 1}\"\r\n                                (click)=\"markdown.attribute=1\">1</button>\r\n                        <button type=\"button\"\r\n                                class=\"btn btn-faded py-0 px-2\"\r\n                                [ngClass]=\"{'active': markdown.attribute === 2}\"\r\n                                (click)=\"markdown.attribute=2\">2</button>\r\n                        <button type=\"button\"\r\n                                class=\"btn btn-faded py-0 px-2\"\r\n                                [ngClass]=\"{'active': markdown.attribute === 3}\"\r\n                                (click)=\"markdown.attribute=3\">3</button>\r\n                        <button type=\"button\"\r\n                                class=\"btn btn-faded py-0 px-2\"\r\n                                [ngClass]=\"{'active': markdown.attribute === 4}\"\r\n                                (click)=\"markdown.attribute=4\">4</button>\r\n                        <button type=\"button\"\r\n                                class=\"btn btn-faded py-0 px-2\"\r\n                                [ngClass]=\"{'active': markdown.attribute === 5}\"\r\n                                (click)=\"markdown.attribute=5\">5</button>\r\n                        <button type=\"button\"\r\n                                class=\"btn btn-faded py-0 px-2\"\r\n                                [ngClass]=\"{'active': markdown.attribute === 6}\"\r\n                                (click)=\"markdown.attribute=6\">6</button>\r\n                </div>\r\n        </div>\r\n        <div class=\"hvj-markdown-element-main\">\r\n                <textarea class=\"w-100 p-2 mb-0 h{{markdown.attribute || 1}}\"\r\n                          [(ngModel)]=\"markdown.content\"\r\n                          rows=\"1\"\r\n                          appAutoHeight></textarea>\r\n        </div>\r\n</div>"
+module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-heading\">\r\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\r\n    <span class=\"px-2\">Heading</span>\r\n    <div class=\"btn-group btn-group-sm\"\r\n         role=\"group\">\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded py-1 px-2\"\r\n              [ngClass]=\"{'active': markdown.size === 1}\"\r\n              (click)=\"markdown.size=1\">1</button>\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded py-0 px-2\"\r\n              [ngClass]=\"{'active': markdown.size === 2}\"\r\n              (click)=\"markdown.size=2\">2</button>\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded py-0 px-2\"\r\n              [ngClass]=\"{'active': markdown.size === 3}\"\r\n              (click)=\"markdown.size=3\">3</button>\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded py-0 px-2\"\r\n              [ngClass]=\"{'active': markdown.size === 4}\"\r\n              (click)=\"markdown.size=4\">4</button>\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded py-0 px-2\"\r\n              [ngClass]=\"{'active': markdown.size === 5}\"\r\n              (click)=\"markdown.size=5\">5</button>\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded py-0 px-2\"\r\n              [ngClass]=\"{'active': markdown.size === 6}\"\r\n              (click)=\"markdown.size=6\">6</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"hvj-markdown-element-main\">\r\n    <textarea class=\"w-100 p-2 mb-0 h{{markdown.size || 1}}\"\r\n              [(ngModel)]=\"markdown.content\"\r\n              rows=\"1\"\r\n              appAutoHeight></textarea>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -346,7 +363,7 @@ module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeadingComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeadingEditComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_model__ = __webpack_require__("../../../../../src/app/model/model.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -360,36 +377,145 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var HeadingComponent = (function () {
-    function HeadingComponent() {
+var HeadingEditComponent = (function () {
+    function HeadingEditComponent() {
         this.markdownChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
-    HeadingComponent.prototype.ngOnInit = function () {
+    HeadingEditComponent.prototype.ngOnInit = function () {
     };
-    HeadingComponent.prototype.onChange = function () {
+    HeadingEditComponent.prototype.onChange = function () {
         this.markdownChange.emit(this.markdown);
     };
-    return HeadingComponent;
+    return HeadingEditComponent;
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_model__["a" /* MarkdownElement */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_model__["a" /* MarkdownElement */]) === "function" && _a || Object)
-], HeadingComponent.prototype, "markdown", void 0);
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_model__["b" /* MarkdownElementHeading */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_model__["b" /* MarkdownElementHeading */]) === "function" && _a || Object)
+], HeadingEditComponent.prototype, "markdown", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
     __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
-], HeadingComponent.prototype, "markdownChange", void 0);
-HeadingComponent = __decorate([
+], HeadingEditComponent.prototype, "markdownChange", void 0);
+HeadingEditComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-markdown-heading-edit',
         template: __webpack_require__("../../../../../src/app/components/editor/markdown-elements/heading/heading.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/editor/markdown-elements/heading/heading.component.css")]
     }),
     __metadata("design:paramtypes", [])
-], HeadingComponent);
+], HeadingEditComponent);
 
 var _a, _b;
 //# sourceMappingURL=heading.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/text/text.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".hvj-markdown-element-text textarea{\r\n    resize: none;\r\n    overflow: hidden;\r\n}\r\n\r\n.hvj-markdown-element-text .txtInput {\r\n    color: black;\r\n    border-color:darkgray;\r\n}\r\n\r\n\r\n.hvj-markdown-element-text .ql-toolbar button {\r\n    background: #EEE;\r\n}\r\n\r\n.hvj-markdown-element-text .ql-toolbar button.ql-active {\r\n    background: #CCC;\r\n    color:white;\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/text/text.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-text\">\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\n    <span class=\"px-2\">Text</span>\n    <div class=\"btn-group btn-group-sm quill-toolbar p-0 m-0 border-0\"\n         #txtToolbar\n         role=\"group\">\n      <button type=\"button\"\n              class=\"btn btn-faded ql-bold\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Bold\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded ql-italic\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Italics\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded ql-underline\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Underline\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded ql-strike\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Strike\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded ql-link ml-3\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Link\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded ql-list ml-3\"\n              value=\"ordered\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Numbered List\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded ql-list\"\n              value=\"bullet\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Bulleted List\"></button>\n      <button type=\"button\"\n              class=\"btn btn-faded\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Task List\"\n              (click)=\"insertTaskList()\">\n        <i class=\"fa fa-check\"\n           aria-hidden=\"true\"></i>\n      </button>\n    </div>\n    <span class=\"float-right pt-1 pr-1\">\n      <em class=\"text-secondary note\">use double enter key for newline</em>\n    </span>\n  </div>\n  <div class=\"hvj-markdown-element-main\">\n    <div #txtInput\n         class=\"txtInput\"></div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/text/text.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TextEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_model__ = __webpack_require__("../../../../../src/app/model/model.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TextEditComponent = (function () {
+    function TextEditComponent() {
+        this.markdownChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+    }
+    TextEditComponent.prototype.ngOnInit = function () {
+    };
+    TextEditComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        this.quillEditor = new Quill(this.txtInput.nativeElement, {
+            theme: 'snow',
+            modules: {
+                toolbar: { container: this.txtToolbar.nativeElement }
+            }
+        });
+        this.quillEditor.on('text-change', function () {
+            var html = $(_this.txtInput.nativeElement).find('.ql-editor').html();
+            // sanitize html
+            html = html.replace(/<p><br><\/p><p><br><\/p>/g, '\n\n');
+            html = html.replace(/<p>/g, '');
+            html = html.replace(/<\/p>/g, '');
+            html = html.replace(/-\[x\]/g, '<br><i class="fa fa-check-square-o"/></i>');
+            html = html.replace(/-\[ \]/g, '<br><i class="fa fa-square-o"/></i>');
+            _this.markdown.content = html;
+        });
+        window.q = this.quillEditor;
+        $('[data-toggle="tooltip"]').tooltip();
+    };
+    TextEditComponent.prototype.onChange = function () {
+        this.markdownChange.emit(this.markdown);
+    };
+    TextEditComponent.prototype.insertTaskList = function () {
+        var taskHtml = '\n-[x] ';
+        this.quillEditor.insertText(this.quillEditor.getLength() - 1, taskHtml);
+    };
+    return TextEditComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_model__["c" /* MarkdownElementText */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_model__["c" /* MarkdownElementText */]) === "function" && _a || Object)
+], TextEditComponent.prototype, "markdown", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+], TextEditComponent.prototype, "markdownChange", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('txtInput'),
+    __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _c || Object)
+], TextEditComponent.prototype, "txtInput", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('txtToolbar'),
+    __metadata("design:type", typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _d || Object)
+], TextEditComponent.prototype, "txtToolbar", void 0);
+TextEditComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-markdown-text-edit',
+        template: __webpack_require__("../../../../../src/app/components/editor/markdown-elements/text/text.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/editor/markdown-elements/text/text.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], TextEditComponent);
+
+var _a, _b, _c, _d;
+//# sourceMappingURL=text.component.js.map
 
 /***/ }),
 
@@ -644,7 +770,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\r\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n          type=\"button\"\r\n          data-toggle=\"collapse\"\r\n          data-target=\"#navbar-content\"\r\n          aria-controls=\"navbarColor01\"\r\n          aria-expanded=\"false\"\r\n          aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n  <a class=\"navbar-brand\"\r\n     href=\"#\">WriteMe.md</a>\r\n\r\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\r\n       id=\"navbar-content\">\r\n    <ul class=\"navbar-nav ml-4\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n           href=\"#\">Editor</a>\r\n      </li>\r\n    </ul>\r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Projects</a>\r\n        </li>\r\n      </ul>\r\n      \r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Profile</a>\r\n        </li>\r\n      </ul>\r\n    <form class=\"form-inline float-right ml-auto\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"text\"\r\n             placeholder=\"Username\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"password\"\r\n             placeholder=\"Password\">\r\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\r\n              type=\"submit\">Login</button>\r\n    </form>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\n          type=\"button\"\n          data-toggle=\"collapse\"\n          data-target=\"#navbar-content\"\n          aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\">\n    <span class=\"fa fa-bars\"></span>\n  </button>\n  <a class=\"navbar-brand\"\n     href=\"#\">WriteMe.md</a>\n\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\n       id=\"navbar-content\">\n    <ul class=\"navbar-nav ml-4\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n           href=\"#\">Editor</a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Projects</a>\n        </li>\n      </ul>\n      \n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Profile</a>\n        </li>\n      </ul>\n    <form class=\"form-inline float-right ml-auto\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"text\"\n             placeholder=\"Username\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"password\"\n             placeholder=\"Password\">\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\n              type=\"submit\">Login</button>\n    </form>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -733,68 +859,15 @@ var _a;
 
 "use strict";
 /* unused harmony export User */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarkdownElement; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MarkdownElementType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return MarkdownElementType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MarkdownElementHeading; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return MarkdownElementText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarkdownElementFactory; });
 /** Models a User object */
 var User = (function () {
     function User() {
     }
     return User;
-}());
-
-/** Models a markdown element */
-var MarkdownElement = (function () {
-    function MarkdownElement(type) {
-        this.type = type;
-        switch (this.type) {
-            case MarkdownElementType.heading:
-                this.attribute = 1;
-                break;
-        }
-    }
-    /**
-     * Get HTML of markup
-     */
-    MarkdownElement.prototype.toHtml = function () {
-        var html = '';
-        if (this.content) {
-            switch (this.type) {
-                case MarkdownElementType.heading:
-                    html = '<h' + (this.attribute || 1) + '>' + this.content + '</h' + (this.attribute || 1) + '>';
-                    break;
-            }
-        }
-        return html;
-    };
-    /**
-     * Get markdown
-     */
-    MarkdownElement.prototype.toMarkdown = function () {
-        var markdown = '';
-        if (this.content) {
-            switch (this.type) {
-                case MarkdownElementType.heading:
-                    var size = this.attribute || 1;
-                    for (var i = 0; i < this.attribute; i++) {
-                        markdown += '#';
-                    }
-                    markdown += this.content;
-                    break;
-            }
-        }
-        return markdown;
-    };
-    /**
-     * set defaults specific to type
-     */
-    MarkdownElement.prototype.setDefaults = function () {
-        switch (this.type) {
-            case MarkdownElementType.heading:
-                this.attribute = 1;
-                break;
-        }
-    };
-    return MarkdownElement;
 }());
 
 /** Types of markdown elements supported */
@@ -810,6 +883,63 @@ var MarkdownElementType;
     MarkdownElementType[MarkdownElementType["table"] = 7] = "table";
     MarkdownElementType[MarkdownElementType["html"] = 8] = "html"; // plain html
 })(MarkdownElementType || (MarkdownElementType = {}));
+/** Models a markdown Heading element */
+var MarkdownElementHeading = (function () {
+    function MarkdownElementHeading() {
+        this.type = MarkdownElementType.heading;
+        this.size = 1;
+        this.content = '';
+    }
+    MarkdownElementHeading.prototype.toHtml = function () {
+        var html = '';
+        if (this.content) {
+            html = '<h' + (this.size || 1) + '>' + this.content + '</h' + (this.size || 1) + '>';
+        }
+        return html;
+    };
+    MarkdownElementHeading.prototype.toMarkdown = function () {
+        var markdown = '';
+        var size = this.size || 1;
+        markdown += '#'.repeat(size);
+        markdown += this.content;
+        return markdown;
+    };
+    return MarkdownElementHeading;
+}());
+
+var MarkdownElementText = (function () {
+    function MarkdownElementText() {
+        this.type = MarkdownElementType.text;
+        this.content = '';
+    }
+    MarkdownElementText.prototype.toHtml = function () {
+        return this.content || '';
+    };
+    MarkdownElementText.prototype.toMarkdown = function () {
+        var markdown = '';
+        if (this.content) {
+            markdown += this.content;
+        }
+        return markdown;
+    };
+    return MarkdownElementText;
+}());
+
+/** Factory for creating markdown elements based on type */
+var MarkdownElementFactory = (function () {
+    function MarkdownElementFactory() {
+    }
+    MarkdownElementFactory.create = function (type) {
+        switch (type) {
+            case MarkdownElementType.heading:
+                return new MarkdownElementHeading();
+            case MarkdownElementType.text:
+                return new MarkdownElementText();
+        }
+    };
+    return MarkdownElementFactory;
+}());
+
 //# sourceMappingURL=model.js.map
 
 /***/ }),
@@ -821,8 +951,7 @@ var MarkdownElementType;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/_esm5/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -868,7 +997,7 @@ var AuthService = (function () {
      */
     AuthService.prototype.login = function (username, password) {
         var _this = this;
-        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"](function (observer) {
+        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */](function (observer) {
             _this.userService.findUserByCredentials(username, password)
                 .subscribe(function (data) {
                 _this.loggedInUser = data;
