@@ -787,7 +787,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\r\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n          type=\"button\"\r\n          data-toggle=\"collapse\"\r\n          data-target=\"#navbar-content\"\r\n          aria-controls=\"navbarColor01\"\r\n          aria-expanded=\"false\"\r\n          aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n  <a class=\"navbar-brand\"\r\n     href=\"#\">WriteMe.md</a>\r\n\r\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\r\n       id=\"navbar-content\">\r\n    <ul class=\"navbar-nav ml-4\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n           href=\"#\">Editor</a>\r\n      </li>\r\n    </ul>\r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Projects</a>\r\n        </li>\r\n      </ul>\r\n      \r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Profile</a>\r\n        </li>\r\n      </ul>\r\n    <form class=\"form-inline float-right ml-auto\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"text\"\r\n             placeholder=\"Username\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"password\"\r\n             placeholder=\"Password\">\r\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\r\n              type=\"submit\">Login</button>\r\n    </form>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\n          type=\"button\"\n          data-toggle=\"collapse\"\n          data-target=\"#navbar-content\"\n          aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\">\n    <span class=\"fa fa-bars\"></span>\n  </button>\n  <a class=\"navbar-brand\"\n     href=\"#\">WriteMe.md</a>\n\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\n       id=\"navbar-content\">\n    <ul class=\"navbar-nav ml-4\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n           href=\"#\">Editor</a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Projects</a>\n        </li>\n      </ul>\n      \n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Profile</a>\n        </li>\n      </ul>\n    <form class=\"form-inline float-right ml-auto\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"text\"\n             placeholder=\"Username\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"password\"\n             placeholder=\"Password\">\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\n              type=\"submit\">Login</button>\n    </form>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -871,39 +871,54 @@ var _a;
 
 /***/ }),
 
-/***/ "../../../../../src/app/model/model.ts":
+/***/ "../../../../../src/app/model/MarkdownElementFactory.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export User */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return MarkdownElementType; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MarkdownElementHeading; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return MarkdownElementText; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarkdownElementFactory; });
-/** Models a User object */
-var User = (function () {
-    function User() {
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__markdownElementType__ = __webpack_require__("../../../../../src/app/model/markdownElementType.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__markdownElementHeading__ = __webpack_require__("../../../../../src/app/model/markdownElementHeading.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__markdownElementText__ = __webpack_require__("../../../../../src/app/model/markdownElementText.ts");
+
+
+
+/** Factory for creating markdown elements based on type */
+var MarkdownElementFactory = (function () {
+    function MarkdownElementFactory() {
     }
-    return User;
+    MarkdownElementFactory.create = function (type) {
+        switch (type) {
+            case __WEBPACK_IMPORTED_MODULE_0__markdownElementType__["a" /* MarkdownElementType */].heading:
+                return new __WEBPACK_IMPORTED_MODULE_1__markdownElementHeading__["a" /* MarkdownElementHeading */]();
+            case __WEBPACK_IMPORTED_MODULE_0__markdownElementType__["a" /* MarkdownElementType */].text:
+                return new __WEBPACK_IMPORTED_MODULE_2__markdownElementText__["a" /* MarkdownElementText */]();
+        }
+    };
+    return MarkdownElementFactory;
 }());
 
-/** Types of markdown elements supported */
-var MarkdownElementType;
-(function (MarkdownElementType) {
-    MarkdownElementType[MarkdownElementType["heading"] = 0] = "heading";
-    MarkdownElementType[MarkdownElementType["text"] = 1] = "text";
-    MarkdownElementType[MarkdownElementType["line"] = 2] = "line";
-    MarkdownElementType[MarkdownElementType["list"] = 3] = "list";
-    MarkdownElementType[MarkdownElementType["image"] = 4] = "image";
-    MarkdownElementType[MarkdownElementType["code"] = 5] = "code";
-    MarkdownElementType[MarkdownElementType["blockquote"] = 6] = "blockquote";
-    MarkdownElementType[MarkdownElementType["table"] = 7] = "table";
-    MarkdownElementType[MarkdownElementType["html"] = 8] = "html"; // plain html
-})(MarkdownElementType || (MarkdownElementType = {}));
+//# sourceMappingURL=MarkdownElementFactory.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/model/markdownElement.ts":
+/***/ (function(module, exports) {
+
+//# sourceMappingURL=markdownElement.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/model/markdownElementHeading.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarkdownElementHeading; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__markdownElementType__ = __webpack_require__("../../../../../src/app/model/markdownElementType.ts");
+
 /** Models a markdown Heading element */
 var MarkdownElementHeading = (function () {
     function MarkdownElementHeading() {
-        this.type = MarkdownElementType.heading;
+        this.type = __WEBPACK_IMPORTED_MODULE_0__markdownElementType__["a" /* MarkdownElementType */].heading;
         this.size = 1;
         this.content = '';
     }
@@ -924,9 +939,20 @@ var MarkdownElementHeading = (function () {
     return MarkdownElementHeading;
 }());
 
+//# sourceMappingURL=markdownElementHeading.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/model/markdownElementText.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarkdownElementText; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__markdownElementType__ = __webpack_require__("../../../../../src/app/model/markdownElementType.ts");
+
 var MarkdownElementText = (function () {
     function MarkdownElementText() {
-        this.type = MarkdownElementType.text;
+        this.type = __WEBPACK_IMPORTED_MODULE_0__markdownElementType__["a" /* MarkdownElementType */].text;
         this._content = '';
         this._contentChanged = false;
         this._markdown = '';
@@ -1026,20 +1052,60 @@ var MarkdownElementText = (function () {
     return MarkdownElementText;
 }());
 
-/** Factory for creating markdown elements based on type */
-var MarkdownElementFactory = (function () {
-    function MarkdownElementFactory() {
+//# sourceMappingURL=markdownElementText.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/model/markdownElementType.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarkdownElementType; });
+/** Types of markdown elements supported */
+/** Types of markdown elements supported */ var MarkdownElementType;
+(function (MarkdownElementType) {
+    MarkdownElementType[MarkdownElementType["heading"] = 0] = "heading";
+    MarkdownElementType[MarkdownElementType["text"] = 1] = "text";
+    MarkdownElementType[MarkdownElementType["line"] = 2] = "line";
+    MarkdownElementType[MarkdownElementType["list"] = 3] = "list";
+    MarkdownElementType[MarkdownElementType["image"] = 4] = "image";
+    MarkdownElementType[MarkdownElementType["code"] = 5] = "code";
+    MarkdownElementType[MarkdownElementType["blockquote"] = 6] = "blockquote";
+    MarkdownElementType[MarkdownElementType["table"] = 7] = "table";
+    MarkdownElementType[MarkdownElementType["html"] = 8] = "html"; // plain html
+})(MarkdownElementType || (MarkdownElementType = {}));
+//# sourceMappingURL=markdownElementType.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/model/model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export User */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__markdownElement__ = __webpack_require__("../../../../../src/app/model/markdownElement.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__markdownElement___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__markdownElement__);
+/* unused harmony reexport MarkdownElement */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__markdownElementType__ = __webpack_require__("../../../../../src/app/model/markdownElementType.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_1__markdownElementType__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__markdownElementText__ = __webpack_require__("../../../../../src/app/model/markdownElementText.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__markdownElementText__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__markdownElementHeading__ = __webpack_require__("../../../../../src/app/model/markdownElementHeading.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__markdownElementHeading__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__MarkdownElementFactory__ = __webpack_require__("../../../../../src/app/model/MarkdownElementFactory.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_4__MarkdownElementFactory__["a"]; });
+/** Models a User object */
+var User = (function () {
+    function User() {
     }
-    MarkdownElementFactory.create = function (type) {
-        switch (type) {
-            case MarkdownElementType.heading:
-                return new MarkdownElementHeading();
-            case MarkdownElementType.text:
-                return new MarkdownElementText();
-        }
-    };
-    return MarkdownElementFactory;
+    return User;
 }());
+
+// Re-exports
+
+
+
+
 
 //# sourceMappingURL=model.js.map
 
@@ -1052,8 +1118,7 @@ var MarkdownElementFactory = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/_esm5/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1099,7 +1164,7 @@ var AuthService = (function () {
      */
     AuthService.prototype.login = function (username, password) {
         var _this = this;
-        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"](function (observer) {
+        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */](function (observer) {
             _this.userService.findUserByCredentials(username, password)
                 .subscribe(function (data) {
                 _this.loggedInUser = data;
