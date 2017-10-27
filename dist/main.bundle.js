@@ -262,7 +262,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements; let i = index\">\r\n\r\n      <div [ngSwitch]=\"MarkdownElementType[elem.type]\">\r\n\r\n        <!-- Markdown element : Heading -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.heading]\">\r\n          <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Text -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.text]\">\r\n          <app-markdown-text-edit [markdown]=\"elem\"></app-markdown-text-edit>\r\n        </div>\r\n\r\n\r\n        <!-- Insert toolbar -->\r\n        <div class=\"hvj-insert-toolbar small\"\r\n             (mouseenter)=\"toggleInsertToolbar(true, $event)\"\r\n             (mouseleave)=\"toggleInsertToolbar(false, $event)\">\r\n          <span>\r\n            <i class=\"fa fa-plus\"\r\n               aria-hidden=\"true\"></i>\r\n            <span class=\"font-italics text-dark\">insert</span>\r\n          </span>\r\n          <span class=\"toolbar-items fade\">\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.heading, i)\">Heading</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.text, i)\">Text</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.image, i)\">Image</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.table, i)\">Table</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.html, i)\">Html</span>\r\n          </span>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"elem.toHtml()\">\r\n      </div>\r\n    </div>\r\n\r\n    <hr>\r\n    <div *ngFor=\"let elem of elements\">\r\n        <div class=\"hvj-markdown-element-preview\"\r\n             [innerHtml]=\"elem.toMarkdown()\">\r\n        </div>\r\n      </div>\r\n  \r\n\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements; let i = index\">\r\n\r\n      <div [ngSwitch]=\"MarkdownElementType[elem.type]\">\r\n\r\n        <!-- Markdown element : Heading -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.heading]\">\r\n          <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Text -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.text]\">\r\n          <app-markdown-text-edit [markdown]=\"elem\"></app-markdown-text-edit>\r\n        </div>\r\n\r\n\r\n        <!-- Insert toolbar -->\r\n        <div class=\"hvj-insert-toolbar small\"\r\n             (mouseenter)=\"toggleInsertToolbar(true, $event)\"\r\n             (mouseleave)=\"toggleInsertToolbar(false, $event)\">\r\n          <span>\r\n            <i class=\"fa fa-plus\"\r\n               aria-hidden=\"true\"></i>\r\n            <span class=\"font-italics text-dark\">insert</span>\r\n          </span>\r\n          <span class=\"toolbar-items fade\">\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.heading, i)\">Heading</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.text, i)\">Text</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.image, i)\">Image</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.table, i)\">Table</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.html, i)\">Html</span>\r\n          </span>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"elem.toHtml()\">\r\n      </div>\r\n    </div>\r\n\r\n    <hr>\r\n    <div *ngFor=\"let elem of elements\">\r\n        <div class=\"hvj-markdown-element-preview\"\r\n             [innerHtml]=\"previewMarkdown(elem)\">\r\n        </div>\r\n      </div>\r\n  \r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -317,6 +317,13 @@ var EditorComponent = (function () {
      */
     EditorComponent.prototype.toggleInsertToolbar = function (show, e) {
         $(e.srcElement).find('.fade').toggleClass('show', show);
+    };
+    /**
+     * Get preview markdown
+     * @param elem Markdown element
+     */
+    EditorComponent.prototype.previewMarkdown = function (elem) {
+        return elem.toMarkdown().replace(/\n/g, '<br>');
     };
     return EditorComponent;
 }());
@@ -431,7 +438,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/markdown-elements/text/text.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-text\">\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\n    <span class=\"px-2\">Text</span>\n    <div class=\"btn-group btn-group-sm quill-toolbar p-0 m-0 border-0\"\n         #txtToolbar\n         role=\"group\">\n      <!-- Bold -->\n      <button type=\"button\"\n              class=\"btn btn-faded ql-bold\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Bold\"></button>\n      <!-- Italics -->\n      <button type=\"button\"\n              class=\"btn btn-faded ql-italic\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Italics\"></button>\n      <!-- Strike -->\n      <button type=\"button\"\n              class=\"btn btn-faded ql-strike\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Strike\"></button>\n      <!-- Link -->\n      <button type=\"button\"\n              class=\"btn btn-faded ql-link ml-3\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Link\"></button>\n      <!-- Numbered list -->\n      <button type=\"button\"\n              class=\"btn btn-faded ql-list ml-3\"\n              value=\"ordered\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Numbered List\"></button>\n      <!-- Bulleted List -->\n      <button type=\"button\"\n              class=\"btn btn-faded ql-list\"\n              value=\"bullet\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Bulleted List\"></button>\n      <!-- Task List -->\n      <button type=\"button\"\n              class=\"btn btn-faded\"\n              data-toggle=\"tooltip\"\n              data-placement=\"bottom\"\n              title=\"Task List\"\n              (click)=\"insertTaskList()\">\n        <i class=\"fa fa-check\"\n           aria-hidden=\"true\"></i>\n      </button>\n    </div>\n    <span class=\"ml-2\">\n      <em class=\"text-secondary note\">use double enter key for newline</em>\n    </span>\n  </div>\n  <div class=\"hvj-markdown-element-main\">\n    <div #txtInput\n         class=\"txtInput\"></div>\n  </div>\n</div>"
+module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-text\">\r\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\r\n    <span class=\"px-2\">Text</span>\r\n    <div class=\"btn-group btn-group-sm quill-toolbar p-0 m-0 border-0\"\r\n         #txtToolbar\r\n         role=\"group\">\r\n      <!-- Bold -->\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded ql-bold\"\r\n              data-toggle=\"tooltip\"\r\n              data-placement=\"bottom\"\r\n              title=\"Bold\"></button>\r\n      <!-- Italics -->\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded ql-italic\"\r\n              data-toggle=\"tooltip\"\r\n              data-placement=\"bottom\"\r\n              title=\"Italics\"></button>\r\n      <!-- Strike -->\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded ql-strike\"\r\n              data-toggle=\"tooltip\"\r\n              data-placement=\"bottom\"\r\n              title=\"Strike\"></button>\r\n      <!-- Link -->\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded ql-link ml-3\"\r\n              data-toggle=\"tooltip\"\r\n              data-placement=\"bottom\"\r\n              title=\"Link\"></button>\r\n      <!-- Numbered list -->\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded ql-list ml-3\"\r\n              value=\"ordered\"\r\n              data-toggle=\"tooltip\"\r\n              data-placement=\"bottom\"\r\n              title=\"Numbered List\"></button>\r\n      <!-- Bulleted List -->\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded ql-list\"\r\n              value=\"bullet\"\r\n              data-toggle=\"tooltip\"\r\n              data-placement=\"bottom\"\r\n              title=\"Bulleted List\"></button>\r\n      <!-- Task List -->\r\n      <button type=\"button\"\r\n              class=\"btn btn-faded\"\r\n              data-toggle=\"tooltip\"\r\n              data-placement=\"bottom\"\r\n              title=\"Task List\"\r\n              (click)=\"insertTaskList()\">\r\n        <i class=\"fa fa-check\"\r\n           aria-hidden=\"true\"></i>\r\n      </button>\r\n    </div>\r\n    <span class=\"ml-2\">\r\n      <em class=\"text-secondary note\">enter key twice creates newline</em>\r\n    </span>\r\n  </div>\r\n  <div class=\"hvj-markdown-element-main\">\r\n    <div #txtInput\r\n         class=\"txtInput\"></div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -494,7 +501,7 @@ var TextEditComponent = (function () {
         this.quillEditor.insertText(this.quillEditor.getLength() - 1, taskHtml);
         $(this.txtToolbar.nativeElement).parent().find('.note').text('remove "x" to create a unchecked task item');
         setTimeout(function () {
-            $(_this.txtToolbar.nativeElement).parent().find('.note').text('use double enter key for newline');
+            $(_this.txtToolbar.nativeElement).parent().find('.note').text('enter key twice creates newline');
         }, 3000);
     };
     return TextEditComponent;
@@ -780,7 +787,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\n          type=\"button\"\n          data-toggle=\"collapse\"\n          data-target=\"#navbar-content\"\n          aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\">\n    <span class=\"fa fa-bars\"></span>\n  </button>\n  <a class=\"navbar-brand\"\n     href=\"#\">WriteMe.md</a>\n\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\n       id=\"navbar-content\">\n    <ul class=\"navbar-nav ml-4\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n           href=\"#\">Editor</a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Projects</a>\n        </li>\n      </ul>\n      \n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Profile</a>\n        </li>\n      </ul>\n    <form class=\"form-inline float-right ml-auto\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"text\"\n             placeholder=\"Username\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"password\"\n             placeholder=\"Password\">\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\n              type=\"submit\">Login</button>\n    </form>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\r\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n          type=\"button\"\r\n          data-toggle=\"collapse\"\r\n          data-target=\"#navbar-content\"\r\n          aria-controls=\"navbarColor01\"\r\n          aria-expanded=\"false\"\r\n          aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n  <a class=\"navbar-brand\"\r\n     href=\"#\">WriteMe.md</a>\r\n\r\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\r\n       id=\"navbar-content\">\r\n    <ul class=\"navbar-nav ml-4\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n           href=\"#\">Editor</a>\r\n      </li>\r\n    </ul>\r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Projects</a>\r\n        </li>\r\n      </ul>\r\n      \r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Profile</a>\r\n        </li>\r\n      </ul>\r\n    <form class=\"form-inline float-right ml-auto\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"text\"\r\n             placeholder=\"Username\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"password\"\r\n             placeholder=\"Password\">\r\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\r\n              type=\"submit\">Login</button>\r\n    </form>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -920,15 +927,35 @@ var MarkdownElementHeading = (function () {
 var MarkdownElementText = (function () {
     function MarkdownElementText() {
         this.type = MarkdownElementType.text;
-        this.content = '';
+        this._content = '';
+        this._contentChanged = false;
+        this._markdown = '';
     }
+    Object.defineProperty(MarkdownElementText.prototype, "content", {
+        /** Get content */
+        get: function () {
+            return this._content;
+        },
+        /** Set content */
+        set: function (_c) {
+            if (_c !== this._content) {
+                this._content = _c;
+                this._contentChanged = true;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     MarkdownElementText.prototype.toHtml = function () {
-        return this.content || '';
+        return this._content;
     };
     MarkdownElementText.prototype.toMarkdown = function () {
+        if (!this._contentChanged) {
+            return this._markdown;
+        }
         var markdown = '';
-        if (this.content) {
-            markdown = this.content;
+        if (this._content) {
+            markdown = this._content;
             // handle bold
             markdown = markdown.replace(/<strong>/g, '**');
             markdown = markdown.replace(/<\/strong>/g, '**');
@@ -938,23 +965,62 @@ var MarkdownElementText = (function () {
             // handle strike
             markdown = markdown.replace(/<s>/g, '~~');
             markdown = markdown.replace(/<\/s>/g, '~~');
+            // handle links
+            var links = markdown.match(/<a .*?a>/g);
+            if (links) {
+                links.forEach(function (m) {
+                    var url = m.match(/href=".*?"/g)[0];
+                    if (url) {
+                        url = url.replace('href="', '').replace('"', '');
+                    }
+                    else {
+                        url = '';
+                    }
+                    var text = m.match(/>.*?</g)[0];
+                    if (text) {
+                        text = text.replace('>', '').replace('<', '');
+                    }
+                    else {
+                        text = '';
+                    }
+                    var linkMarkdown = '[' + text + '](' + url + ')';
+                    markdown = markdown.replace(m, linkMarkdown);
+                });
+            }
             // handle task list
             markdown = markdown.replace(/<br><i class="fa fa-check-square-o"><\/i>/g, '\n-[X]');
             markdown = markdown.replace(/<br><i class="fa fa-square-o"><\/i>/g, '\n-[ ]');
             // handle bulleted list
-            var startIndex = markdown.indexOf('<ul');
-            var endIndex = 0;
-            while (startIndex > -1) {
-                endIndex = markdown.indexOf('/ul>');
-                var ulHtml = markdown.substring(startIndex, endIndex);
-                var bulletedMarkdown = ulHtml.replace('<ul>', '')
-                    .replace('</ul>', '')
-                    .replace(/<li>/g, '*')
-                    .replace(/<\/li>/g, '*');
-                markdown.replace(ulHtml, bulletedMarkdown);
-                startIndex = markdown.indexOf('<ul', endIndex);
+            var uls = markdown.match(/<ul.*?ul>/g);
+            if (uls) {
+                uls.forEach(function (m) {
+                    var liMarkup = '';
+                    var lis = m.match(/<li>.*?<\/li>/g);
+                    if (lis) {
+                        lis.forEach(function (l) {
+                            liMarkup += '* ' + l.replace('<li>', '').replace('</li>', '\n');
+                        });
+                    }
+                    markdown = markdown.replace(m, liMarkup);
+                });
+            }
+            // handle numbered list
+            var ols = markdown.match(/<ol.*?ol>/g);
+            if (ols) {
+                ols.forEach(function (m) {
+                    var liMarkup = '';
+                    var lis = m.match(/<li>.*?<\/li>/g);
+                    if (lis) {
+                        var itemCount_1 = 1;
+                        lis.forEach(function (l) {
+                            liMarkup += itemCount_1++ + '. ' + l.replace('<li>', '').replace('</li>', '\n');
+                        });
+                    }
+                    markdown = markdown.replace(m, liMarkup);
+                });
             }
         }
+        this._markdown = markdown;
         return markdown;
     };
     return MarkdownElementText;
@@ -986,7 +1052,8 @@ var MarkdownElementFactory = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1032,7 +1099,7 @@ var AuthService = (function () {
      */
     AuthService.prototype.login = function (username, password) {
         var _this = this;
-        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */](function (observer) {
+        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"](function (observer) {
             _this.userService.findUserByCredentials(username, password)
                 .subscribe(function (data) {
                 _this.loggedInUser = data;

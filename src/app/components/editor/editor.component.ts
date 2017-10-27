@@ -51,4 +51,12 @@ export class EditorComponent implements OnInit {
     $(e.srcElement).find('.fade').toggleClass('show', show);
   }
 
+  /**
+   * Get preview markdown
+   * @param elem Markdown element
+   */
+  previewMarkdown(elem) {
+    return elem.toMarkdown().replace(/\n/g, '<br>');
+  }
+
 }

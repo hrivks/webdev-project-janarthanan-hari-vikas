@@ -67,7 +67,7 @@ export class TextEditComponent implements OnInit, AfterViewInit {
 
     $(this.txtToolbar.nativeElement).parent().find('.note').text('remove "x" to create a unchecked task item');
     setTimeout(() => {
-      $(this.txtToolbar.nativeElement).parent().find('.note').text('use double enter key for newline');
+      $(this.txtToolbar.nativeElement).parent().find('.note').text('enter key twice creates newline');
     }, 3000);
   }
 }
