@@ -153,6 +153,7 @@ AppConstants.ENDPOINT = __WEBPACK_IMPORTED_MODULE_0__environments_environment__[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_editor_markdown_elements_heading_heading_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/heading/heading.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_editor_markdown_elements_text_text_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/text/text.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_editor_markdown_elements_line_line_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/line/line.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -183,6 +184,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // #endregion
 var AppModule = (function () {
     function AppModule() {
@@ -201,7 +203,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_14__components_shared_nav_nav_component__["a" /* NavComponent */],
             __WEBPACK_IMPORTED_MODULE_16__components_editor_markdown_elements_heading_heading_component__["a" /* HeadingEditComponent */],
             __WEBPACK_IMPORTED_MODULE_11__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
-            __WEBPACK_IMPORTED_MODULE_17__components_editor_markdown_elements_text_text_component__["a" /* TextEditComponent */]
+            __WEBPACK_IMPORTED_MODULE_17__components_editor_markdown_elements_text_text_component__["a" /* TextEditComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__components_editor_markdown_elements_line_line_component__["a" /* LineEditComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -262,7 +265,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements; let i = index\">\r\n\r\n      <div [ngSwitch]=\"MarkdownElementType[elem.type]\">\r\n\r\n        <!-- Markdown element : Heading -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.heading]\">\r\n          <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Text -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.text]\">\r\n          <app-markdown-text-edit [markdown]=\"elem\"></app-markdown-text-edit>\r\n        </div>\r\n\r\n\r\n        <!-- Insert toolbar -->\r\n        <div class=\"hvj-insert-toolbar small\"\r\n             (mouseenter)=\"toggleInsertToolbar(true, $event)\"\r\n             (mouseleave)=\"toggleInsertToolbar(false, $event)\">\r\n          <span>\r\n            <i class=\"fa fa-plus\"\r\n               aria-hidden=\"true\"></i>\r\n            <span class=\"font-italics text-dark\">insert</span>\r\n          </span>\r\n          <span class=\"toolbar-items fade\">\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.heading, i)\">Heading</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.text, i)\">Text</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.image, i)\">Image</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.table, i)\">Table</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.html, i)\">Html</span>\r\n          </span>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"elem.toHtml()\">\r\n      </div>\r\n    </div>\r\n\r\n    <hr>\r\n    <div *ngFor=\"let elem of elements\">\r\n        <div class=\"hvj-markdown-element-preview\"\r\n             [innerHtml]=\"previewMarkdown(elem)\">\r\n        </div>\r\n      </div>\r\n  \r\n\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements; let i = index\">\r\n\r\n      <div [ngSwitch]=\"MarkdownElementType[elem.type]\">\r\n\r\n        <!-- Markdown element : Heading -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.heading]\">\r\n          <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Text -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.text]\">\r\n          <app-markdown-text-edit [markdown]=\"elem\"></app-markdown-text-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Line -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.line]\">\r\n          <app-markdown-line-edit></app-markdown-line-edit>\r\n        </div>\r\n\r\n\r\n        <!-- Insert toolbar -->\r\n        <div class=\"hvj-insert-toolbar small\"\r\n             (mouseenter)=\"toggleInsertToolbar(true, $event)\"\r\n             (mouseleave)=\"toggleInsertToolbar(false, $event)\">\r\n          <span>\r\n            <i class=\"fa fa-plus\"\r\n               aria-hidden=\"true\"></i>\r\n            <span class=\"font-italics text-dark\">insert</span>\r\n          </span>\r\n          <span class=\"toolbar-items fade\">\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.heading, i)\">Heading</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.text, i)\">Text</span>\r\n                  <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.line, i)\">Line</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.image, i)\">Image</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.table, i)\">Table</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.html, i)\">Html</span>\r\n          </span>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"elem.toHtml()\">\r\n      </div>\r\n    </div>\r\n\r\n    <hr>\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"previewMarkdown(elem)\">\r\n      </div>\r\n    </div>\r\n\r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -414,6 +417,67 @@ HeadingEditComponent = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=heading.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/line/line.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/line/line.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<hr>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/line/line.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LineEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LineEditComponent = (function () {
+    function LineEditComponent() {
+    }
+    LineEditComponent.prototype.ngOnInit = function () {
+    };
+    return LineEditComponent;
+}());
+LineEditComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-markdown-line-edit',
+        template: __webpack_require__("../../../../../src/app/components/editor/markdown-elements/line/line.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/editor/markdown-elements/line/line.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], LineEditComponent);
+
+//# sourceMappingURL=line.component.js.map
 
 /***/ }),
 
@@ -879,6 +943,8 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__markdownElementType__ = __webpack_require__("../../../../../src/app/model/markdownElementType.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__markdownElementHeading__ = __webpack_require__("../../../../../src/app/model/markdownElementHeading.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__markdownElementText__ = __webpack_require__("../../../../../src/app/model/markdownElementText.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__markdownElementLine__ = __webpack_require__("../../../../../src/app/model/markdownElementLine.ts");
+
 
 
 
@@ -892,6 +958,8 @@ var MarkdownElementFactory = (function () {
                 return new __WEBPACK_IMPORTED_MODULE_1__markdownElementHeading__["a" /* MarkdownElementHeading */]();
             case __WEBPACK_IMPORTED_MODULE_0__markdownElementType__["a" /* MarkdownElementType */].text:
                 return new __WEBPACK_IMPORTED_MODULE_2__markdownElementText__["a" /* MarkdownElementText */]();
+            case __WEBPACK_IMPORTED_MODULE_0__markdownElementType__["a" /* MarkdownElementType */].line:
+                return new __WEBPACK_IMPORTED_MODULE_3__markdownElementLine__["a" /* MarkdownElementLine */]();
         }
     };
     return MarkdownElementFactory;
@@ -940,6 +1008,32 @@ var MarkdownElementHeading = (function () {
 }());
 
 //# sourceMappingURL=markdownElementHeading.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/model/markdownElementLine.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarkdownElementLine; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__markdownElementType__ = __webpack_require__("../../../../../src/app/model/markdownElementType.ts");
+
+/** Models a markdown Heading element */
+var MarkdownElementLine = (function () {
+    function MarkdownElementLine() {
+        this.type = __WEBPACK_IMPORTED_MODULE_0__markdownElementType__["a" /* MarkdownElementType */].line;
+        this.content = '';
+    }
+    MarkdownElementLine.prototype.toHtml = function () {
+        return '<hr>';
+    };
+    MarkdownElementLine.prototype.toMarkdown = function () {
+        return '***';
+    };
+    return MarkdownElementLine;
+}());
+
+//# sourceMappingURL=markdownElementLine.js.map
 
 /***/ }),
 
@@ -1088,12 +1182,14 @@ var MarkdownElementText = (function () {
 /* unused harmony reexport MarkdownElement */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__markdownElementType__ = __webpack_require__("../../../../../src/app/model/markdownElementType.ts");
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_1__markdownElementType__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__markdownElementText__ = __webpack_require__("../../../../../src/app/model/markdownElementText.ts");
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__markdownElementText__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__markdownElementHeading__ = __webpack_require__("../../../../../src/app/model/markdownElementHeading.ts");
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__markdownElementHeading__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__MarkdownElementFactory__ = __webpack_require__("../../../../../src/app/model/MarkdownElementFactory.ts");
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_4__MarkdownElementFactory__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MarkdownElementFactory__ = __webpack_require__("../../../../../src/app/model/MarkdownElementFactory.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__MarkdownElementFactory__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__markdownElementText__ = __webpack_require__("../../../../../src/app/model/markdownElementText.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__markdownElementText__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__markdownElementHeading__ = __webpack_require__("../../../../../src/app/model/markdownElementHeading.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_4__markdownElementHeading__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__markdownElementLine__ = __webpack_require__("../../../../../src/app/model/markdownElementLine.ts");
+/* unused harmony reexport MarkdownElementLine */
 /** Models a User object */
 var User = (function () {
     function User() {
@@ -1102,6 +1198,7 @@ var User = (function () {
 }());
 
 // Re-exports
+
 
 
 

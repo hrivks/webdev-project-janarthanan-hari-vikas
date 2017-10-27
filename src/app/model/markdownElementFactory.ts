@@ -2,6 +2,8 @@ import { MarkdownElement } from './markdownElement';
 import { MarkdownElementType } from './markdownElementType';
 import { MarkdownElementHeading } from './markdownElementHeading';
 import { MarkdownElementText } from './markdownElementText';
+import { MarkdownElementLine } from './markdownElementLine';
+
 
 /** Factory for creating markdown elements based on type */
 export class MarkdownElementFactory {
@@ -11,6 +13,8 @@ export class MarkdownElementFactory {
                 return new MarkdownElementHeading();
             case MarkdownElementType.text:
                 return new MarkdownElementText();
+            case MarkdownElementType.line:
+                return new MarkdownElementLine();
         }
     }
 }

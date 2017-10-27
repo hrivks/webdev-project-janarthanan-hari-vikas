@@ -28,6 +28,7 @@ import { NavComponent } from './components/shared/nav/nav.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { HeadingEditComponent } from './components/editor/markdown-elements/heading/heading.component';
 import { TextEditComponent } from './components/editor/markdown-elements/text/text.component';
+import { LineEditComponent } from './components/editor/markdown-elements/line/line.component';
 
 // #endregion
 
@@ -42,7 +43,8 @@ import { TextEditComponent } from './components/editor/markdown-elements/text/te
     NavComponent,
     HeadingEditComponent,
     AutoHeightDirective,
-    TextEditComponent
+    TextEditComponent,
+    LineEditComponent
   ],
   imports: [
     BrowserModule,

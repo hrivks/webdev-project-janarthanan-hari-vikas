@@ -13,6 +13,8 @@ export class User implements IAppEntity {
 // Re-exports
 export { MarkdownElement } from './markdownElement';
 export { MarkdownElementType } from './markdownElementType';
+export { MarkdownElementFactory } from './MarkdownElementFactory';
 export { MarkdownElementText } from './markdownElementText';
 export { MarkdownElementHeading } from './markdownElementHeading';
-export { MarkdownElementFactory } from './MarkdownElementFactory';
+export { MarkdownElementLine } from './markdownElementLine';
+
