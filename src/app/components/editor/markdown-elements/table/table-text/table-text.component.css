@@ -1,0 +1,19 @@
+.hvj-markdown-element-text textarea{
+    resize: none;
+    overflow: hidden;
+}
+
+.hvj-markdown-element-text .txtInput {
+    color: black;
+    border-color:darkgray;
+}
+
+
+.hvj-markdown-element-text .ql-toolbar button {
+    background: #EEE;
+}
+
+.hvj-markdown-element-text .ql-toolbar button.ql-active {
+    background: #CCC;
+    color:white;
+}

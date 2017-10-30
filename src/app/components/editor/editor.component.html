@@ -23,6 +23,12 @@
           <app-markdown-line-edit></app-markdown-line-edit>
         </div>
 
+        <!-- Markdown element : Line -->
+        <div class="my-2"
+             *ngSwitchCase="MarkdownElementType[MarkdownElementType.table]">
+          <app-markdown-table-edit [markdown]="elem"></app-markdown-table-edit>
+        </div>
+
 
         <!-- Insert toolbar -->
         <div class="hvj-insert-toolbar small"
@@ -38,7 +44,7 @@
                   (click)="addElement(MarkdownElementType.heading, i)">Heading</span>
             <span class="btn btn-sm btn-xs btn-secondary"
                   (click)="addElement(MarkdownElementType.text, i)">Text</span>
-                  <span class="btn btn-sm btn-xs btn-secondary"
+            <span class="btn btn-sm btn-xs btn-secondary"
                   (click)="addElement(MarkdownElementType.line, i)">Line</span>
             <span class="btn btn-sm btn-xs btn-secondary"
                   (click)="addElement(MarkdownElementType.image, i)">Image</span>

@@ -6,9 +6,10 @@ export class MarkdownElementText implements MarkdownElement {
 
     _id: string;
     type: MarkdownElementType | string;
-    private _content: string; // raw HTML
+    private _content: string; // preview HTML
     private _contentChanged: boolean; // used to keep track of _content to prevent repetative computations
     private _markdown: string; // cache of generated markdown
+    public rawHtml: string;
 
     /** Get content */
     get content(): string {
@@ -26,8 +27,9 @@ export class MarkdownElementText implements MarkdownElement {
     constructor() {
         this.type = MarkdownElementType.text;
         this._content = '';
-        this._contentChanged = false;
         this._markdown = '';
+        this.rawHtml = '';
+        this._contentChanged = false;
     }
 
     toHtml(): string {

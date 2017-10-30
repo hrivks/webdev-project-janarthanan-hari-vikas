@@ -17,4 +17,5 @@ export { MarkdownElementFactory } from './MarkdownElementFactory';
 export { MarkdownElementText } from './markdownElementText';
 export { MarkdownElementHeading } from './markdownElementHeading';
 export { MarkdownElementLine } from './markdownElementLine';
+export { MarkdownElementTable } from './markdownElementTable';
 

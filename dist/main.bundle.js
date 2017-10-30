@@ -154,6 +154,8 @@ AppConstants.ENDPOINT = __WEBPACK_IMPORTED_MODULE_0__environments_environment__[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_editor_markdown_elements_heading_heading_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/heading/heading.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_editor_markdown_elements_text_text_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/text/text.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_editor_markdown_elements_line_line_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/line/line.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_editor_markdown_elements_table_table_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/table/table.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_editor_markdown_elements_table_table_text_table_text_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/table/table-text/table-text.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -185,6 +187,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 // #endregion
 var AppModule = (function () {
     function AppModule() {
@@ -204,7 +208,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_16__components_editor_markdown_elements_heading_heading_component__["a" /* HeadingEditComponent */],
             __WEBPACK_IMPORTED_MODULE_11__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
             __WEBPACK_IMPORTED_MODULE_17__components_editor_markdown_elements_text_text_component__["a" /* TextEditComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__components_editor_markdown_elements_line_line_component__["a" /* LineEditComponent */]
+            __WEBPACK_IMPORTED_MODULE_18__components_editor_markdown_elements_line_line_component__["a" /* LineEditComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__components_editor_markdown_elements_table_table_component__["a" /* TableEditComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__components_editor_markdown_elements_table_table_text_table_text_component__["a" /* TableTextEditComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -265,7 +271,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements; let i = index\">\r\n\r\n      <div [ngSwitch]=\"MarkdownElementType[elem.type]\">\r\n\r\n        <!-- Markdown element : Heading -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.heading]\">\r\n          <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Text -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.text]\">\r\n          <app-markdown-text-edit [markdown]=\"elem\"></app-markdown-text-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Line -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.line]\">\r\n          <app-markdown-line-edit></app-markdown-line-edit>\r\n        </div>\r\n\r\n\r\n        <!-- Insert toolbar -->\r\n        <div class=\"hvj-insert-toolbar small\"\r\n             (mouseenter)=\"toggleInsertToolbar(true, $event)\"\r\n             (mouseleave)=\"toggleInsertToolbar(false, $event)\">\r\n          <span>\r\n            <i class=\"fa fa-plus\"\r\n               aria-hidden=\"true\"></i>\r\n            <span class=\"font-italics text-dark\">insert</span>\r\n          </span>\r\n          <span class=\"toolbar-items fade\">\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.heading, i)\">Heading</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.text, i)\">Text</span>\r\n                  <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.line, i)\">Line</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.image, i)\">Image</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.table, i)\">Table</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.html, i)\">Html</span>\r\n          </span>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"elem.toHtml()\">\r\n      </div>\r\n    </div>\r\n\r\n    <hr>\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"previewMarkdown(elem)\">\r\n      </div>\r\n    </div>\r\n\r\n\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements; let i = index\">\r\n\r\n      <div [ngSwitch]=\"MarkdownElementType[elem.type]\">\r\n\r\n        <!-- Markdown element : Heading -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.heading]\">\r\n          <app-markdown-heading-edit [markdown]=\"elem\"></app-markdown-heading-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Text -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.text]\">\r\n          <app-markdown-text-edit [markdown]=\"elem\"></app-markdown-text-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Line -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.line]\">\r\n          <app-markdown-line-edit></app-markdown-line-edit>\r\n        </div>\r\n\r\n        <!-- Markdown element : Line -->\r\n        <div class=\"my-2\"\r\n             *ngSwitchCase=\"MarkdownElementType[MarkdownElementType.table]\">\r\n          <app-markdown-table-edit [markdown]=\"elem\"></app-markdown-table-edit>\r\n        </div>\r\n\r\n\r\n        <!-- Insert toolbar -->\r\n        <div class=\"hvj-insert-toolbar small\"\r\n             (mouseenter)=\"toggleInsertToolbar(true, $event)\"\r\n             (mouseleave)=\"toggleInsertToolbar(false, $event)\">\r\n          <span>\r\n            <i class=\"fa fa-plus\"\r\n               aria-hidden=\"true\"></i>\r\n            <span class=\"font-italics text-dark\">insert</span>\r\n          </span>\r\n          <span class=\"toolbar-items fade\">\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.heading, i)\">Heading</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.text, i)\">Text</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.line, i)\">Line</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.image, i)\">Image</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.table, i)\">Table</span>\r\n            <span class=\"btn btn-sm btn-xs btn-secondary\"\r\n                  (click)=\"addElement(MarkdownElementType.html, i)\">Html</span>\r\n          </span>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"elem.toHtml()\">\r\n      </div>\r\n    </div>\r\n\r\n    <hr>\r\n    <div *ngFor=\"let elem of elements\">\r\n      <div class=\"hvj-markdown-element-preview\"\r\n           [innerHtml]=\"previewMarkdown(elem)\">\r\n      </div>\r\n    </div>\r\n\r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -289,11 +295,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var EditorComponent = (function () {
     function EditorComponent() {
-        this.MarkdownElementType = __WEBPACK_IMPORTED_MODULE_1__model_model__["d" /* MarkdownElementType */];
+        this.MarkdownElementType = __WEBPACK_IMPORTED_MODULE_1__model_model__["e" /* MarkdownElementType */];
     }
     EditorComponent.prototype.ngOnInit = function () {
         this.elements = [];
-        var e = __WEBPACK_IMPORTED_MODULE_1__model_model__["a" /* MarkdownElementFactory */].create(__WEBPACK_IMPORTED_MODULE_1__model_model__["d" /* MarkdownElementType */].heading);
+        var e = __WEBPACK_IMPORTED_MODULE_1__model_model__["a" /* MarkdownElementFactory */].create(__WEBPACK_IMPORTED_MODULE_1__model_model__["e" /* MarkdownElementType */].heading);
         e._id = 'aa';
         e.content = 'test';
         e.size = 4;
@@ -481,6 +487,227 @@ LineEditComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/editor/markdown-elements/table/table-text/table-text.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".hvj-markdown-element-text textarea{\r\n    resize: none;\r\n    overflow: hidden;\r\n}\r\n\r\n.hvj-markdown-element-text .txtInput {\r\n    color: black;\r\n    border-color:darkgray;\r\n}\r\n\r\n\r\n.hvj-markdown-element-text .ql-toolbar button {\r\n    background: #EEE;\r\n}\r\n\r\n.hvj-markdown-element-text .ql-toolbar button.ql-active {\r\n    background: #CCC;\r\n    color:white;\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/table/table-text/table-text.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-text\">\r\n    <div class=\"hvj-markdown-element-title small bg-inverse\">\r\n        <span class=\"px-2\">Cell</span>\r\n        <div class=\"btn-group btn-group-sm quill-toolbar p-0 m-0 border-0\"\r\n             #txtToolbar\r\n             role=\"group\">\r\n            <!-- Bold -->\r\n            <button type=\"button\"\r\n                    class=\"btn btn-faded ql-bold\"\r\n                    data-toggle=\"tooltip\"\r\n                    data-placement=\"bottom\"\r\n                    title=\"Bold\"></button>\r\n            <!-- Italics -->\r\n            <button type=\"button\"\r\n                    class=\"btn btn-faded ql-italic\"\r\n                    data-toggle=\"tooltip\"\r\n                    data-placement=\"bottom\"\r\n                    title=\"Italics\"></button>\r\n            <!-- Strike -->\r\n            <button type=\"button\"\r\n                    class=\"btn btn-faded ql-strike\"\r\n                    data-toggle=\"tooltip\"\r\n                    data-placement=\"bottom\"\r\n                    title=\"Strike\"></button>\r\n            <!-- Link -->\r\n            <button type=\"button\"\r\n                    class=\"btn btn-faded ql-link ml-3\"\r\n                    data-toggle=\"tooltip\"\r\n                    data-placement=\"bottom\"\r\n                    title=\"Link\"></button>\r\n\r\n        </div>\r\n        <span class=\"ml-2\">\r\n            <em class=\"text-secondary note\">enter key twice creates newline</em>\r\n        </span>\r\n    </div>\r\n    <div class=\"hvj-markdown-element-main\">\r\n        <div #txtInput\r\n             class=\"txtInput\"></div>\r\n    </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/table/table-text/table-text.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TableTextEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var TableTextEditComponent = (function () {
+    function TableTextEditComponent() {
+        this.textDataChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+    }
+    TableTextEditComponent.prototype.ngOnInit = function () {
+    };
+    TableTextEditComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        this.quillEditor = new Quill(this.txtInput.nativeElement, {
+            theme: 'snow',
+            modules: {
+                toolbar: { container: this.txtToolbar.nativeElement }
+            }
+        });
+        if (this.textData.value) {
+            $(this.txtInput.nativeElement).find('.ql-editor').html(this.textData.value);
+        }
+        this.quillEditor.on('text-change', function () {
+            var html = $(_this.txtInput.nativeElement).find('.ql-editor').html();
+            _this.diff = html;
+            // sanitize html
+            html = html.replace(/<p><br><\/p><p><br><\/p>/g, '\n\n');
+            html = html.replace(/<p>/g, '');
+            html = html.replace(/<\/p>/g, '');
+            _this.textData.value = html;
+        });
+        window.q = this.quillEditor;
+        $('[data-toggle="tooltip"]').tooltip();
+    };
+    TableTextEditComponent.prototype.onChange = function () {
+        this.textDataChange.emit(this.textData);
+    };
+    return TableTextEditComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Object)
+], TableTextEditComponent.prototype, "textData", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], TableTextEditComponent.prototype, "textDataChange", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('txtInput'),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _b || Object)
+], TableTextEditComponent.prototype, "txtInput", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('txtToolbar'),
+    __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _c || Object)
+], TableTextEditComponent.prototype, "txtToolbar", void 0);
+TableTextEditComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-markdown-table-text-edit',
+        template: __webpack_require__("../../../../../src/app/components/editor/markdown-elements/table/table-text/table-text.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/editor/markdown-elements/table/table-text/table-text.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], TableTextEditComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=table-text.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/table/table.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".hvj-markdown-element-table textarea{\r\n    resize: none;\r\n    overflow: hidden;\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/table/table.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-table\">\n  <!-- Toolbar -->\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\n    <span class=\"px-2\">Table</span>\n    <div class=\"btn-group btn-group-sm quill-toolbar p-0 m-0 border-0\"\n         role=\"group\">\n    </div>\n  </div>\n  <!-- content -->\n  <div class=\"hvj-markdown-element-main\">\n    <div class=\"tblInput\">\n      <table class=\"table\">\n        <tr *ngFor=\"let r of this.markdown.tableUiData; let rIndex = index\">\n          <td class=\"py-1 px-0\" *ngFor=\"let c of r; let cIndex = index\">\n            <app-markdown-table-text-edit [(textData)]=\"this.markdown.tableUiData[rIndex][cIndex]\"></app-markdown-table-text-edit>\n            <!-- <textarea class=\"W-100 form-control\"\n                      [(ngModel)]=\"this.markdown.tableUiData[rIndex][cIndex].value\"></textarea>  -->\n          </td>\n        </tr>\n      </table>\n    </div>\n    <table class=\"table\">\n        <tr *ngFor=\"let r of this.markdown.tableUiData; let rIndex = index\">\n          <td class=\"p-1\" *ngFor=\"let c of r; let cIndex = index\">\n              {{rIndex}},{{cIndex}}\n            <p>{{this.markdown.tableUiData[rIndex][cIndex].value}}</p> \n          </td>\n        </tr>\n      </table>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown-elements/table/table.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TableEditComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_model__ = __webpack_require__("../../../../../src/app/model/model.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TableEditComponent = (function () {
+    function TableEditComponent() {
+        this.markdownChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+    }
+    TableEditComponent.prototype.ngOnInit = function () {
+        if (this.markdown.tableUiData) {
+            this.rowCount = this.markdown.tableUiData.length;
+            if (this.markdown.tableUiData[0]) {
+                this.colCount = this.markdown.tableUiData[0].length;
+            }
+        }
+        if (this.rowCount === 0) {
+            // empty table markdown. initialize with 2 empty rows and columns
+            this.markdown.tableUiData = [[{ value: '' }, { value: '' }], [{ value: '' }, { value: '' }]];
+        }
+    };
+    TableEditComponent.prototype.onChange = function () {
+        this.markdownChange.emit(this.markdown);
+    };
+    /** Add a new column
+     * @param index index at which to create the new column. If unspecified, column is created at the end
+     */
+    TableEditComponent.prototype.addColumn = function (index) {
+        if (index) {
+        }
+        else {
+            // add column at end
+            this.markdown.tableUiData.forEach(function (r) {
+                r.push({ value: '' });
+            });
+        }
+        this.colCount++;
+    };
+    /** Add a new row
+     * @param index index at which to create the new row. If unspecified, row is created at the end
+     */
+    TableEditComponent.prototype.addRow = function (index) {
+        if (index) {
+        }
+        else {
+            // add row at end
+            var newRow = [];
+            for (var i = 0; i < this.colCount; i++) {
+                newRow.push({ value: '' });
+            }
+            this.markdown.tableUiData.push(newRow);
+        }
+        this.rowCount++;
+    };
+    return TableEditComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_model__["c" /* MarkdownElementTable */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_model__["c" /* MarkdownElementTable */]) === "function" && _a || Object)
+], TableEditComponent.prototype, "markdown", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+], TableEditComponent.prototype, "markdownChange", void 0);
+TableEditComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-markdown-table-edit',
+        template: __webpack_require__("../../../../../src/app/components/editor/markdown-elements/table/table.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/editor/markdown-elements/table/table.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], TableEditComponent);
+
+var _a, _b;
+//# sourceMappingURL=table.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/editor/markdown-elements/text/text.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -538,8 +765,12 @@ var TextEditComponent = (function () {
                 toolbar: { container: this.txtToolbar.nativeElement }
             }
         });
+        if (this.markdown.rawHtml) {
+            $(this.txtInput.nativeElement).find('.ql-editor').html(this.markdown.rawHtml);
+        }
         this.quillEditor.on('text-change', function () {
             var html = $(_this.txtInput.nativeElement).find('.ql-editor').html();
+            _this.markdown.rawHtml = html.toString();
             _this.diff = html;
             // sanitize html
             html = html.replace(/<p><br><\/p><p><br><\/p>/g, '\n\n');
@@ -572,7 +803,7 @@ var TextEditComponent = (function () {
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_model__["c" /* MarkdownElementText */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_model__["c" /* MarkdownElementText */]) === "function" && _a || Object)
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_model__["d" /* MarkdownElementText */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_model__["d" /* MarkdownElementText */]) === "function" && _a || Object)
 ], TextEditComponent.prototype, "markdown", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
@@ -944,6 +1175,8 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__markdownElementHeading__ = __webpack_require__("../../../../../src/app/model/markdownElementHeading.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__markdownElementText__ = __webpack_require__("../../../../../src/app/model/markdownElementText.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__markdownElementLine__ = __webpack_require__("../../../../../src/app/model/markdownElementLine.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__markdownElementTable__ = __webpack_require__("../../../../../src/app/model/markdownElementTable.ts");
+
 
 
 
@@ -960,6 +1193,8 @@ var MarkdownElementFactory = (function () {
                 return new __WEBPACK_IMPORTED_MODULE_2__markdownElementText__["a" /* MarkdownElementText */]();
             case __WEBPACK_IMPORTED_MODULE_0__markdownElementType__["a" /* MarkdownElementType */].line:
                 return new __WEBPACK_IMPORTED_MODULE_3__markdownElementLine__["a" /* MarkdownElementLine */]();
+            case __WEBPACK_IMPORTED_MODULE_0__markdownElementType__["a" /* MarkdownElementType */].table:
+                return new __WEBPACK_IMPORTED_MODULE_4__markdownElementTable__["a" /* MarkdownElementTable */]();
         }
     };
     return MarkdownElementFactory;
@@ -1037,6 +1272,57 @@ var MarkdownElementLine = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/model/markdownElementTable.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarkdownElementTable; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__markdownElementType__ = __webpack_require__("../../../../../src/app/model/markdownElementType.ts");
+
+var MarkdownElementTable = (function () {
+    function MarkdownElementTable() {
+        this.type = __WEBPACK_IMPORTED_MODULE_0__markdownElementType__["a" /* MarkdownElementType */].table;
+        this._content = '';
+        this._markdown = '';
+        this.tableUiData = [];
+        this._contentChanged = false;
+    }
+    Object.defineProperty(MarkdownElementTable.prototype, "content", {
+        /** Get content */
+        get: function () {
+            return this._content;
+        },
+        /** Set content */
+        set: function (_c) {
+            if (_c !== this._content) {
+                this._content = _c;
+                this._contentChanged = true;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    MarkdownElementTable.prototype.toHtml = function () {
+        return this._content;
+    };
+    MarkdownElementTable.prototype.toMarkdown = function () {
+        if (!this._contentChanged) {
+            return this._markdown;
+        }
+        var markdown = '';
+        if (this._content) {
+            markdown = this._content;
+        }
+        this._markdown = markdown;
+        return markdown;
+    };
+    return MarkdownElementTable;
+}());
+
+//# sourceMappingURL=markdownElementTable.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/model/markdownElementText.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1048,8 +1334,9 @@ var MarkdownElementText = (function () {
     function MarkdownElementText() {
         this.type = __WEBPACK_IMPORTED_MODULE_0__markdownElementType__["a" /* MarkdownElementType */].text;
         this._content = '';
-        this._contentChanged = false;
         this._markdown = '';
+        this.rawHtml = '';
+        this._contentChanged = false;
     }
     Object.defineProperty(MarkdownElementText.prototype, "content", {
         /** Get content */
@@ -1181,15 +1468,17 @@ var MarkdownElementText = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__markdownElement___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__markdownElement__);
 /* unused harmony reexport MarkdownElement */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__markdownElementType__ = __webpack_require__("../../../../../src/app/model/markdownElementType.ts");
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_1__markdownElementType__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_1__markdownElementType__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MarkdownElementFactory__ = __webpack_require__("../../../../../src/app/model/MarkdownElementFactory.ts");
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__MarkdownElementFactory__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__markdownElementText__ = __webpack_require__("../../../../../src/app/model/markdownElementText.ts");
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__markdownElementText__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_3__markdownElementText__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__markdownElementHeading__ = __webpack_require__("../../../../../src/app/model/markdownElementHeading.ts");
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_4__markdownElementHeading__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__markdownElementLine__ = __webpack_require__("../../../../../src/app/model/markdownElementLine.ts");
 /* unused harmony reexport MarkdownElementLine */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__markdownElementTable__ = __webpack_require__("../../../../../src/app/model/markdownElementTable.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_6__markdownElementTable__["a"]; });
 /** Models a User object */
 var User = (function () {
     function User() {
@@ -1198,6 +1487,7 @@ var User = (function () {
 }());
 
 // Re-exports
+
 
 
 

@@ -29,6 +29,8 @@ import { EditorComponent } from './components/editor/editor.component';
 import { HeadingEditComponent } from './components/editor/markdown-elements/heading/heading.component';
 import { TextEditComponent } from './components/editor/markdown-elements/text/text.component';
 import { LineEditComponent } from './components/editor/markdown-elements/line/line.component';
+import { TableEditComponent } from './components/editor/markdown-elements/table/table.component';
+import { TableTextEditComponent } from './components/editor/markdown-elements/table/table-text/table-text.component';
 
 // #endregion
 
@@ -44,7 +46,9 @@ import { LineEditComponent } from './components/editor/markdown-elements/line/li
     HeadingEditComponent,
     AutoHeightDirective,
     TextEditComponent,
-    LineEditComponent
+    LineEditComponent,
+    TableEditComponent,
+    TableTextEditComponent
   ],
   imports: [
     BrowserModule,

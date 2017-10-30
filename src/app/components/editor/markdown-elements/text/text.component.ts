@@ -33,9 +33,13 @@ export class TextEditComponent implements OnInit, AfterViewInit {
       }
     });
 
+    if (this.markdown.rawHtml) {
+      $(this.txtInput.nativeElement).find('.ql-editor').html(this.markdown.rawHtml);
+    }
+
     this.quillEditor.on('text-change', () => {
       let html = $(this.txtInput.nativeElement).find('.ql-editor').html();
-
+      this.markdown.rawHtml = html.toString();
       this.diff = html;
 
       // sanitize html
@@ -46,6 +50,7 @@ export class TextEditComponent implements OnInit, AfterViewInit {
       html = html.replace(/-\[ \]/g, '<br><i class="fa fa-square-o"></i>');
 
       this.markdown.content = html;
+
     });
 
     (<any>window).q = this.quillEditor;
