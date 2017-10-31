@@ -12,3 +12,7 @@
     z-index: 1;
     position: relative;
 }
+
+.editor-wrapper .mce-btn button{
+    padding: 1px 5px !important;
+}

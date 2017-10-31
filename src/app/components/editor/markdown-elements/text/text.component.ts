@@ -23,35 +23,56 @@ export class TextEditComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-
     tinymce.init({
       target: this.txtInput.nativeElement,
-      branding: false,
+      theme: 'modern',
+      plugins: 'table link lists hr autoresize stylebuttons emoticons image',
+      autoresize_bottom_margin: 10,
       menubar: false,
+      toolbar: 'style-p style-h1 style-h2 style-h3 style-h4 style-h5 style-h6 style-code'
+      + '| bold italic | numlist bullist | link image | table | alignleft aligncenter alignright | hr',
+      branding: false,
       statusbar: false,
-      plugins: [
-        'lists link image '
-      ],
-      toolbar: 'bold italic | bullist numlist | link | image',
-      init_instance_callback: (editor) => {
+      link_title: false,
+      target_list: false,
+      table_toolbar: 'tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow'
+      + ' | tableinsertcolbefore tableinsertcolafter tabledeletecol',
+      table_appearance_options: false,
+      table_advtab: false,
+      table_cell_advtab: false,
+      table_row_advtab: false,
+      table_default_styles: {
+        width: '100%'
+      },
+      setup: function (ed) {
+        ed.on('init', function () {
+          ed.buttons.table.menu.splice(1, 1);
+          ed.buttons.table.menu.splice(2, 4);
+        });
+      },
+      init_instance_callback: function (editor) {
         this.editor = editor;
 
         if (this.markdown.rawHtml) {
           editor.setContent(this.markdown.rawHtml);
         }
 
-        (<any>window).q = editor;
+        (<any>window).ed = editor;
+
+        $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
+
+        editor.on('NodeChange', function (e) {
+          if (e.parents.find((p) => p.localName === 'table')) {
+            $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').hide();
+            $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').show();
+          } else {
+            $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').show();
+            $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
+          }
+        });
 
         editor.on('KeyUp', () => {
           this.onEditorChange();
-
-          // sanitize html
-          // html = html.replace(/<p><br><\/p><p><br><\/p>/g, '\n\n');
-          // html = html.replace(/<p>/g, '');
-          // html = html.replace(/<\/p>/g, '');
-          // html = html.replace(/-\[x\]/g, '<br><i class="fa fa-check-square-o"></i>');
-          // html = html.replace(/-\[ \]/g, '<br><i class="fa fa-square-o"></i>');
-
         });
       }
     });
@@ -68,18 +89,4 @@ export class TextEditComponent implements OnInit, AfterViewInit {
 
   }
 
-
-  insertTaskList() {
-    let taskHtml = '\n-[x] ';
-    const insertIndex = this.editor.getLength() - 1;
-    if (insertIndex === 0) {
-      taskHtml = '-[x] ';
-    }
-    this.editor.insertText(this.editor.getLength() - 1, taskHtml);
-
-    $(this.txtToolbar.nativeElement).parent().find('.note').text('remove "x" to create a unchecked task item');
-    setTimeout(() => {
-      $(this.txtToolbar.nativeElement).parent().find('.note').text('enter key twice creates newline');
-    }, 3000);
-  }
 }
