@@ -1,7 +1,6 @@
-import { Component, OnInit, AfterViewInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, AfterViewInit, Input, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { MarkdownElementText } from '../../../../model/model';
-declare var Quill: any;
+declare var tinymce: any;
 declare var $: any;
 
 @Component({
@@ -13,62 +12,70 @@ export class TextEditComponent implements OnInit, AfterViewInit {
 
   // properties
   @Input() public markdown: MarkdownElementText;
-  @Output() public markdownChange: EventEmitter<MarkdownElementText> = new EventEmitter<MarkdownElementText>();
 
   @ViewChild('txtInput') txtInput: ElementRef;
   @ViewChild('txtToolbar') txtToolbar: ElementRef;
-  private quillEditor: any;
-  private diff: string;
+  private editor: any;
 
-  constructor() { }
+  constructor(private zone: NgZone) { }
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
-    this.quillEditor = new Quill(this.txtInput.nativeElement, {
-      theme: 'snow',
-      modules: {
-        toolbar: { container: this.txtToolbar.nativeElement }
+
+    tinymce.init({
+      target: this.txtInput.nativeElement,
+      branding: false,
+      menubar: false,
+      statusbar: false,
+      plugins: [
+        'lists link image '
+      ],
+      toolbar: 'bold italic | bullist numlist | link | image',
+      init_instance_callback: (editor) => {
+        this.editor = editor;
+
+        if (this.markdown.rawHtml) {
+          editor.setContent(this.markdown.rawHtml);
+        }
+
+        (<any>window).q = editor;
+
+        editor.on('KeyUp', () => {
+          this.onEditorChange();
+
+          // sanitize html
+          // html = html.replace(/<p><br><\/p><p><br><\/p>/g, '\n\n');
+          // html = html.replace(/<p>/g, '');
+          // html = html.replace(/<\/p>/g, '');
+          // html = html.replace(/-\[x\]/g, '<br><i class="fa fa-check-square-o"></i>');
+          // html = html.replace(/-\[ \]/g, '<br><i class="fa fa-square-o"></i>');
+
+        });
       }
     });
 
-    if (this.markdown.rawHtml) {
-      $(this.txtInput.nativeElement).find('.ql-editor').html(this.markdown.rawHtml);
-    }
+  }
 
-    this.quillEditor.on('text-change', () => {
-      let html = $(this.txtInput.nativeElement).find('.ql-editor').html();
-      this.markdown.rawHtml = html.toString();
-      this.diff = html;
+  onEditorChange() {
+    const html = this.editor.getContent();
 
-      // sanitize html
-      html = html.replace(/<p><br><\/p><p><br><\/p>/g, '\n\n');
-      html = html.replace(/<p>/g, '');
-      html = html.replace(/<\/p>/g, '');
-      html = html.replace(/-\[x\]/g, '<br><i class="fa fa-check-square-o"></i>');
-      html = html.replace(/-\[ \]/g, '<br><i class="fa fa-square-o"></i>');
-
+    this.zone.run(() => {
+      this.markdown.rawHtml = html;
       this.markdown.content = html;
-
     });
 
-    (<any>window).q = this.quillEditor;
-    $('[data-toggle="tooltip"]').tooltip();
-
   }
 
-  onChange() {
-    this.markdownChange.emit(this.markdown);
-  }
 
   insertTaskList() {
     let taskHtml = '\n-[x] ';
-    const insertIndex = this.quillEditor.getLength() - 1;
+    const insertIndex = this.editor.getLength() - 1;
     if (insertIndex === 0) {
       taskHtml = '-[x] ';
     }
-    this.quillEditor.insertText(this.quillEditor.getLength() - 1, taskHtml);
+    this.editor.insertText(this.editor.getLength() - 1, taskHtml);
 
     $(this.txtToolbar.nativeElement).parent().find('.note').text('remove "x" to create a unchecked task item');
     setTimeout(() => {

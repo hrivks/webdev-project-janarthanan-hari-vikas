@@ -447,7 +447,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/markdown-elements/line/line.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<hr>\n"
+module.exports = "<hr>\r\n"
 
 /***/ }),
 
@@ -613,7 +613,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/markdown-elements/table/table.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-table\">\n  <!-- Toolbar -->\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\n    <span class=\"px-2\">Table</span>\n    <div class=\"btn-group btn-group-sm quill-toolbar p-0 m-0 border-0\"\n         role=\"group\">\n    </div>\n  </div>\n  <!-- content -->\n  <div class=\"hvj-markdown-element-main\">\n    <div class=\"tblInput\">\n      <table class=\"table\">\n        <tr *ngFor=\"let r of this.markdown.tableUiData; let rIndex = index\">\n          <td class=\"py-1 px-0\" *ngFor=\"let c of r; let cIndex = index\">\n            <app-markdown-table-text-edit [(textData)]=\"this.markdown.tableUiData[rIndex][cIndex]\"></app-markdown-table-text-edit>\n            <!-- <textarea class=\"W-100 form-control\"\n                      [(ngModel)]=\"this.markdown.tableUiData[rIndex][cIndex].value\"></textarea>  -->\n          </td>\n        </tr>\n      </table>\n    </div>\n    <table class=\"table\">\n        <tr *ngFor=\"let r of this.markdown.tableUiData; let rIndex = index\">\n          <td class=\"p-1\" *ngFor=\"let c of r; let cIndex = index\">\n              {{rIndex}},{{cIndex}}\n            <p>{{this.markdown.tableUiData[rIndex][cIndex].value}}</p> \n          </td>\n        </tr>\n      </table>\n  </div>\n</div>"
+module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-table\">\r\n  <!-- Toolbar -->\r\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\r\n    <span class=\"px-2\">Table</span>\r\n    <div class=\"btn-group btn-group-sm quill-toolbar p-0 m-0 border-0\"\r\n         role=\"group\">\r\n    </div>\r\n  </div>\r\n  <!-- content -->\r\n  <div class=\"hvj-markdown-element-main\">\r\n    <div class=\"tblInput\">\r\n      <table class=\"table\">\r\n        <tr *ngFor=\"let r of this.markdown.tableUiData; let rIndex = index\">\r\n          <td class=\"py-1 px-0\" *ngFor=\"let c of r; let cIndex = index\">\r\n            <app-markdown-table-text-edit [(textData)]=\"this.markdown.tableUiData[rIndex][cIndex]\"></app-markdown-table-text-edit>\r\n            <!-- <textarea class=\"W-100 form-control\"\r\n                      [(ngModel)]=\"this.markdown.tableUiData[rIndex][cIndex].value\"></textarea>  -->\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <table class=\"table\">\r\n        <tr *ngFor=\"let r of this.markdown.tableUiData; let rIndex = index\">\r\n          <td class=\"p-1\" *ngFor=\"let c of r; let cIndex = index\">\r\n              {{rIndex}},{{cIndex}}\r\n            <p>{{this.markdown.tableUiData[rIndex][cIndex].value}}</p> \r\n          </td>\r\n        </tr>\r\n      </table>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -752,48 +752,56 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var TextEditComponent = (function () {
-    function TextEditComponent() {
-        this.markdownChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+    function TextEditComponent(zone) {
+        this.zone = zone;
     }
     TextEditComponent.prototype.ngOnInit = function () {
     };
     TextEditComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
-        this.quillEditor = new Quill(this.txtInput.nativeElement, {
-            theme: 'snow',
-            modules: {
-                toolbar: { container: this.txtToolbar.nativeElement }
+        tinymce.init({
+            target: this.txtInput.nativeElement,
+            branding: false,
+            menubar: false,
+            statusbar: false,
+            plugins: [
+                'lists link image '
+            ],
+            toolbar: 'bold italic | bullist numlist | link | image',
+            init_instance_callback: function (editor) {
+                _this.editor = editor;
+                if (_this.markdown.rawHtml) {
+                    editor.setContent(_this.markdown.rawHtml);
+                }
+                window.q = editor;
+                editor.on('KeyUp', function () {
+                    _this.onEditorChange();
+                    // sanitize html
+                    // html = html.replace(/<p><br><\/p><p><br><\/p>/g, '\n\n');
+                    // html = html.replace(/<p>/g, '');
+                    // html = html.replace(/<\/p>/g, '');
+                    // html = html.replace(/-\[x\]/g, '<br><i class="fa fa-check-square-o"></i>');
+                    // html = html.replace(/-\[ \]/g, '<br><i class="fa fa-square-o"></i>');
+                });
             }
         });
-        if (this.markdown.rawHtml) {
-            $(this.txtInput.nativeElement).find('.ql-editor').html(this.markdown.rawHtml);
-        }
-        this.quillEditor.on('text-change', function () {
-            var html = $(_this.txtInput.nativeElement).find('.ql-editor').html();
-            _this.markdown.rawHtml = html.toString();
-            _this.diff = html;
-            // sanitize html
-            html = html.replace(/<p><br><\/p><p><br><\/p>/g, '\n\n');
-            html = html.replace(/<p>/g, '');
-            html = html.replace(/<\/p>/g, '');
-            html = html.replace(/-\[x\]/g, '<br><i class="fa fa-check-square-o"></i>');
-            html = html.replace(/-\[ \]/g, '<br><i class="fa fa-square-o"></i>');
+    };
+    TextEditComponent.prototype.onEditorChange = function () {
+        var _this = this;
+        var html = this.editor.getContent();
+        this.zone.run(function () {
+            _this.markdown.rawHtml = html;
             _this.markdown.content = html;
         });
-        window.q = this.quillEditor;
-        $('[data-toggle="tooltip"]').tooltip();
-    };
-    TextEditComponent.prototype.onChange = function () {
-        this.markdownChange.emit(this.markdown);
     };
     TextEditComponent.prototype.insertTaskList = function () {
         var _this = this;
         var taskHtml = '\n-[x] ';
-        var insertIndex = this.quillEditor.getLength() - 1;
+        var insertIndex = this.editor.getLength() - 1;
         if (insertIndex === 0) {
             taskHtml = '-[x] ';
         }
-        this.quillEditor.insertText(this.quillEditor.getLength() - 1, taskHtml);
+        this.editor.insertText(this.editor.getLength() - 1, taskHtml);
         $(this.txtToolbar.nativeElement).parent().find('.note').text('remove "x" to create a unchecked task item');
         setTimeout(function () {
             $(_this.txtToolbar.nativeElement).parent().find('.note').text('enter key twice creates newline');
@@ -806,16 +814,12 @@ __decorate([
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__model_model__["d" /* MarkdownElementText */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__model_model__["d" /* MarkdownElementText */]) === "function" && _a || Object)
 ], TextEditComponent.prototype, "markdown", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
-    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
-], TextEditComponent.prototype, "markdownChange", void 0);
-__decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('txtInput'),
-    __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _c || Object)
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _b || Object)
 ], TextEditComponent.prototype, "txtInput", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('txtToolbar'),
-    __metadata("design:type", typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _d || Object)
+    __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _c || Object)
 ], TextEditComponent.prototype, "txtToolbar", void 0);
 TextEditComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
@@ -823,7 +827,7 @@ TextEditComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/editor/markdown-elements/text/text.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/editor/markdown-elements/text/text.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _d || Object])
 ], TextEditComponent);
 
 var _a, _b, _c, _d;
@@ -1082,7 +1086,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\n          type=\"button\"\n          data-toggle=\"collapse\"\n          data-target=\"#navbar-content\"\n          aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\">\n    <span class=\"fa fa-bars\"></span>\n  </button>\n  <a class=\"navbar-brand\"\n     href=\"#\">WriteMe.md</a>\n\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\n       id=\"navbar-content\">\n    <ul class=\"navbar-nav ml-4\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n           href=\"#\">Editor</a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Projects</a>\n        </li>\n      </ul>\n      \n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Profile</a>\n        </li>\n      </ul>\n    <form class=\"form-inline float-right ml-auto\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"text\"\n             placeholder=\"Username\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"password\"\n             placeholder=\"Password\">\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\n              type=\"submit\">Login</button>\n    </form>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\r\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n          type=\"button\"\r\n          data-toggle=\"collapse\"\r\n          data-target=\"#navbar-content\"\r\n          aria-controls=\"navbarColor01\"\r\n          aria-expanded=\"false\"\r\n          aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n  <a class=\"navbar-brand\"\r\n     href=\"#\">WriteMe.md</a>\r\n\r\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\r\n       id=\"navbar-content\">\r\n    <ul class=\"navbar-nav ml-4\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n           href=\"#\">Editor</a>\r\n      </li>\r\n    </ul>\r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Projects</a>\r\n        </li>\r\n      </ul>\r\n      \r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Profile</a>\r\n        </li>\r\n      </ul>\r\n    <form class=\"form-inline float-right ml-auto\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"text\"\r\n             placeholder=\"Username\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"password\"\r\n             placeholder=\"Password\">\r\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\r\n              type=\"submit\">Login</button>\r\n    </form>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -1354,7 +1358,7 @@ var MarkdownElementText = (function () {
         configurable: true
     });
     MarkdownElementText.prototype.toHtml = function () {
-        return this._content;
+        return this.rawHtml;
     };
     MarkdownElementText.prototype.toMarkdown = function () {
         if (!this._contentChanged) {
@@ -1505,7 +1509,8 @@ var User = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1551,7 +1556,7 @@ var AuthService = (function () {
      */
     AuthService.prototype.login = function (username, password) {
         var _this = this;
-        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */](function (observer) {
+        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"](function (observer) {
             _this.userService.findUserByCredentials(username, password)
                 .subscribe(function (data) {
                 _this.loggedInUser = data;

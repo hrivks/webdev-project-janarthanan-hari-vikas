@@ -33,7 +33,7 @@ export class MarkdownElementText implements MarkdownElement {
     }
 
     toHtml(): string {
-        return this._content;
+        return this.rawHtml;
     }
 
     toMarkdown(): string {
