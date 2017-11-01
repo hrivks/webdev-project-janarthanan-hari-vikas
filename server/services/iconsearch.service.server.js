@@ -5,19 +5,21 @@ const exp = {
     api: {} // list of functions supported by this service
 };
 
-// #region: Get Flickr API key
+// #region: Get IconFinder API key
 
 // Route: [GET] 'api/iconsearch/iconfinder/ApiKey'
 router.get('/iconfinder/ApiKey', function (req, res) {
     try {
-        var iconFinderApiClientId = process.env.ICONFINDER_API_CLIENT_ID || ''; 
-        var iconFinderApiClientSecret =  process.env.ICONFINDER_API_CLIENT_SECRET || ''; 
-        res.json({ key: flickrApiKey });
+        var iconFinderApiClientId = process.env.ICONFINDER_API_CLIENT_ID || 'ssckMfWKPCd1IddzuZ8SOXIZHuRgHehsy1c1HecmYh1ePP8QD5pUepP1UPIwSLPR';
+        var iconFinderApiClientSecret = process.env.ICONFINDER_API_CLIENT_SECRET || 'jkdNot6rqIZmKPXtujS83qxq7hVGYngkhLzuD02qA9oLt5cgcIwSEA0RFPL1dLjy';
+        res.json({ clientId: iconFinderApiClientId, clientSecret: iconFinderApiClientSecret });
     }
     catch (ex) {
         res.status(400).json(ex);
     }
 });
 
-//#endregion: Get Flickr API key
+//#endregion: Get IconFinder API key
+
+module.exports = exp;
 
