@@ -1,0 +1,15 @@
+.tiny-editor .mce-toolbar-grp {
+    padding: 8px 0px;
+}
+
+.tiny-editor .mce-toolbar-grp .mce-btn button {
+    padding: 4px 6px;
+}
+
+.tiny-editor .mce-toolbar-grp .mce-listbox button {
+    padding-right: 15px;
+}
+
+.tiny-editor .mce-toolbar-grp .mce-listbox .mce-listbox .mce-caret {
+    right: 3px;
+}

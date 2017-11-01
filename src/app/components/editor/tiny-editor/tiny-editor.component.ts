@@ -91,6 +91,7 @@ export class TinyEditorComponent implements OnInit {
 
     const toolbarButtons = this.toolbarButtons;
 
+    // region btngroup 1
     // default text button
     editor.addButton('btnTxt', {
       tooltip: 'Text',
@@ -186,7 +187,7 @@ export class TinyEditorComponent implements OnInit {
       }
     });
 
-    // italic button
+    // strikethrough button
     editor.addButton('btnStrikethrough', {
       tooltip: 'Strikethrough',
       icon: 'strikethrough',
@@ -205,8 +206,9 @@ export class TinyEditorComponent implements OnInit {
       }
     });
 
+    // endregion
 
-    // column alignemnt buttons
+    // region column alignemnt buttons
     // Right align button
     editor.addButton('btnColAlignRight', {
       icon: 'alignright',
@@ -271,12 +273,16 @@ export class TinyEditorComponent implements OnInit {
       }
     });
 
+    // endregion
+
   }
 
   /**
    * Perform tasks on node change in editor
    */
   private onEditorNodeChange(editor: any, e: any) {
+
+    // code tag rules
     if (e.parents.find((p) => p.localName === 'code')) {
       this.toolbarButtons.bold.disabled(true);
       this.toolbarButtons.italic.disabled(true);
@@ -287,16 +293,18 @@ export class TinyEditorComponent implements OnInit {
       this.toolbarButtons.strikethrough.disabled(false);
     }
 
-
+    // table tag rules
     if (e.parents.find((p) => p.localName === 'table')) {
       // inside table --> hide bullet btns; show column alignment btns
-      $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').hide();
-      $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(4)').hide();
-      $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').show();
+      $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').hide(); // numlist, bullist
+      $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(4)').hide(); // table
+      $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(6)').hide(); // hr
+      $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').show(); // col alignment
     } else {
       // outside table --> show bullet btns; hide column alignment btns
       $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').show();
       $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(4)').show();
+      $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(6)').show(); // hr
       $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
     }
   }

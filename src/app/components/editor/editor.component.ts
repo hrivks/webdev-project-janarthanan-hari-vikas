@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { MarkdownElement, MarkdownElementType, MarkdownElementFactory, MarkdownElementHeading } from '../../model/model';
+import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild, ElementRef, NgZone } from '@angular/core';
 declare var $; // jquery
 declare var tinymce: any; // tinyMCE editor
 declare var toMarkdown: any; // to-markdown
@@ -10,16 +9,25 @@ declare var toMarkdown: any; // to-markdown
   styleUrls: ['./editor.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, AfterViewInit {
 
   // properties
   private markdownHtml: string;
   private editor: any;
   @ViewChild('inputArea') inputArea: ElementRef;
+  @ViewChild('previewTabBody') previewTabBody: ElementRef;
+  private activeTab: string;
+  private compHeight: number;
 
-  constructor(private zone: NgZone) { }
+  constructor(private zone: NgZone) {
+    this.compHeight = window.innerHeight - 131;
+  }
 
   ngOnInit() {
+    this.activeTab = 'preview';
+  }
+
+  ngAfterViewInit() {
   }
 
   onEditorChange() {

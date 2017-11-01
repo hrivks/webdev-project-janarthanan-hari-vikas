@@ -9,13 +9,3 @@ export class User implements IAppEntity {
     lastName: string;
     email?: string;
 }
-
-// Re-exports
-export { MarkdownElement } from './markdownElement';
-export { MarkdownElementType } from './markdownElementType';
-export { MarkdownElementFactory } from './MarkdownElementFactory';
-export { MarkdownElementText } from './markdownElementText';
-export { MarkdownElementHeading } from './markdownElementHeading';
-export { MarkdownElementLine } from './markdownElementLine';
-export { MarkdownElementTable } from './markdownElementTable';
-

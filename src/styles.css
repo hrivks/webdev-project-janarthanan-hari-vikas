@@ -1,7 +1,4 @@
 /** Bootstrap Enhancements **/
-body.hvj{
-    
-  }
   
   .hvj b, .hvj strong {
     font-weight: bold !important;
@@ -15,12 +12,8 @@ body.hvj{
     border-color: #CCC;
   }
   
-  .hvj .bg-royal {
-    background-color: #236eaf !important;
-  }
-  
-  .hvj .fg-royal {
-    color: #236eaf !important;
+  .hvj .bg-editor-gray {
+    background: #f0f0f0;
   }
 
   .hvj .btn:not(:disabled) {

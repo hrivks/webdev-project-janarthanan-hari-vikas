@@ -26,11 +26,6 @@ import { NavComponent } from './components/shared/nav/nav.component';
 
 // editor components
 import { EditorComponent } from './components/editor/editor.component';
-import { HeadingEditComponent } from './components/editor/markdown-elements/heading/heading.component';
-import { TextEditComponent } from './components/editor/markdown-elements/text/text.component';
-import { LineEditComponent } from './components/editor/markdown-elements/line/line.component';
-import { TableEditComponent } from './components/editor/markdown-elements/table/table.component';
-import { TableTextEditComponent } from './components/editor/markdown-elements/table/table-text/table-text.component';
 import { TinyEditorComponent } from './components/editor/tiny-editor/tiny-editor.component';
 
 // #endregion
@@ -42,14 +37,9 @@ import { TinyEditorComponent } from './components/editor/tiny-editor/tiny-editor
     HomeComponent,
     AlertComponent,
     LoaderComponent,
-    EditorComponent,
     NavComponent,
-    HeadingEditComponent,
     AutoHeightDirective,
-    TextEditComponent,
-    LineEditComponent,
-    TableEditComponent,
-    TableTextEditComponent,
+    EditorComponent,
     TinyEditorComponent
   ],
   imports: [
