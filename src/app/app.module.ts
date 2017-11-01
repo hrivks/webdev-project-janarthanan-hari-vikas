@@ -31,6 +31,7 @@ import { TextEditComponent } from './components/editor/markdown-elements/text/te
 import { LineEditComponent } from './components/editor/markdown-elements/line/line.component';
 import { TableEditComponent } from './components/editor/markdown-elements/table/table.component';
 import { TableTextEditComponent } from './components/editor/markdown-elements/table/table-text/table-text.component';
+import { TinyEditorComponent } from './components/editor/tiny-editor/tiny-editor.component';
 
 // #endregion
 
@@ -48,7 +49,8 @@ import { TableTextEditComponent } from './components/editor/markdown-elements/ta
     TextEditComponent,
     LineEditComponent,
     TableEditComponent,
-    TableTextEditComponent
+    TableTextEditComponent,
+    TinyEditorComponent
   ],
   imports: [
     BrowserModule,

@@ -156,6 +156,7 @@ AppConstants.ENDPOINT = __WEBPACK_IMPORTED_MODULE_0__environments_environment__[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_editor_markdown_elements_line_line_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/line/line.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_editor_markdown_elements_table_table_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/table/table.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_editor_markdown_elements_table_table_text_table_text_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown-elements/table/table-text/table-text.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -189,6 +190,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // #endregion
 var AppModule = (function () {
     function AppModule() {
@@ -210,7 +212,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_17__components_editor_markdown_elements_text_text_component__["a" /* TextEditComponent */],
             __WEBPACK_IMPORTED_MODULE_18__components_editor_markdown_elements_line_line_component__["a" /* LineEditComponent */],
             __WEBPACK_IMPORTED_MODULE_19__components_editor_markdown_elements_table_table_component__["a" /* TableEditComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__components_editor_markdown_elements_table_table_text_table_text_component__["a" /* TableTextEditComponent */]
+            __WEBPACK_IMPORTED_MODULE_20__components_editor_markdown_elements_table_table_text_table_text_component__["a" /* TableTextEditComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -258,7 +261,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".hvj-markdown-element-editor {\r\n    position: relative;\r\n}\r\n\r\n.hvj-markdown-element-editor .hvj-markdown-element-title {\r\n    margin-bottom: -1px;\r\n    z-index: 0;\r\n    position: relative;\r\n}\r\n\r\n.hvj-markdown-element-editor .hvj-markdown-element-main {\r\n    z-index: 1;\r\n    position: relative;\r\n}\r\n\r\n.editor-wrapper .mce-btn button{\r\n    padding: 1px 5px !important;\r\n}", ""]);
+exports.push([module.i, ".hvj-markdown-element-editor {\r\n    position: relative;\r\n}\r\n\r\n.hvj-markdown-element-editor .hvj-markdown-element-title {\r\n    margin-bottom: -1px;\r\n    z-index: 0;\r\n    position: relative;\r\n}\r\n\r\n.hvj-markdown-element-editor .hvj-markdown-element-main {\r\n    z-index: 1;\r\n    position: relative;\r\n}", ""]);
 
 // exports
 
@@ -271,7 +274,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n    <div #inputArea\r\n         class=\"inputArea\"></div>\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n    \r\n    <div [innerHtml]=\"markdownHtml\"></div>\r\n    <hr>\r\n    <textarea class=\"w-100\">{{getMarkdown()}}</textarea>\r\n    \r\n  </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col editor-wrapper\">\r\n   <app-tiny-editor [(markdownHtml)]=\"markdownHtml\"></app-tiny-editor>\r\n  </div>\r\n  <div class=\"col preview-wrapper\">\r\n    \r\n    <div [innerHtml]=\"markdownHtml\"></div>\r\n    <hr>\r\n    <textarea class=\"w-100\" [ngModel]= \"getMarkdown()\"></textarea>\r\n    \r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -296,78 +299,76 @@ var EditorComponent = (function () {
         this.zone = zone;
     }
     EditorComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        tinymce.init({
-            target: this.inputArea.nativeElement,
-            theme: 'modern',
-            plugins: 'table link lists hr stylebuttons emoticons image',
-            autoresize_bottom_margin: 10,
-            height: window.innerHeight - 115,
-            menubar: false,
-            toolbar: 'style-p style-h1 style-h2 style-h3 style-h4 style-h5 style-h6 style-code '
-                + '| bold italic strikethrough | numlist bullist | link image | table | alignleft aligncenter alignright | hr | colAlignRight',
-            branding: false,
-            statusbar: false,
-            link_title: false,
-            target_list: false,
-            table_toolbar: 'tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow'
-                + ' | tableinsertcolbefore tableinsertcolafter tabledeletecol',
-            table_appearance_options: false,
-            table_advtab: false,
-            table_cell_advtab: false,
-            table_row_advtab: false,
-            table_default_styles: {
-                width: '100%'
-            },
-            setup: function (ed) {
-                ed.addButton('colAlignRight', {
-                    icon: 'alignright',
-                    tooltip: 'Right Align column',
-                    onclick: function () {
-                        console.log('btn clicked');
-                        var activeNode = ed.selection.getNode();
-                        if (activeNode.localName === 'td') {
-                            var colIndex = activeNode.cellIndex;
-                            var tbl = activeNode.parentElement.parentElement;
-                            // set all td in all rows at colIndex to same alignment
-                            for (var i = 0; i < tbl.rows.length; i++) {
-                                tbl.rows[i].cells[colIndex].align = 'right';
-                            }
-                        }
-                    }
-                });
-                ed.on('init', function () {
-                    ed.buttons.table.menu.splice(1, 1);
-                    ed.buttons.table.menu.splice(2, 4);
-                });
-            },
-            init_instance_callback: function (editor) {
-                _this.editor = editor;
-                if (_this.markdownHtml) {
-                    editor.setContent(_this.markdownHtml);
-                }
-                window.ed = editor;
-                $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
-                editor.on('NodeChange', function (e) {
-                    console.log(e);
-                    if (e.parents.find(function (p) { return p.localName === 'table'; })) {
-                        $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').hide();
-                        $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').show();
-                    }
-                    else {
-                        $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').show();
-                        $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
-                    }
-                });
-                editor.on('KeyUp', function () {
-                    _this.onEditorChange();
-                });
-                editor.on('ExecCommand', function (e) {
-                    console.log(e);
-                    _this.onEditorChange();
-                });
-            }
-        });
+        // initialize TinyMCE editor
+        // tinymce.init({
+        //   target: this.inputArea.nativeElement,
+        //   theme: 'modern',
+        //   plugins: 'table link lists hr stylebuttons emoticons image',
+        //   autoresize_bottom_margin: 10,
+        //   height: window.innerHeight - 115,
+        //   menubar: false,
+        //   toolbar: 'style-p style-h1 style-h2 style-h3 style-h4 style-h5 style-h6 style-code '
+        //   + '| bold italic strikethrough | numlist bullist | link image | table | alignleft aligncenter alignright | hr | colAlignRight',
+        //   branding: false,
+        //   statusbar: false,
+        //   link_title: false,
+        //   target_list: false,
+        //   table_toolbar: 'tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow'
+        //   + ' | tableinsertcolbefore tableinsertcolafter tabledeletecol',
+        //   table_appearance_options: false,
+        //   table_advtab: false,
+        //   table_cell_advtab: false,
+        //   table_row_advtab: false,
+        //   table_default_styles: {
+        //     width: '100%'
+        //   },
+        //   setup: function (ed) {
+        //     ed.addButton('colAlignRight', {
+        //       icon: 'alignright',
+        //       tooltip: 'Right Align column',
+        //       onclick: () => {
+        //         const activeNode = ed.selection.getNode();
+        //         if (activeNode.localName === 'td') {
+        //           const colIndex = activeNode.cellIndex;
+        //           const tbl = activeNode.parentElement.parentElement;
+        //           // set all td in all rows at colIndex to same alignment
+        //           for (let i = 0; i < tbl.rows.length; i++) {
+        //             tbl.rows[i].cells[colIndex].align = 'right';
+        //           }
+        //         }
+        //       }
+        //     });
+        //     ed.on('init', function () {
+        //       ed.buttons.table.menu.splice(1, 1);
+        //       ed.buttons.table.menu.splice(2, 4);
+        //     });
+        //   },
+        //   init_instance_callback: (editor) => {
+        //     this.editor = editor;
+        //     if (this.markdownHtml) {
+        //       editor.setContent(this.markdownHtml);
+        //     }
+        //     (<any>window).ed = editor;
+        //     $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
+        //     editor.on('NodeChange', function (e) {
+        //       console.log(e);
+        //       if (e.parents.find((p) => p.localName === 'table')) {
+        //         $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').hide();
+        //         $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').show();
+        //       } else {
+        //         $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').show();
+        //         $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
+        //       }
+        //     });
+        //     editor.on('KeyUp', () => {
+        //       this.onEditorChange();
+        //     });
+        //     editor.on('ExecCommand', (e) => {
+        //       console.log(e);
+        //       this.onEditorChange();
+        //     });
+        //   }
+        // });
     };
     EditorComponent.prototype.onEditorChange = function () {
         var _this = this;
@@ -384,7 +385,6 @@ var EditorComponent = (function () {
                     {
                         filter: 'span',
                         replacement: function (content, node) {
-                            window.n = node;
                             if (node.getAttribute('style') === 'text-decoration: line-through;') {
                                 return '~~' + content + '~~';
                             }
@@ -396,14 +396,23 @@ var EditorComponent = (function () {
                     {
                         filter: 'table',
                         replacement: function (content, node) {
-                            console.log(content);
-                            window.c = content;
-                            window.n = node;
                             var firstRow = content.substring(0, content.indexOf('\n', 1));
                             var colCount = firstRow.split('|').length - 2;
                             var headerRow = '\n' + '| --'.repeat(colCount) + '|';
                             content = content.replace(firstRow, firstRow + headerRow);
                             return content;
+                        }
+                    },
+                    {
+                        filter: 'pre',
+                        replacement: function (content, node) {
+                            if (node.getAttribute('class').indexOf('language-') > -1) {
+                                var lang = node.getAttribute('class').replace('language-', '');
+                                return '```' + lang + '\n' + content.replace('<code>', '').replace('</code>', '') + '\n```';
+                            }
+                            else {
+                                return content;
+                            }
                         }
                     }
                 ]
@@ -531,7 +540,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/markdown-elements/line/line.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<hr>\n"
+module.exports = "<hr>\r\n"
 
 /***/ }),
 
@@ -697,7 +706,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/markdown-elements/table/table.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-table\">\n  <!-- Toolbar -->\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\n    <span class=\"px-2\">Table</span>\n    <div class=\"btn-group btn-group-sm quill-toolbar p-0 m-0 border-0\"\n         role=\"group\">\n    </div>\n  </div>\n  <!-- content -->\n  <div class=\"hvj-markdown-element-main\">\n    <div class=\"tblInput\">\n      <table class=\"table\">\n        <tr *ngFor=\"let r of this.markdown.tableUiData; let rIndex = index\">\n          <td class=\"py-1 px-0\" *ngFor=\"let c of r; let cIndex = index\">\n            <app-markdown-table-text-edit [(textData)]=\"this.markdown.tableUiData[rIndex][cIndex]\"></app-markdown-table-text-edit>\n            <!-- <textarea class=\"W-100 form-control\"\n                      [(ngModel)]=\"this.markdown.tableUiData[rIndex][cIndex].value\"></textarea>  -->\n          </td>\n        </tr>\n      </table>\n    </div>\n    <table class=\"table\">\n        <tr *ngFor=\"let r of this.markdown.tableUiData; let rIndex = index\">\n          <td class=\"p-1\" *ngFor=\"let c of r; let cIndex = index\">\n              {{rIndex}},{{cIndex}}\n            <p>{{this.markdown.tableUiData[rIndex][cIndex].value}}</p> \n          </td>\n        </tr>\n      </table>\n  </div>\n</div>"
+module.exports = "<div class=\"hvj-markdown-element-editor hvj-markdown-element-table\">\r\n  <!-- Toolbar -->\r\n  <div class=\"hvj-markdown-element-title small bg-inverse\">\r\n    <span class=\"px-2\">Table</span>\r\n    <div class=\"btn-group btn-group-sm quill-toolbar p-0 m-0 border-0\"\r\n         role=\"group\">\r\n    </div>\r\n  </div>\r\n  <!-- content -->\r\n  <div class=\"hvj-markdown-element-main\">\r\n    <div class=\"tblInput\">\r\n      <table class=\"table\">\r\n        <tr *ngFor=\"let r of this.markdown.tableUiData; let rIndex = index\">\r\n          <td class=\"py-1 px-0\" *ngFor=\"let c of r; let cIndex = index\">\r\n            <app-markdown-table-text-edit [(textData)]=\"this.markdown.tableUiData[rIndex][cIndex]\"></app-markdown-table-text-edit>\r\n            <!-- <textarea class=\"W-100 form-control\"\r\n                      [(ngModel)]=\"this.markdown.tableUiData[rIndex][cIndex].value\"></textarea>  -->\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <table class=\"table\">\r\n        <tr *ngFor=\"let r of this.markdown.tableUiData; let rIndex = index\">\r\n          <td class=\"p-1\" *ngFor=\"let c of r; let cIndex = index\">\r\n              {{rIndex}},{{cIndex}}\r\n            <p>{{this.markdown.tableUiData[rIndex][cIndex].value}}</p> \r\n          </td>\r\n        </tr>\r\n      </table>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -926,6 +935,252 @@ TextEditComponent = __decorate([
 
 var _a, _b, _c, _d;
 //# sourceMappingURL=text.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tiny-editor\">\n  <div #tinyEditor></div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TinyEditorComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var TinyEditorComponent = (function () {
+    function TinyEditorComponent(zone) {
+        this.zone = zone;
+        this.markdownHtmlChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+    }
+    TinyEditorComponent.prototype.ngOnInit = function () {
+        this.initEditor();
+    };
+    TinyEditorComponent.prototype.initEditor = function () {
+        var _this = this;
+        // initialize TinyMCE editor
+        tinymce.init({
+            target: this.el.nativeElement,
+            theme: 'modern',
+            plugins: 'table link lists hr image codesample',
+            autoresize_bottom_margin: 10,
+            height: window.innerHeight - 115,
+            menubar: false,
+            toolbar: 'txt h codesample '
+                + '| bold italic strikethrough | numlist bullist | link image | table | colAlignLeft colAlignCenter colAlignRight | hr',
+            branding: false,
+            statusbar: false,
+            link_title: false,
+            target_list: false,
+            table_toolbar: 'tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow'
+                + ' | tableinsertcolbefore tableinsertcolafter tabledeletecol',
+            table_appearance_options: false,
+            table_advtab: false,
+            table_cell_advtab: false,
+            table_row_advtab: false,
+            table_default_styles: {
+                width: '100%'
+            },
+            setup: function (ed) {
+                _this.createCustomToolbarButtons(ed);
+                // remove table exta buttons
+                ed.on('init', function () {
+                    ed.buttons.table.menu.splice(1, 1); // remove table properties button
+                    ed.buttons.table.menu.splice(2, 4); // remove cell, row and column buttons
+                });
+            },
+            init_instance_callback: function (editor) {
+                window.ed = editor; // todo: remove
+                if (_this.markdownHtml) {
+                    editor.setContent(_this.markdownHtml);
+                }
+                $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
+                editor.on('NodeChange', function (e) {
+                    _this.onEditorNodeChange(editor, e);
+                });
+                editor.on('KeyUp', function () {
+                    _this.onEditorChange(editor);
+                });
+                editor.on('ExecCommand', function (e) {
+                    _this.onEditorChange(editor);
+                });
+            }
+        });
+    };
+    /**
+     * Create custom toolbar buttons
+     * @param editor tinyMCE editor object
+     */
+    TinyEditorComponent.prototype.createCustomToolbarButtons = function (editor) {
+        // default text button
+        editor.addButton('txt', {
+            tooltip: 'Text',
+            text: 'txt',
+            onclick: function () {
+                editor.execCommand('mceToggleFormat', false, 'p');
+            },
+            onPostRender: function () {
+                var self = this; // btn reference
+                var setup = function () {
+                    editor.formatter.formatChanged('p', function (state) {
+                        self.active(state);
+                    });
+                };
+                editor.formatter ? setup() : editor.on('init', setup);
+            }
+        });
+        // heading drop down button
+        editor.addButton('h', {
+            type: 'listbox',
+            text: 'H1',
+            icon: false,
+            onselect: function (e) {
+                editor.execCommand('mceToggleFormat', false, this.value());
+            },
+            values: [
+                { text: 'H1', value: 'h1' },
+                { text: 'H2', value: 'h2' },
+                { text: 'H3', value: 'h3' },
+                { text: 'H4', value: 'h4' },
+                { text: 'H5', value: 'h5' },
+                { text: 'H6', value: 'h6' }
+            ],
+            onPostRender: function () {
+                this.value('h1'); // set default value
+            }
+        });
+        // column alignemnt buttons
+        // Right align button
+        editor.addButton('colAlignRight', {
+            icon: 'alignright',
+            tooltip: 'Right Align column',
+            onclick: function () {
+                var activeNode = editor.selection.getNode();
+                if (activeNode.localName === 'td') {
+                    var colIndex = activeNode.cellIndex;
+                    var tbl = activeNode.parentElement.parentElement;
+                    // set all td in all rows at colIndex to same alignment
+                    for (var i = 0; i < tbl.rows.length; i++) {
+                        tbl.rows[i].cells[colIndex].align = 'right';
+                    }
+                }
+            }
+        });
+        // Left align button
+        editor.addButton('colAlignLeft', {
+            icon: 'alignleft',
+            tooltip: 'Left Align column',
+            onclick: function () {
+                var activeNode = editor.selection.getNode();
+                if (activeNode.localName === 'td') {
+                    var colIndex = activeNode.cellIndex;
+                    var tbl = activeNode.parentElement.parentElement;
+                    // set all td in all rows at colIndex to same alignment
+                    for (var i = 0; i < tbl.rows.length; i++) {
+                        tbl.rows[i].cells[colIndex].align = 'left';
+                    }
+                }
+            }
+        });
+        // Center align button
+        editor.addButton('colAlignCenter', {
+            icon: 'aligncenter',
+            tooltip: 'Center Align column',
+            onclick: function () {
+                var activeNode = editor.selection.getNode();
+                if (activeNode.localName === 'td') {
+                    var colIndex = activeNode.cellIndex;
+                    var tbl = activeNode.parentElement.parentElement;
+                    // set all td in all rows at colIndex to same alignment
+                    for (var i = 0; i < tbl.rows.length; i++) {
+                        tbl.rows[i].cells[colIndex].align = 'center';
+                    }
+                }
+            }
+        });
+    };
+    /**
+     * Perform tasks on node change in editor
+     */
+    TinyEditorComponent.prototype.onEditorNodeChange = function (editor, e) {
+        if (e.parents.find(function (p) { return p.localName === 'table'; })) {
+            // inside table --> hide bullet btns; show column alignment btns
+            $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').hide();
+            $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').show();
+        }
+        else {
+            // outside table --> show bullet btns; hide column alignment btns
+            $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').show();
+            $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
+        }
+    };
+    /**
+     * Emit changes to editor to subscriber
+     */
+    TinyEditorComponent.prototype.onEditorChange = function (editor) {
+        var _this = this;
+        var html = editor.getContent();
+        this.zone.run(function () {
+            _this.markdownHtmlChange.emit(html);
+        });
+    };
+    return TinyEditorComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", String)
+], TinyEditorComponent.prototype, "markdownHtml", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])('markdownHtmlChange'),
+    __metadata("design:type", Object)
+], TinyEditorComponent.prototype, "markdownHtmlChange", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('tinyEditor'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
+], TinyEditorComponent.prototype, "el", void 0);
+TinyEditorComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-tiny-editor',
+        template: __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.css")],
+        encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ViewEncapsulation */].None
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _b || Object])
+], TinyEditorComponent);
+
+var _a, _b;
+//# sourceMappingURL=tiny-editor.component.js.map
 
 /***/ }),
 
@@ -1180,7 +1435,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\n          type=\"button\"\n          data-toggle=\"collapse\"\n          data-target=\"#navbar-content\"\n          aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\">\n    <span class=\"fa fa-bars\"></span>\n  </button>\n  <a class=\"navbar-brand\"\n     href=\"#\">WriteMe.md</a>\n\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\n       id=\"navbar-content\">\n    <ul class=\"navbar-nav ml-4\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n           href=\"#\">Editor</a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Projects</a>\n        </li>\n      </ul>\n      \n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Profile</a>\n        </li>\n      </ul>\n    <form class=\"form-inline float-right ml-auto\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"text\"\n             placeholder=\"Username\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"password\"\n             placeholder=\"Password\">\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\n              type=\"submit\">Login</button>\n    </form>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\r\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n          type=\"button\"\r\n          data-toggle=\"collapse\"\r\n          data-target=\"#navbar-content\"\r\n          aria-controls=\"navbarColor01\"\r\n          aria-expanded=\"false\"\r\n          aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n  <a class=\"navbar-brand\"\r\n     href=\"#\">WriteMe.md</a>\r\n\r\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\r\n       id=\"navbar-content\">\r\n    <ul class=\"navbar-nav ml-4\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n           href=\"#\">Editor</a>\r\n      </li>\r\n    </ul>\r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Projects</a>\r\n        </li>\r\n      </ul>\r\n      \r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Profile</a>\r\n        </li>\r\n      </ul>\r\n    <form class=\"form-inline float-right ml-auto\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"text\"\r\n             placeholder=\"Username\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"password\"\r\n             placeholder=\"Password\">\r\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\r\n              type=\"submit\">Login</button>\r\n    </form>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
