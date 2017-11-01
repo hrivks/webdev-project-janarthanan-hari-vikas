@@ -14,6 +14,7 @@ export class TinyEditorComponent implements OnInit {
   @Input() markdownHtml: string;
   @Output('markdownHtmlChange') markdownHtmlChange = new EventEmitter<string>();
   @ViewChild('tinyEditor') el: ElementRef;
+  private toolbarButtons: any;
 
   constructor(private zone: NgZone) { }
 
@@ -23,16 +24,19 @@ export class TinyEditorComponent implements OnInit {
 
   private initEditor() {
 
+    this.toolbarButtons = {};
+
     // initialize TinyMCE editor
     tinymce.init({
       target: this.el.nativeElement,
       theme: 'modern',
+      content_css : '../../../../assets/tiny-editor-custom-styles.css',
       plugins: 'table link lists hr image codesample',
       autoresize_bottom_margin: 10,
       height: window.innerHeight - 115,
       menubar: false,
-      toolbar: 'txt h codesample '
-      + '| bold italic strikethrough | numlist bullist | link image | table | colAlignLeft colAlignCenter colAlignRight | hr',
+      toolbar: 'btnTxt btnH codesample btnInlineCode | btnBold btnItalic btnStrikethrough '
+      + '| numlist bullist | link image | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr',
       branding: false,
       statusbar: false,
       link_title: false,
@@ -43,9 +47,6 @@ export class TinyEditorComponent implements OnInit {
       table_advtab: false,
       table_cell_advtab: false,
       table_row_advtab: false,
-      table_default_styles: {
-        width: '100%'
-      },
       setup: (ed) => {
         this.createCustomToolbarButtons(ed);
 
@@ -88,8 +89,10 @@ export class TinyEditorComponent implements OnInit {
    */
   private createCustomToolbarButtons(editor: any) {
 
+    const toolbarButtons = this.toolbarButtons;
+
     // default text button
-    editor.addButton('txt', {
+    editor.addButton('btnTxt', {
       tooltip: 'Text',
       text: 'txt',
       onclick: () => {
@@ -107,7 +110,7 @@ export class TinyEditorComponent implements OnInit {
     });
 
     // heading drop down button
-    editor.addButton('h', {
+    editor.addButton('btnH', {
       type: 'listbox',
       text: 'H1',
       icon: false,
@@ -127,9 +130,85 @@ export class TinyEditorComponent implements OnInit {
       }
     });
 
+    // inline code button
+    editor.addButton('btnInlineCode', {
+      tooltip: 'Inline Code',
+      text: '</>',
+      onclick: () => {
+        editor.execCommand('mceToggleFormat', false, 'code');
+      },
+      onPostRender: function () {
+        const self = this; // btn reference
+        const setup = function () {
+          editor.formatter.formatChanged('code', function (state) {
+            self.active(state);
+          });
+        };
+        editor.formatter ? setup() : editor.on('init', setup);
+      }
+    });
+
+    // bold button
+    editor.addButton('btnBold', {
+      tooltip: 'Bold',
+      icon: 'bold',
+      onclick: () => {
+        editor.execCommand('mceToggleFormat', false, 'bold');
+      },
+      onPostRender: function () {
+        const self = this; // btn reference
+        toolbarButtons.bold = this;
+        const setup = function () {
+          editor.formatter.formatChanged('bold', function (state) {
+            self.active(state);
+          });
+        };
+        editor.formatter ? setup() : editor.on('init', setup);
+      }
+    });
+
+    // italic button
+    editor.addButton('btnItalic', {
+      tooltip: 'Italic',
+      icon: 'italic',
+      onclick: () => {
+        editor.execCommand('mceToggleFormat', false, 'italic');
+      },
+      onPostRender: function () {
+        const self = this; // btn reference
+        toolbarButtons.italic = this;
+        const setup = function () {
+          editor.formatter.formatChanged('italic', function (state) {
+            self.active(state);
+          });
+        };
+        editor.formatter ? setup() : editor.on('init', setup);
+      }
+    });
+
+    // italic button
+    editor.addButton('btnStrikethrough', {
+      tooltip: 'Strikethrough',
+      icon: 'strikethrough',
+      onclick: () => {
+        editor.execCommand('mceToggleFormat', false, 'strikethrough');
+      },
+      onPostRender: function () {
+        const self = this; // btn reference
+        toolbarButtons.strikethrough = this;
+        const setup = function () {
+          editor.formatter.formatChanged('strikethrough', function (state) {
+            self.active(state);
+          });
+        };
+        editor.formatter ? setup() : editor.on('init', setup);
+      }
+    });
+
+
     // column alignemnt buttons
     // Right align button
-    editor.addButton('colAlignRight', {
+    editor.addButton('btnColAlignRight', {
       icon: 'alignright',
       tooltip: 'Right Align column',
       onclick: () => {
@@ -141,12 +220,16 @@ export class TinyEditorComponent implements OnInit {
           for (let i = 0; i < tbl.rows.length; i++) {
             tbl.rows[i].cells[colIndex].align = 'right';
           }
+          editor.execCommand('mceToggleFormat', false, 'alignright');
         }
+      },
+      onPostRender: () => {
+        toolbarButtons.colAlignRight = this;
       }
     });
 
     // Left align button
-    editor.addButton('colAlignLeft', {
+    editor.addButton('btnColAlignLeft', {
       icon: 'alignleft',
       tooltip: 'Left Align column',
       onclick: () => {
@@ -158,12 +241,16 @@ export class TinyEditorComponent implements OnInit {
           for (let i = 0; i < tbl.rows.length; i++) {
             tbl.rows[i].cells[colIndex].align = 'left';
           }
+          editor.execCommand('mceToggleFormat', false, 'alignleft');
         }
+      },
+      onPostRender: () => {
+        toolbarButtons.colAlignLeft = this;
       }
     });
 
     // Center align button
-    editor.addButton('colAlignCenter', {
+    editor.addButton('btnColAlignCenter', {
       icon: 'aligncenter',
       tooltip: 'Center Align column',
       onclick: () => {
@@ -175,7 +262,12 @@ export class TinyEditorComponent implements OnInit {
           for (let i = 0; i < tbl.rows.length; i++) {
             tbl.rows[i].cells[colIndex].align = 'center';
           }
+          editor.execCommand('mceToggleFormat', false, 'aligncenter');
         }
+      },
+      onPostRender: () => {
+        toolbarButtons.colAlignCenter = this;
+        console.log(toolbarButtons);
       }
     });
 
@@ -185,13 +277,26 @@ export class TinyEditorComponent implements OnInit {
    * Perform tasks on node change in editor
    */
   private onEditorNodeChange(editor: any, e: any) {
+    if (e.parents.find((p) => p.localName === 'code')) {
+      this.toolbarButtons.bold.disabled(true);
+      this.toolbarButtons.italic.disabled(true);
+      this.toolbarButtons.strikethrough.disabled(true);
+    } else {
+      this.toolbarButtons.bold.disabled(false);
+      this.toolbarButtons.italic.disabled(false);
+      this.toolbarButtons.strikethrough.disabled(false);
+    }
+
+
     if (e.parents.find((p) => p.localName === 'table')) {
       // inside table --> hide bullet btns; show column alignment btns
       $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').hide();
+      $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(4)').hide();
       $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').show();
     } else {
       // outside table --> show bullet btns; hide column alignment btns
       $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').show();
+      $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(4)').show();
       $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
     }
   }
