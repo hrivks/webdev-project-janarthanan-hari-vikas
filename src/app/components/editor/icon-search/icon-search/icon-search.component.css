@@ -1,0 +1,8 @@
+.search-result-wrap img {
+    /* width: 100px; */
+    /* height: 150px; */
+}
+
+.search-result-wrap img:hover {
+    transform: scale(1.2);
+}

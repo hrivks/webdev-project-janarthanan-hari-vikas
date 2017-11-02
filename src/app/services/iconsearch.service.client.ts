@@ -13,9 +13,9 @@ export class IconSearchService {
   };
 
   endpoint = {
-    'getApiKey': AppConstants.ENDPOINT.baseUrl + '/iconfinder/ApiKey',
-    'search': `https://api.iconfinder.com/v3/icons/search?query={query}&size_minimum=128&premium=0&count=30&vector=0
-               &grant_type=jwt_bearer&client_id={client_id}&client_secret={client_secret}`
+    'getApiKey': AppConstants.ENDPOINT.baseUrl + '/iconsearch/iconfinder/ApiKey',
+    'search': 'https://api.iconfinder.com/v3/icons/search?query={query}&size_minimum=128&premium=0&count=30&vector=0' +
+    '&grant_type=jwt_bearer&client_id={client_id}&client_secret={client_secret}'
   };
 
   private iconFinderApiKey = {

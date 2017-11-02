@@ -146,12 +146,14 @@ AppConstants.ENDPOINT = __WEBPACK_IMPORTED_MODULE_0__environments_environment__[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_iconsearch_service_client__ = __webpack_require__("../../../../../src/app/services/iconsearch.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_editor_icon_search_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/icon-search/icon-search/icon-search.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -170,6 +172,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // #endregion
 // #region App Components
 // directives
@@ -179,6 +182,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // editor components
+
 
 
 // #endregion
@@ -193,12 +197,13 @@ AppModule = __decorate([
         declarations: [
             __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_6__components_home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__components_shared_alert_alert_component__["a" /* AlertComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__components_shared_loader_loader_component__["a" /* LoaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__components_shared_nav_nav_component__["a" /* NavComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
-            __WEBPACK_IMPORTED_MODULE_15__components_editor_editor_component__["a" /* EditorComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */]
+            __WEBPACK_IMPORTED_MODULE_13__components_shared_alert_alert_component__["a" /* AlertComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__components_shared_loader_loader_component__["a" /* LoaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__components_shared_nav_nav_component__["a" /* NavComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
+            __WEBPACK_IMPORTED_MODULE_16__components_editor_editor_component__["a" /* EditorComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__components_editor_icon_search_icon_search_icon_search_component__["a" /* IconSearchComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -210,7 +215,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_10__services_user_service_client__["a" /* UserService */],
             __WEBPACK_IMPORTED_MODULE_8__services_auth_service_client__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_9__services_error_handler_service_client__["a" /* ErrorHandlerService */],
-            __WEBPACK_IMPORTED_MODULE_7__services_interactions_service_client__["a" /* InteractionsService */]
+            __WEBPACK_IMPORTED_MODULE_7__services_interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_11__services_iconsearch_service_client__["a" /* IconSearchService */]
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
     })
@@ -227,10 +233,13 @@ AppModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Routing; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_editor_icon_search_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/icon-search/icon-search/icon-search.component.ts");
+
 
 
 var APP_ROUTES = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */], data: { skipAuth: true } }
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */], data: { skipAuth: true } },
+    { path: 'iconSearch', component: __WEBPACK_IMPORTED_MODULE_2__components_editor_icon_search_icon_search_icon_search_component__["a" /* IconSearchComponent */], data: { skipAuth: true } }
 ];
 // Export the routes as module providers
 var Routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["d" /* RouterModule */].forRoot(APP_ROUTES);
@@ -375,6 +384,88 @@ EditorComponent = __decorate([
 
 var _a, _b, _c;
 //# sourceMappingURL=editor.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/icon-search/icon-search/icon-search.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".search-result-wrap img {\r\n    /* width: 100px; */\r\n    /* height: 150px; */\r\n}\r\n\r\n.search-result-wrap img:hover {\r\n    -webkit-transform: scale(1.2);\r\n            transform: scale(1.2);\r\n}\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/icon-search/icon-search/icon-search.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n\n  <div class=\"col\">\n    <!-- Search box -->\n    <form (ngSubmit)=\"search()\">\n      <div class=\"form-group\">\n        <div class=\"input-group\">\n          <span class=\"input-group-addon\">\n            Search Icons\n          </span>\n          <input type=\"text\"\n                 name=\"keyword\"\n                 class=\"form-control\"\n                 [(ngModel)]=\"keyword\"\n                 placeholder=\"keyword...\">\n          <button type=\"submit\"\n                  class=\"btn btn-primary btn-sm\"\n                  [disabled]=\"!keyword\"\n                  (click)=\"search()\">Search</button>\n        </div>\n      </div>\n    </form>\n    <!-- Search results -->\n    <div class=\"search-result-wrap mt-3\">\n      <div class=\"row\">\n        <div class=\"col\">\n            <div class=\"row\">\n                <div *ngFor=\"let i of searchResultIcons\"\n                     class=\"col-4\">\n                  <img [src]=\"i\"\n                       class=\"px-3 py-2 rounded-0 w-100\" />\n                </div>\n              </div>\n        </div>\n        <div class=\"col-4\">\n          preview\n        </div>\n      </div>\n      \n    </div>\n\n  </div>\n\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/icon-search/icon-search/icon-search.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IconSearchComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_iconsearch_service_client__ = __webpack_require__("../../../../../src/app/services/iconsearch.service.client.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var IconSearchComponent = (function () {
+    function IconSearchComponent(iconSearchService) {
+        this.iconSearchService = iconSearchService;
+        this.searchResultIcons = [];
+        this.searchCount = 0;
+    }
+    IconSearchComponent.prototype.ngOnInit = function () {
+    };
+    IconSearchComponent.prototype.search = function () {
+        var _this = this;
+        if (!this.keyword) {
+            return;
+        }
+        this.iconSearchService.search(this.keyword)
+            .subscribe(function (result) {
+            _this.searchResultIcons = result.icons;
+            _this.searchCount = result.count;
+            console.log(result);
+        }, function (e) {
+            _this.err = 'Oops! Icon search is acting up again!';
+            console.error('Error searching for icons.', e);
+        });
+    };
+    return IconSearchComponent;
+}());
+IconSearchComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-icon-search',
+        template: __webpack_require__("../../../../../src/app/components/editor/icon-search/icon-search/icon-search.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/editor/icon-search/icon-search/icon-search.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_iconsearch_service_client__["a" /* IconSearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_iconsearch_service_client__["a" /* IconSearchService */]) === "function" && _a || Object])
+], IconSearchComponent);
+
+var _a;
+//# sourceMappingURL=icon-search.component.js.map
 
 /***/ }),
 
@@ -979,7 +1070,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\n          type=\"button\"\n          data-toggle=\"collapse\"\n          data-target=\"#navbar-content\"\n          aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\">\n    <span class=\"fa fa-bars\"></span>\n  </button>\n  <a class=\"navbar-brand\"\n     href=\"#\">WriteMe.md</a>\n\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\n       id=\"navbar-content\">\n    <ul class=\"navbar-nav ml-4\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n           href=\"#\">Editor</a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Projects</a>\n        </li>\n      </ul>\n      \n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Profile</a>\n        </li>\n      </ul>\n    <form class=\"form-inline float-right ml-auto\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"text\"\n             placeholder=\"Username\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"password\"\n             placeholder=\"Password\">\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\n              type=\"submit\">Login</button>\n    </form>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\r\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n          type=\"button\"\r\n          data-toggle=\"collapse\"\r\n          data-target=\"#navbar-content\"\r\n          aria-controls=\"navbarColor01\"\r\n          aria-expanded=\"false\"\r\n          aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n  <a class=\"navbar-brand\"\r\n     href=\"#\">WriteMe.md</a>\r\n\r\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\r\n       id=\"navbar-content\">\r\n    <ul class=\"navbar-nav ml-4\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n           href=\"#\">Editor</a>\r\n      </li>\r\n    </ul>\r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Projects</a>\r\n        </li>\r\n      </ul>\r\n      \r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Profile</a>\r\n        </li>\r\n      </ul>\r\n    <form class=\"form-inline float-right ml-auto\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"text\"\r\n             placeholder=\"Username\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"password\"\r\n             placeholder=\"Password\">\r\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\r\n              type=\"submit\">Login</button>\r\n    </form>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -1215,6 +1306,127 @@ ErrorHandlerService = __decorate([
 
 var _a;
 //# sourceMappingURL=error-handler.service.client.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/iconsearch.service.client.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IconSearchService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_constant__ = __webpack_require__("../../../../../src/app/app.constant.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var IconSearchService = (function () {
+    function IconSearchService(http) {
+        this.http = http;
+        // properties
+        this.api = {
+            'getIconFinderApiKey': this.getIconFinderApiKey,
+            'search': this.search
+        };
+        this.endpoint = {
+            'getApiKey': __WEBPACK_IMPORTED_MODULE_3__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/iconsearch/iconfinder/ApiKey',
+            'search': 'https://api.iconfinder.com/v3/icons/search?query={query}&size_minimum=128&premium=0&count=30&vector=0' +
+                '&grant_type=jwt_bearer&client_id={client_id}&client_secret={client_secret}'
+        };
+        this.iconFinderApiKey = {
+            clientId: '',
+            clientSecret: ''
+        };
+    }
+    IconSearchService.prototype.getIconFinderApiKey = function () {
+        var _this = this;
+        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"](function (observer) {
+            // check if api key is already available
+            if (_this.iconFinderApiKey.clientId && _this.iconFinderApiKey.clientSecret) {
+                observer.next(_this.iconFinderApiKey);
+                observer.complete();
+            }
+            else {
+                // api key is not locally available. get from server
+                _this.http.get(_this.endpoint.getApiKey)
+                    .subscribe(function (data) {
+                    if (data.clientId && data.clientSecret) {
+                        _this.iconFinderApiKey = data;
+                        observer.next(_this.iconFinderApiKey);
+                        observer.complete();
+                    }
+                    else {
+                        var err = Error('Unable to retrieve icon search API key. Contact Adminstrator if problem persists');
+                        // this.errorHanderService.handleError('Flickr Api key is required', err);
+                        observer.error(err);
+                    }
+                }, function (err) {
+                    // this.errorHanderService.handleError('Oops! Error getting Flickr API key from server', err);
+                    observer.error(err);
+                });
+            }
+        });
+        return obs;
+    };
+    IconSearchService.prototype.search = function (keyword) {
+        var _this = this;
+        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"](function (observer) {
+            if (keyword) {
+                _this.getIconFinderApiKey().subscribe(function (apiKey) {
+                    var url = _this.endpoint.search
+                        .replace('{query}', keyword)
+                        .replace('{client_id}', apiKey.clientId)
+                        .replace('{client_secret}', apiKey.clientSecret);
+                    _this.http.get(url).subscribe(function (data) {
+                        var result = {
+                            count: 0,
+                            icons: []
+                        };
+                        result.count = data.total_count;
+                        if (data.icons) {
+                            data.icons.forEach(function (i) {
+                                var latestSizeIcon = i.raster_sizes[i.raster_sizes.length - 1];
+                                if (latestSizeIcon && latestSizeIcon.formats[0].preview_url) {
+                                    result.icons.push(latestSizeIcon.formats[0].preview_url);
+                                }
+                            });
+                        }
+                        observer.next(result);
+                        observer.complete();
+                    }, function (err) {
+                        observer.error(err);
+                    });
+                }, function (err) {
+                    observer.error(err);
+                });
+            }
+            else {
+                observer.error('Keyword cannot be empty.');
+            }
+        });
+        return obs;
+    };
+    return IconSearchService;
+}());
+IconSearchService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+], IconSearchService);
+
+var _a;
+//# sourceMappingURL=iconsearch.service.client.js.map
 
 /***/ }),
 

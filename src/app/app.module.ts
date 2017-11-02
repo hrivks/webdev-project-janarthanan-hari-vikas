@@ -12,6 +12,7 @@ import { InteractionsService } from './services/interactions.service.client';
 import { AuthService } from './services/auth.service.client';
 import { ErrorHandlerService } from './services/error-handler.service.client';
 import { UserService } from './services/user.service.client';
+import { IconSearchService } from './services/iconsearch.service.client';
 // #endregion
 
 // #region App Components
@@ -54,7 +55,9 @@ import { IconSearchComponent } from './components/editor/icon-search/icon-search
     UserService,
     AuthService,
     ErrorHandlerService,
-    InteractionsService],
+    InteractionsService,
+    IconSearchService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
