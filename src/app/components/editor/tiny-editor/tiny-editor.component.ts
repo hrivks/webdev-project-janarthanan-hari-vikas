@@ -15,6 +15,8 @@ export class TinyEditorComponent implements OnInit {
   @Output('markdownHtmlChange') markdownHtmlChange = new EventEmitter<string>();
   @ViewChild('tinyEditor') el: ElementRef;
   private toolbarButtons: any;
+  private editor: any;
+  private modalTitle: string;
 
   constructor(private zone: NgZone) { }
 
@@ -30,13 +32,13 @@ export class TinyEditorComponent implements OnInit {
     tinymce.init({
       target: this.el.nativeElement,
       theme: 'modern',
-      content_css : '../../../../assets/tiny-editor-custom-styles.css',
+      content_css: '../../../../assets/tiny-editor-custom-styles.css',
       plugins: 'table link lists hr image codesample',
       autoresize_bottom_margin: 10,
       height: window.innerHeight - 115,
       menubar: false,
       toolbar: 'btnTxt btnH codesample btnInlineCode | btnBold btnItalic btnStrikethrough '
-      + '| numlist bullist | link image | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr',
+      + '| numlist bullist | link image | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr test',
       branding: false,
       statusbar: false,
       link_title: false,
@@ -48,6 +50,7 @@ export class TinyEditorComponent implements OnInit {
       table_cell_advtab: false,
       table_row_advtab: false,
       setup: (ed) => {
+        this.editor = ed;
         this.createCustomToolbarButtons(ed);
 
         // remove table exta buttons
@@ -90,6 +93,19 @@ export class TinyEditorComponent implements OnInit {
   private createCustomToolbarButtons(editor: any) {
 
     const toolbarButtons = this.toolbarButtons;
+    const vm = this;
+
+    editor.addButton('test', {
+      tooltip: 'test',
+      text: 'test',
+      onclick: () => {
+        $('.modal').modal('show');
+        vm.modalTitle = 'my title';
+      },
+      onPostRender: function () {
+
+      }
+    });
 
     // region btngroup 1
     // default text button
@@ -310,13 +326,18 @@ export class TinyEditorComponent implements OnInit {
   }
 
   /**
-   * Emit changes to editor to subscriber
+   * Emit editor changes to subscriber
    */
   private onEditorChange(editor: any) {
     const html = editor.getContent();
     this.zone.run(() => {
       this.markdownHtmlChange.emit(html);
     });
-
   }
+
+  private addToEditor(content: string) {
+    this.editor.insertContent(content);
+  }
+
+
 }

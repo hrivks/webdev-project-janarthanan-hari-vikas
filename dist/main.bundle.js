@@ -408,7 +408,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/icon-search/icon-search/icon-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n\n  <div class=\"col\">\n    <!-- Search box -->\n    <form (ngSubmit)=\"search()\">\n      <div class=\"form-group\">\n        <div class=\"input-group\">\n          <span class=\"input-group-addon\">\n            Search Icons\n          </span>\n          <input type=\"text\"\n                 name=\"keyword\"\n                 class=\"form-control\"\n                 [(ngModel)]=\"keyword\"\n                 placeholder=\"keyword...\">\n          <button type=\"submit\"\n                  class=\"btn btn-primary btn-sm\"\n                  [disabled]=\"!keyword\"\n                  (click)=\"search()\">Search</button>\n        </div>\n      </div>\n    </form>\n    <!-- Search results -->\n    <div class=\"search-result-wrap mt-3\">\n      <div class=\"row\">\n        <div class=\"col\">\n            <div class=\"row\">\n                <div *ngFor=\"let i of searchResultIcons\"\n                     class=\"col-4\">\n                  <img [src]=\"i\"\n                       class=\"px-3 py-2 rounded-0 w-100\" />\n                </div>\n              </div>\n        </div>\n        <div class=\"col-4\">\n          preview\n        </div>\n      </div>\n      \n    </div>\n\n  </div>\n\n</div>"
+module.exports = "<div class=\"row\">\r\n\r\n  <div class=\"col\">\r\n    <!-- Search box -->\r\n    <form (ngSubmit)=\"search()\">\r\n      <div class=\"form-group\">\r\n        <div class=\"input-group\">\r\n          <span class=\"input-group-addon\">\r\n            Search Icons\r\n          </span>\r\n          <input type=\"text\"\r\n                 name=\"keyword\"\r\n                 class=\"form-control\"\r\n                 [(ngModel)]=\"keyword\"\r\n                 placeholder=\"keyword...\">\r\n          <button type=\"submit\"\r\n                  class=\"btn btn-primary btn-sm\"\r\n                  [disabled]=\"!keyword\"\r\n                  (click)=\"search()\">Search</button>\r\n        </div>\r\n      </div>\r\n    </form>\r\n    <!-- Search results -->\r\n    <div class=\"search-result-wrap mt-3\">\r\n      <div class=\"row\">\r\n        <div class=\"col\">\r\n            <div class=\"row\">\r\n                <div *ngFor=\"let i of searchResultIcons\"\r\n                     class=\"col-4\">\r\n                  <img [src]=\"i\"\r\n                       class=\"px-3 py-2 rounded-0 w-100\" />\r\n                </div>\r\n              </div>\r\n        </div>\r\n        <div class=\"col-4\">\r\n          preview\r\n        </div>\r\n      </div>\r\n      \r\n    </div>\r\n\r\n  </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -490,7 +490,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tiny-editor\">\r\n  <div #tinyEditor></div>\r\n</div>"
+module.exports = "<div class=\"tiny-editor\">\r\n  <div #tinyEditor></div>\r\n\r\n  <div class=\"models-wrap\">\r\n    <div class=\"modal fade p-0\">\r\n      <div class=\"modal-dialog modal-lg\"\r\n           role=\"document\">\r\n        <div class=\"modal-content\">\r\n          <div class=\"modal-header\">\r\n            <h5 class=\"modal-title\">{{modalTitle}}</h5>\r\n            <button type=\"button\"\r\n                    class=\"close\"\r\n                    data-dismiss=\"modal\"\r\n                    aria-label=\"Close\">\r\n              <span aria-hidden=\"true\">&times;</span>\r\n            </button>\r\n          </div>\r\n          <div class=\"modal-body\">\r\n            <p>Modal body text goes here.</p>\r\n          </div>\r\n          <div class=\"modal-footer\">\r\n            <button type=\"button\"\r\n                    class=\"btn btn-sm btn-primary\"\r\n                    data-dismiss=\"modal\"\r\n                    (click)=\"addToEditor('hi')\">\r\n              <i class=\"fa fa-check\"></i>\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -531,7 +531,7 @@ var TinyEditorComponent = (function () {
             height: window.innerHeight - 115,
             menubar: false,
             toolbar: 'btnTxt btnH codesample btnInlineCode | btnBold btnItalic btnStrikethrough '
-                + '| numlist bullist | link image | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr',
+                + '| numlist bullist | link image | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr test',
             branding: false,
             statusbar: false,
             link_title: false,
@@ -543,6 +543,7 @@ var TinyEditorComponent = (function () {
             table_cell_advtab: false,
             table_row_advtab: false,
             setup: function (ed) {
+                _this.editor = ed;
                 _this.createCustomToolbarButtons(ed);
                 // remove table exta buttons
                 ed.on('init', function () {
@@ -575,6 +576,17 @@ var TinyEditorComponent = (function () {
     TinyEditorComponent.prototype.createCustomToolbarButtons = function (editor) {
         var _this = this;
         var toolbarButtons = this.toolbarButtons;
+        var vm = this;
+        editor.addButton('test', {
+            tooltip: 'test',
+            text: 'test',
+            onclick: function () {
+                $('.modal').modal('show');
+                vm.modalTitle = 'my title';
+            },
+            onPostRender: function () {
+            }
+        });
         // region btngroup 1
         // default text button
         editor.addButton('btnTxt', {
@@ -781,7 +793,7 @@ var TinyEditorComponent = (function () {
         }
     };
     /**
-     * Emit changes to editor to subscriber
+     * Emit editor changes to subscriber
      */
     TinyEditorComponent.prototype.onEditorChange = function (editor) {
         var _this = this;
@@ -789,6 +801,9 @@ var TinyEditorComponent = (function () {
         this.zone.run(function () {
             _this.markdownHtmlChange.emit(html);
         });
+    };
+    TinyEditorComponent.prototype.addToEditor = function (content) {
+        this.editor.insertContent(content);
     };
     return TinyEditorComponent;
 }());
@@ -1070,7 +1085,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\r\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n          type=\"button\"\r\n          data-toggle=\"collapse\"\r\n          data-target=\"#navbar-content\"\r\n          aria-controls=\"navbarColor01\"\r\n          aria-expanded=\"false\"\r\n          aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n  <a class=\"navbar-brand\"\r\n     href=\"#\">WriteMe.md</a>\r\n\r\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\r\n       id=\"navbar-content\">\r\n    <ul class=\"navbar-nav ml-4\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n           href=\"#\">Editor</a>\r\n      </li>\r\n    </ul>\r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Projects</a>\r\n        </li>\r\n      </ul>\r\n      \r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Profile</a>\r\n        </li>\r\n      </ul>\r\n    <form class=\"form-inline float-right ml-auto\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"text\"\r\n             placeholder=\"Username\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"password\"\r\n             placeholder=\"Password\">\r\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\r\n              type=\"submit\">Login</button>\r\n    </form>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\n          type=\"button\"\n          data-toggle=\"collapse\"\n          data-target=\"#navbar-content\"\n          aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\">\n    <span class=\"fa fa-bars\"></span>\n  </button>\n  <a class=\"navbar-brand\"\n     href=\"#\">WriteMe.md</a>\n\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\n       id=\"navbar-content\">\n    <ul class=\"navbar-nav ml-4\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n           href=\"#\">Editor</a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Projects</a>\n        </li>\n      </ul>\n      \n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Profile</a>\n        </li>\n      </ul>\n    <form class=\"form-inline float-right ml-auto\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"text\"\n             placeholder=\"Username\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"password\"\n             placeholder=\"Password\">\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\n              type=\"submit\">Login</button>\n    </form>\n  </div>\n</nav>"
 
 /***/ }),
 
