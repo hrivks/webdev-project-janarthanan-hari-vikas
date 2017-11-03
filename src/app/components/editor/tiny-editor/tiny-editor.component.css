@@ -13,3 +13,7 @@
 .tiny-editor .mce-toolbar-grp .mce-listbox .mce-listbox .mce-caret {
     right: 3px;
 }
+
+.tiny-editor #editor-modal .modal-dialog.modal-xl {
+    max-width: 85%;
+}

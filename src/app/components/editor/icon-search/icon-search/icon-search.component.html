@@ -23,20 +23,18 @@
     <!-- Search results -->
     <div class="search-result-wrap mt-3">
       <div class="row">
-        <div class="col">
-            <div class="row">
-                <div *ngFor="let i of searchResultIcons"
-                     class="col-4">
-                  <img [src]="i"
-                       class="px-3 py-2 rounded-0 w-100" />
-                </div>
-              </div>
+        <div class="col text-center">
+          <div *ngFor="let i of searchResultIcons"
+               class="m-1 p-2 d-inline-block img-wrap border">
+            <div class="img-container"
+                 [style.background-image]="'url(' + i + ')'"></div>
+          </div>
         </div>
         <div class="col-4">
           preview
         </div>
       </div>
-      
+
     </div>
 
   </div>

@@ -8,10 +8,11 @@ const exp = {
 // #region: Get IconFinder API key
 
 // Route: [GET] 'api/iconsearch/iconfinder/ApiKey'
-var iconFinderApiClientSecret = process.env.ICONFINDER_API_CLIENT_SECRET || '';
+
 router.get('/iconfinder/ApiKey', function (req, res) {
     try {
-        var iconFinderApiClientId = process.env.ICONFINDER_API_CLIENT_ID || '';
+        var iconFinderApiClientId = process.env.ICONFINDER_API_CLIENT_ID || 'ssckMfWKPCd1IddzuZ8SOXIZHuRgHehsy1c1HecmYh1ePP8QD5pUepP1UPIwSLPR';
+        var iconFinderApiClientSecret = process.env.ICONFINDER_API_CLIENT_SECRET || 'jkdNot6rqIZmKPXtujS83qxq7hVGYngkhLzuD02qA9oLt5cgcIwSEA0RFPL1dLjy';
         res.json({ clientId: iconFinderApiClientId, clientSecret: iconFinderApiClientSecret });
     }
     catch (ex) {

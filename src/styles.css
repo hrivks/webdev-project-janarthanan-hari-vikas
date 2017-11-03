@@ -1,5 +1,9 @@
 /** Bootstrap Enhancements **/
-  
+
+.hvj .border {
+  border: solid thin;
+}
+
   .hvj b, .hvj strong {
     font-weight: bold !important;
   }

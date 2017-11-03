@@ -16,7 +16,10 @@ export class TinyEditorComponent implements OnInit {
   @ViewChild('tinyEditor') el: ElementRef;
   private toolbarButtons: any;
   private editor: any;
-  private modalTitle: string;
+  private modals = {
+    'img': { title: 'Select Image', size: 'modal-xl', key: 'img' }
+  };
+  private openModal: any;
 
   constructor(private zone: NgZone) { }
 
@@ -100,7 +103,7 @@ export class TinyEditorComponent implements OnInit {
       text: 'test',
       onclick: () => {
         $('.modal').modal('show');
-        vm.modalTitle = 'my title';
+        vm.openModel('img');
       },
       onPostRender: function () {
 
@@ -320,7 +323,7 @@ export class TinyEditorComponent implements OnInit {
       // outside table --> show bullet btns; hide column alignment btns
       $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').show();
       $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(4)').show();
-      $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(6)').show(); // hr
+      $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(6)').show();
       $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
     }
   }
@@ -335,6 +338,21 @@ export class TinyEditorComponent implements OnInit {
     });
   }
 
+
+  private openModel(key: string) {
+    const thisModel = this.modals[key];
+    if (thisModel) {
+      this.zone.run(() => {
+        this.openModal = thisModel;
+      });
+      $('#editor-modal').modal('show');
+    }
+  }
+
+  /**
+   * Add content to the editor
+   * @param content string to add to the editor
+   */
   private addToEditor(content: string) {
     this.editor.insertContent(content);
   }

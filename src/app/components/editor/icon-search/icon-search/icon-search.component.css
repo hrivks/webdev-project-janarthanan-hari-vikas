@@ -1,8 +1,19 @@
-.search-result-wrap img {
-    /* width: 100px; */
-    /* height: 150px; */
+.search-result-wrap .img-wrap {
+    width: 100px;
+    height: 100px;
+    transition: 0.1s ease-in-out;
 }
 
-.search-result-wrap img:hover {
-    transform: scale(1.2);
+.search-result-wrap .img-wrap:hover {
+   background: #EEE;
+   cursor: pointer;
+   transform: scale(1.2);
+}
+
+.search-result-wrap .img-wrap .img-container {
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
