@@ -17,3 +17,25 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.preview-img-outer {
+    height: 512px;
+    position: relative;
+}
+
+.preview-img-outer > img {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translateY(-50%) translateX(-50%);
+}
+
+.preview-img-outer .ui-wrapper {
+    border: dashed thin;
+    padding: 15px;
+}
+
+.preview-img-outer .aspect-ratio-toggle{
+    position: absolute;
+    bottom: 0;
+}

@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col text-center">
+        <!-- Search box -->
+        <form (ngSubmit)="search()">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        Search Icons
+                    </span>
+                    <input type="text"
+                           name="keyword"
+                           class="form-control"
+                           [(ngModel)]="keyword"
+                           placeholder="keyword...">
+                    <button type="submit"
+                            class="btn btn-primary btn-sm"
+                            [disabled]="!keyword">Search</button>
+                </div>
+            </div>
+        </form>
+        <!-- Search results -->
+        <div class="search-result-wrap mt-3">
+            <div *ngFor="let i of searchResultIcons"
+                 class="m-1 p-2 d-inline-block img-wrap border">
+                <div class="img-container"
+                     (click)="selectImg(i)"
+                     [style.background-image]="'url(' + i.url + ')'"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <!-- Selected Img preview -->
+        <div class="preview-wrap m-3"
+             *ngIf="selectedImg">
+            <div class="border p-2 w-100 preview-img-outer">
+                <img id="preview-img"
+                     [src]="selectedImg.selectedUrl" />
+                <div *ngIf="selectedImg.selectedSize === 'custom'"
+                     class="float-right text-secondary font-italic aspect-ratio-toggle">
+                    <input type="checkbox"
+                           id="aspecRatioToggle"
+                           name="aspecRatioToggle"
+                           [checked]="aspectRatioLocked"
+                           (click)="toggleAspectRatioLock()" />
+                    <label for="aspecRatioToggle"> lock aspect ratio</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="dropdown mt-2">
+                    <button class="btn btn-info form-control"
+                            type="button"
+                            data-toggle="dropdown">
+                        Size: {{selectedImg?.selectedSize}}
+                        <span class="fa fa-caret-down pull-right mr-3"></span>
+                    </button>
+                    <div class="dropdown-menu bg-faded">
+                        <a class="dropdown-item"
+                           *ngFor="let i of selectedImg?.sizes"
+                           (click)="selectSize(i)">{{i.size}}</a>
+                        <a class="dropdown-item"
+                           (click)="selectSize('custom')">Custom</a>
+                    </div>
+                </div>
+                <input type="text"
+                       [(ngModel)]="selectedImg.title"
+                       class="form-control mt-2"
+                       placeholder="title">
+                <button class="btn btn-success mt-2 form-control"
+                        (click)="submit()">
+                    <i class="fa fa-check"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Img preview placeholder -->
+        <div class="preview-placeholder"
+             *ngIf="!selectedImg">
+            <div class="preview-img-outer border p-2 w-100">
+                <img class="w-50"
+                     src="../../../assets/img-preview-placeholder.png">
+            </div>
+            <div class="p-4 text-center text-secondary font-italic">
+                Select an image to customize size
+            </div>
+        </div>
+    </div>
+</div>
