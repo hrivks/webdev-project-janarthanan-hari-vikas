@@ -85,7 +85,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
               filter: 'pre',
               replacement: function (content, node) {
 
-                if (node.getAttribute('class').indexOf('language-') > -1) {
+                if (node.getAttribute('class') && node.getAttribute('class').indexOf('language-') > -1) {
                   const lang = node.getAttribute('class').replace('language-', '');
                   return '```' + lang + '\n' + content.replace('<code>', '').replace('</code>', '') + '\n```';
                 } else {

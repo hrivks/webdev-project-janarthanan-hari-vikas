@@ -5,7 +5,7 @@
     <div id="editor-modal"
          class="modal fade p-0">
       <div class="modal-dialog"
-      [ngClass]="openModal?.size"
+           [ngClass]="openModal?.size"
            role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -18,13 +18,20 @@
             </button>
           </div>
           <div class="modal-body">
-            <p>Modal body text goes here.</p>
+
+            <!-- Insert code modal -->
+            <div [hidden]="openModal?.key !== 'code'">
+              <app-editor-insert-code [data]="openModal?.data"
+                                      (onSubmit)="addToEditor($event)"></app-editor-insert-code>
+              {{openModal?.data.code}}
+            </div>
+
           </div>
           <div class="modal-footer">
             <button type="button"
                     class="btn btn-sm btn-primary"
                     data-dismiss="modal"
-                    (click)="addToEditor('hi')">
+                    (click)="submitModel()">
               <i class="fa fa-check"></i>
             </button>
           </div>

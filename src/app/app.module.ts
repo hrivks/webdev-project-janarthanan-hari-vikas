@@ -29,6 +29,7 @@ import { NavComponent } from './components/shared/nav/nav.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { TinyEditorComponent } from './components/editor/tiny-editor/tiny-editor.component';
 import { IconSearchComponent } from './components/editor/icon-search/icon-search.component';
+import { InsertCodeComponent } from './components/editor/tiny-editor/insert-code/insert-code.component';
 
 // #endregion
 
@@ -43,7 +44,8 @@ import { IconSearchComponent } from './components/editor/icon-search/icon-search
     AutoHeightDirective,
     EditorComponent,
     TinyEditorComponent,
-    IconSearchComponent
+    IconSearchComponent,
+    InsertCodeComponent
   ],
   imports: [
     BrowserModule,
