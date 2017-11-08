@@ -30,6 +30,9 @@ import { EditorComponent } from './components/editor/editor.component';
 import { TinyEditorComponent } from './components/editor/tiny-editor/tiny-editor.component';
 import { IconSearchComponent } from './components/editor/icon-search/icon-search.component';
 import { InsertCodeComponent } from './components/editor/tiny-editor/insert-code/insert-code.component';
+import { InsertMediaComponent } from './components/editor/tiny-editor/insert-media/insert-media.component';
+import { TestComponent } from './components/test/test.component';
+import { InsertImageComponent } from './components/editor/tiny-editor/insert-media/insert-image/insert-image.component';
 
 // #endregion
 
@@ -45,7 +48,10 @@ import { InsertCodeComponent } from './components/editor/tiny-editor/insert-code
     EditorComponent,
     TinyEditorComponent,
     IconSearchComponent,
-    InsertCodeComponent
+    InsertCodeComponent,
+    InsertMediaComponent,
+    TestComponent,
+    InsertImageComponent
   ],
   imports: [
     BrowserModule,

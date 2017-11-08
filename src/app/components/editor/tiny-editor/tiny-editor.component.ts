@@ -71,9 +71,6 @@ export class TinyEditorComponent implements OnInit {
             table_toolbar: 'tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow'
             + ' | tableinsertcolbefore tableinsertcolafter tabledeletecol',
             table_appearance_options: false,
-            table_default_attributes: {
-                border: 0
-              },
             table_advtab: false,
             table_cell_advtab: false,
             table_row_advtab: false,

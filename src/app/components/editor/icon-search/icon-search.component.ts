@@ -77,6 +77,7 @@ export class IconSearchComponent implements OnInit {
     }
   }
 
+  /** Remove resizable option from selected image */
   removeResizable() {
     if ($('#preview-img').parent().draggable('instance')) {
       $('#preview-img').parent().draggable('destroy');
@@ -88,6 +89,7 @@ export class IconSearchComponent implements OnInit {
     $('#preview-img').removeAttr('style');
   }
 
+  /** Make selected image resizable */
   makeResizable() {
     this.removeResizable();
     $('#preview-img').height('50%');
@@ -108,6 +110,7 @@ export class IconSearchComponent implements OnInit {
     });
   }
 
+  /** Toggle aspec ratio lock on resizable image */
   toggleAspectRatioLock() {
     this.aspectRatioLocked = !this.aspectRatioLocked;
     this.makeResizable();

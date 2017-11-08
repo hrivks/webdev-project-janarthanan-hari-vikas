@@ -11,6 +11,10 @@
   .hvj .bg-faded {
     background: #ededed;
   }
+
+  .hvj .bg-light {
+    background: #fff;
+  }
   
   .hvj .border-faded {
     border-color: #CCC;

@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col text-center">
+        <!-- Search box -->
+
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    Image Url
+                </span>
+                <input type="text"
+                       name="img.url"
+                       class="form-control"
+                       [(ngModel)]="img.url">
+            </div>
+        </div>
+
+        <div>
+            <!-- Selected Img preview -->
+            <div class="preview-wrap m-3"
+                 *ngIf="img.url">
+                <div class="border p-2 w-100 preview-img-outer">
+                    <img id="preview-img"
+                         [src]="img.url" />
+
+                    <!-- Aspect Ratio toggle -->
+                    <div *ngIf="img.customSize"
+                         class="float-right text-secondary font-italic aspect-ratio-toggle"
+                         (click)="toggleAspectRatioLock()">
+                        <span class="fa fa-lg"
+                              [ngClass]="aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'"></span>
+                        <label for="aspecRatioToggle"> lock aspect ratio</label>
+                    </div>
+                    
+                </div>
+                <div>
+                    <span class="fa fa-2x"
+                          [ngClass]="img.customSize ? 'fa-toggle-on text-success' : 'fa-toggle-off'"
+                          (click)="toggleCustomSize()"></span>
+                    <span>Custom Size</span>
+                </div>
+            </div>
+            <!-- Img preview placeholder -->
+            <div class="preview-placeholder"
+                 *ngIf="!img.url">
+                <div class="preview-img-outer border p-2 w-100">
+                    <img src="../../../assets/img-preview-placeholder.png">
+                </div>
+                <div class="p-4 text-center text-secondary font-italic">
+                    Select an image to customize size
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

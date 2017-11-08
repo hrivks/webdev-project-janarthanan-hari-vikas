@@ -158,6 +158,9 @@ var AppConstants = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_editor_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/icon-search/icon-search.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_editor_tiny_editor_insert_code_insert_code_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-code/insert-code.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_editor_tiny_editor_insert_media_insert_media_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -190,6 +193,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 // #endregion
 var AppModule = (function () {
     function AppModule() {
@@ -207,7 +213,10 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_16__components_editor_editor_component__["a" /* EditorComponent */],
                 __WEBPACK_IMPORTED_MODULE_17__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */],
                 __WEBPACK_IMPORTED_MODULE_18__components_editor_icon_search_icon_search_component__["a" /* IconSearchComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__components_editor_tiny_editor_insert_code_insert_code_component__["a" /* InsertCodeComponent */]
+                __WEBPACK_IMPORTED_MODULE_19__components_editor_tiny_editor_insert_code_insert_code_component__["a" /* InsertCodeComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__components_editor_tiny_editor_insert_media_insert_media_component__["a" /* InsertMediaComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__components_test_test_component__["a" /* TestComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__["a" /* InsertImageComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -240,12 +249,15 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_editor_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/icon-search/icon-search.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
+
 
 
 
 var APP_ROUTES = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */], data: { skipAuth: true } },
-    { path: 'iconSearch', component: __WEBPACK_IMPORTED_MODULE_2__components_editor_icon_search_icon_search_component__["a" /* IconSearchComponent */], data: { skipAuth: true } }
+    { path: 'iconSearch', component: __WEBPACK_IMPORTED_MODULE_2__components_editor_icon_search_icon_search_component__["a" /* IconSearchComponent */], data: { skipAuth: true } },
+    { path: 'test', component: __WEBPACK_IMPORTED_MODULE_3__app_components_test_test_component__["a" /* TestComponent */], data: { skipAuth: true } }
 ];
 // Export the routes as module providers
 var Routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["d" /* RouterModule */].forRoot(APP_ROUTES);
@@ -274,7 +286,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row no-gutters\"\r\n     [hidden]=\"!loadComplete\">\r\n\r\n    <!-- Editor -->\r\n    <div class=\"col pr-md-2 editor-wrapper\">\r\n        <app-tiny-editor [(markdownHtml)]=\"markdownHtml\"\r\n                         [height]=\"compHeight + 18\"\r\n                         (loadComplete)=\"onEditorLoad($event)\"></app-tiny-editor>\r\n    </div>\r\n\r\n    <!-- Preview -->\r\n    <div class=\"col pl-md-2 preview-wrapper\">\r\n        <div class=\"card text-center\">\r\n            <div class=\"card-header bg-editor-gray pt-2\">\r\n\r\n                <ul class=\"nav nav-tabs card-header-tabs\"\r\n                    role=\"tablist\">\r\n\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'preview' }\"\r\n                           (click)=\"activeTab='preview'\"\r\n                           role=\"tab\">Preview</a>\r\n                    </li>\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'markdown' }\"\r\n                           (click)=\"activeTab='markdown'\"\r\n                           role=\"tab\">Markdown</a>\r\n                    </li>\r\n\r\n                </ul>\r\n\r\n            </div>\r\n            <div class=\"card-body\"\r\n                 #previewTabBody>\r\n                <!-- Tab panes -->\r\n                <div class=\"tab-content p-2\">\r\n\r\n                    <div class=\"tab-pane active show fade text-left\"\r\n                         [ngClass]=\"{'show': activeTab === 'preview' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'preview'\"\r\n                             class=\"tab-pane-inner\"\r\n                             [style.height.px]=\"compHeight\">\r\n                            <div class=\"markdown-body\" [innerHtml]=\"markdownHtml\"></div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"tab-pane active fade\"\r\n                         [ngClass]=\"{'show': activeTab === 'markdown' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'markdown'\"\r\n                             [style.height.px]=\"compHeight\"\r\n                             class=\"tab-pane-inner\">\r\n                            <textarea class=\"w-100 h-100 border-0 markdown-preview\"\r\n                                      [ngModel]=\"getMarkdown()\"\r\n                                      readonly></textarea>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"row no-gutters editor\"\r\n     [hidden]=\"!loadComplete\">\r\n\r\n    <!-- Editor -->\r\n    <div class=\"col pr-md-2 editor-wrapper\">\r\n        <app-tiny-editor [(markdownHtml)]=\"markdownHtml\"\r\n                         [height]=\"compHeight + 18\"\r\n                         (loadComplete)=\"onEditorLoad($event)\"></app-tiny-editor>\r\n    </div>\r\n\r\n    <!-- Preview -->\r\n    <div class=\"col pl-md-2 preview-wrapper\">\r\n        <div class=\"card text-center\">\r\n            <div class=\"card-header bg-editor-gray pt-2\">\r\n\r\n                <ul class=\"nav nav-tabs card-header-tabs\"\r\n                    role=\"tablist\">\r\n\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'preview' }\"\r\n                           (click)=\"activeTab='preview'\"\r\n                           role=\"tab\">Preview</a>\r\n                    </li>\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'markdown' }\"\r\n                           (click)=\"activeTab='markdown'\"\r\n                           role=\"tab\">Markdown</a>\r\n                    </li>\r\n\r\n                </ul>\r\n\r\n            </div>\r\n            <div class=\"card-body\"\r\n                 #previewTabBody>\r\n                <!-- Tab panes -->\r\n                <div class=\"tab-content p-2\">\r\n\r\n                    <div class=\"tab-pane active show fade text-left\"\r\n                         [ngClass]=\"{'show': activeTab === 'preview' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'preview'\"\r\n                             class=\"tab-pane-inner\"\r\n                             [style.height.px]=\"compHeight\">\r\n                            <div class=\"markdown-body\" [innerHtml]=\"markdownHtml\"></div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"tab-pane active fade\"\r\n                         [ngClass]=\"{'show': activeTab === 'markdown' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'markdown'\"\r\n                             [style.height.px]=\"compHeight\"\r\n                             class=\"tab-pane-inner\">\r\n                            <textarea class=\"w-100 h-100 border-0 markdown-preview\"\r\n                                      [ngModel]=\"getMarkdown()\"\r\n                                      readonly></textarea>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -418,7 +430,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/icon-search/icon-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"col text-center\">\r\n        <!-- Search box -->\r\n        <form (ngSubmit)=\"search()\">\r\n            <div class=\"form-group\">\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-addon\">\r\n                        Search Icons\r\n                    </span>\r\n                    <input type=\"text\"\r\n                           name=\"keyword\"\r\n                           class=\"form-control\"\r\n                           [(ngModel)]=\"keyword\"\r\n                           placeholder=\"keyword...\">\r\n                    <button type=\"submit\"\r\n                            class=\"btn btn-primary btn-sm\"\r\n                            [disabled]=\"!keyword\">Search</button>\r\n                </div>\r\n            </div>\r\n        </form>\r\n        <!-- Search results -->\r\n        <div class=\"search-result-wrap mt-3\">\r\n            <div *ngFor=\"let i of searchResultIcons\"\r\n                 class=\"m-1 p-2 d-inline-block img-wrap border\">\r\n                <div class=\"img-container\"\r\n                     (click)=\"selectImg(i)\"\r\n                     [style.background-image]=\"'url(' + i.url + ')'\"></div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"col-4\">\r\n        <!-- Selected Img preview -->\r\n        <div class=\"preview-wrap m-3\"\r\n             *ngIf=\"selectedImg\">\r\n            <div class=\"border p-2 w-100 preview-img-outer\">\r\n                <img id=\"preview-img\"\r\n                     [src]=\"selectedImg.selectedUrl\" />\r\n                <div *ngIf=\"selectedImg.selectedSize === 'custom'\"\r\n                     class=\"float-right text-secondary font-italic aspect-ratio-toggle\">\r\n                    <input type=\"checkbox\"\r\n                           id=\"aspecRatioToggle\"\r\n                           name=\"aspecRatioToggle\"\r\n                           [checked]=\"aspectRatioLocked\"\r\n                           (click)=\"toggleAspectRatioLock()\" />\r\n                    <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <div class=\"dropdown mt-2\">\r\n                    <button class=\"btn btn-info form-control\"\r\n                            type=\"button\"\r\n                            data-toggle=\"dropdown\">\r\n                        Size: {{selectedImg?.selectedSize}}\r\n                        <span class=\"fa fa-caret-down pull-right mr-3\"></span>\r\n                    </button>\r\n                    <div class=\"dropdown-menu bg-faded\">\r\n                        <a class=\"dropdown-item\"\r\n                           *ngFor=\"let i of selectedImg?.sizes\"\r\n                           (click)=\"selectSize(i)\">{{i.size}}</a>\r\n                        <a class=\"dropdown-item\"\r\n                           (click)=\"selectSize('custom')\">Custom</a>\r\n                    </div>\r\n                </div>\r\n                <input type=\"text\"\r\n                       [(ngModel)]=\"selectedImg.title\"\r\n                       class=\"form-control mt-2\"\r\n                       placeholder=\"title\">\r\n                <button class=\"btn btn-success mt-2 form-control\"\r\n                        (click)=\"submit()\">\r\n                    <i class=\"fa fa-check\"></i>\r\n                </button>\r\n            </div>\r\n        </div>\r\n        <!-- Img preview placeholder -->\r\n        <div class=\"preview-placeholder\"\r\n             *ngIf=\"!selectedImg\">\r\n            <div class=\"preview-img-outer border p-2 w-100\">\r\n                <img class=\"w-50\"\r\n                     src=\"../../../assets/img-preview-placeholder.png\">\r\n            </div>\r\n            <div class=\"p-4 text-center text-secondary font-italic\">\r\n                Select an image to customize size\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n    <div class=\"col text-center\">\r\n        <!-- Search box -->\r\n        <form (ngSubmit)=\"search()\">\r\n            <div class=\"form-group\">\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-addon\">\r\n                        Search Icons\r\n                    </span>\r\n                    <input type=\"text\"\r\n                           name=\"keyword\"\r\n                           class=\"form-control\"\r\n                           [(ngModel)]=\"keyword\"\r\n                           placeholder=\"keyword...\">\r\n                    <button type=\"submit\"\r\n                            class=\"btn btn-primary btn-sm\"\r\n                            [disabled]=\"!keyword\">Search</button>\r\n                </div>\r\n            </div>\r\n        </form>\r\n        <!-- Search results -->\r\n        <div class=\"search-result-wrap mt-3\">\r\n            <div *ngFor=\"let i of searchResultIcons\"\r\n                 class=\"m-1 p-2 d-inline-block img-wrap border\">\r\n                <div class=\"img-container\"\r\n                     (click)=\"selectImg(i)\"\r\n                     [style.background-image]=\"'url(' + i.url + ')'\"></div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"col-4\">\r\n        <!-- Selected Img preview -->\r\n        <div class=\"preview-wrap m-3\"\r\n             *ngIf=\"selectedImg\">\r\n            <div class=\"border p-2 w-100 preview-img-outer\">\r\n                <img id=\"preview-img\"\r\n                     [src]=\"selectedImg.selectedUrl\" />\r\n\r\n                <!-- Aspect Ratio toggle -->\r\n                <div *ngIf=\"selectedImg.selectedSize === 'custom'\"\r\n                     class=\"float-right text-secondary font-italic aspect-ratio-toggle\"\r\n                     (click)=\"toggleAspectRatioLock()\">\r\n                    <span class=\"fa fa-lg\"\r\n                          [ngClass]=\"aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"></span>\r\n                    <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\r\n                </div>\r\n\r\n            </div>\r\n            <div class=\"form-group\">\r\n\r\n                <!-- Size dropdown -->\r\n                <div class=\"dropdown mt-2\">\r\n                    <button class=\"btn btn-info form-control\"\r\n                            type=\"button\"\r\n                            data-toggle=\"dropdown\">\r\n                        Size: {{selectedImg?.selectedSize}}\r\n                        <span class=\"fa fa-caret-down pull-right mr-3\"></span>\r\n                    </button>\r\n                    <div class=\"dropdown-menu bg-faded\">\r\n                        <a class=\"dropdown-item\"\r\n                           *ngFor=\"let i of selectedImg?.sizes\"\r\n                           (click)=\"selectSize(i)\">{{i.size}}</a>\r\n                        <a class=\"dropdown-item\"\r\n                           (click)=\"selectSize('custom')\">Custom</a>\r\n                    </div>\r\n                </div>\r\n\r\n                <input type=\"text\"\r\n                       [(ngModel)]=\"selectedImg.title\"\r\n                       class=\"form-control mt-2\"\r\n                       placeholder=\"title\">\r\n                <button class=\"btn btn-success mt-2 form-control\"\r\n                        (click)=\"submit()\">\r\n                    <i class=\"fa fa-check\"></i>\r\n                </button>\r\n            </div>\r\n        </div>\r\n        <!-- Img preview placeholder -->\r\n        <div class=\"preview-placeholder\"\r\n             *ngIf=\"!selectedImg\">\r\n            <div class=\"preview-img-outer border p-2 w-100\">\r\n                <img class=\"w-50\"\r\n                     src=\"../../../assets/img-preview-placeholder.png\">\r\n            </div>\r\n            <div class=\"p-4 text-center text-secondary font-italic\">\r\n                Select an image to customize size\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -493,6 +505,7 @@ var IconSearchComponent = (function () {
             this.removeResizable();
         }
     };
+    /** Remove resizable option from selected image */
     IconSearchComponent.prototype.removeResizable = function () {
         if ($('#preview-img').parent().draggable('instance')) {
             $('#preview-img').parent().draggable('destroy');
@@ -503,6 +516,7 @@ var IconSearchComponent = (function () {
         $('#preview-img').parent().removeAttr('style');
         $('#preview-img').removeAttr('style');
     };
+    /** Make selected image resizable */
     IconSearchComponent.prototype.makeResizable = function () {
         this.removeResizable();
         $('#preview-img').height('50%');
@@ -522,6 +536,7 @@ var IconSearchComponent = (function () {
             }
         });
     };
+    /** Toggle aspec ratio lock on resizable image */
     IconSearchComponent.prototype.toggleAspectRatioLock = function () {
         this.aspectRatioLocked = !this.aspectRatioLocked;
         this.makeResizable();
@@ -627,6 +642,201 @@ var InsertCodeComponent = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".preview-img-outer img {\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n    <div class=\"col text-center\">\n        <!-- Search box -->\n\n        <div class=\"form-group\">\n            <div class=\"input-group\">\n                <span class=\"input-group-addon\">\n                    Image Url\n                </span>\n                <input type=\"text\"\n                       name=\"img.url\"\n                       class=\"form-control\"\n                       [(ngModel)]=\"img.url\">\n            </div>\n        </div>\n\n        <div>\n            <!-- Selected Img preview -->\n            <div class=\"preview-wrap m-3\"\n                 *ngIf=\"img.url\">\n                <div class=\"border p-2 w-100 preview-img-outer\">\n                    <img id=\"preview-img\"\n                         [src]=\"img.url\" />\n\n                    <!-- Aspect Ratio toggle -->\n                    <div *ngIf=\"img.customSize\"\n                         class=\"float-right text-secondary font-italic aspect-ratio-toggle\"\n                         (click)=\"toggleAspectRatioLock()\">\n                        <span class=\"fa fa-lg\"\n                              [ngClass]=\"aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"></span>\n                        <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\n                    </div>\n                    \n                </div>\n                <div>\n                    <span class=\"fa fa-2x\"\n                          [ngClass]=\"img.customSize ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"\n                          (click)=\"toggleCustomSize()\"></span>\n                    <span>Custom Size</span>\n                </div>\n            </div>\n            <!-- Img preview placeholder -->\n            <div class=\"preview-placeholder\"\n                 *ngIf=\"!img.url\">\n                <div class=\"preview-img-outer border p-2 w-100\">\n                    <img src=\"../../../assets/img-preview-placeholder.png\">\n                </div>\n                <div class=\"p-4 text-center text-secondary font-italic\">\n                    Select an image to customize size\n                </div>\n            </div>\n\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InsertImageComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var InsertImageComponent = (function () {
+    function InsertImageComponent() {
+        this.aspectRatioLocked = true;
+        this.img = {};
+    }
+    InsertImageComponent.prototype.ngOnInit = function () {
+        if (this.submitTrigger) {
+            this.submitTrigger.trigger = this.submit;
+        }
+    };
+    /** Remove resizable option from selected image */
+    InsertImageComponent.prototype.removeResizable = function () {
+        if ($('#preview-img').parent().draggable('instance')) {
+            $('#preview-img').parent().draggable('destroy');
+        }
+        if ($('#preview-img').resizable('instance')) {
+            $('#preview-img').resizable('destroy');
+        }
+        $('#preview-img').parent().removeAttr('style');
+        $('#preview-img').removeAttr('style');
+    };
+    /** Make selected image resizable */
+    InsertImageComponent.prototype.makeResizable = function () {
+        this.removeResizable();
+        $('#preview-img').height('50%');
+        $('#preview-img').resizable({
+            containment: 'parent',
+            aspectRatio: this.aspectRatioLocked,
+            handles: ' n, e, s, w, ne, se, sw, nw',
+            maxHeight: 500,
+            create: function () {
+                $('#preview-img').parent().draggable({
+                    containment: 'parent',
+                    create: function () {
+                        $('#preview-img').parent().css('top', '0');
+                        $('#preview-img').parent().css('left', '0');
+                    }
+                });
+            }
+        });
+    };
+    /** Toggle aspec ratio lock on resizable image */
+    InsertImageComponent.prototype.toggleAspectRatioLock = function () {
+        this.aspectRatioLocked = !this.aspectRatioLocked;
+        this.makeResizable();
+    };
+    InsertImageComponent.prototype.toggleCustomSize = function () {
+        this.img.customSize = !this.img.customSize;
+        if (this.img.customSize) {
+            this.makeResizable();
+        }
+        else {
+            this.removeResizable();
+        }
+    };
+    InsertImageComponent.prototype.submit = function () {
+        console.log('submit in insert-image');
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Object)
+    ], InsertImageComponent.prototype, "submitTrigger", void 0);
+    InsertImageComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-insert-image',
+            template: __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], InsertImageComponent);
+    return InsertImageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row insert-media \">\n    <div class=\"col bg-light p-3\">\n\n        <!-- Tab Nav -->\n        <ul class=\"nav nav-tabs\"\n            role=\"tablist\">\n            <li class=\"nav-item\">\n                <a class=\"nav-link active\"\n                   data-toggle=\"tab\"\n                   href=\"#media-insert-image\"\n                   role=\"tab\">Image</a>\n            </li>\n            <li class=\"nav-item\">\n                <a class=\"nav-link\"\n                   data-toggle=\"tab\"\n                   href=\"#media-insert-icon\"\n                   role=\"tab\">Icon</a>\n            </li>\n            <li class=\"nav-item\">\n                <a class=\"nav-link\"\n                   data-toggle=\"tab\"\n                   href=\"#media-insert-youtube\"\n                   role=\"tab\">YouTube</a>\n            </li>\n        </ul>\n\n        <!-- Tab Content -->\n        <div class=\"tab-content mt-3\">\n\n            <!-- Insert Image -->\n            <div class=\"tab-pane active\"\n                 id=\"media-insert-image\"\n                 role=\"tabpanel\">\n                <app-insert-image [submitTrigger]=\"subComponents.insertImage.submit\"></app-insert-image>\n            </div>\n\n            <!-- Insert Icon -->\n            <div class=\"tab-pane\"\n                 id=\"media-insert-icon\"\n                 role=\"tabpanel\">\n                <app-icon-search></app-icon-search>\n            </div>\n\n            <!-- Insert Youtube -->\n            <div class=\"tab-pane\"\n                 id=\"media-insert-youtube\"\n                 role=\"tabpanel\">YouTube</div>\n\n        </div>\n        <button (click)=\"submit()\"></button>\n\n\n\n    </div>\n\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InsertMediaComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var InsertMediaComponent = (function () {
+    function InsertMediaComponent() {
+        this.subComponents = {
+            insertImage: {
+                submit: {}
+            }
+        };
+    }
+    InsertMediaComponent.prototype.ngOnInit = function () {
+    };
+    InsertMediaComponent.prototype.submit = function () {
+        this.subComponents.insertImage.submit.trigger();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Object)
+    ], InsertMediaComponent.prototype, "data", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Object)
+    ], InsertMediaComponent.prototype, "compHeight", void 0);
+    InsertMediaComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-insert-media',
+            template: __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], InsertMediaComponent);
+    return InsertMediaComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -713,9 +923,6 @@ var TinyEditorComponent = (function () {
             table_toolbar: 'tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow'
                 + ' | tableinsertcolbefore tableinsertcolafter tabledeletecol',
             table_appearance_options: false,
-            table_default_attributes: {
-                border: 0
-            },
             table_advtab: false,
             table_cell_advtab: false,
             table_row_advtab: false,
@@ -1353,6 +1560,67 @@ var NavComponent = (function () {
         __metadata("design:paramtypes", [])
     ], NavComponent);
     return NavComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/test/test.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/test/test.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-insert-media></app-insert-media>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/test/test.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TestComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var TestComponent = (function () {
+    function TestComponent() {
+    }
+    TestComponent.prototype.ngOnInit = function () {
+    };
+    TestComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-test',
+            template: __webpack_require__("../../../../../src/app/components/test/test.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/test/test.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], TestComponent);
+    return TestComponent;
 }());
 
 
