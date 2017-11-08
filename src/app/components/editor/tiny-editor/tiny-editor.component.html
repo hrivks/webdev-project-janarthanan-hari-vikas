@@ -19,13 +19,13 @@
             </button>
           </div>
           <div class="modal-body pb-2"
-               [style.height.px]="compHeight">
+               [style.height.px]="modalHeight">
 
             <!-- Insert code modal -->
             <div [hidden]="openModal?.key !== 'code'"
                  class="h-100">
               <app-editor-insert-code [data]="openModal?.data"
-                                      [compHeight]="compHeight - 80"></app-editor-insert-code>
+                                      [compHeight]="modalHeight - 80"></app-editor-insert-code>
             </div>
 
           </div>

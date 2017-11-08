@@ -6,7 +6,7 @@ declare var toMarkdown: any; // to-markdown
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.css'],
+  styleUrls: ['./editor.component.css', '../../../assets/github-markdown.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class EditorComponent implements OnInit, AfterViewInit {
@@ -90,10 +90,10 @@ export class EditorComponent implements OnInit, AfterViewInit {
             {
               filter: 'pre',
               replacement: function (content, node) {
-
                 if (node.getAttribute('class') && node.getAttribute('class').indexOf('language-') > -1) {
-                  const lang = node.getAttribute('class').replace('language-', '') || '';
-                  return '```' + lang + '\n' + content.replace('<code>', '').replace('</code>', '') + '\n```';
+                  let lang = node.getAttribute('class').replace('language-', '');
+                  lang = lang === 'NA' ? '' : lang;
+                  return '```' + (lang || '') + '\n' + content.replace('<code>', '').replace('</code>', '') + '\n```';
                 } else {
                   return content;
                 }

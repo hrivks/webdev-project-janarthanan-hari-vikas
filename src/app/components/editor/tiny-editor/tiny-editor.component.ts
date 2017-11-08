@@ -27,13 +27,14 @@ export class TinyEditorComponent implements OnInit {
     private modals: any;
     private openModal: any;
 
-    private compHeight: number;
+    private modalHeight: number;
 
     constructor(private zone: NgZone) {
-        this.compHeight = window.innerHeight - 180;
+        this.modalHeight = window.innerHeight - 180;
     }
 
     ngOnInit() {
+        // specify available editor modals
         this.modals = {
             'img': { title: 'Select Image', size: 'modal-xl', key: 'img' },
             'code': {
@@ -70,6 +71,9 @@ export class TinyEditorComponent implements OnInit {
             table_toolbar: 'tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow'
             + ' | tableinsertcolbefore tableinsertcolafter tabledeletecol',
             table_appearance_options: false,
+            table_default_attributes: {
+                border: 0
+              },
             table_advtab: false,
             table_cell_advtab: false,
             table_row_advtab: false,
@@ -123,20 +127,6 @@ export class TinyEditorComponent implements OnInit {
         const toolbarButtons = this.toolbarButtons;
         const vm = this;
 
-        editor.addButton('btnCode', {
-            tooltip: 'Insert Code',
-            icon: 'codesample',
-            onclick: () => {
-                $('.modal').modal('show');
-                console.log(vm.insertCodeComp);
-                vm.modals['code'].comp = vm.insertCodeComp;
-                vm.openModel('code');
-            },
-            onPostRender: function () {
-
-            }
-        });
-
         // region btngroup 1
         // default text button
         editor.addButton('btnTxt', {
@@ -174,6 +164,18 @@ export class TinyEditorComponent implements OnInit {
             ],
             onPostRender: function () {
                 this.value('h1'); // set default value
+            }
+        });
+
+        // code button
+        editor.addButton('btnCode', {
+            tooltip: 'Insert Code',
+            icon: 'codesample',
+            onclick: () => {
+                $('.modal').modal('show');
+                console.log(vm.insertCodeComp);
+                vm.modals['code'].comp = vm.insertCodeComp;
+                vm.openModel('code');
             }
         });
 
@@ -326,7 +328,7 @@ export class TinyEditorComponent implements OnInit {
      * Perform tasks on node change in editor
      */
     private onEditorNodeChange(editor: any, e: any) {
-        // code tag rules
+        // #region: code tag rules
         if (e.parents.find((p) => (p.localName === 'code' || p.localName === 'pre'))) {
             this.toolbarButtons.bold.disabled(true);
             this.toolbarButtons.italic.disabled(true);
@@ -337,6 +339,7 @@ export class TinyEditorComponent implements OnInit {
             let lang = e.element.attributes.class ? e.element.attributes.class.value : '';
             if (lang && lang.indexOf('language') > -1) {
                 lang = lang.replace('language-', '');
+                lang = lang === 'NA' ? '' : lang;
             } else {
                 lang = '';
             }
@@ -348,7 +351,9 @@ export class TinyEditorComponent implements OnInit {
             this.modals['code'].data = {};
         }
 
-        // table tag rules
+        // #endregion
+
+        // #region: table tag rules
         if (e.parents.find((p) => p.localName === 'table')) {
             // inside table --> hide bullet btns; show column alignment btns
             $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(2)').hide(); // numlist, bullist
@@ -362,6 +367,7 @@ export class TinyEditorComponent implements OnInit {
             $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(6)').show();
             $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
         }
+        // #endregion
     }
 
     /**
@@ -392,7 +398,7 @@ export class TinyEditorComponent implements OnInit {
                 $(this.openModal.data.node).removeAttr('class');
                 $(this.openModal.data.node).addClass('language-' + (this.openModal.data.lang || ''));
             } else {
-                const code = '<pre class="language-' + (this.openModal.data.lang || '') + '">'
+                const code = '<pre class="language-' + (this.openModal.data.lang || 'NA') + '">'
                     + (this.openModal.data.code || '') + '</pre> <br/>';
                 console.log(code);
                 this.addToEditor(code);
