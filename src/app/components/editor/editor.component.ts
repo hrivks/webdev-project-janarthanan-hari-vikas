@@ -18,9 +18,11 @@ export class EditorComponent implements OnInit, AfterViewInit {
   @ViewChild('previewTabBody') previewTabBody: ElementRef;
   private activeTab: string;
   private compHeight: number;
+  private loadComplete: boolean;
 
   constructor(private zone: NgZone) {
     this.compHeight = window.innerHeight - 131;
+    this.loadComplete = false;
   }
 
   ngOnInit() {
@@ -28,6 +30,10 @@ export class EditorComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+  }
+
+  onEditorLoad() {
+    this.loadComplete = true;
   }
 
   onEditorChange() {
@@ -86,7 +92,7 @@ export class EditorComponent implements OnInit, AfterViewInit {
               replacement: function (content, node) {
 
                 if (node.getAttribute('class') && node.getAttribute('class').indexOf('language-') > -1) {
-                  const lang = node.getAttribute('class').replace('language-', '');
+                  const lang = node.getAttribute('class').replace('language-', '') || '';
                   return '```' + lang + '\n' + content.replace('<code>', '').replace('</code>', '') + '\n```';
                 } else {
                   return content;

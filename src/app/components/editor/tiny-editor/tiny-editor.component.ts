@@ -14,6 +14,8 @@ export class TinyEditorComponent implements OnInit {
 
     // properties
     @Input() markdownHtml: string;
+    @Input() height: number;
+    @Output('loadComplete') loadComplete = new EventEmitter<boolean>();
     @Output('markdownHtmlChange') markdownHtmlChange = new EventEmitter<string>();
     @ViewChild('tinyEditor') el: ElementRef;
 
@@ -25,7 +27,11 @@ export class TinyEditorComponent implements OnInit {
     private modals: any;
     private openModal: any;
 
-    constructor(private zone: NgZone) { }
+    private compHeight: number;
+
+    constructor(private zone: NgZone) {
+        this.compHeight = window.innerHeight - 180;
+    }
 
     ngOnInit() {
         this.modals = {
@@ -53,10 +59,9 @@ export class TinyEditorComponent implements OnInit {
             theme: 'modern',
             content_css: '../../../../assets/tiny-editor-custom-styles.css',
             plugins: 'table link lists hr image codesample',
-            autoresize_bottom_margin: 10,
-            height: window.innerHeight - 115,
+            height: this.height,
             menubar: false,
-            toolbar: 'btnTxt btnH btnInlineCode | btnBold btnItalic btnStrikethrough '
+            toolbar: 'btnTxt btnH btnCode btnInlineCode | btnBold btnItalic btnStrikethrough '
             + '| numlist bullist | link image | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr test',
             branding: false,
             statusbar: false,
@@ -100,6 +105,10 @@ export class TinyEditorComponent implements OnInit {
                     this.onEditorChange(editor);
                 });
 
+                this.zone.run(() => {
+                    this.loadComplete.emit(true);
+                });
+
             }
         });
 
@@ -114,9 +123,9 @@ export class TinyEditorComponent implements OnInit {
         const toolbarButtons = this.toolbarButtons;
         const vm = this;
 
-        editor.addButton('test', {
-            tooltip: 'test',
-            text: 'test',
+        editor.addButton('btnCode', {
+            tooltip: 'Insert Code',
+            icon: 'codesample',
             onclick: () => {
                 $('.modal').modal('show');
                 console.log(vm.insertCodeComp);
@@ -317,9 +326,6 @@ export class TinyEditorComponent implements OnInit {
      * Perform tasks on node change in editor
      */
     private onEditorNodeChange(editor: any, e: any) {
-        console.log(e);
-        (<any>window).ee = e;
-
         // code tag rules
         if (e.parents.find((p) => (p.localName === 'code' || p.localName === 'pre'))) {
             this.toolbarButtons.bold.disabled(true);
@@ -387,9 +393,11 @@ export class TinyEditorComponent implements OnInit {
                 $(this.openModal.data.node).addClass('language-' + (this.openModal.data.lang || ''));
             } else {
                 const code = '<pre class="language-' + (this.openModal.data.lang || '') + '">'
-                    + (this.openModal.data.code || '') + '</pre>';
+                    + (this.openModal.data.code || '') + '</pre> <br/>';
+                console.log(code);
                 this.addToEditor(code);
             }
+            this.onEditorChange(this.editor);
         }
 
     }

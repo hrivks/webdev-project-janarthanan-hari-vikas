@@ -1,4 +1,4 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 import { HostListener } from '@angular/core';
 declare var $;
 @Directive({
@@ -6,12 +6,19 @@ declare var $;
 })
 export class AutoHeightDirective {
 
+  @Input() minHeight: number;
+
   constructor(private el: ElementRef) {
+    this.minHeight = this.minHeight || 0;
+    if (this.minHeight > 0) {
+      this.el.nativeElement.style.height = this.minHeight + 'px';
+    }
   }
 
   @HostListener('input', ['$event'])
   keyEvent(e: KeyboardEvent) {
-    this.el.nativeElement.style.height = (this.el.nativeElement.scrollHeight) + 'px';
+    const height = Math.max(this.el.nativeElement.scrollHeight, this.minHeight);
+    this.el.nativeElement.style.height = height + 'px';
   }
 
 }

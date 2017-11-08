@@ -15,8 +15,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../node_modules/css-loader/index.js??ref--7-1!../node_modules/postcss-loader/index.js??postcss!./styles.css", function() {
-			var newContent = require("!!../node_modules/css-loader/index.js??ref--7-1!../node_modules/postcss-loader/index.js??postcss!./styles.css");
+		module.hot.accept("!!../node_modules/css-loader/index.js??ref--8-1!../node_modules/postcss-loader/index.js??postcss!./styles.css", function() {
+			var newContent = require("!!../node_modules/css-loader/index.js??ref--8-1!../node_modules/postcss-loader/index.js??postcss!./styles.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/** Bootstrap Enhancements **/\r\n\r\n.hvj .border {\r\n  border: solid thin;\r\n}\r\n\r\n  .hvj b, .hvj strong {\r\n    font-weight: bold !important;\r\n  }\r\n\r\n  .hvj .bg-faded {\r\n    background: #ededed;\r\n  }\r\n  \r\n  .hvj .border-faded {\r\n    border-color: #CCC;\r\n  }\r\n  \r\n  .hvj .bg-editor-gray {\r\n    background: #f0f0f0;\r\n  }\r\n\r\n  .hvj .btn:not(:disabled) {\r\n    cursor: pointer;\r\n  }\r\n\r\n  .hvj .btn-faded{\r\n    background: #ededed;\r\n    color:#888;\r\n  }\r\n\r\n  .hvj .btn-faded:hover, .hvj .btn-faded.active{\r\n    background: #b9b9b9;\r\n    color:white;\r\n  }\r\n  \r\n  .hvj .btn-xs {\r\n    padding: 0;\r\n  }\r\n  \r\n  \r\n  /** Bootstrap Enhancements end **/\r\n  \r\n  .hvj .hvj-outermost {\r\n    padding-top: 60px;\r\n    padding-bottom: 60px;\r\n  }\r\n  \r\n  /** Header start */\r\n  \r\n  \r\n  /** Header end */\r\n  \r\n  /** Footer start */\r\n  \r\n  /** Footer end */\r\n  \r\n  \r\n  \r\n", ""]);
+exports.push([module.i, "/** Bootstrap Enhancements **/\r\n\r\n.hvj .border {\r\n  border: solid thin;\r\n}\r\n\r\n  .hvj b, .hvj strong {\r\n    font-weight: bold !important;\r\n  }\r\n\r\n  .hvj .bg-faded {\r\n    background: #ededed;\r\n  }\r\n  \r\n  .hvj .border-faded {\r\n    border-color: #CCC;\r\n  }\r\n  \r\n  .hvj .bg-editor-gray {\r\n    background: #f0f0f0;\r\n  }\r\n\r\n  .hvj .btn:not(:disabled) {\r\n    cursor: pointer;\r\n  }\r\n\r\n  .hvj .btn-faded{\r\n    background: #ededed;\r\n    color:#888;\r\n  }\r\n\r\n  .hvj .btn-faded:hover, .hvj .btn-faded.active{\r\n    background: #b9b9b9;\r\n    color:white;\r\n  }\r\n  \r\n  .hvj .btn-xs {\r\n    padding: 0;\r\n  }\r\n  \r\n  \r\n  /** Bootstrap Enhancements end **/\r\n  \r\n  .hvj .hvj-outermost {\r\n    padding-top: 60px;\r\n    padding-bottom: 60px;\r\n    background: #446d8a;\r\n  }\r\n  \r\n  /** Header start */\r\n  \r\n  \r\n  /** Header end */\r\n  \r\n  /** Footer start */\r\n  \r\n  /** Footer end */\r\n  \r\n  \r\n  \r\n", ""]);
 
 // exports
 

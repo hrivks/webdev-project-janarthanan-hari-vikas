@@ -1,62 +1,68 @@
-<div class="row no-gutters">
-  <div class="col pr-md-2 editor-wrapper">
-    <app-tiny-editor [(markdownHtml)]="markdownHtml"></app-tiny-editor>
-  </div>
-  <div class="col pl-md-2 preview-wrapper">
-    <div class="card text-center">
-      <div class="card-header bg-editor-gray">
+<div class="row no-gutters"
+     [hidden]="!loadComplete">
 
-        <ul class="nav nav-tabs card-header-tabs"
-            role="tablist">
-
-          <li class="nav-item">
-            <a class="nav-link"
-               [ngClass]="{'active': activeTab === 'preview' }"
-               (click)="activeTab='preview'"
-               role="tab">Preview</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"
-               [ngClass]="{'active': activeTab === 'markdown' }"
-               (click)="activeTab='markdown'"
-               role="tab">Markdown</a>
-          </li>
-
-        </ul>
-
-      </div>
-      <div class="card-body"
-           #previewTabBody>
-        <!-- Tab panes -->
-        <div class="tab-content p-2">
-
-          <div class="tab-pane active show fade text-left"
-               [ngClass]="{'show': activeTab === 'preview' }"
-               role="tabpanel">
-            <div *ngIf="activeTab === 'preview'"
-                 class="tab-pane-inner"
-                 [style.height.px]="compHeight">
-              <div [innerHtml]="markdownHtml"></div>
-            </div>
-          </div>
-          <div class="tab-pane active fade"
-               [ngClass]="{'show': activeTab === 'markdown' }"
-               role="tabpanel">
-            <div *ngIf="activeTab === 'markdown'"
-                 [style.height.px]="compHeight"
-                 class="tab-pane-inner">
-              <textarea class="w-100 h-100 border-0 markdown-preview"
-                        [ngModel]="getMarkdown()"
-                        readonly></textarea>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
+    <!-- Editor -->
+    <div class="col pr-md-2 editor-wrapper">
+        <app-tiny-editor [(markdownHtml)]="markdownHtml"
+                         [height]="compHeight + 18"
+                         (loadComplete)="onEditorLoad($event)"></app-tiny-editor>
     </div>
 
+    <!-- Preview -->
+    <div class="col pl-md-2 preview-wrapper">
+        <div class="card text-center">
+            <div class="card-header bg-editor-gray pt-2">
 
+                <ul class="nav nav-tabs card-header-tabs"
+                    role="tablist">
 
-  </div>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="#"
+                           [ngClass]="{'active': activeTab === 'preview' }"
+                           (click)="activeTab='preview'"
+                           role="tab">Preview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="#"
+                           [ngClass]="{'active': activeTab === 'markdown' }"
+                           (click)="activeTab='markdown'"
+                           role="tab">Markdown</a>
+                    </li>
+
+                </ul>
+
+            </div>
+            <div class="card-body"
+                 #previewTabBody>
+                <!-- Tab panes -->
+                <div class="tab-content p-2">
+
+                    <div class="tab-pane active show fade text-left"
+                         [ngClass]="{'show': activeTab === 'preview' }"
+                         role="tabpanel">
+                        <div *ngIf="activeTab === 'preview'"
+                             class="tab-pane-inner"
+                             [style.height.px]="compHeight">
+                            <div [innerHtml]="markdownHtml"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane active fade"
+                         [ngClass]="{'show': activeTab === 'markdown' }"
+                         role="tabpanel">
+                        <div *ngIf="activeTab === 'markdown'"
+                             [style.height.px]="compHeight"
+                             class="tab-pane-inner">
+                            <textarea class="w-100 h-100 border-0 markdown-preview"
+                                      [ngModel]="getMarkdown()"
+                                      readonly></textarea>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
