@@ -6,7 +6,7 @@
     <div id="editor-modal"
          class="modal fade p-0">
       <div class="modal-dialog"
-           [ngClass]="openModal?.size"
+           [ngClass]="modals[openModalKey]?.size"
            role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -22,10 +22,18 @@
                [style.height.px]="modalHeight">
 
             <!-- Insert code modal -->
-            <div [hidden]="openModal?.key !== 'code'"
+            <div [hidden]="openModalKey !== 'code'"
                  class="h-100">
-              <app-editor-insert-code [data]="openModal?.data"
+              <app-editor-insert-code [data]="modals['code']?.data"
+                                      [compControl]="modals['code']?.control"
                                       [compHeight]="modalHeight - 80"></app-editor-insert-code>
+            </div>
+
+            <!-- Insert media modal -->
+            <div [hidden]="openModalKey !== 'media'"
+                 class="h-100">
+              <app-insert-media [compControl]="modals['media']?.control">
+              </app-insert-media>
             </div>
 
           </div>

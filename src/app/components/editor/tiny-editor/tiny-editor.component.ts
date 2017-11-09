@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter, NgZone, ViewEncapsulation } from '@angular/core';
-import { InsertCodeComponent } from './insert-code/insert-code.component';
 
 declare var $; // jquery
 declare var tinymce; // tinyMCE editor
@@ -19,13 +18,11 @@ export class TinyEditorComponent implements OnInit {
     @Output('markdownHtmlChange') markdownHtmlChange = new EventEmitter<string>();
     @ViewChild('tinyEditor') el: ElementRef;
 
-    // editor extension components
-    @ViewChild(InsertCodeComponent) private insertCodeComp: InsertCodeComponent;
-
     private toolbarButtons: any;
     private editor: any;
     private modals: any;
     private openModal: any;
+    private openModalKey: string;
 
     private modalHeight: number;
 
@@ -36,20 +33,20 @@ export class TinyEditorComponent implements OnInit {
     ngOnInit() {
         // specify available editor modals
         this.modals = {
-            'img': { title: 'Select Image', size: 'modal-xl', key: 'img' },
+            'media': { title: 'Insert Media', size: 'modal-xl', key: 'media', control: {} },
             'code': {
-                title: 'Insert Code', size: 'modal-lg', key: 'code',
-                comp: this.insertCodeComp,
+                title: 'Insert Code', size: 'modal-lg', key: 'code', control: {},
                 data: {
-                    code: '',
-                    lang: '',
-                    node: null
+                    code: '', // code text to initialize modal with
+                    lang: '', // code lang to initialize modeal with
+                    node: null // code HTML dom node to update; null if new node is to be created
                 }
             }
         };
         this.initEditor();
     }
 
+    /** Initialize TinyMCE editor */
     private initEditor() {
 
         this.toolbarButtons = {};
@@ -63,25 +60,25 @@ export class TinyEditorComponent implements OnInit {
             height: this.height,
             menubar: false,
             toolbar: 'btnTxt btnH btnCode btnInlineCode | btnBold btnItalic btnStrikethrough '
-            + '| numlist bullist | link image | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr test',
+                + '| numlist bullist | link btnMedia | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr test',
             branding: false,
             statusbar: false,
             link_title: false,
             target_list: false,
             table_toolbar: 'tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow'
-            + ' | tableinsertcolbefore tableinsertcolafter tabledeletecol',
+                + ' | tableinsertcolbefore tableinsertcolafter tabledeletecol',
             table_appearance_options: false,
             table_advtab: false,
             table_cell_advtab: false,
             table_row_advtab: false,
-            setup: (ed) => {
-                this.editor = ed;
-                this.createCustomToolbarButtons(ed);
+            setup: (editor) => {
+                this.editor = editor;
+                this.createCustomToolbarButtons(editor);
 
                 // remove table exta buttons
-                ed.on('init', function () {
-                    ed.buttons.table.menu.splice(1, 1); // remove table properties button
-                    ed.buttons.table.menu.splice(2, 4); // remove cell, row and column buttons
+                editor.on('init', function () {
+                    editor.buttons.table.menu.splice(1, 1); // remove table properties button
+                    editor.buttons.table.menu.splice(2, 4); // remove cell, row and column buttons
                 });
 
             },
@@ -99,11 +96,11 @@ export class TinyEditorComponent implements OnInit {
                 });
 
                 editor.on('KeyUp', () => {
-                    this.onEditorChange(editor);
+                    this.onEditorChange();
                 });
 
                 editor.on('ExecCommand', (e) => {
-                    this.onEditorChange(editor);
+                    this.onEditorChange();
                 });
 
                 this.zone.run(() => {
@@ -170,8 +167,6 @@ export class TinyEditorComponent implements OnInit {
             icon: 'codesample',
             onclick: () => {
                 $('.modal').modal('show');
-                console.log(vm.insertCodeComp);
-                vm.modals['code'].comp = vm.insertCodeComp;
                 vm.openModel('code');
             }
         });
@@ -253,6 +248,18 @@ export class TinyEditorComponent implements OnInit {
 
         // endregion
 
+        // #region : button group 4
+        // media button
+        editor.addButton('btnMedia', {
+            tooltip: 'Insert Image / Video',
+            icon: 'image',
+            onclick: () => {
+                $('.modal').modal('show');
+                vm.openModel('media');
+            }
+        });
+        // #endregion
+
         // region column alignemnt buttons
         // Right align button
         editor.addButton('btnColAlignRight', {
@@ -321,10 +328,9 @@ export class TinyEditorComponent implements OnInit {
 
     }
 
-    /**
-     * Perform tasks on node change in editor
-     */
+    /** Perform tasks on node change in editor */
     private onEditorNodeChange(editor: any, e: any) {
+
         // #region: code tag rules
         if (e.parents.find((p) => (p.localName === 'code' || p.localName === 'pre'))) {
             this.toolbarButtons.bold.disabled(true);
@@ -365,44 +371,67 @@ export class TinyEditorComponent implements OnInit {
             $(editor.editorContainer).find('.mce-toolbar .mce-btn-group:eq(5)').hide();
         }
         // #endregion
+
     }
 
-    /**
-     * Emit editor changes to subscriber
-     */
-    private onEditorChange(editor: any) {
-        const html = editor.getContent();
+    /** Emit editor changes to subscriber */
+    private onEditorChange() {
+
+        const html = this.editor.getContent();
         this.zone.run(() => {
             this.markdownHtmlChange.emit(html);
         });
+
     }
 
-
+    /** Open modal corresponding to specified key */
     private openModel(key: string) {
+
         const thisModel = this.modals[key];
         if (thisModel) {
             this.zone.run(() => {
-                this.openModal = thisModel;
+                this.openModalKey = key;
+                if (thisModel.control.reset) {
+                    thisModel.control.reset();
+                }
             });
             $('#editor-modal').modal('show');
         }
+
     }
 
+    /** Get data from open modal */
     private submitModel() {
-        if (this.openModal.key === 'code') {
-            if (this.openModal.data.node) {
-                $(this.openModal.data.node).text((this.openModal.data.code || ''));
-                $(this.openModal.data.node).removeAttr('class');
-                $(this.openModal.data.node).addClass('language-' + (this.openModal.data.lang || ''));
-            } else {
-                const code = '<pre class="language-' + (this.openModal.data.lang || 'NA') + '">'
-                    + (this.openModal.data.code || '') + '</pre> <br/>';
-                console.log(code);
-                this.addToEditor(code);
-            }
-            this.onEditorChange(this.editor);
+        const key = this.openModalKey;
+
+        let data: any;
+        if (this.modals[key].control.submit) {
+            data = this.modals[key].control.submit();
         }
 
+        // #region: code modal
+        if (key === 'code') {
+            if (this.modals[key].data.node) {
+                $(this.modals[key].data.node).text((data.code || ''));
+                $(this.modals[key].data.node).removeAttr('class');
+                $(this.modals[key].data.node).addClass('language-' + (data.lang || ''));
+            } else {
+                const code = '<pre class="language-' + (data.lang || 'NA') + '">'
+                    + (data.code || '') + '</pre> <br/>';
+                this.addToEditor(code);
+            }
+            this.onEditorChange();
+        }
+        // #endregion: code modal
+
+        // #region: media modal
+        if (key === 'media') {
+            const img = '<img src="' + data.url + '" alt="' + data.title + '" /> <br>';
+            this.addToEditor(img);
+            this.onEditorChange();
+        }
+
+        // #endregion: media modal
     }
 
     /**
@@ -410,7 +439,9 @@ export class TinyEditorComponent implements OnInit {
      * @param content string to add to the editor
      */
     private addToEditor(content: string) {
+
         this.editor.insertContent(content);
+
     }
 
 

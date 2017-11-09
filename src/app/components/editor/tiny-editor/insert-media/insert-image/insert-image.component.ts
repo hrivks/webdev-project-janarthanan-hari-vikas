@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { ComponentControl } from '../../../../../model/ui-model';
 declare var $;
 
 @Component({
@@ -6,10 +7,10 @@ declare var $;
   templateUrl: './insert-image.component.html',
   styleUrls: ['./insert-image.component.css']
 })
-export class InsertImageComponent implements OnInit {
+export class InsertImageComponent implements OnInit, OnChanges {
 
   // properties
-  @Input() submitTrigger: { trigger: () => any };
+  @Input() compControl: ComponentControl;
   private img: any;
   private aspectRatioLocked: boolean;
 
@@ -19,8 +20,12 @@ export class InsertImageComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.submitTrigger) {
-      this.submitTrigger.trigger = this.submit;
+  }
+
+  ngOnChanges() {
+    if (this.compControl) {
+      this.compControl.submit = () => this.submit();
+      this.compControl.reset = () => this.reset();
     }
   }
 
@@ -59,22 +64,44 @@ export class InsertImageComponent implements OnInit {
 
   /** Toggle aspec ratio lock on resizable image */
   toggleAspectRatioLock() {
+
     this.aspectRatioLocked = !this.aspectRatioLocked;
     this.makeResizable();
+
   }
 
+  /** Toggle image size resizability */
   toggleCustomSize() {
+
     this.img.customSize = !this.img.customSize;
     if (this.img.customSize) {
       this.makeResizable();
     } else {
       this.removeResizable();
     }
-  }
-
-  submit() {
-    console.log('submit in insert-image');
 
   }
+
+  /** Return data */
+  submit(): { url: string, title: string } {
+
+    let url = this.img.url;
+    if (this.img.customSize) {
+      url = 'https://rsz.io/' + url.replace('https://', '').replace('http://', '');
+      const width = Math.round($('#preview-img').width());
+      const height = Math.round($('#preview-img').height());
+      const queryStringDelimitor = url.indexOf('?') > -1 ? '&' : '?';
+      url += queryStringDelimitor + 'w=' + width + '&h=' + height + '&format=png';
+    }
+
+    return { url: url, title: this.img.title || '' };
+
+  }
+
+  /** Reset form */
+  reset() {
+    this.img = {};
+  }
+
 
 }

@@ -28,12 +28,12 @@ import { NavComponent } from './components/shared/nav/nav.component';
 // editor components
 import { EditorComponent } from './components/editor/editor.component';
 import { TinyEditorComponent } from './components/editor/tiny-editor/tiny-editor.component';
-import { IconSearchComponent } from './components/editor/icon-search/icon-search.component';
+import { IconSearchComponent } from './components/editor/tiny-editor/insert-media/icon-search/icon-search.component';
 import { InsertCodeComponent } from './components/editor/tiny-editor/insert-code/insert-code.component';
 import { InsertMediaComponent } from './components/editor/tiny-editor/insert-media/insert-media.component';
-import { TestComponent } from './components/test/test.component';
 import { InsertImageComponent } from './components/editor/tiny-editor/insert-media/insert-image/insert-image.component';
 
+import { TestComponent } from './components/test/test.component';
 // #endregion
 
 @NgModule({

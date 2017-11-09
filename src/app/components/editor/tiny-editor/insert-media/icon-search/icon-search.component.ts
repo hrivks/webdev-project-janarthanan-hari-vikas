@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { IconSearchService } from '../../../services/iconsearch.service.client';
+import { IconSearchService } from '../../../../../services/iconsearch.service.client';
 declare var $: any;
 
 @Component({
@@ -28,9 +28,7 @@ export class IconSearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  /**
-   * Search for images
-   */
+  /** Search for images */
   search() {
     if (!this.keyword) {
       return;
@@ -116,18 +114,21 @@ export class IconSearchComponent implements OnInit {
     this.makeResizable();
   }
 
-  /**
-   * submit the selected image
-   */
-  submit() {
+  /** submit the selected image */
+  submit(): { url: string, title: string } {
     if (this.selectedImg.selectedSize === 'custom') {
       let url = 'https://rsz.io/' + this.selectedImg.selectedUrl.replace('https://', '').replace('http://', '');
-      const width = $('#preview-img').width();
-      const height = $('#preview-img').height();
-      url += '?w=' + width + '&h=' + height + '&format=png';
+      const width = Math.round($('#preview-img').width());
+      const height = Math.round($('#preview-img').height());
+      const queryStringDelimitor = url.indexOf('?') > -1 ? '&' : '?';
+      url += queryStringDelimitor + 'w=' + width + '&h=' + height + '&format=png';
 
       console.log(url);
 
+      return { url: url, title: this.selectedImg.title };
+
+    } else {
+      return null;
     }
   }
 

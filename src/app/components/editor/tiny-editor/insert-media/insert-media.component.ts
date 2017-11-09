@@ -1,31 +1,59 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { ComponentControl } from '../../../../model/ui-model';
 
 @Component({
   selector: 'app-insert-media',
   templateUrl: './insert-media.component.html',
   styleUrls: ['./insert-media.component.css']
 })
-export class InsertMediaComponent implements OnInit {
+export class InsertMediaComponent implements OnInit, OnChanges {
 
   // properties
-  @Input() data: { type: string, content: any };
-  @Input() compHeight: number | string;
-  private subComponents: any;
+  @Input() compControl: ComponentControl;
+  private subComponents: { [key: string]: ComponentControl };
+  private openComponent: string;
 
   constructor() {
     this.subComponents = {
-      insertImage: {
-        submit: {}
-      }
+      'image': {},
+      'icon': {},
     };
 
   }
 
   ngOnInit() {
+    this.openComponent = 'image';
   }
 
-  submit() {
-    this.subComponents.insertImage.submit.trigger();
+  ngOnChanges() {
+    if (this.compControl) {
+      this.compControl.submit = () => this.submit();
+      this.compControl.reset = () => this.reset();
+    }
+  }
+
+  /** Return component data */
+  submit(): string {
+
+    if (this.subComponents[this.openComponent].submit) {
+      return this.subComponents[this.openComponent].submit();
+    } else {
+      return '';
+    }
+
+  }
+
+  /** Reset all components */
+  reset() {
+
+    if (this.subComponents.image.reset) {
+      this.subComponents.image.reset();
+    }
+
+    if (this.subComponents.icon.reset) {
+      this.subComponents.icon.reset();
+    }
+
   }
 
 }
