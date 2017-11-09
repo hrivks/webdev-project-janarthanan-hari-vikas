@@ -29,6 +29,10 @@ app.get('/public/uploads*', function(req, res) {
   res.sendFile(path.join(__dirname, req.path));
 });
 
+app.get('/resources*', function(req, res) {
+  res.sendFile(path.join(__dirname, req.path));
+});
+
 // Redirect all other routes to index.html and let angular deal with it
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
