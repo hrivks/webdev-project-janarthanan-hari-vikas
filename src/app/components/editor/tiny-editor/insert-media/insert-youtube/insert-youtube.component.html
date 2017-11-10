@@ -1,16 +1,16 @@
 <div class="row">
     <div class="col">
-        <!-- Input box -->
 
+        <!-- Input box -->
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon">
-                    Image Url
-                </span>
+                  Video Url
+              </span>
                 <input type="text"
-                       name="img.url"
+                       name="img.videoUrl"
                        class="form-control"
-                       [(ngModel)]="img.url">
+                       [(ngModel)]="img.videoUrl">
             </div>
         </div>
 
@@ -18,10 +18,10 @@
             <div class="col text-center">
                 <!-- Selected Img preview -->
                 <div class="preview-wrap m-3"
-                     *ngIf="img.url">
+                     *ngIf="getImgUrl()">
                     <div class="border border-faded p-2 w-100 preview-img-outer">
                         <img id="preview-img"
-                             [src]="img.url" />
+                             [src]="getImgUrl()" />
 
                         <!-- Aspect Ratio toggle -->
                         <div *ngIf="img.customSize"
@@ -37,14 +37,14 @@
                 </div>
                 <!-- Img preview placeholder -->
                 <div class="preview-placeholder"
-                     *ngIf="!img.url">
+                     *ngIf="!getImgUrl()">
                     <div class="preview-img-outer border border-faded p-2 w-100">
                         <img src="../../../assets/img-preview-placeholder.png">
                     </div>
                 </div>
             </div>
             <div class="col-3">
-                <div *ngIf="img.url">
+                <div *ngIf="getImgUrl()">
                     <div class="form-group">
                         <span class="fa fa-2x align-middle"
                               [ngClass]="img.customSize ? 'fa-toggle-on text-success' : 'fa-toggle-off'"
@@ -58,11 +58,8 @@
                                [(ngModel)]="img.title">
                     </div>
                 </div>
-                <div *ngIf="!img.url"
-                     class="text-center text-muted font-italic mt-5">Enter an Image URL to preview
-                    <button class="btn btn-danger"
-                            (click)="bbb()"> ok </button>
-                </div>
+                <div *ngIf="!getImgUrl()"
+                     class="text-center text-muted font-italic mt-5">Enter an Image URL to preview</div>
             </div>
         </div>
     </div>

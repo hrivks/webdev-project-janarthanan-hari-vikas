@@ -35,7 +35,7 @@ export class TinyEditorComponent implements OnInit {
         this.modals = {
             'media': { title: 'Insert Media', size: 'modal-xl', key: 'media', control: {} },
             'code': {
-                title: 'Insert Code', size: 'modal-lg', key: 'code', control: {},
+                title: 'Insert Code Block', size: 'modal-lg', key: 'code', control: {},
                 data: {
                     code: '', // code text to initialize modal with
                     lang: '', // code lang to initialize modeal with
@@ -56,7 +56,7 @@ export class TinyEditorComponent implements OnInit {
             target: this.el.nativeElement,
             theme: 'modern',
             content_css: '../../../../assets/tiny-editor-custom-styles.css',
-            plugins: 'table link lists hr image codesample',
+            plugins: 'table link lists hr codesample',
             height: this.height,
             menubar: false,
             toolbar: 'btnTxt btnH btnCode btnInlineCode | btnBold btnItalic btnStrikethrough '
@@ -65,6 +65,7 @@ export class TinyEditorComponent implements OnInit {
             statusbar: false,
             link_title: false,
             target_list: false,
+            object_resizing: false,
             table_toolbar: 'tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow'
                 + ' | tableinsertcolbefore tableinsertcolafter tabledeletecol',
             table_appearance_options: false,
@@ -163,7 +164,7 @@ export class TinyEditorComponent implements OnInit {
 
         // code button
         editor.addButton('btnCode', {
-            tooltip: 'Insert Code',
+            tooltip: 'Insert Code Block',
             icon: 'codesample',
             onclick: () => {
                 $('.modal').modal('show');
@@ -326,6 +327,10 @@ export class TinyEditorComponent implements OnInit {
 
         // endregion
 
+        // #region: test
+
+        // #endregion
+
     }
 
     /** Perform tasks on node change in editor */
@@ -426,7 +431,12 @@ export class TinyEditorComponent implements OnInit {
 
         // #region: media modal
         if (key === 'media') {
-            const img = '<img src="' + data.url + '" alt="' + data.title + '" /> <br>';
+            let img = '';
+            if (data.videoUrl) {
+                img = '<a href="' + data.videoUrl + '"><img class="youtube" src="' + data.url + '" alt="' + data.title + '" /></a>';
+            } else {
+                img = '<img src="' + data.url + '" alt="' + data.title + '" />';
+            }
             this.addToEditor(img);
             this.onEditorChange();
         }

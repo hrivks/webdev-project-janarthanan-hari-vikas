@@ -1,15 +1,14 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { ComponentControl } from '../../../../../model/ui-model';
 import { UtilService } from '../../../../../services/utils.service.client';
-
 declare var $;
 
 @Component({
-  selector: 'app-insert-image',
-  templateUrl: './insert-image.component.html',
-  styleUrls: ['./insert-image.component.css']
+  selector: 'app-insert-youtube',
+  templateUrl: './insert-youtube.component.html',
+  styleUrls: ['./insert-youtube.component.css']
 })
-export class InsertImageComponent implements OnInit, OnChanges {
+export class InsertYoutubeComponent implements OnInit, OnChanges {
 
   // properties
   @Input() compControl: ComponentControl;
@@ -17,22 +16,27 @@ export class InsertImageComponent implements OnInit, OnChanges {
   private aspectRatioLocked: boolean;
 
   constructor(private utilService: UtilService) {
+
     this.aspectRatioLocked = true;
     this.img = {};
+
   }
 
   ngOnInit() {
   }
 
   ngOnChanges() {
+
     if (this.compControl) {
       this.compControl.submit = () => this.submit();
       this.compControl.reset = () => this.reset();
     }
+
   }
 
   /** Remove resizable option from selected image */
   removeResizable() {
+
     if ($('#preview-img').parent().draggable('instance')) {
       $('#preview-img').parent().draggable('destroy');
     }
@@ -41,10 +45,12 @@ export class InsertImageComponent implements OnInit, OnChanges {
     }
     $('#preview-img').parent().removeAttr('style');
     $('#preview-img').removeAttr('style');
+
   }
 
   /** Make selected image resizable */
   makeResizable() {
+
     this.removeResizable();
     $('#preview-img').height('50%');
     $('#preview-img').resizable({
@@ -53,6 +59,7 @@ export class InsertImageComponent implements OnInit, OnChanges {
       handles: ' n, e, s, w, ne, se, sw, nw',
       maxHeight: 500,
       create: () => {
+
         $('#preview-img').parent().draggable({
           containment: 'parent',
           create: () => {
@@ -61,7 +68,23 @@ export class InsertImageComponent implements OnInit, OnChanges {
           }
         });
       }
+
     });
+
+  }
+
+  /** Get Img url of the video */
+  getImgUrl() {
+
+    if (this.img.videoUrl && this.img.videoUrl.indexOf('v=') > -1) {
+      const videoId = this.img.videoUrl.split('v=')[1];
+      if (videoId) {
+        return 'http://img.youtube.com/vi/{videoId}/0.jpg'.replace('{videoId}', videoId);
+      }
+    } else {
+      return '';
+    }
+
   }
 
   /** Toggle aspec ratio lock on resizable image */
@@ -85,9 +108,9 @@ export class InsertImageComponent implements OnInit, OnChanges {
   }
 
   /** Return data */
-  submit(): { url: string, title: string } {
+  submit(): { url: string, videoUrl: string, title: string } {
 
-    let url = this.img.url;
+    let url = this.getImgUrl();
     if (this.img.customSize) {
       const width = $('#preview-img').width();
       const height = $('#preview-img').height();
@@ -95,13 +118,14 @@ export class InsertImageComponent implements OnInit, OnChanges {
       url = this.utilService.getResizedImgUrl(url, width, height);
     }
 
-    return { url: url, title: this.img.title || '' };
+    return { url: url, videoUrl: this.img.videoUrl, title: this.img.title || '' };
 
   }
 
   /** Reset form */
   reset() {
-    this.img = {};
-  }
 
+    this.img = {};
+
+  }
 }

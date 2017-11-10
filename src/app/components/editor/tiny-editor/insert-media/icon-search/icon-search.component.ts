@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { IconSearchService } from '../../../../../services/iconsearch.service.client';
+import { UtilService } from '../../../../../services/utils.service.client';
 declare var $: any;
 
 @Component({
@@ -19,10 +20,12 @@ export class IconSearchComponent implements OnInit {
   private selectedImg: any;
   private aspectRatioLocked: boolean;
 
-  constructor(private iconSearchService: IconSearchService) {
+  constructor(private iconSearchService: IconSearchService, private utilService: UtilService) {
+
     this.searchResultIcons = [];
     this.searchCount = 0;
     this.aspectRatioLocked = true;
+
   }
 
   ngOnInit() {
@@ -30,6 +33,7 @@ export class IconSearchComponent implements OnInit {
 
   /** Search for images */
   search() {
+
     if (!this.keyword) {
       return;
     }
@@ -46,6 +50,7 @@ export class IconSearchComponent implements OnInit {
         console.error('Error searching for icons.', e);
       }
       );
+
   }
 
   /**
@@ -53,10 +58,12 @@ export class IconSearchComponent implements OnInit {
    * @param img selected image object
    */
   selectImg(img) {
+
     this.removeResizable();
     this.selectedImg = img;
     this.selectedImg.selectedUrl = img.sizes[Math.floor(img.sizes.length * 0.75)].url;
     this.selectedImg.selectedSize = img.sizes[Math.floor(img.sizes.length * 0.75)].size;
+
   }
 
   /**
@@ -64,6 +71,7 @@ export class IconSearchComponent implements OnInit {
    * @param size selected size object
    */
   selectSize(size: any | string) {
+
     if (size === 'custom') {
       this.makeResizable();
       this.selectedImg.selectedUrl = this.selectedImg.sizes[this.selectedImg.sizes.length - 1].url;
@@ -73,10 +81,12 @@ export class IconSearchComponent implements OnInit {
       this.selectedImg.selectedSize = size.size;
       this.removeResizable();
     }
+
   }
 
   /** Remove resizable option from selected image */
   removeResizable() {
+
     if ($('#preview-img').parent().draggable('instance')) {
       $('#preview-img').parent().draggable('destroy');
     }
@@ -85,10 +95,12 @@ export class IconSearchComponent implements OnInit {
     }
     $('#preview-img').parent().removeAttr('style');
     $('#preview-img').removeAttr('style');
+
   }
 
   /** Make selected image resizable */
   makeResizable() {
+
     this.removeResizable();
     $('#preview-img').height('50%');
     $('#preview-img').resizable({
@@ -97,6 +109,7 @@ export class IconSearchComponent implements OnInit {
       handles: ' n, e, s, w, ne, se, sw, nw',
       maxHeight: 500,
       create: () => {
+
         $('#preview-img').parent().draggable({
           containment: 'parent',
           create: () => {
@@ -104,32 +117,32 @@ export class IconSearchComponent implements OnInit {
             $('#preview-img').parent().css('left', '0');
           }
         });
+
       }
     });
+
   }
 
   /** Toggle aspec ratio lock on resizable image */
   toggleAspectRatioLock() {
+
     this.aspectRatioLocked = !this.aspectRatioLocked;
     this.makeResizable();
+
   }
 
   /** submit the selected image */
   submit(): { url: string, title: string } {
+
     if (this.selectedImg.selectedSize === 'custom') {
-      let url = 'https://rsz.io/' + this.selectedImg.selectedUrl.replace('https://', '').replace('http://', '');
-      const width = Math.round($('#preview-img').width());
-      const height = Math.round($('#preview-img').height());
-      const queryStringDelimitor = url.indexOf('?') > -1 ? '&' : '?';
-      url += queryStringDelimitor + 'w=' + width + '&h=' + height + '&format=png';
-
-      console.log(url);
-
+      const width = $('#preview-img').width();
+      const height = $('#preview-img').height();
+      const url = this.utilService.getResizedImgUrl(this.selectedImg.url, width, height);
       return { url: url, title: this.selectedImg.title };
-
     } else {
-      return null;
+      return { url: this.selectedImg.url, title: this.selectedImg.title };
     }
+
   }
 
 

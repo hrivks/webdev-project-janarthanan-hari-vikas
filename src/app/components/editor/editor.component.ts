@@ -98,6 +98,13 @@ export class EditorComponent implements OnInit, AfterViewInit {
                   return content;
                 }
               }
+            },
+            {
+              filter: 'img.youtube',
+              replacement: function (content, node) {
+                console.log(content);
+                return content;
+              }
             }
           ]
         });

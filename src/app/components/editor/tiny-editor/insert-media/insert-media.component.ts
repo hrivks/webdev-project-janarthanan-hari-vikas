@@ -17,6 +17,7 @@ export class InsertMediaComponent implements OnInit, OnChanges {
     this.subComponents = {
       'image': {},
       'icon': {},
+      'youtube': {}
     };
 
   }

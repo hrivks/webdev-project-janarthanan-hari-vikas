@@ -13,11 +13,13 @@ import { AuthService } from './services/auth.service.client';
 import { ErrorHandlerService } from './services/error-handler.service.client';
 import { UserService } from './services/user.service.client';
 import { IconSearchService } from './services/iconsearch.service.client';
+import { UtilService } from './services/utils.service.client';
 // #endregion
 
 // #region App Components
 
 // directives
+import { ResizableDirective } from './directives/resizable/resizable.directive';
 import { AutoHeightDirective } from './directives/auto-height/auto-height.directive';
 
 // shared components
@@ -34,6 +36,8 @@ import { InsertMediaComponent } from './components/editor/tiny-editor/insert-med
 import { InsertImageComponent } from './components/editor/tiny-editor/insert-media/insert-image/insert-image.component';
 
 import { TestComponent } from './components/test/test.component';
+import { InsertYoutubeComponent } from './components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component';
+
 // #endregion
 
 @NgModule({
@@ -51,7 +55,9 @@ import { TestComponent } from './components/test/test.component';
     InsertCodeComponent,
     InsertMediaComponent,
     TestComponent,
-    InsertImageComponent
+    InsertImageComponent,
+    InsertYoutubeComponent,
+    ResizableDirective
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,8 @@ import { TestComponent } from './components/test/test.component';
     AuthService,
     ErrorHandlerService,
     InteractionsService,
-    IconSearchService
+    IconSearchService,
+    UtilService
   ],
   bootstrap: [AppComponent]
 })
