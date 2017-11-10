@@ -18,11 +18,13 @@ export class TinyEditorComponent implements OnInit {
     @Output('markdownHtmlChange') markdownHtmlChange = new EventEmitter<string>();
     @ViewChild('tinyEditor') el: ElementRef;
 
-    private toolbarButtons: any;
-    private editor: any;
-    private modals: any;
-    private openModal: any;
-    private openModalKey: string;
+
+    private editor: any; // tinyMce editor instance
+    private toolbarButtons: any; // toolbar button references
+    private modals: any; // available modal objects
+    private openModalKey: string; // currently open modal object
+    private popovers: any; // available popover objects
+    private openPopoverKey: string; // currently open popover key
 
     private modalHeight: number;
 
@@ -31,7 +33,7 @@ export class TinyEditorComponent implements OnInit {
     }
 
     ngOnInit() {
-        // specify available editor modals
+        // available editor modals
         this.modals = {
             'media': { title: 'Insert Media', size: 'modal-xl', key: 'media', control: {} },
             'code': {
@@ -43,6 +45,12 @@ export class TinyEditorComponent implements OnInit {
                 }
             }
         };
+
+        // available editor popovers
+        this.popovers = {
+            'glyphs': { title: 'Insert Glyphs', key: 'glyphs', control: {} }
+        };
+
         this.initEditor();
     }
 
@@ -60,7 +68,7 @@ export class TinyEditorComponent implements OnInit {
             height: this.height,
             menubar: false,
             toolbar: 'btnTxt btnH btnCode btnInlineCode | btnBold btnItalic btnStrikethrough '
-                + '| numlist bullist | link btnMedia | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr test',
+                + '| numlist bullist | link btnMedia | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr btnTest',
             branding: false,
             statusbar: false,
             link_title: false,
@@ -329,12 +337,29 @@ export class TinyEditorComponent implements OnInit {
 
         // #region: test
 
+        editor.addButton('btnTest', {
+            icon: 'image',
+            tooltip: 'test',
+            onclick: (e) => {
+                this.openPopoverKey = 'glyphs';
+                this.openPopover('glyphs', $(e.target).offset());
+            },
+            onPostRender: (e, d) => {
+                console.log(e);
+            }
+        });
+
         // #endregion
 
     }
 
     /** Perform tasks on node change in editor */
     private onEditorNodeChange(editor: any, e: any) {
+
+        // close popovers
+        this.zone.run(() => {
+            this.openPopoverKey = '';
+        });
 
         // #region: code tag rules
         if (e.parents.find((p) => (p.localName === 'code' || p.localName === 'pre'))) {
@@ -442,6 +467,17 @@ export class TinyEditorComponent implements OnInit {
         }
 
         // #endregion: media modal
+    }
+
+    /** Open popover corresponding to specified key */
+    private openPopover(key: string, pos: { left: number, top: number }) {
+        const left = pos.left - 95;
+        const top = pos.top - 34;
+
+        this.zone.run(() => {
+            this.openPopoverKey = key;
+        });
+        $('#editor-popover').css('left', left + 'px').css('top', top + 'px');
     }
 
     /**

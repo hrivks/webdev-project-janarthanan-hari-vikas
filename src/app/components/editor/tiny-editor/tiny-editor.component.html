@@ -2,6 +2,7 @@
   <div class="h-100"
        #tinyEditor></div>
 
+  <!-- Editor Modals -->
   <div class="models-wrap">
     <div id="editor-modal"
          class="modal fade p-0">
@@ -10,7 +11,7 @@
            role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">{{openModal?.title}}</h5>
+            <h5 class="modal-title">{{modals[openModalKey]?.title}}</h5>
             <button type="button"
                     class="close"
                     data-dismiss="modal"
@@ -49,4 +50,21 @@
       </div>
     </div>
   </div>
+  <!-- / Editor Modals -->
+
+  <div class="editor-popovers"
+       *ngIf="openPopoverKey">
+
+    <div class="popover fade popover-bottom show"
+         id="editor-popover"
+         role="tooltip">
+      <div class="arrow"></div>
+      <h3 class="popover-title">{{popovers[openPopoverKey]?.title}}</h3>
+      <div class="popover-content">
+        Popover here
+      </div>
+
+    </div>
+  </div>
+
 </div>
