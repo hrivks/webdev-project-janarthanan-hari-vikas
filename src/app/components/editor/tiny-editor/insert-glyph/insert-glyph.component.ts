@@ -13,7 +13,7 @@ export class InsertGlyphComponent implements OnInit, OnChanges {
   @Input() compControl: ComponentControl;
   private selectedSize: number;
   private selectedGlyph: string;
-
+  
   constructor() { }
 
   ngOnInit() {
