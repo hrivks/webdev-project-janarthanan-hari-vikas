@@ -37,6 +37,7 @@ import { InsertImageComponent } from './components/editor/tiny-editor/insert-med
 
 import { TestComponent } from './components/test/test.component';
 import { InsertYoutubeComponent } from './components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component';
+import { InsertGlyphComponent } from './components/editor/tiny-editor/insert-glyph/insert-glyph.component';
 
 // #endregion
 
@@ -57,7 +58,8 @@ import { InsertYoutubeComponent } from './components/editor/tiny-editor/insert-m
     TestComponent,
     InsertImageComponent,
     InsertYoutubeComponent,
-    ResizableDirective
+    ResizableDirective,
+    InsertGlyphComponent
   ],
   imports: [
     BrowserModule,

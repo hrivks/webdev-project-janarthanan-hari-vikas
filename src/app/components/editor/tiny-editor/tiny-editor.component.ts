@@ -457,13 +457,16 @@ export class TinyEditorComponent implements OnInit {
         // #region: media modal
         if (key === 'media') {
             let img = '';
-            if (data.videoUrl) {
-                img = '<a href="' + data.videoUrl + '"><img class="youtube" src="' + data.url + '" alt="' + data.title + '" /></a>';
-            } else {
-                img = '<img src="' + data.url + '" alt="' + data.title + '" />';
+            if (data.url) {
+                if (data.videoUrl) {
+                    img = '<a href="' + data.videoUrl + '"><img class="youtube" src="' + data.url +
+                        '" alt="' + (data.title || '') + '" /></a>';
+                } else {
+                    img = '<img src="' + data.url + '" alt="' + (data.title || '') + '" />';
+                }
+                this.addToEditor(img);
+                this.onEditorChange();
             }
-            this.addToEditor(img);
-            this.onEditorChange();
         }
 
         // #endregion: media modal
