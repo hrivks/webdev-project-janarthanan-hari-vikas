@@ -34,12 +34,16 @@
              *ngIf="selectedImg">
             <div class="border border-faded p-2 w-100 preview-img-outer">
                 <img id="preview-img"
+                     appResizable
+                     [resizeEnabled]="selectedImg.selectedSize === 'custom'"
+                     [aspectRatioLocked]="aspectRatioLocked"
+                     [compControl]="imgResizeControl"
                      [src]="selectedImg.selectedUrl" />
 
                 <!-- Aspect Ratio toggle -->
                 <div *ngIf="selectedImg.selectedSize === 'custom'"
                      class="float-right text-secondary font-italic aspect-ratio-toggle"
-                     (click)="toggleAspectRatioLock()">
+                     (click)="aspectRatioLocked = !aspectRatioLocked">
                     <span class="fa fa-lg"
                           [ngClass]="aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'"></span>
                     <label for="aspecRatioToggle"> lock aspect ratio</label>
@@ -69,10 +73,6 @@
                        [(ngModel)]="selectedImg.title"
                        class="form-control mt-2"
                        placeholder="title">
-                <button class="btn btn-success mt-2 form-control"
-                        (click)="submit()">
-                    <i class="fa fa-check"></i>
-                </button>
             </div>
         </div>
         <!-- Img preview placeholder -->

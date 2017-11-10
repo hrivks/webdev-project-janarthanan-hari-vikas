@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnChanges, ViewEncapsulation, Input } from '@angular/core';
 import { IconSearchService } from '../../../../../services/iconsearch.service.client';
 import { UtilService } from '../../../../../services/utils.service.client';
+import { ComponentControl } from '../../../../../model/ui-model';
 declare var $: any;
 
 @Component({
@@ -9,9 +10,10 @@ declare var $: any;
   styleUrls: ['./icon-search.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class IconSearchComponent implements OnInit {
+export class IconSearchComponent implements OnInit, OnChanges {
 
   // properties
+  @Input() compControl: ComponentControl;
   private keyword: string;
   private err: string;
   private searchResultIcons: string[];
@@ -19,16 +21,27 @@ export class IconSearchComponent implements OnInit {
   private currentPage: number;
   private selectedImg: any;
   private aspectRatioLocked: boolean;
+  private imgResizeControl: ComponentControl;
 
   constructor(private iconSearchService: IconSearchService, private utilService: UtilService) {
 
     this.searchResultIcons = [];
     this.searchCount = 0;
     this.aspectRatioLocked = true;
+    this.imgResizeControl = {};
 
   }
 
   ngOnInit() {
+    if (this.compControl) {
+      this.compControl.submit = () => this.submit();
+    }
+  }
+
+  ngOnChanges() {
+    if (this.compControl) {
+      this.compControl.submit = () => this.submit();
+    }
   }
 
   /** Search for images */
@@ -42,8 +55,6 @@ export class IconSearchComponent implements OnInit {
       (result) => {
         this.searchResultIcons = result.icons;
         this.searchCount = result.count;
-        console.log(result);
-
       },
       (e) => {
         this.err = 'Oops! Icon search is acting up again!';
@@ -59,7 +70,6 @@ export class IconSearchComponent implements OnInit {
    */
   selectImg(img) {
 
-    this.removeResizable();
     this.selectedImg = img;
     this.selectedImg.selectedUrl = img.sizes[Math.floor(img.sizes.length * 0.75)].url;
     this.selectedImg.selectedSize = img.sizes[Math.floor(img.sizes.length * 0.75)].size;
@@ -73,61 +83,12 @@ export class IconSearchComponent implements OnInit {
   selectSize(size: any | string) {
 
     if (size === 'custom') {
-      this.makeResizable();
       this.selectedImg.selectedUrl = this.selectedImg.sizes[this.selectedImg.sizes.length - 1].url;
       this.selectedImg.selectedSize = 'custom';
     } else {
       this.selectedImg.selectedUrl = size.url;
       this.selectedImg.selectedSize = size.size;
-      this.removeResizable();
     }
-
-  }
-
-  /** Remove resizable option from selected image */
-  removeResizable() {
-
-    if ($('#preview-img').parent().draggable('instance')) {
-      $('#preview-img').parent().draggable('destroy');
-    }
-    if ($('#preview-img').resizable('instance')) {
-      $('#preview-img').resizable('destroy');
-    }
-    $('#preview-img').parent().removeAttr('style');
-    $('#preview-img').removeAttr('style');
-
-  }
-
-  /** Make selected image resizable */
-  makeResizable() {
-
-    this.removeResizable();
-    $('#preview-img').height('50%');
-    $('#preview-img').resizable({
-      containment: 'parent',
-      aspectRatio: this.aspectRatioLocked,
-      handles: ' n, e, s, w, ne, se, sw, nw',
-      maxHeight: 500,
-      create: () => {
-
-        $('#preview-img').parent().draggable({
-          containment: 'parent',
-          create: () => {
-            $('#preview-img').parent().css('top', '0');
-            $('#preview-img').parent().css('left', '0');
-          }
-        });
-
-      }
-    });
-
-  }
-
-  /** Toggle aspec ratio lock on resizable image */
-  toggleAspectRatioLock() {
-
-    this.aspectRatioLocked = !this.aspectRatioLocked;
-    this.makeResizable();
 
   }
 
@@ -135,9 +96,8 @@ export class IconSearchComponent implements OnInit {
   submit(): { url: string, title: string } {
 
     if (this.selectedImg.selectedSize === 'custom') {
-      const width = $('#preview-img').width();
-      const height = $('#preview-img').height();
-      const url = this.utilService.getResizedImgUrl(this.selectedImg.url, width, height);
+      const imgSize = this.imgResizeControl.submit();
+      const url = this.utilService.getResizedImgUrl(this.selectedImg.url, imgSize.width, imgSize.height);
       return { url: url, title: this.selectedImg.title };
     } else {
       return { url: this.selectedImg.url, title: this.selectedImg.title };

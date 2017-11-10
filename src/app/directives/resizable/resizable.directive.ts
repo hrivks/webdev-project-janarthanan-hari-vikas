@@ -11,12 +11,20 @@ export class ResizableDirective implements OnChanges, OnInit {
   @Input() compControl: ComponentControl;
   @Input() aspectRatioLocked: boolean;
 
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {
+
+  }
 
   ngOnInit() {
+
+    if (this.compControl) {
+      this.compControl.submit = () => this.submit();
+    }
+
     if (this.resizeEnabled) {
       this.makeResizable();
     }
+
   }
 
   ngOnChanges() {
@@ -76,10 +84,12 @@ export class ResizableDirective implements OnChanges, OnInit {
 
   /** Return the width and height of the resized component */
   submit(): { height: number, width: number } {
+
     return {
       height: $(this.el.nativeElement).height(),
       width: $(this.el.nativeElement).width()
     };
+
   }
 
 

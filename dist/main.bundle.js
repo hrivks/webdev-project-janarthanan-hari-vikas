@@ -533,7 +533,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"col text-center\">\r\n        <!-- Search box -->\r\n        <form (ngSubmit)=\"search()\">\r\n            <div class=\"form-group\">\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-addon\">\r\n                        Search Icons\r\n                    </span>\r\n                    <input type=\"text\"\r\n                           name=\"keyword\"\r\n                           class=\"form-control\"\r\n                           [(ngModel)]=\"keyword\"\r\n                           placeholder=\"keyword...\">\r\n                    <button type=\"submit\"\r\n                            class=\"btn btn-primary btn-sm\"\r\n                            [disabled]=\"!keyword\">Search</button>\r\n                </div>\r\n            </div>\r\n        </form>\r\n        <!-- Search results -->\r\n        <div class=\"search-result-wrap mt-3\">\r\n            <div *ngFor=\"let i of searchResultIcons\"\r\n                 class=\"m-1 p-2 d-inline-block img-wrap border\">\r\n                <div class=\"img-container\"\r\n                     (click)=\"selectImg(i)\"\r\n                     [style.background-image]=\"'url(' + i.url + ')'\"></div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"col-4\">\r\n        <!-- Selected Img preview -->\r\n        <div class=\"preview-wrap m-3\"\r\n             *ngIf=\"selectedImg\">\r\n            <div class=\"border border-faded p-2 w-100 preview-img-outer\">\r\n                <img id=\"preview-img\"\r\n                     [src]=\"selectedImg.selectedUrl\" />\r\n\r\n                <!-- Aspect Ratio toggle -->\r\n                <div *ngIf=\"selectedImg.selectedSize === 'custom'\"\r\n                     class=\"float-right text-secondary font-italic aspect-ratio-toggle\"\r\n                     (click)=\"toggleAspectRatioLock()\">\r\n                    <span class=\"fa fa-lg\"\r\n                          [ngClass]=\"aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"></span>\r\n                    <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\r\n                </div>\r\n\r\n            </div>\r\n            <div class=\"form-group\">\r\n\r\n                <!-- Size dropdown -->\r\n                <div class=\"dropdown mt-2\">\r\n                    <button class=\"btn btn-info form-control\"\r\n                            type=\"button\"\r\n                            data-toggle=\"dropdown\">\r\n                        Size: {{selectedImg?.selectedSize}}\r\n                        <span class=\"fa fa-caret-down pull-right mr-3\"></span>\r\n                    </button>\r\n                    <div class=\"dropdown-menu bg-faded\">\r\n                        <a class=\"dropdown-item\"\r\n                           *ngFor=\"let i of selectedImg?.sizes\"\r\n                           (click)=\"selectSize(i)\">{{i.size}}</a>\r\n                        <a class=\"dropdown-item\"\r\n                           (click)=\"selectSize('custom')\">Custom</a>\r\n                    </div>\r\n                </div>\r\n\r\n                <input type=\"text\"\r\n                       [(ngModel)]=\"selectedImg.title\"\r\n                       class=\"form-control mt-2\"\r\n                       placeholder=\"title\">\r\n                <button class=\"btn btn-success mt-2 form-control\"\r\n                        (click)=\"submit()\">\r\n                    <i class=\"fa fa-check\"></i>\r\n                </button>\r\n            </div>\r\n        </div>\r\n        <!-- Img preview placeholder -->\r\n        <div class=\"preview-placeholder\"\r\n             *ngIf=\"!selectedImg\">\r\n            <div class=\"preview-img-outer border p-2 w-100\">\r\n                <img class=\"w-50\"\r\n                     src=\"../../../assets/img-preview-placeholder.png\">\r\n            </div>\r\n            <div class=\"p-4 text-center text-secondary font-italic\">\r\n                Select an image to customize size\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n    <div class=\"col text-center\">\r\n        <!-- Search box -->\r\n        <form (ngSubmit)=\"search()\">\r\n            <div class=\"form-group\">\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-addon\">\r\n                        Search Icons\r\n                    </span>\r\n                    <input type=\"text\"\r\n                           name=\"keyword\"\r\n                           class=\"form-control\"\r\n                           [(ngModel)]=\"keyword\"\r\n                           placeholder=\"keyword...\">\r\n                    <button type=\"submit\"\r\n                            class=\"btn btn-primary btn-sm\"\r\n                            [disabled]=\"!keyword\">Search</button>\r\n                </div>\r\n            </div>\r\n        </form>\r\n        <!-- Search results -->\r\n        <div class=\"search-result-wrap mt-3\">\r\n            <div *ngFor=\"let i of searchResultIcons\"\r\n                 class=\"m-1 p-2 d-inline-block img-wrap border\">\r\n                <div class=\"img-container\"\r\n                     (click)=\"selectImg(i)\"\r\n                     [style.background-image]=\"'url(' + i.url + ')'\"></div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"col-4\">\r\n        <!-- Selected Img preview -->\r\n        <div class=\"preview-wrap m-3\"\r\n             *ngIf=\"selectedImg\">\r\n            <div class=\"border border-faded p-2 w-100 preview-img-outer\">\r\n                <img id=\"preview-img\"\r\n                     appResizable\r\n                     [resizeEnabled]=\"selectedImg.selectedSize === 'custom'\"\r\n                     [aspectRatioLocked]=\"aspectRatioLocked\"\r\n                     [compControl]=\"imgResizeControl\"\r\n                     [src]=\"selectedImg.selectedUrl\" />\r\n\r\n                <!-- Aspect Ratio toggle -->\r\n                <div *ngIf=\"selectedImg.selectedSize === 'custom'\"\r\n                     class=\"float-right text-secondary font-italic aspect-ratio-toggle\"\r\n                     (click)=\"aspectRatioLocked = !aspectRatioLocked\">\r\n                    <span class=\"fa fa-lg\"\r\n                          [ngClass]=\"aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"></span>\r\n                    <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\r\n                </div>\r\n\r\n            </div>\r\n            <div class=\"form-group\">\r\n\r\n                <!-- Size dropdown -->\r\n                <div class=\"dropdown mt-2\">\r\n                    <button class=\"btn btn-info form-control\"\r\n                            type=\"button\"\r\n                            data-toggle=\"dropdown\">\r\n                        Size: {{selectedImg?.selectedSize}}\r\n                        <span class=\"fa fa-caret-down pull-right mr-3\"></span>\r\n                    </button>\r\n                    <div class=\"dropdown-menu bg-faded\">\r\n                        <a class=\"dropdown-item\"\r\n                           *ngFor=\"let i of selectedImg?.sizes\"\r\n                           (click)=\"selectSize(i)\">{{i.size}}</a>\r\n                        <a class=\"dropdown-item\"\r\n                           (click)=\"selectSize('custom')\">Custom</a>\r\n                    </div>\r\n                </div>\r\n\r\n                <input type=\"text\"\r\n                       [(ngModel)]=\"selectedImg.title\"\r\n                       class=\"form-control mt-2\"\r\n                       placeholder=\"title\">\r\n            </div>\r\n        </div>\r\n        <!-- Img preview placeholder -->\r\n        <div class=\"preview-placeholder\"\r\n             *ngIf=\"!selectedImg\">\r\n            <div class=\"preview-img-outer border p-2 w-100\">\r\n                <img class=\"w-50\"\r\n                     src=\"../../../assets/img-preview-placeholder.png\">\r\n            </div>\r\n            <div class=\"p-4 text-center text-secondary font-italic\">\r\n                Select an image to customize size\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -545,6 +545,8 @@ module.exports = "<div class=\"row\">\r\n    <div class=\"col text-center\">\r\n
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_iconsearch_service_client__ = __webpack_require__("../../../../../src/app/services/iconsearch.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_utils_service_client__ = __webpack_require__("../../../../../src/app/services/utils.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_ui_model__ = __webpack_require__("../../../../../src/app/model/ui-model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_ui_model___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__model_ui_model__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -557,6 +559,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var IconSearchComponent = (function () {
     function IconSearchComponent(iconSearchService, utilService) {
         this.iconSearchService = iconSearchService;
@@ -564,8 +567,19 @@ var IconSearchComponent = (function () {
         this.searchResultIcons = [];
         this.searchCount = 0;
         this.aspectRatioLocked = true;
+        this.imgResizeControl = {};
     }
     IconSearchComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (this.compControl) {
+            this.compControl.submit = function () { return _this.submit(); };
+        }
+    };
+    IconSearchComponent.prototype.ngOnChanges = function () {
+        var _this = this;
+        if (this.compControl) {
+            this.compControl.submit = function () { return _this.submit(); };
+        }
     };
     /** Search for images */
     IconSearchComponent.prototype.search = function () {
@@ -577,7 +591,6 @@ var IconSearchComponent = (function () {
             .subscribe(function (result) {
             _this.searchResultIcons = result.icons;
             _this.searchCount = result.count;
-            console.log(result);
         }, function (e) {
             _this.err = 'Oops! Icon search is acting up again!';
             console.error('Error searching for icons.', e);
@@ -588,7 +601,6 @@ var IconSearchComponent = (function () {
      * @param img selected image object
      */
     IconSearchComponent.prototype.selectImg = function (img) {
-        this.removeResizable();
         this.selectedImg = img;
         this.selectedImg.selectedUrl = img.sizes[Math.floor(img.sizes.length * 0.75)].url;
         this.selectedImg.selectedSize = img.sizes[Math.floor(img.sizes.length * 0.75)].size;
@@ -599,58 +611,19 @@ var IconSearchComponent = (function () {
      */
     IconSearchComponent.prototype.selectSize = function (size) {
         if (size === 'custom') {
-            this.makeResizable();
             this.selectedImg.selectedUrl = this.selectedImg.sizes[this.selectedImg.sizes.length - 1].url;
             this.selectedImg.selectedSize = 'custom';
         }
         else {
             this.selectedImg.selectedUrl = size.url;
             this.selectedImg.selectedSize = size.size;
-            this.removeResizable();
         }
-    };
-    /** Remove resizable option from selected image */
-    IconSearchComponent.prototype.removeResizable = function () {
-        if ($('#preview-img').parent().draggable('instance')) {
-            $('#preview-img').parent().draggable('destroy');
-        }
-        if ($('#preview-img').resizable('instance')) {
-            $('#preview-img').resizable('destroy');
-        }
-        $('#preview-img').parent().removeAttr('style');
-        $('#preview-img').removeAttr('style');
-    };
-    /** Make selected image resizable */
-    IconSearchComponent.prototype.makeResizable = function () {
-        this.removeResizable();
-        $('#preview-img').height('50%');
-        $('#preview-img').resizable({
-            containment: 'parent',
-            aspectRatio: this.aspectRatioLocked,
-            handles: ' n, e, s, w, ne, se, sw, nw',
-            maxHeight: 500,
-            create: function () {
-                $('#preview-img').parent().draggable({
-                    containment: 'parent',
-                    create: function () {
-                        $('#preview-img').parent().css('top', '0');
-                        $('#preview-img').parent().css('left', '0');
-                    }
-                });
-            }
-        });
-    };
-    /** Toggle aspec ratio lock on resizable image */
-    IconSearchComponent.prototype.toggleAspectRatioLock = function () {
-        this.aspectRatioLocked = !this.aspectRatioLocked;
-        this.makeResizable();
     };
     /** submit the selected image */
     IconSearchComponent.prototype.submit = function () {
         if (this.selectedImg.selectedSize === 'custom') {
-            var width = $('#preview-img').width();
-            var height = $('#preview-img').height();
-            var url = this.utilService.getResizedImgUrl(this.selectedImg.url, width, height);
+            var imgSize = this.imgResizeControl.submit();
+            var url = this.utilService.getResizedImgUrl(this.selectedImg.url, imgSize.width, imgSize.height);
             return { url: url, title: this.selectedImg.title };
         }
         else {
@@ -659,6 +632,10 @@ var IconSearchComponent = (function () {
     };
     return IconSearchComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__model_ui_model__["ComponentControl"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__model_ui_model__["ComponentControl"]) === "function" && _a || Object)
+], IconSearchComponent.prototype, "compControl", void 0);
 IconSearchComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-icon-search',
@@ -666,10 +643,10 @@ IconSearchComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.css")],
         encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ViewEncapsulation */].None
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_iconsearch_service_client__["a" /* IconSearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_iconsearch_service_client__["a" /* IconSearchService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_utils_service_client__["a" /* UtilService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_utils_service_client__["a" /* UtilService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__services_iconsearch_service_client__["a" /* IconSearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_iconsearch_service_client__["a" /* IconSearchService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_utils_service_client__["a" /* UtilService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_utils_service_client__["a" /* UtilService */]) === "function" && _c || Object])
 ], IconSearchComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=icon-search.component.js.map
 
 /***/ }),
@@ -695,7 +672,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"col\">\r\n        <!-- Input box -->\r\n\r\n        <div class=\"form-group\">\r\n            <div class=\"input-group\">\r\n                <span class=\"input-group-addon\">\r\n                    Image Url\r\n                </span>\r\n                <input type=\"text\"\r\n                       name=\"img.url\"\r\n                       class=\"form-control\"\r\n                       [(ngModel)]=\"img.url\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n            <div class=\"col text-center\">\r\n                <!-- Selected Img preview -->\r\n                <div class=\"preview-wrap m-3\"\r\n                     *ngIf=\"img.url\">\r\n                    <div class=\"border border-faded p-2 w-100 preview-img-outer\">\r\n                        <img id=\"preview-img\"\r\n                             [src]=\"img.url\" />\r\n\r\n                        <!-- Aspect Ratio toggle -->\r\n                        <div *ngIf=\"img.customSize\"\r\n                             class=\"float-right text-secondary font-italic aspect-ratio-toggle\"\r\n                             (click)=\"toggleAspectRatioLock()\">\r\n                            <span class=\"fa fa-lg\"\r\n                                  [ngClass]=\"aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"></span>\r\n                            <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n                <!-- Img preview placeholder -->\r\n                <div class=\"preview-placeholder\"\r\n                     *ngIf=\"!img.url\">\r\n                    <div class=\"preview-img-outer border border-faded p-2 w-100\">\r\n                        <img src=\"../../../assets/img-preview-placeholder.png\">\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"col-3\">\r\n                <div *ngIf=\"img.url\">\r\n                    <div class=\"form-group\">\r\n                        <span class=\"fa fa-2x align-middle\"\r\n                              [ngClass]=\"img.customSize ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"\r\n                              (click)=\"toggleCustomSize()\"></span>\r\n                        <span>Custom Size</span>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label class=\"text-muted font-weight-bold\">Title</label>\r\n                        <input type=\"text\"\r\n                               class=\"form-control\"\r\n                               [(ngModel)]=\"img.title\">\r\n                    </div>\r\n                </div>\r\n                <div *ngIf=\"!img.url\"\r\n                     class=\"text-center text-muted font-italic mt-5\">Enter an Image URL to preview\r\n                    <button class=\"btn btn-danger\"\r\n                            (click)=\"bbb()\"> ok </button>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n    <div class=\"col\">\r\n        <!-- Input box -->\r\n\r\n        <div class=\"form-group\">\r\n            <div class=\"input-group\">\r\n                <span class=\"input-group-addon\">\r\n                    Image Url\r\n                </span>\r\n                <input type=\"text\"\r\n                       name=\"img.url\"\r\n                       class=\"form-control\"\r\n                       [(ngModel)]=\"img.url\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n            <div class=\"col text-center\">\r\n                <!-- Selected Img preview -->\r\n                <div class=\"preview-wrap m-3\"\r\n                     *ngIf=\"img.url\">\r\n                    <div class=\"border border-faded p-2 w-100 preview-img-outer\">\r\n                        <img id=\"preview-img\"\r\n                             appResizable\r\n                             [resizeEnabled]=\"img.customSize\"\r\n                             [aspectRatioLocked]=\"aspectRatioLocked\"\r\n                             [compControl]=\"imgResizeControl\"\r\n                             [src]=\"img.url\" />\r\n\r\n                        <!-- Aspect Ratio toggle -->\r\n                        <div *ngIf=\"img.customSize\"\r\n                             class=\"float-right text-secondary font-italic aspect-ratio-toggle\"\r\n                             (click)=\"aspectRatioLocked = !aspectRatioLocked\">\r\n                            <span class=\"fa fa-lg\"\r\n                                  [ngClass]=\"aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"></span>\r\n                            <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n                <!-- Img preview placeholder -->\r\n                <div class=\"preview-placeholder\"\r\n                     *ngIf=\"!img.url\">\r\n                    <div class=\"preview-img-outer border border-faded p-2 w-100\">\r\n                        <img src=\"../../../assets/img-preview-placeholder.png\">\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"col-3\">\r\n                <div *ngIf=\"img.url\">\r\n                    <div class=\"form-group\">\r\n                        <span class=\"fa fa-2x align-middle\"\r\n                              [ngClass]=\"img.customSize ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"\r\n                              (click)=\"img.customSize = !img.customSize\"></span>\r\n                        <span>Custom Size</span>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label class=\"text-muted font-weight-bold\">Title</label>\r\n                        <input type=\"text\"\r\n                               class=\"form-control\"\r\n                               [(ngModel)]=\"img.title\">\r\n                    </div>\r\n                </div>\r\n                <div *ngIf=\"!img.url\"\r\n                     class=\"text-center text-muted font-italic mt-5\">Enter an Image URL to preview\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -725,9 +702,9 @@ var InsertImageComponent = (function () {
         this.utilService = utilService;
         this.aspectRatioLocked = true;
         this.img = {};
+        this.imgResizeControl = {};
     }
-    InsertImageComponent.prototype.ngOnInit = function () {
-    };
+    InsertImageComponent.prototype.ngOnInit = function () { };
     InsertImageComponent.prototype.ngOnChanges = function () {
         var _this = this;
         if (this.compControl) {
@@ -735,59 +712,12 @@ var InsertImageComponent = (function () {
             this.compControl.reset = function () { return _this.reset(); };
         }
     };
-    /** Remove resizable option from selected image */
-    InsertImageComponent.prototype.removeResizable = function () {
-        if ($('#preview-img').parent().draggable('instance')) {
-            $('#preview-img').parent().draggable('destroy');
-        }
-        if ($('#preview-img').resizable('instance')) {
-            $('#preview-img').resizable('destroy');
-        }
-        $('#preview-img').parent().removeAttr('style');
-        $('#preview-img').removeAttr('style');
-    };
-    /** Make selected image resizable */
-    InsertImageComponent.prototype.makeResizable = function () {
-        this.removeResizable();
-        $('#preview-img').height('50%');
-        $('#preview-img').resizable({
-            containment: 'parent',
-            aspectRatio: this.aspectRatioLocked,
-            handles: ' n, e, s, w, ne, se, sw, nw',
-            maxHeight: 500,
-            create: function () {
-                $('#preview-img').parent().draggable({
-                    containment: 'parent',
-                    create: function () {
-                        $('#preview-img').parent().css('top', '0');
-                        $('#preview-img').parent().css('left', '0');
-                    }
-                });
-            }
-        });
-    };
-    /** Toggle aspec ratio lock on resizable image */
-    InsertImageComponent.prototype.toggleAspectRatioLock = function () {
-        this.aspectRatioLocked = !this.aspectRatioLocked;
-        this.makeResizable();
-    };
-    /** Toggle image size resizability */
-    InsertImageComponent.prototype.toggleCustomSize = function () {
-        this.img.customSize = !this.img.customSize;
-        if (this.img.customSize) {
-            this.makeResizable();
-        }
-        else {
-            this.removeResizable();
-        }
-    };
     /** Return data */
     InsertImageComponent.prototype.submit = function () {
         var url = this.img.url;
         if (this.img.customSize) {
-            var width = $('#preview-img').width();
-            var height = $('#preview-img').height();
-            url = this.utilService.getResizedImgUrl(url, width, height);
+            var imgSize = this.imgResizeControl.submit();
+            url = this.utilService.getResizedImgUrl(url, imgSize.width, imgSize.height);
         }
         return { url: url, title: this.img.title || '' };
     };
@@ -836,7 +766,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row insert-media \">\r\n    <div class=\"col bg-light\">\r\n\r\n        <!-- Tab Nav -->\r\n        <ul class=\"nav nav-tabs\"\r\n            role=\"tablist\">\r\n            <li class=\"nav-item\"\r\n                (click)=\"openComponent = 'image'\">\r\n                <a class=\"nav-link active\"\r\n                   data-toggle=\"tab\"\r\n                   href=\"#media-insert-image\"\r\n                   role=\"tab\">Image</a>\r\n            </li>\r\n            <li class=\"nav-item\"\r\n                (click)=\"openComponent = 'icon'\">\r\n                <a class=\"nav-link\"\r\n                   data-toggle=\"tab\"\r\n                   href=\"#media-insert-icon\"\r\n                   role=\"tab\">Icon</a>\r\n            </li>\r\n            <li class=\"nav-item\"\r\n                (click)=\"openComponent = 'youtube'\">\r\n                <a class=\"nav-link\"\r\n                   data-toggle=\"tab\"\r\n                   href=\"#media-insert-youtube\"\r\n                   role=\"tab\">YouTube</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Tab Content -->\r\n        <div class=\"tab-content mt-3\">\r\n\r\n            <!-- Insert Image -->\r\n            <div class=\"tab-pane active\"\r\n                 id=\"media-insert-image\"\r\n                 role=\"tabpanel\">\r\n                <app-insert-image [compControl]=\"subComponents.image\"></app-insert-image>\r\n            </div>\r\n\r\n            <!-- Insert Icon -->\r\n            <div class=\"tab-pane\"\r\n                 id=\"media-insert-icon\"\r\n                 role=\"tabpanel\">\r\n                <app-icon-search></app-icon-search>\r\n            </div>\r\n\r\n            <!-- Insert Youtube -->\r\n            <div class=\"tab-pane\"\r\n                 id=\"media-insert-youtube\"\r\n                 role=\"tabpanel\">\r\n                <app-insert-youtube [compControl]=\"subComponents.youtube\"></app-insert-youtube>\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
+module.exports = "<div class=\"row insert-media \">\r\n    <div class=\"col bg-light\">\r\n\r\n        <!-- Tab Nav -->\r\n        <ul class=\"nav nav-tabs\"\r\n            role=\"tablist\">\r\n            <li class=\"nav-item\"\r\n                (click)=\"openComponent = 'image'\">\r\n                <a class=\"nav-link active\"\r\n                   data-toggle=\"tab\"\r\n                   href=\"#media-insert-image\"\r\n                   role=\"tab\">Image</a>\r\n            </li>\r\n            <li class=\"nav-item\"\r\n                (click)=\"openComponent = 'icon'\">\r\n                <a class=\"nav-link\"\r\n                   data-toggle=\"tab\"\r\n                   href=\"#media-insert-icon\"\r\n                   role=\"tab\">Icon</a>\r\n            </li>\r\n            <li class=\"nav-item\"\r\n                (click)=\"openComponent = 'youtube'\">\r\n                <a class=\"nav-link\"\r\n                   data-toggle=\"tab\"\r\n                   href=\"#media-insert-youtube\"\r\n                   role=\"tab\">YouTube</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Tab Content -->\r\n        <div class=\"tab-content mt-3\">\r\n\r\n            <!-- Insert Image -->\r\n            <div class=\"tab-pane active\"\r\n                 id=\"media-insert-image\"\r\n                 role=\"tabpanel\">\r\n                <app-insert-image [compControl]=\"subComponents.image\"></app-insert-image>\r\n            </div>\r\n\r\n            <!-- Insert Icon -->\r\n            <div class=\"tab-pane\"\r\n                 id=\"media-insert-icon\"\r\n                 role=\"tabpanel\">\r\n                <app-icon-search [compControl]=\"subComponents.icon\"></app-icon-search>\r\n            </div>\r\n\r\n            <!-- Insert Youtube -->\r\n            <div class=\"tab-pane\"\r\n                 id=\"media-insert-youtube\"\r\n                 role=\"tabpanel\">\r\n                <app-insert-youtube [compControl]=\"subComponents.youtube\"></app-insert-youtube>\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -936,7 +866,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col\">\n\n        <!-- Input box -->\n        <div class=\"form-group\">\n            <div class=\"input-group\">\n                <span class=\"input-group-addon\">\n                  Video Url\n              </span>\n                <input type=\"text\"\n                       name=\"img.videoUrl\"\n                       class=\"form-control\"\n                       [(ngModel)]=\"img.videoUrl\">\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col text-center\">\n                <!-- Selected Img preview -->\n                <div class=\"preview-wrap m-3\"\n                     *ngIf=\"getImgUrl()\">\n                    <div class=\"border border-faded p-2 w-100 preview-img-outer\">\n                        <img id=\"preview-img\"\n                             [src]=\"getImgUrl()\" />\n\n                        <!-- Aspect Ratio toggle -->\n                        <div *ngIf=\"img.customSize\"\n                             class=\"float-right text-secondary font-italic aspect-ratio-toggle\"\n                             (click)=\"toggleAspectRatioLock()\">\n                            <span class=\"fa fa-lg\"\n                                  [ngClass]=\"aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"></span>\n                            <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\n                        </div>\n\n                    </div>\n\n                </div>\n                <!-- Img preview placeholder -->\n                <div class=\"preview-placeholder\"\n                     *ngIf=\"!getImgUrl()\">\n                    <div class=\"preview-img-outer border border-faded p-2 w-100\">\n                        <img src=\"../../../assets/img-preview-placeholder.png\">\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-3\">\n                <div *ngIf=\"getImgUrl()\">\n                    <div class=\"form-group\">\n                        <span class=\"fa fa-2x align-middle\"\n                              [ngClass]=\"img.customSize ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"\n                              (click)=\"toggleCustomSize()\"></span>\n                        <span>Custom Size</span>\n                    </div>\n                    <div class=\"form-group\">\n                        <label class=\"text-muted font-weight-bold\">Title</label>\n                        <input type=\"text\"\n                               class=\"form-control\"\n                               [(ngModel)]=\"img.title\">\n                    </div>\n                </div>\n                <div *ngIf=\"!getImgUrl()\"\n                     class=\"text-center text-muted font-italic mt-5\">Enter an Image URL to preview</div>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"row\">\n    <div class=\"col\">\n\n        <!-- Input box -->\n        <div class=\"form-group\">\n            <div class=\"input-group\">\n                <span class=\"input-group-addon\">\n                  Video Url\n              </span>\n                <input type=\"text\"\n                       name=\"img.videoUrl\"\n                       class=\"form-control\"\n                       [(ngModel)]=\"img.videoUrl\">\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col text-center\">\n                <!-- Selected Img preview -->\n                <div class=\"preview-wrap m-3\"\n                     *ngIf=\"getImgUrl()\">\n                    <div class=\"border border-faded p-2 w-100 preview-img-outer\">\n                        <img id=\"preview-img\"\n                             appResizable\n                             [resizeEnabled]=\"img.customSize\"\n                             [aspectRatioLocked]=\"aspectRatioLocked\"\n                             [compControl]=\"imgResizeControl\"\n                             [src]=\"getImgUrl()\" />\n\n                        <!-- Aspect Ratio toggle -->\n                        <div *ngIf=\"img.customSize\"\n                             class=\"float-right text-secondary font-italic aspect-ratio-toggle\"\n                             (click)=\"aspectRatioLocked = !aspectRatioLocked\">\n                            <span class=\"fa fa-lg\"\n                                  [ngClass]=\"aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"></span>\n                            <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\n                        </div>\n\n                    </div>\n\n                </div>\n                <!-- Img preview placeholder -->\n                <div class=\"preview-placeholder\"\n                     *ngIf=\"!getImgUrl()\">\n                    <div class=\"preview-img-outer border border-faded p-2 w-100\">\n                        <img src=\"../../../assets/img-preview-placeholder.png\">\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-3\">\n                <div *ngIf=\"getImgUrl()\">\n                    <div class=\"form-group\">\n                        <span class=\"fa fa-2x align-middle\"\n                              [ngClass]=\"img.customSize ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"\n                              (click)=\"img.customSize = !img.customSize\"></span>\n                        <span>Custom Size</span>\n                    </div>\n                    <div class=\"form-group\">\n                        <label class=\"text-muted font-weight-bold\">Title</label>\n                        <input type=\"text\"\n                               class=\"form-control\"\n                               [(ngModel)]=\"img.title\">\n                    </div>\n                </div>\n                <div *ngIf=\"!getImgUrl()\"\n                     class=\"text-center text-muted font-italic mt-5\">Enter an Image URL to preview</div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -966,6 +896,7 @@ var InsertYoutubeComponent = (function () {
         this.utilService = utilService;
         this.aspectRatioLocked = true;
         this.img = {};
+        this.imgResizeControl = {};
     }
     InsertYoutubeComponent.prototype.ngOnInit = function () {
     };
@@ -975,37 +906,6 @@ var InsertYoutubeComponent = (function () {
             this.compControl.submit = function () { return _this.submit(); };
             this.compControl.reset = function () { return _this.reset(); };
         }
-    };
-    /** Remove resizable option from selected image */
-    InsertYoutubeComponent.prototype.removeResizable = function () {
-        if ($('#preview-img').parent().draggable('instance')) {
-            $('#preview-img').parent().draggable('destroy');
-        }
-        if ($('#preview-img').resizable('instance')) {
-            $('#preview-img').resizable('destroy');
-        }
-        $('#preview-img').parent().removeAttr('style');
-        $('#preview-img').removeAttr('style');
-    };
-    /** Make selected image resizable */
-    InsertYoutubeComponent.prototype.makeResizable = function () {
-        this.removeResizable();
-        $('#preview-img').height('50%');
-        $('#preview-img').resizable({
-            containment: 'parent',
-            aspectRatio: this.aspectRatioLocked,
-            handles: ' n, e, s, w, ne, se, sw, nw',
-            maxHeight: 500,
-            create: function () {
-                $('#preview-img').parent().draggable({
-                    containment: 'parent',
-                    create: function () {
-                        $('#preview-img').parent().css('top', '0');
-                        $('#preview-img').parent().css('left', '0');
-                    }
-                });
-            }
-        });
     };
     /** Get Img url of the video */
     InsertYoutubeComponent.prototype.getImgUrl = function () {
@@ -1019,28 +919,12 @@ var InsertYoutubeComponent = (function () {
             return '';
         }
     };
-    /** Toggle aspec ratio lock on resizable image */
-    InsertYoutubeComponent.prototype.toggleAspectRatioLock = function () {
-        this.aspectRatioLocked = !this.aspectRatioLocked;
-        this.makeResizable();
-    };
-    /** Toggle image size resizability */
-    InsertYoutubeComponent.prototype.toggleCustomSize = function () {
-        this.img.customSize = !this.img.customSize;
-        if (this.img.customSize) {
-            this.makeResizable();
-        }
-        else {
-            this.removeResizable();
-        }
-    };
     /** Return data */
     InsertYoutubeComponent.prototype.submit = function () {
         var url = this.getImgUrl();
         if (this.img.customSize) {
-            var width = $('#preview-img').width();
-            var height = $('#preview-img').height();
-            url = this.utilService.getResizedImgUrl(url, width, height);
+            var imgSize = this.imgResizeControl.submit();
+            url = this.utilService.getResizedImgUrl(url, imgSize.width, imgSize.height);
         }
         return { url: url, videoUrl: this.img.videoUrl, title: this.img.title || '' };
     };
@@ -1967,6 +1851,10 @@ var ResizableDirective = (function () {
         this.el = el;
     }
     ResizableDirective.prototype.ngOnInit = function () {
+        var _this = this;
+        if (this.compControl) {
+            this.compControl.submit = function () { return _this.submit(); };
+        }
         if (this.resizeEnabled) {
             this.makeResizable();
         }
