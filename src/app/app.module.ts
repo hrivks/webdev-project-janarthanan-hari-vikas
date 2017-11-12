@@ -26,6 +26,7 @@ import { AutoHeightDirective } from './directives/auto-height/auto-height.direct
 import { AlertComponent } from './components/shared/alert/alert.component';
 import { LoaderComponent } from './components/shared/loader/loader.component';
 import { NavComponent } from './components/shared/nav/nav.component';
+import { StringFilterPipe } from './components/shared/string-filter/string-filter.pipe';
 
 // editor components
 import { EditorComponent } from './components/editor/editor.component';
@@ -59,7 +60,8 @@ import { InsertGlyphComponent } from './components/editor/tiny-editor/insert-gly
     InsertImageComponent,
     InsertYoutubeComponent,
     ResizableDirective,
-    InsertGlyphComponent
+    InsertGlyphComponent,
+    StringFilterPipe
   ],
   imports: [
     BrowserModule,

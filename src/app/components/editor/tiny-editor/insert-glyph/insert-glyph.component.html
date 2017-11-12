@@ -1,25 +1,42 @@
 <div class="insert-glyph">
 
-  <!-- Search and size -->
-  <div class="form-group form-inline">
-    <input type="text"
-           class="form-control form-control-sm"
-           placeholder="Search..."
-           [(ngModel)]="glyphFilter">
-    <!-- Size dropdown -->
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle btn-sm"
-              type="button"
-              data-toggle="dropdown">
-        Size
+    <!-- Search and size -->
+    <div class="form-group form-inline">
+        <input type="text"
+               class="form-control form-control-sm w-50"
+               placeholder="Search..."
+               [(ngModel)]="glyphFilter">
+        <!-- Size dropdown -->
+        <div class="dropdown ml-auto">
+            <button class="btn dropdown-toggle btn-sm"
+                    type="button"
+                    data-toggle="dropdown">
+        Size: {{selectedSize}}
       </button>
-      <div class="dropdown-menu">
-        <button class="dropdown-item"
-                href="#">16</button>
-        <button class="dropdown-item"
-                href="#">24</button>
-      </div>
+            <div class="dropdown-menu">
+                <button class="dropdown-item"
+                        href="#"
+                        (click)="selectedSize='sm'">sm</button>
+                <button class="dropdown-item"
+                        href="#"
+                        (click)="selectedSize='lg'">lg</button>
+                <button class="dropdown-item"
+                        href="#"
+                        (click)="selectedSize='2x'">2X</button>
+                <button class="dropdown-item"
+                        href="#"
+                        (click)="selectedSize='3x'">3X</button>
+
+            </div>
+        </div>
     </div>
-  </div>
+
+    <!-- Icons List -->
+    <div class="text-center">
+        <span *ngFor="let ico of faIconsList | stringFilter: glyphFilter"
+              class="text-center fa fa-{{ico}} fa-{{selectedSize}} p-1 m-1 border border-faded"
+              title={{ico}}
+              (click)="submit(ico)"></span>
+    </div>
 
 </div>

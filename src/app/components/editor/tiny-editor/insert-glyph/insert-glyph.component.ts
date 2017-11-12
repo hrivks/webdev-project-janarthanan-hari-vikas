@@ -1,6 +1,6 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { ComponentControl } from '../../../../model/ui-model';
-
+import faIconsList from '../../../../model/fontawesome-icons-list';
 
 @Component({
   selector: 'app-insert-glyph',
@@ -11,10 +11,17 @@ export class InsertGlyphComponent implements OnInit, OnChanges {
 
   // properties
   @Input() compControl: ComponentControl;
-  private selectedSize: number;
+  @Output() onSubmit: EventEmitter<string> = new EventEmitter<string>();
+  private selectedSize: number | string;
   private selectedGlyph: string;
-  
-  constructor() { }
+  private faIconsList: string[];
+
+  constructor() {
+
+    this.faIconsList = faIconsList;
+    this.selectedSize = 'sm';
+
+  }
 
   ngOnInit() {
 
@@ -32,8 +39,16 @@ export class InsertGlyphComponent implements OnInit, OnChanges {
 
   }
 
+  selectIcon(ico: string) {
+
+    this.selectedGlyph = ico;
+    this.submit();
+
+  }
+
   submit() {
 
   }
+
 
 }

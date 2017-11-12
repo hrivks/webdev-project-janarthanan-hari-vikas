@@ -1,0 +1,28 @@
+span.fa-sm {
+    width: 30px;
+    height: 30px;
+    line-height: 22px;
+}
+
+span.fa-lg {
+    width: 35px;
+    height: 35px;
+    line-height: 25px;
+}
+
+span.fa-2x {
+    width: 45px;
+    height: 45px;
+    line-height: 37px;
+}
+
+span.fa-3x {
+    width: 55px;
+    height: 55px;
+    line-height: 50px;
+}
+
+span.fa:hover {
+    background: #EEE;
+    color: black;
+}

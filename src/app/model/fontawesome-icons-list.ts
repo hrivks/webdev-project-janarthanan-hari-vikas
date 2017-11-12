@@ -70,4 +70,4 @@ const faIconsList = ['500px', 'adjust', 'adn', 'align-center', 'align-justify', 
     'wordpress', 'wrench', 'xing', 'xing-square', 'y-combinator', 'y-combinator-square', 'yahoo', 'yc', 'yc-square', 'yelp',
     'yen', 'youtube', 'youtube-play', 'youtube-square'];
 
-    export faIconsList;
+export default faIconsList;
