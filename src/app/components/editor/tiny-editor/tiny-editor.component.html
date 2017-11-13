@@ -52,6 +52,7 @@
   </div>
   <!-- / Editor Modals -->
 
+  <!-- Editor popovers -->
   <div class="editor-popovers"
        *ngIf="openPopoverKey">
 
@@ -60,8 +61,10 @@
          role="tooltip">
       <div class="arrow"></div>
       <h3 class="popover-title">{{popovers[openPopoverKey]?.title}}</h3>
-      <div class="popover-content">
-        Popover here
+      <div class="popover-content"
+           [style.height.px]="modalHeight - 100">
+        <app-insert-glyph [compControl]="compControl"
+                          (onIconSelect)="submitPopover($event)"></app-insert-glyph>
       </div>
     </div>
   </div>

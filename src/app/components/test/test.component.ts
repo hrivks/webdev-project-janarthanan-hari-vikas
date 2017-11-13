@@ -16,7 +16,7 @@ export class TestComponent implements OnInit {
     this.compControl = {};
   }
 
-  submit() {
-    console.log(this.compControl.submit());
+  submit(ico: string) {
+    console.log(ico);
   }
 }

@@ -39,3 +39,12 @@
 .tiny-editor .mce-edit-area {
     border-top:none;
 }
+
+.tiny-editor .popover {
+    max-width: 280px !important;
+    width: 280px;
+}
+
+.tiny-editor .popover-content {
+    overflow-y: auto;
+}

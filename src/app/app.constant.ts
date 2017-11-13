@@ -7,4 +7,7 @@ export class AppConstants {
     };
 
     public static ENDPOINT = environment.endpoint;
+    public static APP_ROOT_URL = 'http://writeme-md.herokuapp.com';
+    public static ICONS_FOLDER_PATH = '/resources/glyphicons';
+    public static FA_ICONS_FOLDER_PATH = '/resources/glyphicons/fa';
 }

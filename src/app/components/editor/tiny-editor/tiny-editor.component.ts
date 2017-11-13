@@ -64,11 +64,11 @@ export class TinyEditorComponent implements OnInit {
             target: this.el.nativeElement,
             theme: 'modern',
             content_css: '../../../../assets/tiny-editor-custom-styles.css',
-            plugins: 'table link lists hr codesample',
+            plugins: 'table link lists hr codesample emoticons',
             height: this.height,
             menubar: false,
             toolbar: 'btnTxt btnH btnCode btnInlineCode | btnBold btnItalic btnStrikethrough '
-                + '| numlist bullist | link btnMedia | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr btnTest',
+                + '| numlist bullist | link btnMedia emoticons | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr btnTest',
             branding: false,
             statusbar: false,
             link_title: false,
@@ -341,11 +341,8 @@ export class TinyEditorComponent implements OnInit {
             icon: 'image',
             tooltip: 'test',
             onclick: (e) => {
-                this.openPopoverKey = 'glyphs';
-                this.openPopover('glyphs', $(e.target).offset());
-            },
-            onPostRender: (e, d) => {
-                console.log(e);
+                this.openPopoverKey = 'glyph';
+                this.openPopover('glyph', $(e.target).offset());
             }
         });
 
@@ -474,13 +471,30 @@ export class TinyEditorComponent implements OnInit {
 
     /** Open popover corresponding to specified key */
     private openPopover(key: string, pos: { left: number, top: number }) {
-        const left = pos.left - 95;
-        const top = pos.top - 34;
+        const left = pos.left - 142;
+        const top = pos.top - 30;
 
         this.zone.run(() => {
             this.openPopoverKey = key;
         });
         $('#editor-popover').css('left', left + 'px').css('top', top + 'px');
+    }
+
+    /** Retrieve data from popover */
+    private submitPopover(data: any) {
+        console.log(data);
+        if (data) {
+            if (this.openPopoverKey === 'glyph') {
+                let iconImg = '';
+                if (data.type === 'fa') {
+                    iconImg = '<img src="' + data.icon + '" />';
+                } else if (data.type === 'emoji') {
+                    iconImg = '<img class="emoji" emoji="' + data.icon.name + '" height="20" width="20" src="' + data.icon.url + '" />';
+                }
+
+                this.addToEditor(iconImg);
+            }
+        }
     }
 
     /**

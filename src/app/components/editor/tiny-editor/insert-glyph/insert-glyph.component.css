@@ -22,7 +22,33 @@ span.fa-3x {
     line-height: 50px;
 }
 
+span.fa-4x {
+    width: 70px;
+    height: 70px;
+    line-height: 61px;
+}
+
+span.fa-5x {
+    width: 80px;
+    height: 80px;
+    line-height: 70px;
+}
+
 span.fa:hover {
     background: #EEE;
     color: black;
+}
+
+span.emoji {
+    width: 55px;
+    height: 55px;
+}
+
+img.emoji {
+    width: 35px;
+    height: 35px;
+}
+
+img.emoji:hover {
+    background-color: #EEE;
 }

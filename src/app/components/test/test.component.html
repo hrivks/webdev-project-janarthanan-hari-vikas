@@ -1,7 +1,7 @@
 <div class="bg-light p-3">
     <div style="width:250px"
          class="m-auto order">
-        <app-insert-glyph [compControl]="compControl"></app-insert-glyph>
+        <app-insert-glyph [compControl]="compControl" (onIconSelect)="submit($event)"></app-insert-glyph>
     </div>
 
     <button class="btn btn-success btn-sm"
