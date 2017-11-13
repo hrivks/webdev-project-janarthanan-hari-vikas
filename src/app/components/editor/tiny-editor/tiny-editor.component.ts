@@ -482,19 +482,21 @@ export class TinyEditorComponent implements OnInit {
 
     /** Retrieve data from popover */
     private submitPopover(data: any) {
-        console.log(data);
+
         if (data) {
             if (this.openPopoverKey === 'glyph') {
                 let iconImg = '';
                 if (data.type === 'fa') {
                     iconImg = '<img src="' + data.icon + '" />';
                 } else if (data.type === 'emoji') {
-                    iconImg = '<img class="emoji" emoji="' + data.icon.name + '" height="20" width="20" src="' + data.icon.url + '" />';
+                    iconImg = '<img class="emoji" data-emoji="' + data.icon.name +
+                        '" height="20" width="20" src="' + data.icon.url + '" />';
                 }
 
                 this.addToEditor(iconImg);
             }
         }
+
     }
 
     /**

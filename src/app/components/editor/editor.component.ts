@@ -100,10 +100,19 @@ export class EditorComponent implements OnInit, AfterViewInit {
               }
             },
             {
-              filter: 'img.youtube',
+              filter: 'img',
               replacement: function (content, node) {
-                console.log(content);
-                return content;
+
+                const src = $(node).attr('src');
+                const alt = $(node).attr('alt');
+                const emoji = $(node).attr('data-emoji');
+
+                if (emoji) {
+                  return ':' + emoji + ':';
+                } else {
+                  return '![' + (alt || '') + '](' + (src || '') + ')';
+                }
+
               }
             }
           ]
