@@ -291,7 +291,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".preview-wrapper .card{\r\n    border: solid thin #c5c5c5;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.preview-wrapper .card .card-body {\r\n    overflow-y: auto;\r\n}", ""]);
+exports.push([module.i, ".preview-wrapper .card{\r\n    border: solid thin #c5c5c5;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.preview-wrapper .card .card-body {\r\n    overflow-y: auto;\r\n}\r\n\r\ntextarea.markdown-preview {\r\n    font-family: monospace;\r\n}", ""]);
 
 // exports
 
@@ -364,17 +364,30 @@ var EditorComponent = (function () {
                     {
                         filter: 'table',
                         replacement: function (content, node) {
+                            // padding for cells
+                            var cells = content.split('|');
+                            var largestCell = cells.reduce(function (r, i) { return i.length > r ? i.length : r; }, 0);
+                            cells = cells.map(function (i) {
+                                if (i.length === 0 || i === '\n') {
+                                    return i;
+                                }
+                                else {
+                                    return i + ' '.repeat(largestCell - i.length);
+                                }
+                            });
+                            content = cells.join('|');
                             var firstRow = content.substring(0, content.indexOf('\n', 1));
                             var colCount = firstRow.split('|').length - 2;
                             var headerRow = '\n';
+                            var headerCellContent = '-'.repeat(largestCell);
                             // check for alignment
                             for (var i = 0; i < colCount; i++) {
-                                var cellMarkdown = '|--';
+                                var cellMarkdown = '|' + headerCellContent;
                                 if (node.rows[0].cells[i].align === 'right') {
-                                    cellMarkdown = '|--:';
+                                    cellMarkdown = '|' + headerCellContent.substring(0, largestCell - 1) + ':';
                                 }
                                 else if (node.rows[0].cells[i].align === 'center') {
-                                    cellMarkdown = '|:--:';
+                                    cellMarkdown = '|:' + headerCellContent.substring(0, largestCell - 2) + ':';
                                 }
                                 headerRow += cellMarkdown;
                             }
@@ -2644,8 +2657,14 @@ var emojisList = [
     { 'name': 'family_woman_woman_boy', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f466.png' },
     { 'name': 'family_woman_woman_boy_boy', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f466-1f466.png' },
     { 'name': 'family_woman_woman_girl', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f467.png' },
-    { 'name': 'family_woman_woman_girl_boy', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f467-1f466.png' },
-    { 'name': 'family_woman_woman_girl_girl', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f467-1f467.png' },
+    {
+        'name': 'family_woman_woman_girl_boy',
+        'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f467-1f466.png'
+    },
+    {
+        'name': 'family_woman_woman_girl_girl',
+        'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f467-1f467.png'
+    },
     { 'name': 'faroe_islands', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f1eb-1f1f4.png' },
     { 'name': 'fast_forward', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/23e9.png' },
     { 'name': 'fax', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f4e0.png' },

@@ -492,8 +492,14 @@ const emojisList = [
     { 'name': 'family_woman_woman_boy', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f466.png' },
     { 'name': 'family_woman_woman_boy_boy', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f466-1f466.png' },
     { 'name': 'family_woman_woman_girl', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f467.png' },
-    { 'name': 'family_woman_woman_girl_boy', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f467-1f466.png' },
-    { 'name': 'family_woman_woman_girl_girl', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f467-1f467.png' },
+    {
+        'name': 'family_woman_woman_girl_boy',
+        'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f467-1f466.png'
+    },
+    {
+        'name': 'family_woman_woman_girl_girl',
+        'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f469-1f469-1f467-1f467.png'
+    },
     { 'name': 'faroe_islands', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f1eb-1f1f4.png' },
     { 'name': 'fast_forward', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/23e9.png' },
     { 'name': 'fax', 'url': 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f4e0.png' },

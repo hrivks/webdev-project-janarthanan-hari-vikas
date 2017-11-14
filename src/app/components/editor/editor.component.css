@@ -6,3 +6,7 @@
 .preview-wrapper .card .card-body {
     overflow-y: auto;
 }
+
+textarea.markdown-preview {
+    font-family: monospace;
+}

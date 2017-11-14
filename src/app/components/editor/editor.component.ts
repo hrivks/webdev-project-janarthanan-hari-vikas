@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { concat } from 'rxjs/operator/concat';
 declare var $; // jquery
 declare var tinymce: any; // tinyMCE editor
 declare var toMarkdown: any; // to-markdown
@@ -65,18 +66,32 @@ export class EditorComponent implements OnInit, AfterViewInit {
             {
               filter: 'table',
               replacement: function (content, node) {
+
+                // padding for cells
+                let cells = content.split('|');
+                const largestCell = cells.reduce((r, i) => i.length > r ? i.length : r, 0);
+                cells = cells.map((i) => {
+                  if (i.length === 0 || i === '\n') {
+                    return i;
+                  } else {
+                    return i + ' '.repeat(largestCell - i.length);
+                  }
+                });
+
+                content = cells.join('|');
+
                 const firstRow = content.substring(0, content.indexOf('\n', 1));
                 const colCount = firstRow.split('|').length - 2;
 
                 let headerRow = '\n';
-
+                const headerCellContent = '-'.repeat(largestCell);
                 // check for alignment
                 for (let i = 0; i < colCount; i++) {
-                  let cellMarkdown = '|--';
+                  let cellMarkdown = '|' + headerCellContent;
                   if (node.rows[0].cells[i].align === 'right') {
-                    cellMarkdown = '|--:';
+                    cellMarkdown = '|' + headerCellContent.substring(0, largestCell - 1) + ':';
                   } else if (node.rows[0].cells[i].align === 'center') {
-                    cellMarkdown = '|:--:';
+                    cellMarkdown = '|:' + headerCellContent.substring(0, largestCell - 2) + ':';
                   }
                   headerRow += cellMarkdown;
                 }
