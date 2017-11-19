@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 
+# similuate prod env variables
+server/app.env.js 
+
 # dependencies
 /node_modules
 

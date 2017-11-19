@@ -68,7 +68,7 @@ export class TinyEditorComponent implements OnInit {
             height: this.height,
             menubar: false,
             toolbar: 'btnTxt btnH btnCode btnInlineCode | btnBold btnItalic btnStrikethrough '
-                + '| numlist bullist | link btnMedia emoticons | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr btnTest',
+                + '| numlist bullist | link btnMedia emoticons | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr',
             branding: false,
             statusbar: false,
             link_title: false,

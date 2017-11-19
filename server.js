@@ -22,6 +22,11 @@ app.use(function(req, res, next) {
 
 //#region: routes
 
+// load environment variable when running locally
+if(!process.env.IS_SERVER) {
+  require('./server/app.env.js');
+}
+
 app.use('/api', require('./server/app.js'));
 
 // Return images from public/uploads folder

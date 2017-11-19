@@ -159,7 +159,7 @@ var AppConstants = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_shared_string_filter_string_filter_pipe__ = __webpack_require__("../../../../../src/app/components/shared/string-filter/string-filter.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pipes_string_filter_string_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/string-filter/string-filter.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.ts");
@@ -198,6 +198,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+// pipes
 
 // editor components
 
@@ -233,7 +234,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__["a" /* InsertYoutubeComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
                 __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__components_shared_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
+                __WEBPACK_IMPORTED_MODULE_18__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -1010,7 +1011,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"col\">\r\n\r\n        <!-- Input box -->\r\n        <div class=\"form-group\">\r\n            <div class=\"input-group\">\r\n                <span class=\"input-group-addon\">\r\n                  Video Url\r\n              </span>\r\n                <input type=\"text\"\r\n                       name=\"img.videoUrl\"\r\n                       class=\"form-control\"\r\n                       [(ngModel)]=\"img.videoUrl\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n            <div class=\"col text-center\">\r\n                <!-- Selected Img preview -->\r\n                <div class=\"preview-wrap m-3\"\r\n                     *ngIf=\"getImgUrl()\">\r\n                    <div class=\"border border-faded p-2 w-100 preview-img-outer\">\r\n                        <img id=\"preview-img\"\r\n                             appResizable\r\n                             [resizeEnabled]=\"img.customSize\"\r\n                             [aspectRatioLocked]=\"aspectRatioLocked\"\r\n                             [compControl]=\"imgResizeControl\"\r\n                             [src]=\"getImgUrl()\" />\r\n\r\n                        <!-- Aspect Ratio toggle -->\r\n                        <div *ngIf=\"img.customSize\"\r\n                             class=\"float-right text-secondary font-italic aspect-ratio-toggle\"\r\n                             (click)=\"aspectRatioLocked = !aspectRatioLocked\">\r\n                            <span class=\"fa fa-lg\"\r\n                                  [ngClass]=\"aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"></span>\r\n                            <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n                <!-- Img preview placeholder -->\r\n                <div class=\"preview-placeholder\"\r\n                     *ngIf=\"!getImgUrl()\">\r\n                    <div class=\"preview-img-outer border border-faded p-2 w-100\">\r\n                        <img src=\"../../../assets/img-preview-placeholder.png\">\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"col-3\">\r\n                <div *ngIf=\"getImgUrl()\">\r\n                    <div class=\"form-group\">\r\n                        <span class=\"fa fa-2x align-middle\"\r\n                              [ngClass]=\"img.customSize ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"\r\n                              (click)=\"img.customSize = !img.customSize\"></span>\r\n                        <span>Custom Size</span>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label class=\"text-muted font-weight-bold\">Title</label>\r\n                        <input type=\"text\"\r\n                               class=\"form-control\"\r\n                               [(ngModel)]=\"img.title\">\r\n                    </div>\r\n                </div>\r\n                <div *ngIf=\"!getImgUrl()\"\r\n                     class=\"text-center text-muted font-italic mt-5\">Enter an Image URL to preview</div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"row\">\n    <div class=\"col\">\n\n        <!-- Input box -->\n        <div class=\"form-group\">\n            <div class=\"input-group\">\n                <span class=\"input-group-addon\">\n                  Video Url\n              </span>\n                <input type=\"text\"\n                       name=\"img.videoUrl\"\n                       class=\"form-control\"\n                       [(ngModel)]=\"img.videoUrl\">\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col text-center\">\n                <!-- Selected Img preview -->\n                <div class=\"preview-wrap m-3\"\n                     *ngIf=\"getImgUrl()\">\n                    <div class=\"border border-faded p-2 w-100 preview-img-outer\">\n                        <img id=\"preview-img\"\n                             appResizable\n                             [resizeEnabled]=\"img.customSize\"\n                             [aspectRatioLocked]=\"aspectRatioLocked\"\n                             [compControl]=\"imgResizeControl\"\n                             [src]=\"getImgUrl()\" />\n\n                        <!-- Aspect Ratio toggle -->\n                        <div *ngIf=\"img.customSize\"\n                             class=\"float-right text-secondary font-italic aspect-ratio-toggle\"\n                             (click)=\"aspectRatioLocked = !aspectRatioLocked\">\n                            <span class=\"fa fa-lg\"\n                                  [ngClass]=\"aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"></span>\n                            <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\n                        </div>\n\n                    </div>\n\n                </div>\n                <!-- Img preview placeholder -->\n                <div class=\"preview-placeholder\"\n                     *ngIf=\"!getImgUrl()\">\n                    <div class=\"preview-img-outer border border-faded p-2 w-100\">\n                        <img src=\"../../../assets/img-preview-placeholder.png\">\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-3\">\n                <div *ngIf=\"getImgUrl()\">\n                    <div class=\"form-group\">\n                        <span class=\"fa fa-2x align-middle\"\n                              [ngClass]=\"img.customSize ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"\n                              (click)=\"img.customSize = !img.customSize\"></span>\n                        <span>Custom Size</span>\n                    </div>\n                    <div class=\"form-group\">\n                        <label class=\"text-muted font-weight-bold\">Title</label>\n                        <input type=\"text\"\n                               class=\"form-control\"\n                               [(ngModel)]=\"img.title\">\n                    </div>\n                </div>\n                <div *ngIf=\"!getImgUrl()\"\n                     class=\"text-center text-muted font-italic mt-5\">Enter an Image URL to preview</div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1172,7 +1173,7 @@ var TinyEditorComponent = (function () {
             height: this.height,
             menubar: false,
             toolbar: 'btnTxt btnH btnCode btnInlineCode | btnBold btnItalic btnStrikethrough '
-                + '| numlist bullist | link btnMedia emoticons | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr btnTest',
+                + '| numlist bullist | link btnMedia emoticons | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr',
             branding: false,
             statusbar: false,
             link_title: false,
@@ -1853,7 +1854,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\n          type=\"button\"\n          data-toggle=\"collapse\"\n          data-target=\"#navbar-content\"\n          aria-controls=\"navbarColor01\"\n          aria-expanded=\"false\"\n          aria-label=\"Toggle navigation\">\n    <span class=\"fa fa-bars\"></span>\n  </button>\n  <a class=\"navbar-brand\"\n     href=\"#\">WriteMe.md</a>\n\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\n       id=\"navbar-content\">\n    <ul class=\"navbar-nav ml-4\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"\n           href=\"#\">Editor</a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Projects</a>\n        </li>\n      </ul>\n      \n    <ul class=\"navbar-nav ml-4\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\"\n             href=\"#\">Profile</a>\n        </li>\n      </ul>\n    <form class=\"form-inline float-right ml-auto\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"text\"\n             placeholder=\"Username\">\n      <input class=\"form-control mr-sm-2 form-control-sm\"\n             type=\"password\"\n             placeholder=\"Password\">\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\n              type=\"submit\">Login</button>\n    </form>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\r\n  <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n          type=\"button\"\r\n          data-toggle=\"collapse\"\r\n          data-target=\"#navbar-content\"\r\n          aria-controls=\"navbarColor01\"\r\n          aria-expanded=\"false\"\r\n          aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n  <a class=\"navbar-brand\"\r\n     href=\"#\">WriteMe.md</a>\r\n\r\n  <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\r\n       id=\"navbar-content\">\r\n    <ul class=\"navbar-nav ml-4\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\"\r\n           href=\"#\">Editor</a>\r\n      </li>\r\n    </ul>\r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Projects</a>\r\n        </li>\r\n      </ul>\r\n      \r\n    <ul class=\"navbar-nav ml-4\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\"\r\n             href=\"#\">Profile</a>\r\n        </li>\r\n      </ul>\r\n    <form class=\"form-inline float-right ml-auto\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"text\"\r\n             placeholder=\"Username\">\r\n      <input class=\"form-control mr-sm-2 form-control-sm\"\r\n             type=\"password\"\r\n             placeholder=\"Password\">\r\n      <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\r\n              type=\"submit\">Login</button>\r\n    </form>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -1887,50 +1888,6 @@ var NavComponent = (function () {
         __metadata("design:paramtypes", [])
     ], NavComponent);
     return NavComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/shared/string-filter/string-filter.pipe.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StringFilterPipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var StringFilterPipe = (function () {
-    function StringFilterPipe() {
-    }
-    StringFilterPipe.prototype.transform = function (items, filter, key) {
-        if (!items || !filter) {
-            return items;
-        }
-        else {
-            filter = filter.toLowerCase();
-            var filteredItems = [];
-            if (key) {
-                filteredItems = items.filter(function (i) { return i[key].toLowerCase().indexOf(filter) > -1; });
-            }
-            else {
-                filteredItems = items.filter(function (i) { return i.toLowerCase().indexOf(filter) > -1; });
-            }
-            return filteredItems;
-        }
-    };
-    StringFilterPipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Pipe */])({
-            name: 'stringFilter'
-        })
-    ], StringFilterPipe);
-    return StringFilterPipe;
 }());
 
 
@@ -3775,6 +3732,50 @@ var faIconsList = ['500px', 'adjust', 'adn', 'align-center', 'align-justify', 'a
     'wordpress', 'wrench', 'xing', 'xing-square', 'y-combinator', 'y-combinator-square', 'yahoo', 'yc', 'yc-square', 'yelp',
     'yen', 'youtube', 'youtube-play', 'youtube-square'];
 /* harmony default export */ __webpack_exports__["a"] = (faIconsList);
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/pipes/string-filter/string-filter.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StringFilterPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var StringFilterPipe = (function () {
+    function StringFilterPipe() {
+    }
+    StringFilterPipe.prototype.transform = function (items, filter, key) {
+        if (!items || !filter) {
+            return items;
+        }
+        else {
+            filter = filter.toLowerCase();
+            var filteredItems = [];
+            if (key) {
+                filteredItems = items.filter(function (i) { return i[key].toLowerCase().indexOf(filter) > -1; });
+            }
+            else {
+                filteredItems = items.filter(function (i) { return i.toLowerCase().indexOf(filter) > -1; });
+            }
+            return filteredItems;
+        }
+    };
+    StringFilterPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Pipe */])({
+            name: 'stringFilter'
+        })
+    ], StringFilterPipe);
+    return StringFilterPipe;
+}());
+
 
 
 /***/ }),
