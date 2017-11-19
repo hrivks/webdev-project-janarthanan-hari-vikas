@@ -6,7 +6,7 @@
 /out-tsc
 
 # similuate prod env variables
-server.local.js
+#server.local.js
 
 # dependencies
 /node_modules
