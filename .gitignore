@@ -6,7 +6,7 @@
 /out-tsc
 
 # similuate prod env variables
-server/app.env.js 
+server.local.js
 
 # dependencies
 /node_modules
@@ -44,3 +44,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+server.local.js
