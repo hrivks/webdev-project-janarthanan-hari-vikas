@@ -1,7 +1,7 @@
 /** Bootstrap Enhancements **/
 
 body.hvj {
-  background: #446d8a;
+  /* background: #446d8a; */
 }
 
 .hvj .border {
@@ -27,6 +27,10 @@ body.hvj {
   .hvj .bg-editor-gray {
     background: #f0f0f0;
   }
+
+.hvj .btn {
+  font-family:  "Nunito Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
+}
 
   .hvj .btn:not(:disabled) {
     cursor: pointer;

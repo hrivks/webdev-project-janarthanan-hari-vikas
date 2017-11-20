@@ -4,9 +4,11 @@ import { EditorComponent } from './components/editor/editor.component';
 import { TestComponent } from '../app/components/test/test.component';
 import { ModuleWithProviders } from '@angular/core';
 import { IconSearchComponent } from './components/editor/tiny-editor/insert-media/icon-search/icon-search.component';
+import { RegisterComponent } from './components/user/register/register.component';
 
 const APP_ROUTES: Routes = [
   { path: '', component: EditorComponent, data: { skipAuth: true } },
+  { path: 'register', component: RegisterComponent },
   { path: 'test', component: TestComponent, data: { skipAuth: true } },
   { path: 'iconSearch', component: IconSearchComponent, data: { skipAuth: true } }
 ];

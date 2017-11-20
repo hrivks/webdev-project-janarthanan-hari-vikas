@@ -1,46 +1,74 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0">
-  <button class="navbar-toggler navbar-toggler-right btn-sm mt-2"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbar-content"
-          aria-controls="navbarColor01"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right btn-sm mt-2"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbar-content"
+            aria-controls="navbarColor01"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
     <span class="fa fa-bars"></span>
   </button>
-  <a class="navbar-brand"
-     href="#">WriteMe.md</a>
+    <a class="navbar-brand"
+       href="#">WriteMe.md</a>
 
-  <div class="collapse navbar-collapse pb-3 pb-lg-0"
-       id="navbar-content">
-    <ul class="navbar-nav ml-4">
-      <li class="nav-item">
-        <a class="nav-link"
-           href="#">Editor</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-4">
-        <li class="nav-item">
-          <a class="nav-link"
-             href="#">Projects</a>
-        </li>
-      </ul>
-      
-    <ul class="navbar-nav ml-4">
-        <li class="nav-item">
-          <a class="nav-link"
-             href="#">Profile</a>
-        </li>
-      </ul>
-    <form class="form-inline float-right ml-auto">
-      <input class="form-control mr-sm-2 form-control-sm"
-             type="text"
-             placeholder="Username">
-      <input class="form-control mr-sm-2 form-control-sm"
-             type="password"
-             placeholder="Password">
-      <button class="btn btn-secondary my-2 my-sm-0 btn-sm"
-              type="submit">Login</button>
-    </form>
-  </div>
+    <div class="collapse navbar-collapse pb-3 pb-lg-0"
+         id="navbar-content">
+        <ul class="navbar-nav ml-4">
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="#">Editor</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-4">
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="#">Projects</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-4">
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="#">Profile</a>
+            </li>
+        </ul>
+
+        <!-- Login form -->
+        <form class="form-inline float-right ml-auto"
+              (submit)="login()"
+              *ngIf="!loggedIn">
+            <input class="form-control mr-sm-2 form-control-sm"
+                   type="text"
+                   placeholder="Username"
+                   name="username"
+                   [(ngModel)]="username">
+            <input class="form-control mr-sm-2 form-control-sm"
+                   type="password"
+                   placeholder="Password"
+                   name="password"
+                   [(ngModel)]="password">
+            <button class="btn btn-secondary my-2 my-sm-0 btn-sm"
+                    type="submit">Login</button>
+            <a class="btn btn-secondary my-2 my-sm-0 btn-sm"
+               href="http://localhost:3100/api/auth/github"
+               target="_self">
+                <i class="fa fa-github" aria-hidden="true"></i>
+            </a>
+            <a class="btn border text-muted ml-2 my-2 my-sm-0 btn-sm"
+               [routerLink]="['/register']">Register</a>
+        </form>
+        <!-- / Login form -->
+
+        <!-- Logout form -->
+        <ul class="float-right ml-auto navbar-nav form-inline"
+            *ngIf="loggedIn">
+            <li class="nav-item">
+                <span>Hello, {{loggedIn.name}}</span>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-secondary btn-sm"
+                        (click)="logout()">Logout</button>
+            </li>
+        </ul>
+    </div>
 </nav>

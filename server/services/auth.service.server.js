@@ -7,7 +7,7 @@ module.exports = (function() {
         mergeParams: true
     });
     const passport = require('passport');
-    const GithubPassportStrategy = require('passport-github').Strategy;
+    const GithubPassportStrategy = require('passport-github2').Strategy;
     const Utils = require('./service-utils.js');
     const UserModel = require('../models/user/user.model.server.js');
 
@@ -16,6 +16,8 @@ module.exports = (function() {
     const exp = {
         router: router, // router object
     };
+
+    //#region: Github Authentication
 
     function githubStrategy(token, refreshToken, profile, done) {
         if (!profile) {
@@ -30,8 +32,7 @@ module.exports = (function() {
                         // user does not exist. create user
 
                         const newGitUser = {
-                            firstName: profile.name.givenName || profile.displayName,
-                            lastName: profile.name.familyName,
+                            name: profile.displayName,
                             github: {
                                 id: profile.id,
                                 token: token
@@ -52,7 +53,7 @@ module.exports = (function() {
         }
     }
 
-    //#region: Facebook Authentication
+
 
     var githubConfig = {
         clientID: process.env.GITHUB_CLIENT_ID,
@@ -71,11 +72,11 @@ module.exports = (function() {
 
     // route: [GET] '/api/auth/github/callback'
     router.get('/github/callback', passport.authenticate('github', {
-        successRedirect: process.env.IS_SERVER ? '/profile' : 'http://localhost:4200/profile',
+        successRedirect: process.env.IS_SERVER ? '/profile' : 'http://localhost:4200/',
         failureRedirect: process.env.IS_SERVER ? '/login' : 'http://localhost:4200/login'
     }));
 
-    //#endregion : Facebook Authentication
+    //#endregion : Github Authentication
 
     return exp;
 

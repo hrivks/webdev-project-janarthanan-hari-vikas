@@ -42,6 +42,9 @@ import { TestComponent } from './components/test/test.component';
 import { InsertYoutubeComponent } from './components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component';
 import { InsertGlyphComponent } from './components/editor/tiny-editor/insert-glyph/insert-glyph.component';
 
+// user components
+import { RegisterComponent } from './components/user/register/register.component';
+
 // #endregion
 
 @NgModule({
@@ -63,7 +66,8 @@ import { InsertGlyphComponent } from './components/editor/tiny-editor/insert-gly
     InsertYoutubeComponent,
     ResizableDirective,
     InsertGlyphComponent,
-    StringFilterPipe
+    StringFilterPipe,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

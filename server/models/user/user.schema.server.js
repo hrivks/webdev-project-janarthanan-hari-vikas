@@ -11,10 +11,8 @@ module.exports = (function () {
             id: String,
             token: String
         },
-        firstName: String,
-        lastName: String,
+        name: String,
         email: String,
-        phone: String,
         dateCreated: { type: Date, default: Date.now }
     }, { collection: 'users' });
 
