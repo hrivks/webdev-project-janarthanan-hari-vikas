@@ -1,4 +1,4 @@
-<div class="row no-gutters editor"
+<div class="row no-gutters editor pb-5"
      [hidden]="!loadComplete">
 
     <!-- Editor -->
@@ -59,7 +59,7 @@
                              [style.height.px]="compHeight"
                              class="tab-pane-inner">
                             <textarea class="w-100 h-100 border-0 markdown-preview"
-                                      [ngModel]="getMarkdown()"
+                                      [ngModel]="markdownHtml | markdownConvertor"
                                       readonly></textarea>
 
                         </div>
@@ -72,3 +72,16 @@
     </div>
     <!-- preview wrapper -->
 </div>
+<nav class="navbar navbar-expand bg-faded border-faded fixed-bottom hvj-footer p-1 px-3">
+    <div class="ml-auto form-inline">
+        <button class="btn btn-primary btn-sm ml-2">
+                <span>Save</span>
+        </button>
+        <button class="btn btn-primary btn-sm ml-2">
+                <span>Commit to Git</span> <i class="fa fa-github fa-lg ml-2" aria-hidden="true"></i>
+        </button>
+        <button class="btn btn-primary btn-sm ml-2" (click)="download()">
+                <span>Download</span> <i class="fa fa-download fa-lg ml-2" aria-hidden="true"></i>
+        </button>
+    </div>
+</nav>

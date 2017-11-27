@@ -68,7 +68,7 @@ export class TinyEditorComponent implements OnInit {
             height: this.height,
             menubar: false,
             toolbar: 'btnTxt btnH btnCode btnInlineCode | btnBold btnItalic btnStrikethrough '
-                + '| numlist bullist | link btnMedia emoticons | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr',
+                + '| numlist bullist | link btnMedia btnGlyph | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr',
             branding: false,
             statusbar: false,
             link_title: false,
@@ -265,6 +265,16 @@ export class TinyEditorComponent implements OnInit {
             onclick: () => {
                 $('.modal').modal('show');
                 vm.openModel('media');
+            }
+        });
+
+        // glyph button
+        editor.addButton('btnGlyph', {
+            icon: 'emoticons',
+            tooltip: 'Insert Emoticons / Glyphicons',
+            onclick: (e) => {
+                this.openPopoverKey = 'glyph';
+                this.openPopover('glyph', $(e.target).offset());
             }
         });
         // #endregion

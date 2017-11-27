@@ -44,6 +44,7 @@ import { InsertGlyphComponent } from './components/editor/tiny-editor/insert-gly
 
 // user components
 import { RegisterComponent } from './components/user/register/register.component';
+import { MarkdownConvertorPipe } from './pipes/markdown-convertor/markdown-convertor.pipe';
 
 // #endregion
 
@@ -67,7 +68,8 @@ import { RegisterComponent } from './components/user/register/register.component
     ResizableDirective,
     InsertGlyphComponent,
     StringFilterPipe,
-    RegisterComponent
+    RegisterComponent,
+    MarkdownConvertorPipe
   ],
   imports: [
     BrowserModule,
@@ -81,7 +83,9 @@ import { RegisterComponent } from './components/user/register/register.component
     ErrorHandlerService,
     InteractionsService,
     IconSearchService,
-    UtilService
+    UtilService,
+    MarkdownConvertorPipe,
+    StringFilterPipe
   ],
   bootstrap: [AppComponent]
 })

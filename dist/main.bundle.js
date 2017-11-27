@@ -170,6 +170,7 @@ var AppConstants = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_glyph_insert_glyph_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-glyph/insert-glyph.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -213,6 +214,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 // user components
 
+
 // #endregion
 var AppModule = (function () {
     function AppModule() {
@@ -238,7 +240,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_13__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
                 __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
                 __WEBPACK_IMPORTED_MODULE_18__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */],
-                __WEBPACK_IMPORTED_MODULE_28__components_user_register_register_component__["a" /* RegisterComponent */]
+                __WEBPACK_IMPORTED_MODULE_28__components_user_register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -252,7 +255,9 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_9__services_error_handler_service_client__["a" /* ErrorHandlerService */],
                 __WEBPACK_IMPORTED_MODULE_7__services_interactions_service_client__["a" /* InteractionsService */],
                 __WEBPACK_IMPORTED_MODULE_11__services_iconsearch_service_client__["a" /* IconSearchService */],
-                __WEBPACK_IMPORTED_MODULE_12__services_utils_service_client__["a" /* UtilService */]
+                __WEBPACK_IMPORTED_MODULE_12__services_utils_service_client__["a" /* UtilService */],
+                __WEBPACK_IMPORTED_MODULE_29__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
+                __WEBPACK_IMPORTED_MODULE_18__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         })
@@ -312,7 +317,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row no-gutters editor\"\r\n     [hidden]=\"!loadComplete\">\r\n\r\n    <!-- Editor -->\r\n    <div class=\"col pr-md-2 editor-wrapper\">\r\n        <app-tiny-editor [(markdownHtml)]=\"markdownHtml\"\r\n                         [height]=\"compHeight + 18\"\r\n                         (loadComplete)=\"onEditorLoad($event)\"></app-tiny-editor>\r\n    </div>\r\n\r\n    <!-- Preview -->\r\n    <div class=\"col pl-md-2 preview-wrapper\">\r\n        <div class=\"card text-center\">\r\n            <div class=\"card-header bg-editor-gray pt-2\">\r\n\r\n                <ul class=\"nav nav-tabs card-header-tabs\"\r\n                    role=\"tablist\">\r\n\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'preview' }\"\r\n                           (click)=\"activeTab='preview'\"\r\n                           role=\"tab\">Preview</a>\r\n                    </li>\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'markdown' }\"\r\n                           (click)=\"activeTab='markdown'\"\r\n                           role=\"tab\">Markdown</a>\r\n                    </li>\r\n\r\n                </ul>\r\n\r\n            </div>\r\n            <div class=\"card-body\"\r\n                 #previewTabBody>\r\n                <!-- Tab panes -->\r\n                <div class=\"tab-content p-2\">\r\n\r\n                    <!-- Preview tab -->\r\n                    <div class=\"tab-pane active show fade text-left\"\r\n                         [ngClass]=\"{'show': activeTab === 'preview' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'preview'\"\r\n                             class=\"tab-pane-inner\"\r\n                             [style.height.px]=\"compHeight\">\r\n                            <div class=\"markdown-body\"\r\n                                 [innerHtml]=\"markdownHtml\"></div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <!-- markdown tab -->\r\n                    <div class=\"tab-pane active fade\"\r\n                         [ngClass]=\"{'show': activeTab === 'markdown' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'markdown'\"\r\n                             [style.height.px]=\"compHeight\"\r\n                             class=\"tab-pane-inner\">\r\n                            <textarea class=\"w-100 h-100 border-0 markdown-preview\"\r\n                                      [ngModel]=\"getMarkdown()\"\r\n                                      readonly></textarea>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n                <!-- tab content -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <!-- preview wrapper -->\r\n</div>"
+module.exports = "<div class=\"row no-gutters editor pb-5\"\r\n     [hidden]=\"!loadComplete\">\r\n\r\n    <!-- Editor -->\r\n    <div class=\"col pr-md-2 editor-wrapper\">\r\n        <app-tiny-editor [(markdownHtml)]=\"markdownHtml\"\r\n                         [height]=\"compHeight + 18\"\r\n                         (loadComplete)=\"onEditorLoad($event)\"></app-tiny-editor>\r\n    </div>\r\n\r\n    <!-- Preview -->\r\n    <div class=\"col pl-md-2 preview-wrapper\">\r\n        <div class=\"card text-center\">\r\n            <div class=\"card-header bg-editor-gray pt-2\">\r\n\r\n                <ul class=\"nav nav-tabs card-header-tabs\"\r\n                    role=\"tablist\">\r\n\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'preview' }\"\r\n                           (click)=\"activeTab='preview'\"\r\n                           role=\"tab\">Preview</a>\r\n                    </li>\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'markdown' }\"\r\n                           (click)=\"activeTab='markdown'\"\r\n                           role=\"tab\">Markdown</a>\r\n                    </li>\r\n\r\n                </ul>\r\n\r\n            </div>\r\n            <div class=\"card-body\"\r\n                 #previewTabBody>\r\n                <!-- Tab panes -->\r\n                <div class=\"tab-content p-2\">\r\n\r\n                    <!-- Preview tab -->\r\n                    <div class=\"tab-pane active show fade text-left\"\r\n                         [ngClass]=\"{'show': activeTab === 'preview' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'preview'\"\r\n                             class=\"tab-pane-inner\"\r\n                             [style.height.px]=\"compHeight\">\r\n                            <div class=\"markdown-body\"\r\n                                 [innerHtml]=\"markdownHtml\"></div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <!-- markdown tab -->\r\n                    <div class=\"tab-pane active fade\"\r\n                         [ngClass]=\"{'show': activeTab === 'markdown' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'markdown'\"\r\n                             [style.height.px]=\"compHeight\"\r\n                             class=\"tab-pane-inner\">\r\n                            <textarea class=\"w-100 h-100 border-0 markdown-preview\"\r\n                                      [ngModel]=\"markdownHtml | markdownConvertor\"\r\n                                      readonly></textarea>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n                <!-- tab content -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <!-- preview wrapper -->\r\n</div>\r\n<nav class=\"navbar navbar-expand bg-faded border-faded fixed-bottom hvj-footer p-1 px-3\">\r\n    <div class=\"ml-auto form-inline\">\r\n        <button class=\"btn btn-primary btn-sm ml-2\">\r\n                <span>Save</span>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2\">\r\n                <span>Commit to Git</span> <i class=\"fa fa-github fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2\" (click)=\"download()\">\r\n                <span>Download</span> <i class=\"fa fa-download fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n    </div>\r\n</nav>"
 
 /***/ }),
 
@@ -322,6 +327,7 @@ module.exports = "<div class=\"row no-gutters editor\"\r\n     [hidden]=\"!loadC
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditorComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -332,10 +338,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var EditorComponent = (function () {
-    function EditorComponent(zone) {
-        this.zone = zone;
-        this.compHeight = window.innerHeight - 131;
+    function EditorComponent(markdownConvertor) {
+        this.markdownConvertor = markdownConvertor;
+        this.compHeight = window.innerHeight - 181;
         this.loadComplete = false;
     }
     EditorComponent.prototype.ngOnInit = function () {
@@ -346,97 +353,19 @@ var EditorComponent = (function () {
     EditorComponent.prototype.onEditorLoad = function () {
         this.loadComplete = true;
     };
-    EditorComponent.prototype.onEditorChange = function () {
-        var _this = this;
-        var html = this.editor.getContent();
-        this.zone.run(function () {
-            _this.markdownHtml = html;
-        });
-    };
-    EditorComponent.prototype.getMarkdown = function () {
-        if (this.markdownHtml) {
-            return toMarkdown(this.markdownHtml, {
-                gfm: true,
-                converters: [
-                    {
-                        filter: 'span',
-                        replacement: function (content, node) {
-                            if (node.getAttribute('style') === 'text-decoration: line-through;') {
-                                return '~~' + content + '~~';
-                            }
-                            else {
-                                return content;
-                            }
-                        }
-                    },
-                    {
-                        filter: 'table',
-                        replacement: function (content, node) {
-                            // padding for cells
-                            var cells = content.split('|');
-                            var largestCell = cells.reduce(function (r, i) { return i.length > r ? i.length : r; }, 0);
-                            cells = cells.map(function (i) {
-                                if (i.length === 0 || i === '\n') {
-                                    return i;
-                                }
-                                else {
-                                    return i + ' '.repeat(largestCell - i.length);
-                                }
-                            });
-                            content = cells.join('|');
-                            var firstRow = content.substring(0, content.indexOf('\n', 1));
-                            var colCount = firstRow.split('|').length - 2;
-                            var headerRow = '\n';
-                            var headerCellContent = '-'.repeat(largestCell);
-                            // check for alignment
-                            for (var i = 0; i < colCount; i++) {
-                                var cellMarkdown = '|' + headerCellContent;
-                                if (node.rows[0].cells[i].align === 'right') {
-                                    cellMarkdown = '|' + headerCellContent.substring(0, largestCell - 1) + ':';
-                                }
-                                else if (node.rows[0].cells[i].align === 'center') {
-                                    cellMarkdown = '|:' + headerCellContent.substring(0, largestCell - 2) + ':';
-                                }
-                                headerRow += cellMarkdown;
-                            }
-                            headerRow += '|';
-                            content = content.replace(firstRow, firstRow + headerRow);
-                            return content;
-                        }
-                    },
-                    {
-                        filter: 'pre',
-                        replacement: function (content, node) {
-                            if (node.getAttribute('class') && node.getAttribute('class').indexOf('language-') > -1) {
-                                var lang = node.getAttribute('class').replace('language-', '');
-                                lang = lang === 'NA' ? '' : lang;
-                                return '```' + (lang || '') + '\n' + content.replace('<code>', '').replace('</code>', '') + '\n```';
-                            }
-                            else {
-                                return content;
-                            }
-                        }
-                    },
-                    {
-                        filter: 'img',
-                        replacement: function (content, node) {
-                            var src = $(node).attr('src');
-                            var alt = $(node).attr('alt');
-                            var emoji = $(node).attr('data-emoji');
-                            if (emoji) {
-                                return ':' + emoji + ':';
-                            }
-                            else {
-                                return '![' + (alt || '') + '](' + (src || '') + ')';
-                            }
-                        }
-                    }
-                ]
-            });
-        }
-        else {
-            return '';
-        }
+    /** Download markdown file */
+    EditorComponent.prototype.download = function () {
+        var markdown = this.markdownConvertor.transform(this.markdownHtml);
+        var textFileAsBlob = new Blob([markdown], { type: 'text/plain' });
+        var fileName = 'README.md';
+        var downloadLink = document.createElement('a');
+        downloadLink.download = fileName;
+        downloadLink.innerHTML = 'Download README.md';
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.onclick = function (e) { document.body.removeChild(e.target); };
+        downloadLink.style.display = 'none';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('inputArea'),
@@ -453,7 +382,7 @@ var EditorComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/components/editor/editor.component.css"), __webpack_require__("../../../../../src/assets/github-markdown.css")],
             encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* ViewEncapsulation */].None
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* NgZone */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */]])
     ], EditorComponent);
     return EditorComponent;
 }());
@@ -1180,7 +1109,7 @@ var TinyEditorComponent = (function () {
             height: this.height,
             menubar: false,
             toolbar: 'btnTxt btnH btnCode btnInlineCode | btnBold btnItalic btnStrikethrough '
-                + '| numlist bullist | link btnMedia emoticons | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr',
+                + '| numlist bullist | link btnMedia btnGlyph | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr',
             branding: false,
             statusbar: false,
             link_title: false,
@@ -1357,6 +1286,15 @@ var TinyEditorComponent = (function () {
             onclick: function () {
                 $('.modal').modal('show');
                 vm.openModel('media');
+            }
+        });
+        // glyph button
+        editor.addButton('btnGlyph', {
+            icon: 'emoticons',
+            tooltip: 'Insert Emoticons / Glyphicons',
+            onclick: function (e) {
+                _this.openPopoverKey = 'glyph';
+                _this.openPopover('glyph', $(e.target).offset());
             }
         });
         // #endregion
@@ -3878,6 +3816,124 @@ var User = (function () {
     function User() {
     }
     return User;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarkdownConvertorPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var MarkdownConvertorPipe = (function () {
+    function MarkdownConvertorPipe() {
+    }
+    MarkdownConvertorPipe.prototype.transform = function (value) {
+        if (value) {
+            return toMarkdown(value, {
+                gfm: true,
+                converters: [
+                    // list of convertors: HTML tags to Markdown elements
+                    {
+                        // strike-through element conversion
+                        filter: 'span',
+                        replacement: function (content, node) {
+                            if (node.getAttribute('style') === 'text-decoration: line-through;') {
+                                return '~~' + content + '~~';
+                            }
+                            else {
+                                return content;
+                            }
+                        }
+                    },
+                    {
+                        // table element conversion
+                        filter: 'table',
+                        replacement: function (content, node) {
+                            // padding for cells
+                            var cells = content.split('|');
+                            var largestCell = cells.reduce(function (r, i) { return i.length > r ? i.length : r; }, 0);
+                            cells = cells.map(function (i) {
+                                if (i.length === 0 || i === '\n') {
+                                    return i;
+                                }
+                                else {
+                                    return i + ' '.repeat(largestCell - i.length);
+                                }
+                            });
+                            content = cells.join('|');
+                            var firstRow = content.substring(0, content.indexOf('\n', 1));
+                            var colCount = firstRow.split('|').length - 2;
+                            var headerRow = '\n';
+                            var headerCellContent = '-'.repeat(largestCell);
+                            // check for alignment
+                            for (var i = 0; i < colCount; i++) {
+                                var cellMarkdown = '|' + headerCellContent;
+                                if (node.rows[0].cells[i].align === 'right') {
+                                    cellMarkdown = '|' + headerCellContent.substring(0, largestCell - 1) + ':';
+                                }
+                                else if (node.rows[0].cells[i].align === 'center') {
+                                    cellMarkdown = '|:' + headerCellContent.substring(0, largestCell - 2) + ':';
+                                }
+                                headerRow += cellMarkdown;
+                            }
+                            headerRow += '|';
+                            content = content.replace(firstRow, firstRow + headerRow);
+                            return content;
+                        }
+                    },
+                    {
+                        // code element conversion
+                        filter: 'pre',
+                        replacement: function (content, node) {
+                            if (node.getAttribute('class') && node.getAttribute('class').indexOf('language-') > -1) {
+                                var lang = node.getAttribute('class').replace('language-', '');
+                                lang = lang === 'NA' ? '' : lang;
+                                return '```' + (lang || '') + '\n' + content.replace('<code>', '').replace('</code>', '') + '\n```';
+                            }
+                            else {
+                                return content;
+                            }
+                        }
+                    },
+                    {
+                        // img element conversion
+                        filter: 'img',
+                        replacement: function (content, node) {
+                            var src = $(node).attr('src');
+                            var alt = $(node).attr('alt');
+                            var emoji = $(node).attr('data-emoji');
+                            if (emoji) {
+                                return ':' + emoji + ':';
+                            }
+                            else {
+                                return '![' + (alt || '') + '](' + (src || '') + ')';
+                            }
+                        }
+                    }
+                ]
+            });
+        }
+        else {
+            return '';
+        }
+    };
+    MarkdownConvertorPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Pipe */])({
+            name: 'markdownConvertor'
+        })
+    ], MarkdownConvertorPipe);
+    return MarkdownConvertorPipe;
 }());
 
 
