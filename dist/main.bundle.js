@@ -1094,6 +1094,10 @@ var TinyEditorComponent = (function () {
         this.popovers = {
             'glyphs': { title: 'Insert Glyphs', key: 'glyphs', control: {} }
         };
+        var cachedMarkdown = localStorage.getItem('lastEditedMarkdownHtml');
+        if (cachedMarkdown) {
+            this.markdownHtml = cachedMarkdown;
+        }
         this.initEditor();
     };
     /** Initialize TinyMCE editor */
@@ -1423,6 +1427,8 @@ var TinyEditorComponent = (function () {
     TinyEditorComponent.prototype.onEditorChange = function () {
         var _this = this;
         var html = this.editor.getContent();
+        /** Save Markdown to local storage */
+        localStorage.setItem('lastEditedMarkdownHtml', html);
         this.zone.run(function () {
             _this.markdownHtmlChange.emit(html);
         });
@@ -1799,7 +1805,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\r\n    <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n            type=\"button\"\r\n            data-toggle=\"collapse\"\r\n            data-target=\"#navbar-content\"\r\n            aria-controls=\"navbarColor01\"\r\n            aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n    <a class=\"navbar-brand\"\r\n       href=\"#\">WriteMe.md</a>\r\n\r\n    <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\r\n         id=\"navbar-content\">\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\"\r\n                   href=\"#\">Editor</a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\"\r\n                   href=\"#\">Projects</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\"\r\n                   href=\"#\">Profile</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Login form -->\r\n        <form class=\"form-inline float-right ml-auto\"\r\n              (submit)=\"login()\"\r\n              *ngIf=\"!loggedIn\">\r\n            <input class=\"form-control mr-sm-2 form-control-sm\"\r\n                   type=\"text\"\r\n                   placeholder=\"Username\"\r\n                   name=\"username\"\r\n                   [(ngModel)]=\"username\">\r\n            <input class=\"form-control mr-sm-2 form-control-sm\"\r\n                   type=\"password\"\r\n                   placeholder=\"Password\"\r\n                   name=\"password\"\r\n                   [(ngModel)]=\"password\">\r\n            <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\r\n                    type=\"submit\">Login</button>\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\r\n               href=\"http://localhost:3100/api/auth/github\"\r\n               target=\"_self\">\r\n                <i class=\"fa fa-github\" aria-hidden=\"true\"></i>\r\n            </a>\r\n            <a class=\"btn border text-muted ml-2 my-2 my-sm-0 btn-sm\"\r\n               [routerLink]=\"['/register']\">Register</a>\r\n        </form>\r\n        <!-- / Login form -->\r\n\r\n        <!-- Logout form -->\r\n        <ul class=\"float-right ml-auto navbar-nav form-inline\"\r\n            *ngIf=\"loggedIn\">\r\n            <li class=\"nav-item\">\r\n                <span>Hello, {{loggedIn.name}}</span>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <button class=\"btn btn-secondary btn-sm\"\r\n                        (click)=\"logout()\">Logout</button>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-primary fixed-top py-0\">\r\n    <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n            type=\"button\"\r\n            data-toggle=\"collapse\"\r\n            data-target=\"#navbar-content\"\r\n            aria-controls=\"navbarColor01\"\r\n            aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n    <a class=\"navbar-brand\"\r\n       href=\"#\">WriteMe.md</a>\r\n\r\n    <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\r\n         id=\"navbar-content\">\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\"\r\n                   href=\"#\">Editor</a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\"\r\n                   href=\"#\">Projects</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\"\r\n                   href=\"#\">Profile</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Login form -->\r\n        <form class=\"form-inline float-right ml-auto\"\r\n              (submit)=\"login()\"\r\n              *ngIf=\"!loggedIn\">\r\n            <input class=\"form-control mr-sm-2 form-control-sm\"\r\n                   type=\"text\"\r\n                   placeholder=\"Username\"\r\n                   name=\"username\"\r\n                   [(ngModel)]=\"username\">\r\n            <input class=\"form-control mr-sm-2 form-control-sm\"\r\n                   type=\"password\"\r\n                   placeholder=\"Password\"\r\n                   name=\"password\"\r\n                   [(ngModel)]=\"password\">\r\n            <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm\"\r\n                    type=\"submit\">Login</button>\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm p-1\"\r\n               href=\"http://localhost:3100/api/auth/github\"\r\n               target=\"_self\">\r\n                <i class=\"fa fa-github fa-2x\" aria-hidden=\"true\"></i>\r\n            </a>\r\n            <a class=\"btn border text-muted ml-2 my-2 my-sm-0 btn-sm\"\r\n               [routerLink]=\"['/register']\">Register</a>\r\n        </form>\r\n        <!-- / Login form -->\r\n\r\n        <!-- Logout form -->\r\n        <ul class=\"float-right ml-auto navbar-nav form-inline\"\r\n            *ngIf=\"loggedIn\">\r\n            <li class=\"nav-item\">\r\n                <span class=\"fa fa-user-circle fa-lg\"></span>\r\n                <span> {{loggedIn.name || loggedIn.username}}</span>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <button class=\"btn btn-secondary btn-sm\"\r\n                        (click)=\"logout()\">Logout</button>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>"
 
 /***/ }),
 
@@ -1810,6 +1816,7 @@ module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-pri
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1821,10 +1828,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var NavComponent = (function () {
-    function NavComponent(authService) {
+    function NavComponent(authService, errorHanderService) {
         var _this = this;
         this.authService = authService;
+        this.errorHanderService = errorHanderService;
         this.authService.checkLoggedIn(true)
             .subscribe(function (loggedIn) {
             if (loggedIn) {
@@ -1838,7 +1847,13 @@ var NavComponent = (function () {
     NavComponent.prototype.ngOnInit = function () {
     };
     NavComponent.prototype.login = function () {
-        this.authService.login(this.username, this.password);
+        var _this = this;
+        this.authService.login(this.username, this.password)
+            .subscribe(function (usr) {
+            _this.loggedIn = usr;
+        }, function (err) {
+            _this.errorHanderService.handleError('Login Failed', err);
+        });
     };
     NavComponent.prototype.logout = function () {
         this.authService.logout();
@@ -1849,7 +1864,8 @@ var NavComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/shared/nav/nav.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__["a" /* AuthService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
     ], NavComponent);
     return NavComponent;
 }());
@@ -1879,7 +1895,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/test/test.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg-light p-3\">\r\n    <div style=\"width:250px\"\r\n         class=\"m-auto order\">\r\n        <app-insert-glyph [compControl]=\"compControl\" (onIconSelect)=\"submit($event)\"></app-insert-glyph>\r\n    </div>\r\n\r\n    <button class=\"btn btn-success btn-sm\"\r\n            (click)=\"submit()\">Ok</button>\r\n</div>"
+module.exports = "<a href=\"http://localhost:3100/api/auth/github\">Login with Git</a>"
 
 /***/ }),
 
@@ -2000,7 +2016,7 @@ var RegisterComponent = (function () {
                 console.log(registeredUser);
                 _this.authService.setLoggedInUser(registeredUser);
                 _this.interactionsService.showLoader(false);
-                _this.router.navigate(['/profile']);
+                _this.router.navigate(['/']);
             }
             else {
                 _this.interactionsService.showAlert('Registration unsuccessful! <br/> Server returned empty user object');
@@ -4072,6 +4088,7 @@ var AuthService = (function () {
             _this.userService.loggedIn()
                 .subscribe(function (res) {
                 if (res) {
+                    console.log(res);
                     _this.setLoggedInUser(res);
                     observer.next(true);
                     observer.complete();
@@ -4102,7 +4119,7 @@ var AuthService = (function () {
             .subscribe(function (res) {
             _this.loggedInUser = null;
             localStorage.removeItem('loggedInUser');
-            _this.router.navigate(['/editor']);
+            _this.router.navigate(['/']);
         }, function (err) {
             _this.errorHandlerService.handleError('Oops! Strange! Can\'t log you out!', err);
         });

@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { concat } from 'rxjs/operator/concat';
 import { MarkdownConvertorPipe } from '../../pipes/markdown-convertor/markdown-convertor.pipe';
+
 declare var $; // jquery
 declare var tinymce: any; // tinyMCE editor
 declare var toMarkdown: any; // to-markdown

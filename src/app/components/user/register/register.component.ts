@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
           console.log(registeredUser);
           this.authService.setLoggedInUser(registeredUser);
           this.interactionsService.showLoader(false);
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/']);
         } else {
           this.interactionsService.showAlert('Registration unsuccessful! <br/> Server returned empty user object');
         }

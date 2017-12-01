@@ -19,51 +19,61 @@ module.exports = (function() {
 
     //#region: Github Authentication
 
-    function githubStrategy(token, refreshToken, profile, done) {
-        if (!profile) {
-            done(null, false);
+    function githubStrategy(req, token, refreshToken, profile, done) {
+        if (req.user) {
+            // user is already authenticated.
+            // associate git hub account
+            req.user.github = {
+                id: profile.id,
+                token: token
+            };
+
+            UserModel.updateUser(req.user._id, req.user)
+                .then((usr) => { done(null, usr);}, (err) => { done(err, null); });
+                
         } else {
-            // get user by facebook id
-            UserModel.findUserByGithubId(profile.id)
-                .then((user) => {
-                    if (user) {
-                        done(null, user);
-                    } else {
-                        // user does not exist. create user
+            if (!profile) {
+                done(null, false);
+            } else {
+                // get user by github id
+                UserModel.findUserByGithubId(profile.id)
+                    .then((user) => {
+                        if (user) {
+                            done(null, user);
+                        } else {
+                            // user does not exist. create user
 
-                        const newGitUser = {
-                            name: profile.displayName,
-                            github: {
-                                id: profile.id,
-                                token: token
-                            }
-                        };
+                            const newGitUser = {
+                                name: profile.displayName,
+                                github: {
+                                    id: profile.id,
+                                    token: token
+                                }
+                            };
 
-                        UserModel.create(newGitUser, (err, createdUser) => {
-                            if (err) {
-                                done(err, null);
-                            } else {
-                                done(null, createdUser);
-                            }
-                        });
-                    }
-                }, (err) => {
-                    done(err, null);
-                });
+                            UserModel.create(newGitUser, (err, createdUser) => {
+                                if (err) {
+                                    done(err, null);
+                                } else {
+                                    done(null, createdUser);
+                                }
+                            });
+                        }
+                    }, (err) => {
+                        done(err, null);
+                    });
+            }
         }
     }
-
-
 
     var githubConfig = {
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: process.env.GITHUB_CALLBACK_URL || 'http://localhost:3100/api/auth/github/callback'
+        callbackURL: process.env.GITHUB_CALLBACK_URL || 'http://localhost:3100/api/auth/github/callback',
+        passReqToCallback: true
     };
 
     passport.use(new GithubPassportStrategy(githubConfig, githubStrategy));
-
-
 
     // route: [GET] '/api/auth/github'
     router.get('/github', passport.authenticate('github', {

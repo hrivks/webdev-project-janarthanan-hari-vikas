@@ -75,6 +75,7 @@ export class AuthService implements CanActivate {
             this.userService.loggedIn()
                 .subscribe((res) => {
                     if (res) {
+                        console.log(res);
                         this.setLoggedInUser(res);
                         observer.next(true);
                         observer.complete();
@@ -105,7 +106,7 @@ export class AuthService implements CanActivate {
             .subscribe((res) => {
                 this.loggedInUser = null;
                 localStorage.removeItem('loggedInUser');
-                this.router.navigate(['/editor']);
+                this.router.navigate(['/']);
             }, (err) => {
                 this.errorHandlerService.handleError('Oops! Strange! Can\'t log you out!', err);
             });

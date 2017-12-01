@@ -49,10 +49,10 @@
                    [(ngModel)]="password">
             <button class="btn btn-secondary my-2 my-sm-0 btn-sm"
                     type="submit">Login</button>
-            <a class="btn btn-secondary my-2 my-sm-0 btn-sm"
+            <a class="btn btn-secondary my-2 my-sm-0 btn-sm p-1"
                href="http://localhost:3100/api/auth/github"
                target="_self">
-                <i class="fa fa-github" aria-hidden="true"></i>
+                <i class="fa fa-github fa-2x" aria-hidden="true"></i>
             </a>
             <a class="btn border text-muted ml-2 my-2 my-sm-0 btn-sm"
                [routerLink]="['/register']">Register</a>
@@ -63,7 +63,8 @@
         <ul class="float-right ml-auto navbar-nav form-inline"
             *ngIf="loggedIn">
             <li class="nav-item">
-                <span>Hello, {{loggedIn.name}}</span>
+                <span class="fa fa-user-circle fa-lg"></span>
+                <span> {{loggedIn.name || loggedIn.username}}</span>
             </li>
             <li class="nav-item">
                 <button class="btn btn-secondary btn-sm"

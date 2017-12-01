@@ -51,6 +51,11 @@ export class TinyEditorComponent implements OnInit {
             'glyphs': { title: 'Insert Glyphs', key: 'glyphs', control: {} }
         };
 
+        const cachedMarkdown = localStorage.getItem('lastEditedMarkdownHtml');
+        if (cachedMarkdown) {
+            this.markdownHtml = cachedMarkdown;
+        }
+
         this.initEditor();
     }
 
@@ -415,6 +420,9 @@ export class TinyEditorComponent implements OnInit {
     private onEditorChange() {
 
         const html = this.editor.getContent();
+        /** Save Markdown to local storage */
+        localStorage.setItem('lastEditedMarkdownHtml', html);
+
         this.zone.run(() => {
             this.markdownHtmlChange.emit(html);
         });

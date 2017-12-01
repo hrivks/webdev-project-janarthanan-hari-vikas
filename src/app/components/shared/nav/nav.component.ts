@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service.client';
 import { User } from '../../../model/model';
+import { ErrorHandlerService } from '../../../services/error-handler.service.client';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class NavComponent implements OnInit {
   private username: string;
   private password: string;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+    private errorHanderService: ErrorHandlerService) {
     this.authService.checkLoggedIn(true)
       .subscribe((loggedIn) => {
         if (loggedIn) {
@@ -31,7 +33,12 @@ export class NavComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.username, this.password);
+    this.authService.login(this.username, this.password)
+      .subscribe((usr) => {
+        this.loggedIn = usr;
+      }, (err) => {
+        this.errorHanderService.handleError('Login Failed', err);
+      });
   }
 
   logout() {
