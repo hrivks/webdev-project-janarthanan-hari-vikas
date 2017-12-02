@@ -77,7 +77,7 @@ module.exports = (function() {
 
     // route: [GET] '/api/auth/github'
     router.get('/github', passport.authenticate('github', {
-        scope: 'email'
+        scope: 'repo'
     }));
 
     // route: [GET] '/api/auth/github/callback'

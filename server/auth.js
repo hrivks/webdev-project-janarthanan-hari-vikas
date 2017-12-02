@@ -46,7 +46,7 @@ module.exports = (function() {
                 if (user) {
                     done(null, user);
                 } else {
-                    done('No such user exists', null);
+                    done(null, false);
                 }
             }, (err) => {
                 done(err, null);

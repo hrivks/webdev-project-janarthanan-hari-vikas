@@ -5,6 +5,8 @@ import { User } from '../model/model';
 import { UserService } from './user.service.client';
 import { ErrorHandlerService } from './error-handler.service.client';
 import { CanActivate } from '@angular/router';
+import { InteractionsService } from './interactions.service.client';
+import { AppConstants } from '../app.constant';
 
 @Injectable()
 export class AuthService implements CanActivate {
@@ -18,7 +20,10 @@ export class AuthService implements CanActivate {
         'logout': this.logout
     };
 
-    constructor(private router: Router, private userService: UserService, private errorHandlerService: ErrorHandlerService) { }
+    constructor(private router: Router,
+        private userService: UserService,
+        private interactionService: InteractionsService,
+        private errorHandlerService: ErrorHandlerService) { }
 
     canActivate() {
         return this.checkLoggedIn();
@@ -42,6 +47,14 @@ export class AuthService implements CanActivate {
     setLoggedInUser(user: User): void {
         this.loggedInUser = user;
         localStorage.setItem('loggedInUser', JSON.stringify(this.loggedInUser));
+        this.interactionService.invoke(AppConstants.EVENTS.loginChange, Object.assign({}, this.loggedInUser));
+    }
+
+    /** Remove logged in user */
+    removeLoggedInUser(): void {
+        this.loggedInUser = null;
+        localStorage.removeItem('loggedInUser');
+        this.interactionService.invoke(AppConstants.EVENTS.loginChange, null);
     }
 
     /**
@@ -59,6 +72,7 @@ export class AuthService implements CanActivate {
                     observer.next(Object.assign({}, loggedInUser));
                     observer.complete();
                 }, (err) => {
+                    this.removeLoggedInUser();
                     observer.error(err);
                 });
         });
@@ -80,8 +94,7 @@ export class AuthService implements CanActivate {
                         observer.next(true);
                         observer.complete();
                     } else {
-                        this.loggedInUser = null;
-                        localStorage.removeItem('loggedInUser');
+                        this.removeLoggedInUser();
                         if (!disableRedirect) {
                             this.router.navigate(['/login']);
                         }
@@ -90,6 +103,7 @@ export class AuthService implements CanActivate {
                     }
                 }, (err) => {
                     console.log(err);
+                    this.removeLoggedInUser();
                     observer.next(false);
                     observer.complete();
                 });
@@ -104,8 +118,7 @@ export class AuthService implements CanActivate {
     logout() {
         this.userService.logout()
             .subscribe((res) => {
-                this.loggedInUser = null;
-                localStorage.removeItem('loggedInUser');
+                this.removeLoggedInUser();
                 this.router.navigate(['/']);
             }, (err) => {
                 this.errorHandlerService.handleError('Oops! Strange! Can\'t log you out!', err);

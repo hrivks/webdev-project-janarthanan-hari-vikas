@@ -7,4 +7,8 @@ export class User implements IAppEntity {
     password: string;
     name: string;
     email?: string;
+    github: {
+        id: string,
+        token: string
+    }
 }

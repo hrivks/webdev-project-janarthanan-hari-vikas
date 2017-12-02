@@ -9,6 +9,7 @@ import { ComponentControl } from '../../model/ui-model';
 export class TestComponent implements OnInit {
 
   private compControl: ComponentControl;
+  private a: boolean;
 
   constructor() { }
 

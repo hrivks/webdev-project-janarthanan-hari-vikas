@@ -3,7 +3,8 @@ import { environment } from '../environments/environment';
 export class AppConstants {
     public static EVENTS = {
         showAlert: 'showAlert',
-        showLoader: 'showLoader'
+        showLoader: 'showLoader',
+        loginChange: 'loginChange'
     };
 
     public static ENDPOINT = environment.endpoint;

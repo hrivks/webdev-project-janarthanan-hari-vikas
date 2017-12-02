@@ -123,7 +123,8 @@ var AppConstants = (function () {
     }
     AppConstants.EVENTS = {
         showAlert: 'showAlert',
-        showLoader: 'showLoader'
+        showLoader: 'showLoader',
+        loginChange: 'loginChange'
     };
     AppConstants.ENDPOINT = __WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].endpoint;
     AppConstants.APP_ROOT_URL = 'http://writeme-md.herokuapp.com';
@@ -154,23 +155,25 @@ var AppConstants = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_iconsearch_service_client__ = __webpack_require__("../../../../../src/app/services/iconsearch.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_utils_service_client__ = __webpack_require__("../../../../../src/app/services/utils.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__directives_resizable_resizable_directive__ = __webpack_require__("../../../../../src/app/directives/resizable/resizable.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pipes_string_filter_string_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/string-filter/string-filter.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_editor_tiny_editor_insert_code_insert_code_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-code/insert-code.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_insert_media_insert_media_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_glyph_insert_glyph_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-glyph/insert-glyph.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__directives_resizable_resizable_directive__ = __webpack_require__("../../../../../src/app/directives/resizable/resizable.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pipes_string_filter_string_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/string-filter/string-filter.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_code_insert_code_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-code/insert-code.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_media_insert_media_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_editor_tiny_editor_insert_glyph_insert_glyph_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-glyph/insert-glyph.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_editor_git_commit_commit_component__ = __webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -191,6 +194,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // #endregion
 // #region App Components
 // directives
@@ -202,7 +206,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 // pipes
 
+
 // editor components
+
 
 
 
@@ -214,7 +220,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 // user components
 
-
 // #endregion
 var AppModule = (function () {
     function AppModule() {
@@ -225,23 +230,24 @@ var AppModule = (function () {
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_6__components_home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__components_shared_alert_alert_component__["a" /* AlertComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__components_shared_loader_loader_component__["a" /* LoaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__components_shared_nav_nav_component__["a" /* NavComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
-                __WEBPACK_IMPORTED_MODULE_19__components_editor_editor_component__["a" /* EditorComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */],
-                __WEBPACK_IMPORTED_MODULE_21__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__components_editor_tiny_editor_insert_code_insert_code_component__["a" /* InsertCodeComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_insert_media_insert_media_component__["a" /* InsertMediaComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components_test_test_component__["a" /* TestComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__["a" /* InsertImageComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__["a" /* InsertYoutubeComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
-                __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */],
-                __WEBPACK_IMPORTED_MODULE_28__components_user_register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */]
+                __WEBPACK_IMPORTED_MODULE_16__components_shared_alert_alert_component__["a" /* AlertComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__components_shared_loader_loader_component__["a" /* LoaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__components_shared_nav_nav_component__["a" /* NavComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
+                __WEBPACK_IMPORTED_MODULE_21__components_editor_editor_component__["a" /* EditorComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_code_insert_code_component__["a" /* InsertCodeComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_media_insert_media_component__["a" /* InsertMediaComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__components_test_test_component__["a" /* TestComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__["a" /* InsertImageComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__["a" /* InsertYoutubeComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
+                __WEBPACK_IMPORTED_MODULE_29__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */],
+                __WEBPACK_IMPORTED_MODULE_31__components_user_register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
+                __WEBPACK_IMPORTED_MODULE_30__components_editor_git_commit_commit_component__["a" /* CommitComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -252,12 +258,13 @@ var AppModule = (function () {
             providers: [
                 __WEBPACK_IMPORTED_MODULE_10__services_user_service_client__["a" /* UserService */],
                 __WEBPACK_IMPORTED_MODULE_8__services_auth_service_client__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_13__services_github_service_client__["a" /* GitHubService */],
                 __WEBPACK_IMPORTED_MODULE_9__services_error_handler_service_client__["a" /* ErrorHandlerService */],
                 __WEBPACK_IMPORTED_MODULE_7__services_interactions_service_client__["a" /* InteractionsService */],
                 __WEBPACK_IMPORTED_MODULE_11__services_iconsearch_service_client__["a" /* IconSearchService */],
                 __WEBPACK_IMPORTED_MODULE_12__services_utils_service_client__["a" /* UtilService */],
-                __WEBPACK_IMPORTED_MODULE_29__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
-                __WEBPACK_IMPORTED_MODULE_18__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
+                __WEBPACK_IMPORTED_MODULE_20__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
+                __WEBPACK_IMPORTED_MODULE_19__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         })
@@ -385,6 +392,98 @@ var EditorComponent = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */]])
     ], EditorComponent);
     return EditorComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/git/commit/commit.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/git/commit/commit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"git-commit\">\n\n    <div *ngIf=\"!gitToken\">\n        <!-- Git Login prompt -->\n        <div class=\"my-3 text-center\">\n            <i class=\"fa fa-github fa-3x\"></i>\n            <br>\n            <a class=\"btn btn-primary btn-sm\"\n               href=\"http://localhost:3100/api/auth/github\">Login to Github to proceed</a>\n        </div>\n    </div>\n\n    <div *ngIf=\"gitToken\">\n        <!-- repos list -->\n        <div class=\"form-group form-inline\">\n            <label class=\"control-label\">Repository </label>\n\n            <div class=\"input-group input-group-sm ml-2\">\n                <input type=\"text\"\n                       class=\"form-control\"\n                       [(ngModel)]=\"selectedRepo\"\n                       placeholder=\"Select or Enter Repo full name\">\n                <div class=\"input-group-btn\">\n                    <div class=\"btn-group\">\n                        <button class=\"btn btn-primary dropdown-toggle py-2 px-3 m-0\"\n                                type=\"button\"\n                                data-toggle=\"dropdown\">\n                          </button>\n                        <div class=\"dropdown-menu\">\n                            <a class=\"dropdown-item\"\n                               *ngFor=\"let r of repos\"\n                               (click)=\"selectedRepo=r\">{{r}}</a>\n                        </div>\n                    </div>\n\n                </div>\n            </div>\n        </div>\n\n    </div>\n\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/git/commit/commit.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommitComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var CommitComponent = (function () {
+    function CommitComponent(authService, interactionService, githubService, errorHandlerService) {
+        this.authService = authService;
+        this.interactionService = interactionService;
+        this.githubService = githubService;
+        this.errorHandlerService = errorHandlerService;
+    }
+    CommitComponent.prototype.ngOnInit = function () {
+        var loggedInUser = this.authService.getLoggedInUser();
+        if (loggedInUser && loggedInUser.github.token) {
+            this.gitToken = loggedInUser.github.token;
+            this.getUserRepos();
+        }
+    };
+    /** Get list of user repositories */
+    CommitComponent.prototype.getUserRepos = function () {
+        var _this = this;
+        this.githubService.getRepos()
+            .subscribe(function (repos) {
+            console.log(repos);
+            _this.repos = repos;
+        }, function (err) {
+            _this.errorHandlerService.handleError('Error getting GitHub Repositories', err);
+        });
+    };
+    CommitComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-commit-to-git',
+            template: __webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_github_service_client__["a" /* GitHubService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
+    ], CommitComponent);
+    return CommitComponent;
 }());
 
 
@@ -1817,6 +1916,8 @@ module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-pri
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_constant__ = __webpack_require__("../../../../../src/app/app.constant.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1829,11 +1930,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var NavComponent = (function () {
-    function NavComponent(authService, errorHanderService) {
+    function NavComponent(authService, interactionService, errorHanderService) {
         var _this = this;
         this.authService = authService;
+        this.interactionService = interactionService;
         this.errorHanderService = errorHanderService;
+        // register for login change
+        this.interactionService.registerCallback(__WEBPACK_IMPORTED_MODULE_4__app_constant__["a" /* AppConstants */].EVENTS.loginChange, function (user) {
+            if (user) {
+                _this.loggedIn = user;
+            }
+            else {
+                _this.loggedIn = false;
+            }
+        });
         this.authService.checkLoggedIn(true)
             .subscribe(function (loggedIn) {
             if (loggedIn) {
@@ -1865,6 +1978,7 @@ var NavComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/components/shared/nav/nav.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__["a" /* InteractionsService */],
             __WEBPACK_IMPORTED_MODULE_2__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
     ], NavComponent);
     return NavComponent;
@@ -1895,7 +2009,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/test/test.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<a href=\"http://localhost:3100/api/auth/github\">Login with Git</a>"
+module.exports = "<app-commit-to-git></app-commit-to-git>"
 
 /***/ }),
 
@@ -4010,6 +4124,8 @@ var StringFilterPipe = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/_esm5/Rx.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_constant__ = __webpack_require__("../../../../../src/app/app.constant.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4024,10 +4140,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var AuthService = (function () {
-    function AuthService(router, userService, errorHandlerService) {
+    function AuthService(router, userService, interactionService, errorHandlerService) {
         this.router = router;
         this.userService = userService;
+        this.interactionService = interactionService;
         this.errorHandlerService = errorHandlerService;
         this.api = {
             'getLoggedInUser': this.getLoggedInUser,
@@ -4056,6 +4175,13 @@ var AuthService = (function () {
     AuthService.prototype.setLoggedInUser = function (user) {
         this.loggedInUser = user;
         localStorage.setItem('loggedInUser', JSON.stringify(this.loggedInUser));
+        this.interactionService.invoke(__WEBPACK_IMPORTED_MODULE_6__app_constant__["a" /* AppConstants */].EVENTS.loginChange, Object.assign({}, this.loggedInUser));
+    };
+    /** Remove logged in user */
+    AuthService.prototype.removeLoggedInUser = function () {
+        this.loggedInUser = null;
+        localStorage.removeItem('loggedInUser');
+        this.interactionService.invoke(__WEBPACK_IMPORTED_MODULE_6__app_constant__["a" /* AppConstants */].EVENTS.loginChange, null);
     };
     /**
      * Login user
@@ -4073,6 +4199,7 @@ var AuthService = (function () {
                 observer.next(Object.assign({}, loggedInUser));
                 observer.complete();
             }, function (err) {
+                _this.removeLoggedInUser();
                 observer.error(err);
             });
         });
@@ -4094,8 +4221,7 @@ var AuthService = (function () {
                     observer.complete();
                 }
                 else {
-                    _this.loggedInUser = null;
-                    localStorage.removeItem('loggedInUser');
+                    _this.removeLoggedInUser();
                     if (!disableRedirect) {
                         _this.router.navigate(['/login']);
                     }
@@ -4104,6 +4230,7 @@ var AuthService = (function () {
                 }
             }, function (err) {
                 console.log(err);
+                _this.removeLoggedInUser();
                 observer.next(false);
                 observer.complete();
             });
@@ -4117,8 +4244,7 @@ var AuthService = (function () {
         var _this = this;
         this.userService.logout()
             .subscribe(function (res) {
-            _this.loggedInUser = null;
-            localStorage.removeItem('loggedInUser');
+            _this.removeLoggedInUser();
             _this.router.navigate(['/']);
         }, function (err) {
             _this.errorHandlerService.handleError('Oops! Strange! Can\'t log you out!', err);
@@ -4126,7 +4252,10 @@ var AuthService = (function () {
     };
     AuthService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_3__user_service_client__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_4__error_handler_service_client__["a" /* ErrorHandlerService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3__user_service_client__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_5__interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_4__error_handler_service_client__["a" /* ErrorHandlerService */]])
     ], AuthService);
     return AuthService;
 }());
@@ -4196,6 +4325,156 @@ var ErrorHandlerService = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__interactions_service_client__["a" /* InteractionsService */]])
     ], ErrorHandlerService);
     return ErrorHandlerService;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/github.service.client.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GitHubService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var GitHubService = (function () {
+    function GitHubService(http, authService) {
+        this.http = http;
+        this.authService = authService;
+        // properties
+        this.api = {
+            'getRepos': this.getRepos,
+            'commit': this.commit
+        };
+        this.endpoint = {
+            'getRepos': 'https://api.github.com/user/repos',
+            'getRef': 'https://api.github.com/repos/{repo}/git/refs/heads/{branch}',
+            'blob': 'https://api.github.com/repos/{repo}/git/blobs',
+            'createTree': 'https://api.github.com/repos/{repo}/git/trees',
+            'createCommit': 'https://api.github.com/repos/{repo}/git/commits'
+        };
+    }
+    /**
+     * Get Users GitHub Repository Names
+     * @returns {Observable<string[]>} Observable that resolves to the list of GitHub repositories of the user
+     */
+    GitHubService.prototype.getRepos = function () {
+        var _this = this;
+        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */](function (observer) {
+            var loggedInUser = _this.authService.getLoggedInUser();
+            if (loggedInUser.github && loggedInUser.github.token) {
+                _this.http.get(_this.endpoint.getRepos, { headers: { 'Authorization': 'token ' + loggedInUser.github.token } })
+                    .subscribe(function (data) {
+                    var repos = [];
+                    if (data && data.length) {
+                        repos = data.map(function (i) { return i.full_name; });
+                    }
+                    observer.next(repos);
+                    observer.complete();
+                }, function (err) {
+                    observer.error(err);
+                });
+            }
+            else {
+                observer.error('Git Token unavailable. Login to GitHub and try again');
+            }
+        });
+        return obs;
+    };
+    GitHubService.prototype.commit = function (repo, branch, file, commitMessage) {
+        var _this = this;
+        var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */](function (observer) {
+            var loggedInUser = _this.authService.getLoggedInUser();
+            if (loggedInUser.github && loggedInUser.github.token) {
+                var headers_1 = { headers: { 'Authorization': 'token ' + loggedInUser.github.token } };
+                // get reference to Head
+                var headRefUrl_1 = _this.endpoint.getRef.replace('{repo}', repo).replace('{branch}', branch);
+                _this.http.get(headRefUrl_1, headers_1)
+                    .subscribe(function (headRefdata) {
+                    var headInfo = headRefdata.object;
+                    // get commit info
+                    _this.http.get(headInfo.url, headers_1)
+                        .subscribe(function (commitData) {
+                        var treeInfo = commitData.tree;
+                        // post file to server
+                        var blobUrl = _this.endpoint.blob.replace('{repo}', repo);
+                        _this.http.post(blobUrl, { content: file }, headers_1)
+                            .subscribe(function (blobData) {
+                            var blobInfo = blobData;
+                            // create new tree
+                            var createTreeUrl = _this.endpoint.createTree.replace('{repo}', repo);
+                            var newTree = {
+                                base_tree: treeInfo.sha,
+                                tree: [{
+                                        path: 'ABCD.md',
+                                        mode: '100644',
+                                        type: 'blob',
+                                        sha: blobInfo.sha
+                                    }]
+                            };
+                            _this.http.post(createTreeUrl, newTree, headers_1)
+                                .subscribe(function (createdTreeData) {
+                                // create commit
+                                var newCommit = {
+                                    message: commitMessage,
+                                    tree: createdTreeData.sha,
+                                    parents: [treeInfo.sha]
+                                };
+                                var createCommitUrl = _this.endpoint.createCommit.replace('{repo}', repo);
+                                _this.http.post(createCommitUrl, newCommit, headers_1)
+                                    .subscribe(function (createdCommit) {
+                                    // update head
+                                    _this.http.patch(headRefUrl_1, { sha: createdCommit.sha }, headers_1)
+                                        .subscribe(function (result) {
+                                        observer.next(true);
+                                        observer.complete();
+                                    }, function (err) {
+                                        observer.error(err);
+                                    });
+                                }, function (err) {
+                                    observer.error(err);
+                                });
+                            }, function (err) {
+                                observer.error(err);
+                            });
+                        }, function (err) {
+                            observer.error(err);
+                        });
+                    }, function (err) {
+                        observer.error(err);
+                    });
+                }, function (err) {
+                    observer.error(err);
+                });
+            }
+            else {
+                observer.error('Git Token unavailable. Login to GitHub and try again');
+            }
+        });
+        return obs;
+    };
+    GitHubService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_3__auth_service_client__["a" /* AuthService */]])
+    ], GitHubService);
+    return GitHubService;
 }());
 
 

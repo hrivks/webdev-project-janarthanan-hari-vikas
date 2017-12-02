@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service.client';
 import { User } from '../../../model/model';
 import { ErrorHandlerService } from '../../../services/error-handler.service.client';
+import { InteractionsService } from '../../../services/interactions.service.client';
+import { AppConstants } from '../../../app.constant';
 
 
 @Component({
@@ -17,7 +19,18 @@ export class NavComponent implements OnInit {
   private password: string;
 
   constructor(private authService: AuthService,
+    private interactionService: InteractionsService,
     private errorHanderService: ErrorHandlerService) {
+
+    // register for login change
+    this.interactionService.registerCallback(AppConstants.EVENTS.loginChange, (user) => {
+      if (user) {
+        this.loggedIn = user;
+      } else {
+        this.loggedIn = false;
+      }
+    });
+
     this.authService.checkLoggedIn(true)
       .subscribe((loggedIn) => {
         if (loggedIn) {

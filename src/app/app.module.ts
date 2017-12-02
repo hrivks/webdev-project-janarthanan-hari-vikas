@@ -14,6 +14,7 @@ import { ErrorHandlerService } from './services/error-handler.service.client';
 import { UserService } from './services/user.service.client';
 import { IconSearchService } from './services/iconsearch.service.client';
 import { UtilService } from './services/utils.service.client';
+import { GitHubService } from './services/github.service.client';
 // #endregion
 
 // #region App Components
@@ -29,6 +30,7 @@ import { NavComponent } from './components/shared/nav/nav.component';
 
 // pipes
 import { StringFilterPipe } from './pipes/string-filter/string-filter.pipe';
+import { MarkdownConvertorPipe } from './pipes/markdown-convertor/markdown-convertor.pipe';
 
 // editor components
 import { EditorComponent } from './components/editor/editor.component';
@@ -42,9 +44,10 @@ import { TestComponent } from './components/test/test.component';
 import { InsertYoutubeComponent } from './components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component';
 import { InsertGlyphComponent } from './components/editor/tiny-editor/insert-glyph/insert-glyph.component';
 
+import { CommitComponent } from './components/editor/git/commit/commit.component';
+
 // user components
 import { RegisterComponent } from './components/user/register/register.component';
-import { MarkdownConvertorPipe } from './pipes/markdown-convertor/markdown-convertor.pipe';
 
 // #endregion
 
@@ -69,7 +72,8 @@ import { MarkdownConvertorPipe } from './pipes/markdown-convertor/markdown-conve
     InsertGlyphComponent,
     StringFilterPipe,
     RegisterComponent,
-    MarkdownConvertorPipe
+    MarkdownConvertorPipe,
+    CommitComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +84,7 @@ import { MarkdownConvertorPipe } from './pipes/markdown-convertor/markdown-conve
   providers: [
     UserService,
     AuthService,
+    GitHubService,
     ErrorHandlerService,
     InteractionsService,
     IconSearchService,
