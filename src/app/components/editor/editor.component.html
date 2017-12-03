@@ -1,10 +1,10 @@
-<div class="row no-gutters editor pb-5"
+<div class="row no-gutters editor pb-4"
      [hidden]="!loadComplete">
 
     <!-- Editor -->
     <div class="col pr-md-2 editor-wrapper">
         <app-tiny-editor [(markdownHtml)]="markdownHtml"
-                         [height]="compHeight + 18"
+                         [height]="compHeight + 27"
                          (loadComplete)="onEditorLoad($event)"></app-tiny-editor>
     </div>
 
@@ -34,7 +34,7 @@
                 </ul>
 
             </div>
-            <div class="card-body"
+            <div class="card-body p-1"
                  #previewTabBody>
                 <!-- Tab panes -->
                 <div class="tab-content p-2">
@@ -72,15 +72,52 @@
     </div>
     <!-- preview wrapper -->
 </div>
+
+<!-- Editor Modals -->
+<div class="models-wrap">
+    <div id="editor-modal"
+         #modal
+         class="modal fade p-0">
+        <div class="modal-dialog"
+             [ngClass]="modals[openModalKey]?.size"
+             role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{modals[openModalKey]?.title}}</h5>
+                    <button type="button"
+                            class="close"
+                            (click)="closeModal()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body pb-2"
+                     [style.height.px]="modalHeight">
+
+                    <!-- Commit to Git modal -->
+                    <div *ngIf="openModalKey === 'commitToGit'">
+                        <app-commit-to-git [fileContent]="markdownHtml | markdownConvertor"
+                                           (onComplete)="closeModal($event)"></app-commit-to-git>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / Editor Modals -->
+
+<!-- footer -->
 <nav class="navbar navbar-expand bg-faded border-faded fixed-bottom hvj-footer p-1 px-3">
     <div class="ml-auto form-inline">
-        <button class="btn btn-primary btn-sm ml-2">
+        <button class="btn btn-primary btn-sm ml-2 py-1"> 
                 <span>Save</span>
         </button>
-        <button class="btn btn-primary btn-sm ml-2">
+        <button class="btn btn-primary btn-sm ml-2 py-1"
+                (click)="showCommitToGitModal()">
                 <span>Commit to Git</span> <i class="fa fa-github fa-lg ml-2" aria-hidden="true"></i>
         </button>
-        <button class="btn btn-primary btn-sm ml-2" (click)="download()">
+        <button class="btn btn-primary btn-sm ml-2 py-1"
+                (click)="download()">
                 <span>Download</span> <i class="fa fa-download fa-lg ml-2" aria-hidden="true"></i>
         </button>
     </div>

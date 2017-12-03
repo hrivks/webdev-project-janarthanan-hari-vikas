@@ -29,8 +29,13 @@ module.exports = (function() {
             };
 
             UserModel.updateUser(req.user._id, req.user)
-                .then((usr) => { done(null, usr);}, (err) => { done(err, null); });
-                
+                .then((usr) => {
+                        done(null, usr);
+                    },
+                    (err) => {
+                        done(err, null);
+                    });
+
         } else {
             if (!profile) {
                 done(null, false);

@@ -1,4 +1,4 @@
-.preview-wrapper .card{
+.preview-wrapper .card {
     border: solid thin #c5c5c5;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -9,4 +9,5 @@
 
 textarea.markdown-preview {
     font-family: monospace;
+    font-size: 17px;
 }

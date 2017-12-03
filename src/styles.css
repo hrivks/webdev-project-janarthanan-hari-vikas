@@ -1,9 +1,5 @@
 /** Bootstrap Enhancements **/
 
-body.hvj {
-  /* background: #446d8a; */
-}
-
 .hvj .border {
   border: solid thin;
 }
@@ -54,7 +50,7 @@ body.hvj {
   /** Bootstrap Enhancements end **/
   
   .hvj .hvj-outermost {
-    padding-top: 60px;
+    padding-top: 55px;
     padding-bottom: 10px;
   }
   

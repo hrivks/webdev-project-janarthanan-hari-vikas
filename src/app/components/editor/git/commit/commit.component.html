@@ -3,40 +3,97 @@
     <div *ngIf="!gitToken">
         <!-- Git Login prompt -->
         <div class="my-3 text-center">
-            <i class="fa fa-github fa-3x"></i>
+            <i class="fa fa-github fa-5x text-dark"></i>
             <br>
-            <a class="btn btn-primary btn-sm"
-               href="http://localhost:3100/api/auth/github">Login to Github to proceed</a>
+            <a class="btn btn-primary btn-sm mt-3"
+               (click)="loginToGit()">Login to Github</a>
         </div>
     </div>
 
     <div *ngIf="gitToken">
-        <!-- repos list -->
-        <div class="form-group form-inline">
-            <label class="control-label">Repository </label>
 
-            <div class="input-group input-group-sm ml-2">
-                <input type="text"
-                       class="form-control"
-                       [(ngModel)]="selectedRepo"
-                       placeholder="Select or Enter Repo full name">
-                <div class="input-group-btn">
-                    <div class="btn-group">
-                        <button class="btn btn-primary dropdown-toggle py-2 px-3 m-0"
-                                type="button"
-                                data-toggle="dropdown">
-                          </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item"
-                               *ngFor="let r of repos"
-                               (click)="selectedRepo=r">{{r}}</a>
+        <form (submit)="commit()"
+              #commitForm="ngForm">
+
+            <!-- Repos list -->
+            <div class="form-group">
+                <label class="control-label"
+                       for="repo">Repository</label>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-btn">
+                        <div class="btn-group">
+                            <button class="btn btn-primary py-2 px-3 m-0"
+                                    type="button"
+                                    data-toggle="dropdown">
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item"
+                                   *ngFor="let r of repos"
+                                   (click)="repo=r">{{r}}</a>
+                            </div>
                         </div>
                     </div>
+                    <input type="text"
+                           class="form-control"
+                           name="repo"
+                           #repoField="ngModel"
+                           [(ngModel)]="repo"
+                           [ngClass]="{'btn-outline-danger': repoField.touched && !repoField.valid }"
+                           placeholder="Select or enter Repo full name"
+                           required>
 
                 </div>
             </div>
-        </div>
 
+            <!-- Branch -->
+            <div class="form-group">
+                <label class="control-label"
+                       for="branch">Branch Name</label>
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="branch"
+                       #branchField="ngModel"
+                       [(ngModel)]="branch"
+                       [ngClass]="{'btn-outline-danger': branchField.touched && !branchField.valid }"
+                       required>
+            </div>
+
+            <!-- File Name -->
+            <div class="form-group">
+                <label class="control-label"
+                       for="fileName">File Name</label>
+                <input type="text"
+                       class="form-control form-control-sm"
+                       name="fileName"
+                       [(ngModel)]="fileName"
+                       #fileNameField="ngModel"
+                       [ngClass]="{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }"
+                       required>
+            </div>
+
+            <!-- Commit message -->
+            <div class="form-group">
+                <label class="control-label"
+                       for="commitMessage">Commit Message</label>
+                <input type="text"
+                       class="form-control form-control-sm"
+                       #commitMessageField="ngModel"
+                       [(ngModel)]="commitMessage"
+                       [ngClass]="{'btn-outline-danger': commitMessageField.touched && !commitMessageField.valid }"
+                       name="commitMessage"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary btn-sm"
+                        [disabled]="!commitForm.valid">Commit</button>
+
+                <button class="btn btn-primary btn-sm"
+                        (click)="test()">test</button>
+            </div>
+        </form>
     </div>
+
 
 </div>

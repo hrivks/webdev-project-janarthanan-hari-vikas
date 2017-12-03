@@ -17,6 +17,7 @@ export class TinyEditorComponent implements OnInit {
     @Output('loadComplete') loadComplete = new EventEmitter<boolean>();
     @Output('markdownHtmlChange') markdownHtmlChange = new EventEmitter<string>();
     @ViewChild('tinyEditor') el: ElementRef;
+    @ViewChild('editorModal') editorModal: ElementRef;
 
 
     private editor: any; // tinyMce editor instance
@@ -50,11 +51,6 @@ export class TinyEditorComponent implements OnInit {
         this.popovers = {
             'glyphs': { title: 'Insert Glyphs', key: 'glyphs', control: {} }
         };
-
-        const cachedMarkdown = localStorage.getItem('lastEditedMarkdownHtml');
-        if (cachedMarkdown) {
-            this.markdownHtml = cachedMarkdown;
-        }
 
         this.initEditor();
     }
@@ -440,7 +436,7 @@ export class TinyEditorComponent implements OnInit {
                     thisModel.control.reset();
                 }
             });
-            $('#editor-modal').modal('show');
+            $(this.editorModal.nativeElement).modal('show');
         }
 
     }
@@ -522,10 +518,7 @@ export class TinyEditorComponent implements OnInit {
      * @param content string to add to the editor
      */
     private addToEditor(content: string) {
-
         this.editor.insertContent(content);
-
     }
-
 
 }

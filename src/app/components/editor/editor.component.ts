@@ -19,17 +19,31 @@ export class EditorComponent implements OnInit, AfterViewInit {
   private editor: any;
   @ViewChild('inputArea') inputArea: ElementRef;
   @ViewChild('previewTabBody') previewTabBody: ElementRef;
+  @ViewChild('modal') editorModal: ElementRef;
   private activeTab: string;
   private compHeight: number;
   private loadComplete: boolean;
 
+  // modal related
+  private openModalKey: string;
+  private modals: any; // available modal objects
+
   constructor(private markdownConvertor: MarkdownConvertorPipe) {
-    this.compHeight = window.innerHeight - 181;
+    this.compHeight = window.innerHeight - 172;
     this.loadComplete = false;
+
+    this.modals = {
+      'commitToGit': { title: 'Commit to GitHub' }
+    };
   }
 
   ngOnInit() {
     this.activeTab = 'preview';
+    const cachedMarkdown = localStorage.getItem('lastEditedMarkdownHtml');
+    if (cachedMarkdown) {
+      this.markdownHtml = cachedMarkdown;
+    }
+
   }
 
   ngAfterViewInit() {
@@ -37,6 +51,10 @@ export class EditorComponent implements OnInit, AfterViewInit {
 
   onEditorLoad() {
     this.loadComplete = true;
+
+    // open modals on load if required
+    this.openModal(localStorage.getItem('openModalOnLoad'));
+    localStorage.removeItem('openModalOnLoad');
   }
 
   /** Download markdown file */
@@ -54,6 +72,23 @@ export class EditorComponent implements OnInit, AfterViewInit {
     document.body.appendChild(downloadLink);
 
     downloadLink.click();
+  }
+
+  showCommitToGitModal() {
+    this.openModalKey = 'commitToGit';
+    $(this.editorModal.nativeElement).modal('show');
+  }
+
+  openModal(key: string) {
+    if (key) {
+      this.openModalKey = key;
+      $(this.editorModal.nativeElement).modal('show');
+    }
+  }
+
+  closeModal() {
+    this.openModalKey = null;
+    $(this.editorModal.nativeElement).modal('hide');
   }
 
 }

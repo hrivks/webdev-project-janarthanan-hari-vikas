@@ -1,6 +1,6 @@
 .hvj-app-alert {
     position: fixed;
-    z-index: 200;
+    z-index: 3000;
     left:20%;
     right:20%;    
 }

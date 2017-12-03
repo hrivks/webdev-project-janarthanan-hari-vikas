@@ -10,5 +10,5 @@ export class User implements IAppEntity {
     github: {
         id: string,
         token: string
-    }
+    };
 }
