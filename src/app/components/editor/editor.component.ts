@@ -1,6 +1,10 @@
 import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { concat } from 'rxjs/operator/concat';
+import { ActivatedRoute } from '@angular/router';
 import { MarkdownConvertorPipe } from '../../pipes/markdown-convertor/markdown-convertor.pipe';
+import { MarkdownService } from '../../services/markdown.service.client';
+import { Markdown } from '../../model/model';
+import { InteractionsService } from '../../services/interactions.service.client';
+import { ErrorHandlerService } from '../../services/error-handler.service.client';
 
 declare var $; // jquery
 declare var tinymce: any; // tinyMCE editor
@@ -12,9 +16,11 @@ declare var toMarkdown: any; // to-markdown
   styleUrls: ['./editor.component.css', '../../../assets/github-markdown.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class EditorComponent implements OnInit, AfterViewInit {
+export class EditorComponent implements OnInit {
 
   // properties
+  private markdownId: string;
+  private markdownServerObject: Markdown;
   private markdownHtml: string;
   private editor: any;
   @ViewChild('inputArea') inputArea: ElementRef;
@@ -28,25 +34,48 @@ export class EditorComponent implements OnInit, AfterViewInit {
   private openModalKey: string;
   private modals: any; // available modal objects
 
-  constructor(private markdownConvertor: MarkdownConvertorPipe) {
+  constructor(private activatedRoute: ActivatedRoute,
+    private markdownService: MarkdownService,
+    private interactionService: InteractionsService,
+    private errorHandlerService: ErrorHandlerService,
+    private markdownConvertor: MarkdownConvertorPipe) {
     this.compHeight = window.innerHeight - 172;
     this.loadComplete = false;
 
     this.modals = {
-      'commitToGit': { title: 'Commit to GitHub' }
+      'commitToGit': { title: 'Commit to GitHub' },
+      'save': { title: 'Save Markdown' }
     };
+
+    // get saved markdown
+    this.activatedRoute.params.subscribe((params: any) => {
+      this.markdownId = params['markdownId'];
+      if (this.markdownId) {
+        this.markdownService.api.findMarkdownById(this.markdownId)
+          .subscribe((markdown) => {
+            this.markdownServerObject = markdown;
+            if (this.markdownServerObject.content) {
+              // check if page reloaded as a result of git login
+              if (localStorage.getItem('openModalOnLoad') !== 'commitToGit') {
+                this.markdownHtml = this.markdownServerObject.content;
+              }
+            }
+          }, (err) => {
+            console.error('Error getting markdown object', err);
+            this.errorHandlerService.handleError('Error getting markdown info', err);
+          });
+      }
+    });
+
   }
 
   ngOnInit() {
     this.activeTab = 'preview';
     const cachedMarkdown = localStorage.getItem('lastEditedMarkdownHtml');
-    if (cachedMarkdown) {
+    if (cachedMarkdown && !this.markdownHtml) {
       this.markdownHtml = cachedMarkdown;
     }
 
-  }
-
-  ngAfterViewInit() {
   }
 
   onEditorLoad() {
@@ -74,11 +103,28 @@ export class EditorComponent implements OnInit, AfterViewInit {
     downloadLink.click();
   }
 
+  /** Show commit-to-git modal */
   showCommitToGitModal() {
-    this.openModalKey = 'commitToGit';
-    $(this.editorModal.nativeElement).modal('show');
+    this.openModal('commitToGit');
   }
 
+  /** Show save markdown modal */
+  showSaveModal() {
+    if (!this.markdownServerObject) {
+      this.markdownServerObject = {
+        _id: null,
+        author: null,
+        title: null,
+        content: this.markdownHtml,
+        description: null,
+        fileName: null
+      };
+    }
+
+    this.openModal('save');
+  }
+
+  /** Open modal corresponding to the specified key */
   openModal(key: string) {
     if (key) {
       this.openModalKey = key;
@@ -86,7 +132,12 @@ export class EditorComponent implements OnInit, AfterViewInit {
     }
   }
 
-  closeModal() {
+  /** Close open modal */
+  closeModal(data) {
+    if (this.openModalKey === 'save') {
+      this.markdownServerObject = data;
+    }
+
     this.openModalKey = null;
     $(this.editorModal.nativeElement).modal('hide');
   }

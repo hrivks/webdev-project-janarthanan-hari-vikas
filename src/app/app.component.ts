@@ -24,17 +24,6 @@ export class AppComponent {
     // set title on route change
     router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-
-        // check user logged in
-        const requireLogin = !this.activatedRoute.snapshot.firstChild.data.skipAuth;
-        if (requireLogin) {
-          // get logged in user
-          const loggedInUser = this.authService.getLoggedInUser();
-          this.loggedInUserId = loggedInUser ? loggedInUser._id : null;
-        } else {
-          this.loggedInUserId = null;
-        }
-
         // set page title
         title.setTitle(this.activatedRoute.snapshot.firstChild.data.title || 'WriteMe.md');
       }

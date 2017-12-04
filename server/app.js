@@ -1,5 +1,6 @@
 // Route: /api
 const router = require('express').Router();
+const passport = require('passport');
 
 // Init DB
 require('./models/db.server.js');
@@ -11,6 +12,9 @@ require('./auth.js');
 
 // User route: /api/user
 router.use('/user', require('./services/user.service.server.js').router);
+
+// Markdown route: /api/markdown
+router.use('/markdown', require('./services/markdown.service.server.js').router);
 
 // Auth route: /api/auth
 router.use('/auth', require('./services/auth.service.server.js').router);

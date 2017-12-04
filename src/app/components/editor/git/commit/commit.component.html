@@ -87,10 +87,13 @@
 
             <div class="form-group">
                 <button class="btn btn-primary btn-sm"
+                        [hidden]="commitInProgres"
                         [disabled]="!commitForm.valid">Commit</button>
 
-                <button class="btn btn-primary btn-sm"
-                        (click)="test()">test</button>
+                <div class="progress" [hidden]="!commitInProgres">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated w-100"
+                         role="progressbar"></div>
+                </div>
             </div>
         </form>
     </div>

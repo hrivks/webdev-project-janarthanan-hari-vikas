@@ -99,6 +99,12 @@
                                            (onComplete)="closeModal($event)"></app-commit-to-git>
                     </div>
 
+                    <!-- Save Markdown modal -->
+                    <div *ngIf="openModalKey === 'save'">
+                        <app-save-markdown [markdown]="markdownServerObject"
+                                           (onComplete)="closeModal($event)"></app-save-markdown>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -109,7 +115,8 @@
 <!-- footer -->
 <nav class="navbar navbar-expand bg-faded border-faded fixed-bottom hvj-footer p-1 px-3">
     <div class="ml-auto form-inline">
-        <button class="btn btn-primary btn-sm ml-2 py-1"> 
+        <button class="btn btn-primary btn-sm ml-2 py-1"
+                (click)="showSaveModal()"> 
                 <span>Save</span>
         </button>
         <button class="btn btn-primary btn-sm ml-2 py-1"

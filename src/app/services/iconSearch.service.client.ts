@@ -79,7 +79,11 @@ export class IconSearchService {
 
                                         const latestSizeIcon = i.raster_sizes[i.raster_sizes.length - 1];
                                         if (latestSizeIcon && latestSizeIcon.formats[0].preview_url) {
-                                            const availableSizes = i.raster_sizes.map((s) => ({ size: s.size, url: s.formats[0].preview_url }));
+                                            const availableSizes = i.raster_sizes.map((s) => (
+                                                {
+                                                    size: s.size,
+                                                    url: s.formats[0].preview_url
+                                                }));
                                             result.icons.push({ url: latestSizeIcon.formats[0].preview_url, sizes: availableSizes });
                                         }
 

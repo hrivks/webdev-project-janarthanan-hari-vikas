@@ -7,7 +7,8 @@ import { IconSearchComponent } from './components/editor/tiny-editor/insert-medi
 import { RegisterComponent } from './components/user/register/register.component';
 
 const APP_ROUTES: Routes = [
-  { path: '', component: EditorComponent, data: { skipAuth: true } },
+  { path: '', component: EditorComponent},
+  { path: 'markdown/:markdownId', component: EditorComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'test', component: TestComponent, data: { skipAuth: true } },
   { path: 'iconSearch', component: IconSearchComponent, data: { skipAuth: true } }

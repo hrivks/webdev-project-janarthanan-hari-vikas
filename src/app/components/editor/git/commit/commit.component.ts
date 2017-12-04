@@ -1,11 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../../../services/auth.service.client';
 import { InteractionsService } from '../../../../services/interactions.service.client';
 import { AppConstants } from '../../../../app.constant';
 import { GitHubService } from '../../../../services/github.service.client';
 import { ErrorHandlerService } from '../../../../services/error-handler.service.client';
-import { window } from 'rxjs/operators/window';
 
 @Component({
   selector: 'app-commit-to-git',
@@ -19,12 +18,14 @@ export class CommitComponent implements OnInit {
   @Output() onComplete: EventEmitter<boolean> = new EventEmitter<boolean>();
   private gitToken: string;
   private repos: string[];
+  private commitInProgres: boolean;
 
   // form fields
   private repo: string;
   private branch: string;
   private fileName: string;
   private commitMessage: string;
+  @ViewChild('commitForm') commitForm: NgForm;
 
   constructor(private authService: AuthService,
     private interactionService: InteractionsService,
@@ -34,8 +35,9 @@ export class CommitComponent implements OnInit {
 
   ngOnInit() {
     const loggedInUser = this.authService.getLoggedInUser();
-    console.log(loggedInUser);
-    if (loggedInUser && loggedInUser.github.token) {
+    this.fileName = 'README.md';
+    this.branch = 'master';
+    if (loggedInUser && loggedInUser.github && loggedInUser.github.token) {
       this.gitToken = loggedInUser.github.token;
       this.getUserRepos();
     }
@@ -53,11 +55,28 @@ export class CommitComponent implements OnInit {
 
   /** Commit to Git */
   commit() {
+
+    if (this.commitForm.invalid) {
+      // touch controls to highlight validation
+      this.commitForm.controls.repo.markAsTouched({ onlySelf: true });
+      this.commitForm.controls.branch.markAsTouched({ onlySelf: true });
+      this.commitForm.controls.fileName.markAsTouched({ onlySelf: true });
+      this.commitForm.controls.commitMessage.markAsTouched({ onlySelf: true });
+      return;
+    }
+
+    if (this.commitInProgres) {
+      return;
+    }
+
+    this.commitInProgres = true;
     this.githubService.commit(this.repo, this.branch, this.fileContent, this.fileName, this.commitMessage)
       .subscribe((success) => {
         this.onComplete.emit(success);
+        this.commitInProgres = false;
       }, (err) => {
         this.errorHandlerService.handleError('Error committing to Git', err);
+        this.commitInProgres = false;
       });
   }
 

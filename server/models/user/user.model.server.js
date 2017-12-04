@@ -1,7 +1,7 @@
 /**
  * User Model
  */
-module.exports = (function () {
+module.exports = (function() {
     const q = require('q');
     const mongoose = require('mongoose');
     const UserSchema = require('./user.schema.server');
@@ -30,9 +30,11 @@ module.exports = (function () {
         if (!user || Object.keys(user).length == 0) {
             throw ['User object expected'];
         }
+
         if (!user.username) {
             errors.push('Username is required');
         }
+
         if (!user.password) {
             errors.push('Password is required');
         }
@@ -51,9 +53,13 @@ module.exports = (function () {
         var def = q.defer();
 
         validate(user);
-        UserModel.findOne({ username: user.username }, (err, alreadyExists) => {
+        UserModel.findOne({
+            username: user.username
+        }, (err, alreadyExists) => {
             if (alreadyExists) {
-                def.reject({ message: 'User with username ' + user.username + ' already exists' });
+                def.reject({
+                    message: 'User with username ' + user.username + ' already exists'
+                });
             } else {
                 UserModel.create(user, (err, createdUser) => {
                     if (err) {
@@ -83,7 +89,9 @@ module.exports = (function () {
      * @returns {DocumentQuery<UserSchema>} query that resolves to the user object
      */
     function findUserByUsername(username) {
-        return UserModel.findOne({ username: username });
+        return UserModel.findOne({
+            username: username
+        });
     }
 
     /**
@@ -95,7 +103,10 @@ module.exports = (function () {
     function findUserByCredentials(username, password) {
         const def = q.defer();
         UserModel
-            .findOne({ username: username, password: password }, (err, user) => {
+            .findOne({
+                username: username,
+                password: password
+            }, (err, user) => {
                 if (err) {
                     def.reject(err);
                 } else if (!user) {
@@ -113,7 +124,9 @@ module.exports = (function () {
      * @returns {DocumentQuery<UserSchema>} query that resolves to the user with the specified facebook id
      */
     function findUserByGithubId(githubId) {
-        return UserModel.findOne({ 'github.id': githubId });
+        return UserModel.findOne({
+            'github.id': githubId
+        });
     }
 
     /**
@@ -124,7 +137,9 @@ module.exports = (function () {
      */
     function updateUser(userId, user) {
         validate(user);
-        return UserModel.findByIdAndUpdate(userId, user, { new: true });
+        return UserModel.findByIdAndUpdate(userId, user, {
+            new: true
+        });
     }
 
     /**

@@ -12,6 +12,7 @@ import { InteractionsService } from './services/interactions.service.client';
 import { AuthService } from './services/auth.service.client';
 import { ErrorHandlerService } from './services/error-handler.service.client';
 import { UserService } from './services/user.service.client';
+import { MarkdownService } from './services/markdown.service.client';
 import { IconSearchService } from './services/iconsearch.service.client';
 import { UtilService } from './services/utils.service.client';
 import { GitHubService } from './services/github.service.client';
@@ -48,6 +49,7 @@ import { CommitComponent } from './components/editor/git/commit/commit.component
 
 // user components
 import { RegisterComponent } from './components/user/register/register.component';
+import { SaveMarkdownComponent } from './components/editor/markdown/save-markdown/save-markdown.component';
 
 // #endregion
 
@@ -73,7 +75,8 @@ import { RegisterComponent } from './components/user/register/register.component
     StringFilterPipe,
     RegisterComponent,
     MarkdownConvertorPipe,
-    CommitComponent
+    CommitComponent,
+    SaveMarkdownComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +86,7 @@ import { RegisterComponent } from './components/user/register/register.component
   ],
   providers: [
     UserService,
+    MarkdownService,
     AuthService,
     GitHubService,
     ErrorHandlerService,

@@ -12,3 +12,13 @@ export class User implements IAppEntity {
         token: string
     };
 }
+
+/** Models a Markdown object */
+export class Markdown implements IAppEntity {
+    _id: string;
+    title: string;
+    author: string;
+    fileName: string;
+    description: string;
+    content: string;
+}

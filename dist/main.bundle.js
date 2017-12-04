@@ -77,16 +77,6 @@ var AppComponent = (function () {
         // set title on route change
         router.events.subscribe(function (event) {
             if (event instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* NavigationEnd */]) {
-                // check user logged in
-                var requireLogin = !_this.activatedRoute.snapshot.firstChild.data.skipAuth;
-                if (requireLogin) {
-                    // get logged in user
-                    var loggedInUser = _this.authService.getLoggedInUser();
-                    _this.loggedInUserId = loggedInUser ? loggedInUser._id : null;
-                }
-                else {
-                    _this.loggedInUserId = null;
-                }
                 // set page title
                 title.setTitle(_this.activatedRoute.snapshot.firstChild.data.title || 'WriteMe.md');
             }
@@ -153,27 +143,29 @@ var AppConstants = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_iconsearch_service_client__ = __webpack_require__("../../../../../src/app/services/iconsearch.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_utils_service_client__ = __webpack_require__("../../../../../src/app/services/utils.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__directives_resizable_resizable_directive__ = __webpack_require__("../../../../../src/app/directives/resizable/resizable.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pipes_string_filter_string_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/string-filter/string-filter.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_code_insert_code_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-code/insert-code.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_media_insert_media_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_editor_tiny_editor_insert_glyph_insert_glyph_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-glyph/insert-glyph.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_editor_git_commit_commit_component__ = __webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_iconsearch_service_client__ = __webpack_require__("../../../../../src/app/services/iconsearch.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_utils_service_client__ = __webpack_require__("../../../../../src/app/services/utils.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__directives_resizable_resizable_directive__ = __webpack_require__("../../../../../src/app/directives/resizable/resizable.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pipes_string_filter_string_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/string-filter/string-filter.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_code_insert_code_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-code/insert-code.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_media_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_glyph_insert_glyph_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-glyph/insert-glyph.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_editor_git_commit_commit_component__ = __webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_editor_markdown_save_markdown_save_markdown_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -188,6 +180,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // #region App services
+
 
 
 
@@ -220,6 +213,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 // user components
 
+
 // #endregion
 var AppModule = (function () {
     function AppModule() {
@@ -230,24 +224,25 @@ var AppModule = (function () {
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_6__components_home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__components_shared_alert_alert_component__["a" /* AlertComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__components_shared_loader_loader_component__["a" /* LoaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__components_shared_nav_nav_component__["a" /* NavComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
-                __WEBPACK_IMPORTED_MODULE_21__components_editor_editor_component__["a" /* EditorComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_code_insert_code_component__["a" /* InsertCodeComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_media_insert_media_component__["a" /* InsertMediaComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__components_test_test_component__["a" /* TestComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__["a" /* InsertImageComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__["a" /* InsertYoutubeComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
-                __WEBPACK_IMPORTED_MODULE_29__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */],
-                __WEBPACK_IMPORTED_MODULE_31__components_user_register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
-                __WEBPACK_IMPORTED_MODULE_30__components_editor_git_commit_commit_component__["a" /* CommitComponent */]
+                __WEBPACK_IMPORTED_MODULE_17__components_shared_alert_alert_component__["a" /* AlertComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__components_shared_loader_loader_component__["a" /* LoaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components_shared_nav_nav_component__["a" /* NavComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
+                __WEBPACK_IMPORTED_MODULE_22__components_editor_editor_component__["a" /* EditorComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_code_insert_code_component__["a" /* InsertCodeComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_media_component__["a" /* InsertMediaComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__components_test_test_component__["a" /* TestComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__["a" /* InsertImageComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__["a" /* InsertYoutubeComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
+                __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */],
+                __WEBPACK_IMPORTED_MODULE_32__components_user_register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
+                __WEBPACK_IMPORTED_MODULE_31__components_editor_git_commit_commit_component__["a" /* CommitComponent */],
+                __WEBPACK_IMPORTED_MODULE_33__components_editor_markdown_save_markdown_save_markdown_component__["a" /* SaveMarkdownComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -257,14 +252,15 @@ var AppModule = (function () {
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_10__services_user_service_client__["a" /* UserService */],
+                __WEBPACK_IMPORTED_MODULE_11__services_markdown_service_client__["a" /* MarkdownService */],
                 __WEBPACK_IMPORTED_MODULE_8__services_auth_service_client__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_13__services_github_service_client__["a" /* GitHubService */],
+                __WEBPACK_IMPORTED_MODULE_14__services_github_service_client__["a" /* GitHubService */],
                 __WEBPACK_IMPORTED_MODULE_9__services_error_handler_service_client__["a" /* ErrorHandlerService */],
                 __WEBPACK_IMPORTED_MODULE_7__services_interactions_service_client__["a" /* InteractionsService */],
-                __WEBPACK_IMPORTED_MODULE_11__services_iconsearch_service_client__["a" /* IconSearchService */],
-                __WEBPACK_IMPORTED_MODULE_12__services_utils_service_client__["a" /* UtilService */],
-                __WEBPACK_IMPORTED_MODULE_20__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
-                __WEBPACK_IMPORTED_MODULE_19__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
+                __WEBPACK_IMPORTED_MODULE_12__services_iconsearch_service_client__["a" /* IconSearchService */],
+                __WEBPACK_IMPORTED_MODULE_13__services_utils_service_client__["a" /* UtilService */],
+                __WEBPACK_IMPORTED_MODULE_21__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
+                __WEBPACK_IMPORTED_MODULE_20__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         })
@@ -292,7 +288,8 @@ var AppModule = (function () {
 
 
 var APP_ROUTES = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */], data: { skipAuth: true } },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */] },
+    { path: 'markdown/:markdownId', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_4__components_user_register_register_component__["a" /* RegisterComponent */] },
     { path: 'test', component: __WEBPACK_IMPORTED_MODULE_2__app_components_test_test_component__["a" /* TestComponent */], data: { skipAuth: true } },
     { path: 'iconSearch', component: __WEBPACK_IMPORTED_MODULE_3__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */], data: { skipAuth: true } }
@@ -324,7 +321,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row no-gutters editor pb-4\"\r\n     [hidden]=\"!loadComplete\">\r\n\r\n    <!-- Editor -->\r\n    <div class=\"col pr-md-2 editor-wrapper\">\r\n        <app-tiny-editor [(markdownHtml)]=\"markdownHtml\"\r\n                         [height]=\"compHeight + 27\"\r\n                         (loadComplete)=\"onEditorLoad($event)\"></app-tiny-editor>\r\n    </div>\r\n\r\n    <!-- Preview -->\r\n    <div class=\"col pl-md-2 preview-wrapper\">\r\n        <div class=\"card text-center\">\r\n            <div class=\"card-header bg-editor-gray pt-2\">\r\n\r\n                <ul class=\"nav nav-tabs card-header-tabs\"\r\n                    role=\"tablist\">\r\n\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'preview' }\"\r\n                           (click)=\"activeTab='preview'\"\r\n                           role=\"tab\">Preview</a>\r\n                    </li>\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'markdown' }\"\r\n                           (click)=\"activeTab='markdown'\"\r\n                           role=\"tab\">Markdown</a>\r\n                    </li>\r\n\r\n                </ul>\r\n\r\n            </div>\r\n            <div class=\"card-body p-1\"\r\n                 #previewTabBody>\r\n                <!-- Tab panes -->\r\n                <div class=\"tab-content p-2\">\r\n\r\n                    <!-- Preview tab -->\r\n                    <div class=\"tab-pane active show fade text-left\"\r\n                         [ngClass]=\"{'show': activeTab === 'preview' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'preview'\"\r\n                             class=\"tab-pane-inner\"\r\n                             [style.height.px]=\"compHeight\">\r\n                            <div class=\"markdown-body\"\r\n                                 [innerHtml]=\"markdownHtml\"></div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <!-- markdown tab -->\r\n                    <div class=\"tab-pane active fade\"\r\n                         [ngClass]=\"{'show': activeTab === 'markdown' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'markdown'\"\r\n                             [style.height.px]=\"compHeight\"\r\n                             class=\"tab-pane-inner\">\r\n                            <textarea class=\"w-100 h-100 border-0 markdown-preview\"\r\n                                      [ngModel]=\"markdownHtml | markdownConvertor\"\r\n                                      readonly></textarea>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n                <!-- tab content -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <!-- preview wrapper -->\r\n</div>\r\n\r\n<!-- Editor Modals -->\r\n<div class=\"models-wrap\">\r\n    <div id=\"editor-modal\"\r\n         #modal\r\n         class=\"modal fade p-0\">\r\n        <div class=\"modal-dialog\"\r\n             [ngClass]=\"modals[openModalKey]?.size\"\r\n             role=\"document\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\">{{modals[openModalKey]?.title}}</h5>\r\n                    <button type=\"button\"\r\n                            class=\"close\"\r\n                            (click)=\"closeModal()\">\r\n                  <span aria-hidden=\"true\">&times;</span>\r\n                </button>\r\n                </div>\r\n                <div class=\"modal-body pb-2\"\r\n                     [style.height.px]=\"modalHeight\">\r\n\r\n                    <!-- Commit to Git modal -->\r\n                    <div *ngIf=\"openModalKey === 'commitToGit'\">\r\n                        <app-commit-to-git [fileContent]=\"markdownHtml | markdownConvertor\"\r\n                                           (onComplete)=\"closeModal($event)\"></app-commit-to-git>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- / Editor Modals -->\r\n\r\n<!-- footer -->\r\n<nav class=\"navbar navbar-expand bg-faded border-faded fixed-bottom hvj-footer p-1 px-3\">\r\n    <div class=\"ml-auto form-inline\">\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"> \r\n                <span>Save</span>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"showCommitToGitModal()\">\r\n                <span>Commit to Git</span> <i class=\"fa fa-github fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"download()\">\r\n                <span>Download</span> <i class=\"fa fa-download fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n    </div>\r\n</nav>"
+module.exports = "<div class=\"row no-gutters editor pb-4\"\r\n     [hidden]=\"!loadComplete\">\r\n\r\n    <!-- Editor -->\r\n    <div class=\"col pr-md-2 editor-wrapper\">\r\n        <app-tiny-editor [(markdownHtml)]=\"markdownHtml\"\r\n                         [height]=\"compHeight + 27\"\r\n                         (loadComplete)=\"onEditorLoad($event)\"></app-tiny-editor>\r\n    </div>\r\n\r\n    <!-- Preview -->\r\n    <div class=\"col pl-md-2 preview-wrapper\">\r\n        <div class=\"card text-center\">\r\n            <div class=\"card-header bg-editor-gray pt-2\">\r\n\r\n                <ul class=\"nav nav-tabs card-header-tabs\"\r\n                    role=\"tablist\">\r\n\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'preview' }\"\r\n                           (click)=\"activeTab='preview'\"\r\n                           role=\"tab\">Preview</a>\r\n                    </li>\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'markdown' }\"\r\n                           (click)=\"activeTab='markdown'\"\r\n                           role=\"tab\">Markdown</a>\r\n                    </li>\r\n\r\n                </ul>\r\n\r\n            </div>\r\n            <div class=\"card-body p-1\"\r\n                 #previewTabBody>\r\n                <!-- Tab panes -->\r\n                <div class=\"tab-content p-2\">\r\n\r\n                    <!-- Preview tab -->\r\n                    <div class=\"tab-pane active show fade text-left\"\r\n                         [ngClass]=\"{'show': activeTab === 'preview' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'preview'\"\r\n                             class=\"tab-pane-inner\"\r\n                             [style.height.px]=\"compHeight\">\r\n                            <div class=\"markdown-body\"\r\n                                 [innerHtml]=\"markdownHtml\"></div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <!-- markdown tab -->\r\n                    <div class=\"tab-pane active fade\"\r\n                         [ngClass]=\"{'show': activeTab === 'markdown' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'markdown'\"\r\n                             [style.height.px]=\"compHeight\"\r\n                             class=\"tab-pane-inner\">\r\n                            <textarea class=\"w-100 h-100 border-0 markdown-preview\"\r\n                                      [ngModel]=\"markdownHtml | markdownConvertor\"\r\n                                      readonly></textarea>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n                <!-- tab content -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <!-- preview wrapper -->\r\n</div>\r\n\r\n<!-- Editor Modals -->\r\n<div class=\"models-wrap\">\r\n    <div id=\"editor-modal\"\r\n         #modal\r\n         class=\"modal fade p-0\">\r\n        <div class=\"modal-dialog\"\r\n             [ngClass]=\"modals[openModalKey]?.size\"\r\n             role=\"document\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\">{{modals[openModalKey]?.title}}</h5>\r\n                    <button type=\"button\"\r\n                            class=\"close\"\r\n                            (click)=\"closeModal()\">\r\n                  <span aria-hidden=\"true\">&times;</span>\r\n                </button>\r\n                </div>\r\n                <div class=\"modal-body pb-2\"\r\n                     [style.height.px]=\"modalHeight\">\r\n\r\n                    <!-- Commit to Git modal -->\r\n                    <div *ngIf=\"openModalKey === 'commitToGit'\">\r\n                        <app-commit-to-git [fileContent]=\"markdownHtml | markdownConvertor\"\r\n                                           (onComplete)=\"closeModal($event)\"></app-commit-to-git>\r\n                    </div>\r\n\r\n                    <!-- Save Markdown modal -->\r\n                    <div *ngIf=\"openModalKey === 'save'\">\r\n                        <app-save-markdown [markdown]=\"markdownServerObject\"\r\n                                           (onComplete)=\"closeModal($event)\"></app-save-markdown>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- / Editor Modals -->\r\n\r\n<!-- footer -->\r\n<nav class=\"navbar navbar-expand bg-faded border-faded fixed-bottom hvj-footer p-1 px-3\">\r\n    <div class=\"ml-auto form-inline\">\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"showSaveModal()\"> \r\n                <span>Save</span>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"showCommitToGitModal()\">\r\n                <span>Commit to Git</span> <i class=\"fa fa-github fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"download()\">\r\n                <span>Download</span> <i class=\"fa fa-download fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n    </div>\r\n</nav>"
 
 /***/ }),
 
@@ -334,7 +331,11 @@ module.exports = "<div class=\"row no-gutters editor pb-4\"\r\n     [hidden]=\"!
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditorComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -346,23 +347,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
+
 var EditorComponent = (function () {
-    function EditorComponent(markdownConvertor) {
+    function EditorComponent(activatedRoute, markdownService, interactionService, errorHandlerService, markdownConvertor) {
+        var _this = this;
+        this.activatedRoute = activatedRoute;
+        this.markdownService = markdownService;
+        this.interactionService = interactionService;
+        this.errorHandlerService = errorHandlerService;
         this.markdownConvertor = markdownConvertor;
         this.compHeight = window.innerHeight - 172;
         this.loadComplete = false;
         this.modals = {
-            'commitToGit': { title: 'Commit to GitHub' }
+            'commitToGit': { title: 'Commit to GitHub' },
+            'save': { title: 'Save Markdown' }
         };
+        // get saved markdown
+        this.activatedRoute.params.subscribe(function (params) {
+            _this.markdownId = params['markdownId'];
+            if (_this.markdownId) {
+                _this.markdownService.api.findMarkdownById(_this.markdownId)
+                    .subscribe(function (markdown) {
+                    _this.markdownServerObject = markdown;
+                    if (_this.markdownServerObject.content) {
+                        // check if page reloaded as a result of git login
+                        if (localStorage.getItem('openModalOnLoad') !== 'commitToGit') {
+                            _this.markdownHtml = _this.markdownServerObject.content;
+                        }
+                    }
+                }, function (err) {
+                    console.error('Error getting markdown object', err);
+                    _this.errorHandlerService.handleError('Error getting markdown info', err);
+                });
+            }
+        });
     }
     EditorComponent.prototype.ngOnInit = function () {
         this.activeTab = 'preview';
         var cachedMarkdown = localStorage.getItem('lastEditedMarkdownHtml');
-        if (cachedMarkdown) {
+        if (cachedMarkdown && !this.markdownHtml) {
             this.markdownHtml = cachedMarkdown;
         }
-    };
-    EditorComponent.prototype.ngAfterViewInit = function () {
     };
     EditorComponent.prototype.onEditorLoad = function () {
         this.loadComplete = true;
@@ -384,17 +412,36 @@ var EditorComponent = (function () {
         document.body.appendChild(downloadLink);
         downloadLink.click();
     };
+    /** Show commit-to-git modal */
     EditorComponent.prototype.showCommitToGitModal = function () {
-        this.openModalKey = 'commitToGit';
-        $(this.editorModal.nativeElement).modal('show');
+        this.openModal('commitToGit');
     };
+    /** Show save markdown modal */
+    EditorComponent.prototype.showSaveModal = function () {
+        if (!this.markdownServerObject) {
+            this.markdownServerObject = {
+                _id: null,
+                author: null,
+                title: null,
+                content: this.markdownHtml,
+                description: null,
+                fileName: null
+            };
+        }
+        this.openModal('save');
+    };
+    /** Open modal corresponding to the specified key */
     EditorComponent.prototype.openModal = function (key) {
         if (key) {
             this.openModalKey = key;
             $(this.editorModal.nativeElement).modal('show');
         }
     };
-    EditorComponent.prototype.closeModal = function () {
+    /** Close open modal */
+    EditorComponent.prototype.closeModal = function (data) {
+        if (this.openModalKey === 'save') {
+            this.markdownServerObject = data;
+        }
         this.openModalKey = null;
         $(this.editorModal.nativeElement).modal('hide');
     };
@@ -417,7 +464,11 @@ var EditorComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/components/editor/editor.component.css"), __webpack_require__("../../../../../src/assets/github-markdown.css")],
             encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* ViewEncapsulation */].None
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_3__services_markdown_service_client__["a" /* MarkdownService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */],
+            __WEBPACK_IMPORTED_MODULE_2__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */]])
     ], EditorComponent);
     return EditorComponent;
 }());
@@ -447,7 +498,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/git/commit/commit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"git-commit\">\n\n    <div *ngIf=\"!gitToken\">\n        <!-- Git Login prompt -->\n        <div class=\"my-3 text-center\">\n            <i class=\"fa fa-github fa-5x text-dark\"></i>\n            <br>\n            <a class=\"btn btn-primary btn-sm mt-3\"\n               (click)=\"loginToGit()\">Login to Github</a>\n        </div>\n    </div>\n\n    <div *ngIf=\"gitToken\">\n\n        <form (submit)=\"commit()\"\n              #commitForm=\"ngForm\">\n\n            <!-- Repos list -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"repo\">Repository</label>\n                <div class=\"input-group input-group-sm\">\n                    <div class=\"input-group-btn\">\n                        <div class=\"btn-group\">\n                            <button class=\"btn btn-primary py-2 px-3 m-0\"\n                                    type=\"button\"\n                                    data-toggle=\"dropdown\">\n                                    <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n                            </button>\n                            <div class=\"dropdown-menu\">\n                                <a class=\"dropdown-item\"\n                                   *ngFor=\"let r of repos\"\n                                   (click)=\"repo=r\">{{r}}</a>\n                            </div>\n                        </div>\n                    </div>\n                    <input type=\"text\"\n                           class=\"form-control\"\n                           name=\"repo\"\n                           #repoField=\"ngModel\"\n                           [(ngModel)]=\"repo\"\n                           [ngClass]=\"{'btn-outline-danger': repoField.touched && !repoField.valid }\"\n                           placeholder=\"Select or enter Repo full name\"\n                           required>\n\n                </div>\n            </div>\n\n            <!-- Branch -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"branch\">Branch Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"branch\"\n                       #branchField=\"ngModel\"\n                       [(ngModel)]=\"branch\"\n                       [ngClass]=\"{'btn-outline-danger': branchField.touched && !branchField.valid }\"\n                       required>\n            </div>\n\n            <!-- File Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"fileName\">File Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"fileName\"\n                       [(ngModel)]=\"fileName\"\n                       #fileNameField=\"ngModel\"\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\n                       required>\n            </div>\n\n            <!-- Commit message -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"commitMessage\">Commit Message</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       #commitMessageField=\"ngModel\"\n                       [(ngModel)]=\"commitMessage\"\n                       [ngClass]=\"{'btn-outline-danger': commitMessageField.touched && !commitMessageField.valid }\"\n                       name=\"commitMessage\"\n                       required>\n            </div>\n\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary btn-sm\"\n                        [disabled]=\"!commitForm.valid\">Commit</button>\n\n                <button class=\"btn btn-primary btn-sm\"\n                        (click)=\"test()\">test</button>\n            </div>\n        </form>\n    </div>\n\n\n</div>"
+module.exports = "<div class=\"git-commit\">\n\n    <div *ngIf=\"!gitToken\">\n        <!-- Git Login prompt -->\n        <div class=\"my-3 text-center\">\n            <i class=\"fa fa-github fa-5x text-dark\"></i>\n            <br>\n            <a class=\"btn btn-primary btn-sm mt-3\"\n               (click)=\"loginToGit()\">Login to Github</a>\n        </div>\n    </div>\n\n    <div *ngIf=\"gitToken\">\n\n        <form (submit)=\"commit()\"\n              #commitForm=\"ngForm\">\n\n            <!-- Repos list -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"repo\">Repository</label>\n                <div class=\"input-group input-group-sm\">\n                    <div class=\"input-group-btn\">\n                        <div class=\"btn-group\">\n                            <button class=\"btn btn-primary py-2 px-3 m-0\"\n                                    type=\"button\"\n                                    data-toggle=\"dropdown\">\n                                    <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n                            </button>\n                            <div class=\"dropdown-menu\">\n                                <a class=\"dropdown-item\"\n                                   *ngFor=\"let r of repos\"\n                                   (click)=\"repo=r\">{{r}}</a>\n                            </div>\n                        </div>\n                    </div>\n                    <input type=\"text\"\n                           class=\"form-control\"\n                           name=\"repo\"\n                           #repoField=\"ngModel\"\n                           [(ngModel)]=\"repo\"\n                           [ngClass]=\"{'btn-outline-danger': repoField.touched && !repoField.valid }\"\n                           placeholder=\"Select or enter Repo full name\"\n                           required>\n\n                </div>\n            </div>\n\n            <!-- Branch -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"branch\">Branch Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"branch\"\n                       #branchField=\"ngModel\"\n                       [(ngModel)]=\"branch\"\n                       [ngClass]=\"{'btn-outline-danger': branchField.touched && !branchField.valid }\"\n                       required>\n            </div>\n\n            <!-- File Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"fileName\">File Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"fileName\"\n                       [(ngModel)]=\"fileName\"\n                       #fileNameField=\"ngModel\"\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\n                       required>\n            </div>\n\n            <!-- Commit message -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"commitMessage\">Commit Message</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       #commitMessageField=\"ngModel\"\n                       [(ngModel)]=\"commitMessage\"\n                       [ngClass]=\"{'btn-outline-danger': commitMessageField.touched && !commitMessageField.valid }\"\n                       name=\"commitMessage\"\n                       required>\n            </div>\n\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary btn-sm\"\n                        [hidden]=\"commitInProgres\"\n                        [disabled]=\"!commitForm.valid\">Commit</button>\n\n                <div class=\"progress\" [hidden]=\"!commitInProgres\">\n                    <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                         role=\"progressbar\"></div>\n                </div>\n            </div>\n        </form>\n    </div>\n\n\n</div>"
 
 /***/ }),
 
@@ -457,10 +508,11 @@ module.exports = "<div class=\"git-commit\">\n\n    <div *ngIf=\"!gitToken\">\n 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommitComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -470,6 +522,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -485,8 +538,9 @@ var CommitComponent = (function () {
     }
     CommitComponent.prototype.ngOnInit = function () {
         var loggedInUser = this.authService.getLoggedInUser();
-        console.log(loggedInUser);
-        if (loggedInUser && loggedInUser.github.token) {
+        this.fileName = 'README.md';
+        this.branch = 'master';
+        if (loggedInUser && loggedInUser.github && loggedInUser.github.token) {
             this.gitToken = loggedInUser.github.token;
             this.getUserRepos();
         }
@@ -504,11 +558,25 @@ var CommitComponent = (function () {
     /** Commit to Git */
     CommitComponent.prototype.commit = function () {
         var _this = this;
+        if (this.commitForm.invalid) {
+            // touch controls to highlight validation
+            this.commitForm.controls.repo.markAsTouched({ onlySelf: true });
+            this.commitForm.controls.branch.markAsTouched({ onlySelf: true });
+            this.commitForm.controls.fileName.markAsTouched({ onlySelf: true });
+            this.commitForm.controls.commitMessage.markAsTouched({ onlySelf: true });
+            return;
+        }
+        if (this.commitInProgres) {
+            return;
+        }
+        this.commitInProgres = true;
         this.githubService.commit(this.repo, this.branch, this.fileContent, this.fileName, this.commitMessage)
             .subscribe(function (success) {
             _this.onComplete.emit(success);
+            _this.commitInProgres = false;
         }, function (err) {
             _this.errorHandlerService.handleError('Error committing to Git', err);
+            _this.commitInProgres = false;
         });
     };
     CommitComponent.prototype.loginToGit = function () {
@@ -523,18 +591,159 @@ var CommitComponent = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
     ], CommitComponent.prototype, "onComplete", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('commitForm'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* NgForm */])
+    ], CommitComponent.prototype, "commitForm", void 0);
     CommitComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-commit-to-git',
             template: __webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_2__services_interactions_service_client__["a" /* InteractionsService */],
-            __WEBPACK_IMPORTED_MODULE_3__services_github_service_client__["a" /* GitHubService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_github_service_client__["a" /* GitHubService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
     ], CommitComponent);
     return CommitComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"save-markdown\">\n\n    <div *ngIf=\"!authorId\">\n        <!-- Login prompt -->\n        <div class=\"my-3 text-center\">\n            <i class=\"fa fa-user-circle fa-5x text-dark\"></i>\n            <br>\n            <br>\n            <p>You must be logged in to save markdown <br> Please login to continue</p>\n        </div>\n    </div>\n\n    <div *ngIf=\"authorId\">\n\n        <form (submit)=\"saveMarkdown()\"\n              #saveForm=\"ngForm\">\n\n            <!-- Title -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"repo\">Title</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"title\"\n                       #titleField=\"ngModel\"\n                       [(ngModel)]=\"title\"\n                       [ngClass]=\"{'btn-outline-danger': titleField.touched && !titleField.valid }\"\n                       required>\n            </div>\n\n            <!-- File Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"fileName\">File Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"fileName\"\n                       [(ngModel)]=\"fileName\"\n                       #fileNameField=\"ngModel\"\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\n                       required>\n            </div>\n\n            <!-- Description -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"commitMessage\">Description</label> <small>[optional]</small>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       #descriptionField=\"ngModel\"\n                       name=\"description\"\n                       [(ngModel)]=\"description\">\n            </div>\n\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary btn-sm\"\n                        [hidden]=\"saveInProgres\"\n                        [disabled]=\"!saveForm.valid\">Save</button>\n\n                <div class=\"progress\"\n                     [hidden]=\"!saveInProgres\">\n                    <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                         role=\"progressbar\"></div>\n                </div>\n            </div>\n        </form>\n    </div>\n\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SaveMarkdownComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_model__ = __webpack_require__("../../../../../src/app/model/model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var SaveMarkdownComponent = (function () {
+    function SaveMarkdownComponent(authService, markdownService, errorHanderService) {
+        this.authService = authService;
+        this.markdownService = markdownService;
+        this.errorHanderService = errorHanderService;
+        this.onComplete = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
+        if (!this.markdown) {
+            this.markdown = new __WEBPACK_IMPORTED_MODULE_3__model_model__["a" /* Markdown */]();
+        }
+    }
+    SaveMarkdownComponent.prototype.ngOnInit = function () {
+        var loggedInUser = this.authService.getLoggedInUser();
+        if (loggedInUser) {
+            this.authorId = loggedInUser._id;
+        }
+        this.fileName = this.markdown.fileName || 'README.md';
+        this.title = this.markdown.title || 'Markdown - ' + (new Date()).toUTCString() + '.md';
+        this.description = this.markdown.description;
+    };
+    /** Save markdown */
+    SaveMarkdownComponent.prototype.saveMarkdown = function () {
+        var _this = this;
+        if (this.saveForm.invalid) {
+            // touch controls to highlight validation
+            this.saveForm.controls.title.markAsTouched({ onlySelf: true });
+            this.saveForm.controls.fileName.markAsTouched({ onlySelf: true });
+            this.saveForm.controls.fileName.markAsTouched({ onlySelf: true });
+            this.saveForm.controls.commitMessage.markAsTouched({ onlySelf: true });
+            return;
+        }
+        if (this.saveInProgres) {
+            return;
+        }
+        this.saveInProgres = true;
+        if (this.markdown._id) {
+            // edit existing markdown
+        }
+        else {
+            // create new markdown
+            this.markdown.title = this.title;
+            this.markdown.author = this.authorId;
+            this.markdown.description = this.description;
+            this.markdown.fileName = this.fileName;
+            this.markdownService.createMarkdown(this.markdown)
+                .subscribe(function (createdMarkdown) {
+                _this.markdown.title = createdMarkdown.title;
+                _this.markdown.author = createdMarkdown.author;
+                _this.markdown.content = createdMarkdown.content;
+                _this.markdown.fileName = createdMarkdown.fileName;
+                _this.markdown.description = createdMarkdown.description;
+                _this.saveInProgres = false;
+                _this.onComplete.emit(createdMarkdown);
+            }, function (err) {
+                _this.errorHanderService.handleError('Error saving markdown', err);
+            });
+        }
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3__model_model__["a" /* Markdown */])
+    ], SaveMarkdownComponent.prototype, "markdown", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
+    ], SaveMarkdownComponent.prototype, "onComplete", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('saveForm'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* NgForm */])
+    ], SaveMarkdownComponent.prototype, "saveForm", void 0);
+    SaveMarkdownComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-save-markdown',
+            template: __webpack_require__("../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_markdown_service_client__["a" /* MarkdownService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
+    ], SaveMarkdownComponent);
+    return SaveMarkdownComponent;
 }());
 
 
@@ -2060,7 +2269,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/test/test.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Test</h1>\r\n<app-commit-to-git></app-commit-to-git>"
+module.exports = "<h1>Test</h1>\r\n<app-save-markdown></app-save-markdown>"
 
 /***/ }),
 
@@ -2170,7 +2379,7 @@ var RegisterComponent = (function () {
     };
     RegisterComponent.prototype.register = function () {
         var _this = this;
-        var newUser = new __WEBPACK_IMPORTED_MODULE_2__model_model__["a" /* User */]();
+        var newUser = new __WEBPACK_IMPORTED_MODULE_2__model_model__["b" /* User */]();
         newUser.username = this.username;
         newUser.password = this.password;
         // create new user
@@ -3991,12 +4200,20 @@ var faIconsList = ['500px', 'adjust', 'adn', 'align-center', 'align-justify', 'a
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return User; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Markdown; });
 /** Models a User object */
 var User = (function () {
     function User() {
     }
     return User;
+}());
+
+/** Models a Markdown object */
+var Markdown = (function () {
+    function Markdown() {
+    }
+    return Markdown;
 }());
 
 
@@ -4641,7 +4858,10 @@ var IconSearchService = (function () {
                             data.icons.forEach(function (i) {
                                 var latestSizeIcon = i.raster_sizes[i.raster_sizes.length - 1];
                                 if (latestSizeIcon && latestSizeIcon.formats[0].preview_url) {
-                                    var availableSizes = i.raster_sizes.map(function (s) { return ({ size: s.size, url: s.formats[0].preview_url }); });
+                                    var availableSizes = i.raster_sizes.map(function (s) { return ({
+                                        size: s.size,
+                                        url: s.formats[0].preview_url
+                                    }); });
                                     result.icons.push({ url: latestSizeIcon.formats[0].preview_url, sizes: availableSizes });
                                 }
                             });
@@ -4768,6 +4988,100 @@ var InteractionsService = (function () {
         __metadata("design:paramtypes", [])
     ], InteractionsService);
     return InteractionsService;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/markdown.service.client.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarkdownService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_constant__ = __webpack_require__("../../../../../src/app/app.constant.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var MarkdownService = (function () {
+    function MarkdownService(http) {
+        this.http = http;
+        this.api = {
+            'createMarkdown': this.createMarkdown,
+            'findMarkdownById': this.findMarkdownById,
+            'findMarkdownsByAuthor': this.findMarkdownsByAuthor,
+            'updateMarkdown': this.updateMarkdown,
+            'deleteMarkdown': this.deleteMarkdown
+        };
+        this.endpoint = {
+            'createMarkdown': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/markdown',
+            'findMarkdownById': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/markdown/{markdownId}',
+            'findMarkdownsByAuthor': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/markdown/byAuthor/{authorId}',
+            'updateMarkdown': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/markdown/{markdownId}',
+            'deleteMarkdown': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/markdown/{markdownId}'
+        };
+    }
+    /**
+     * Create a new markdown
+     * @param markdown markdown object to create
+     * @returns Observable that resolves to the created markdown
+     */
+    MarkdownService.prototype.createMarkdown = function (markdown) {
+        return this.http.post(this.endpoint.createMarkdown, markdown, { withCredentials: true });
+    };
+    /**
+     * Find markdown by markdown id
+     * @param markdownId id of the markdown
+     * @returns Observable that resolves to markdown with the specifed id; null if id doesn't exist
+     */
+    MarkdownService.prototype.findMarkdownById = function (markdownId) {
+        var url = this.endpoint.findMarkdownById.replace('{markdownId}', markdownId);
+        return this.http.get(url);
+    };
+    /**
+     * Find markdown by markdown name
+     * @param markdownname markdownname of the markdown
+     * @returns Observable that resolves to markdown with the specifed markdownname; null if id doesn't exist
+     */
+    MarkdownService.prototype.findMarkdownsByAuthor = function (authorId) {
+        var url = this.endpoint.findMarkdownsByAuthor.replace('{authorId}', authorId);
+        return this.http.get(url);
+    };
+    /**
+     * Update markdown by markdown id
+     * @param {string} markdownId id of the markdown
+     * @param markdown updated markdown object
+     * @returns Observable that resolves to updated markdown object
+     */
+    MarkdownService.prototype.updateMarkdown = function (markdownId, markdown) {
+        var url = this.endpoint.updateMarkdown.replace('{markdownId}', markdownId);
+        return this.http.put(url, markdown);
+    };
+    /**
+     * Delete markdown by markdown id
+     * @param {string} markdownId id of the markdown
+     * @returns Observable that resolves to deleted markdown object
+     */
+    MarkdownService.prototype.deleteMarkdown = function (markdownId) {
+        var url = this.endpoint.deleteMarkdown.replace('{markdownId}', markdownId);
+        return this.http.delete(url);
+    };
+    MarkdownService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    ], MarkdownService);
+    return MarkdownService;
 }());
 
 
