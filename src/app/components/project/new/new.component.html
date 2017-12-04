@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4>New Project</h4>
+            <form #newProjectForm="ngForm"
+                  (submit)="createProject()">
+
+                <!-- Name -->
+                <div class="form-group">
+                    <label class="control-label"
+                           for="name">Name</label>
+                    <input type="text"
+                           class="form-control form-control-sm"
+                           name="name"
+                           #nameField="ngModel"
+                           [(ngModel)]="name"
+                           [ngClass]="{'btn-outline-danger': nameField.touched && !nameField.valid }"
+                           required>
+                </div>
+
+                <!-- Members -->
+                <div class="form-group">
+                    <label class="control-label"
+                           for="name">Members</label>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary btn-sm"
+                            [hidden]="inProgres"
+                            [disabled]="!newProjectForm.valid">Create</button>
+
+                    <div class="progress"
+                         [hidden]="!inProgres">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated w-100"
+                             role="progressbar"></div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

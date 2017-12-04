@@ -7,9 +7,7 @@ module.exports = (function() {
     const MarkdownModel = require('../models/model.server').Markdown;
     const Utils = require('./service-utils.js');
     const q = require('q');
-    const passport = require('passport');
-    const bcrypt = require('bcrypt-nodejs');
-
+    
     /** Exported objects */
     const exp = {
         router: router, // router object

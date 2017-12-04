@@ -16,6 +16,9 @@ router.use('/user', require('./services/user.service.server.js').router);
 // Markdown route: /api/markdown
 router.use('/markdown', require('./services/markdown.service.server.js').router);
 
+// Project route: /api/project
+router.use('/project', require('./services/project.service.server.js').router);
+
 // Auth route: /api/auth
 router.use('/auth', require('./services/auth.service.server.js').router);
 

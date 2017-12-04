@@ -22,3 +22,11 @@ export class Markdown implements IAppEntity {
     description: string;
     content: string;
 }
+
+/** Models a Project object */
+export class Project {
+    _id?: string;
+    name: string;
+    members?: [string];
+    admin?: [string];
+}

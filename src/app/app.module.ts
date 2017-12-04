@@ -13,6 +13,7 @@ import { AuthService } from './services/auth.service.client';
 import { ErrorHandlerService } from './services/error-handler.service.client';
 import { UserService } from './services/user.service.client';
 import { MarkdownService } from './services/markdown.service.client';
+import { ProjectService } from './services/project.service.client';
 import { IconSearchService } from './services/iconsearch.service.client';
 import { UtilService } from './services/utils.service.client';
 import { GitHubService } from './services/github.service.client';
@@ -51,6 +52,11 @@ import { CommitComponent } from './components/editor/git/commit/commit.component
 import { RegisterComponent } from './components/user/register/register.component';
 import { SaveMarkdownComponent } from './components/editor/markdown/save-markdown/save-markdown.component';
 
+// project components
+import { ListProjectComponent } from './components/project/list/list.component';
+import { NewProjectComponent } from './components/project/new/new.component';
+import { EditProjectComponent } from './components/project/edit/edit.component';
+
 // #endregion
 
 @NgModule({
@@ -76,7 +82,10 @@ import { SaveMarkdownComponent } from './components/editor/markdown/save-markdow
     RegisterComponent,
     MarkdownConvertorPipe,
     CommitComponent,
-    SaveMarkdownComponent
+    SaveMarkdownComponent,
+    ListProjectComponent,
+    NewProjectComponent,
+    EditProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +96,7 @@ import { SaveMarkdownComponent } from './components/editor/markdown/save-markdow
   providers: [
     UserService,
     MarkdownService,
+    ProjectService,
     AuthService,
     GitHubService,
     ErrorHandlerService,

@@ -144,28 +144,32 @@ var AppConstants = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_iconsearch_service_client__ = __webpack_require__("../../../../../src/app/services/iconsearch.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_utils_service_client__ = __webpack_require__("../../../../../src/app/services/utils.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__directives_resizable_resizable_directive__ = __webpack_require__("../../../../../src/app/directives/resizable/resizable.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pipes_string_filter_string_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/string-filter/string-filter.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_code_insert_code_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-code/insert-code.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_media_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_glyph_insert_glyph_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-glyph/insert-glyph.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_editor_git_commit_commit_component__ = __webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_editor_markdown_save_markdown_save_markdown_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_project_service_client__ = __webpack_require__("../../../../../src/app/services/project.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_iconsearch_service_client__ = __webpack_require__("../../../../../src/app/services/iconsearch.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_utils_service_client__ = __webpack_require__("../../../../../src/app/services/utils.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_resizable_resizable_directive__ = __webpack_require__("../../../../../src/app/directives/resizable/resizable.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pipes_string_filter_string_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/string-filter/string-filter.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_code_insert_code_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-code/insert-code.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_media_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_editor_tiny_editor_insert_glyph_insert_glyph_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-glyph/insert-glyph.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_editor_git_commit_commit_component__ = __webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_editor_markdown_save_markdown_save_markdown_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_project_list_list_component__ = __webpack_require__("../../../../../src/app/components/project/list/list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_project_new_new_component__ = __webpack_require__("../../../../../src/app/components/project/new/new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_project_edit_edit_component__ = __webpack_require__("../../../../../src/app/components/project/edit/edit.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -180,6 +184,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // #region App services
+
 
 
 
@@ -214,6 +219,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 // user components
 
 
+// project components
+
+
+
 // #endregion
 var AppModule = (function () {
     function AppModule() {
@@ -224,25 +233,28 @@ var AppModule = (function () {
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_6__components_home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__components_shared_alert_alert_component__["a" /* AlertComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__components_shared_loader_loader_component__["a" /* LoaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__components_shared_nav_nav_component__["a" /* NavComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
-                __WEBPACK_IMPORTED_MODULE_22__components_editor_editor_component__["a" /* EditorComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_code_insert_code_component__["a" /* InsertCodeComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_media_component__["a" /* InsertMediaComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__components_test_test_component__["a" /* TestComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__["a" /* InsertImageComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__["a" /* InsertYoutubeComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
-                __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */],
-                __WEBPACK_IMPORTED_MODULE_32__components_user_register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_21__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
-                __WEBPACK_IMPORTED_MODULE_31__components_editor_git_commit_commit_component__["a" /* CommitComponent */],
-                __WEBPACK_IMPORTED_MODULE_33__components_editor_markdown_save_markdown_save_markdown_component__["a" /* SaveMarkdownComponent */]
+                __WEBPACK_IMPORTED_MODULE_18__components_shared_alert_alert_component__["a" /* AlertComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components_shared_loader_loader_component__["a" /* LoaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__components_shared_nav_nav_component__["a" /* NavComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
+                __WEBPACK_IMPORTED_MODULE_23__components_editor_editor_component__["a" /* EditorComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_code_insert_code_component__["a" /* InsertCodeComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_media_component__["a" /* InsertMediaComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__components_test_test_component__["a" /* TestComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__["a" /* InsertImageComponent */],
+                __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__["a" /* InsertYoutubeComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
+                __WEBPACK_IMPORTED_MODULE_31__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */],
+                __WEBPACK_IMPORTED_MODULE_33__components_user_register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
+                __WEBPACK_IMPORTED_MODULE_32__components_editor_git_commit_commit_component__["a" /* CommitComponent */],
+                __WEBPACK_IMPORTED_MODULE_34__components_editor_markdown_save_markdown_save_markdown_component__["a" /* SaveMarkdownComponent */],
+                __WEBPACK_IMPORTED_MODULE_35__components_project_list_list_component__["a" /* ListProjectComponent */],
+                __WEBPACK_IMPORTED_MODULE_36__components_project_new_new_component__["a" /* NewProjectComponent */],
+                __WEBPACK_IMPORTED_MODULE_37__components_project_edit_edit_component__["a" /* EditProjectComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -253,14 +265,15 @@ var AppModule = (function () {
             providers: [
                 __WEBPACK_IMPORTED_MODULE_10__services_user_service_client__["a" /* UserService */],
                 __WEBPACK_IMPORTED_MODULE_11__services_markdown_service_client__["a" /* MarkdownService */],
+                __WEBPACK_IMPORTED_MODULE_12__services_project_service_client__["a" /* ProjectService */],
                 __WEBPACK_IMPORTED_MODULE_8__services_auth_service_client__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_14__services_github_service_client__["a" /* GitHubService */],
+                __WEBPACK_IMPORTED_MODULE_15__services_github_service_client__["a" /* GitHubService */],
                 __WEBPACK_IMPORTED_MODULE_9__services_error_handler_service_client__["a" /* ErrorHandlerService */],
                 __WEBPACK_IMPORTED_MODULE_7__services_interactions_service_client__["a" /* InteractionsService */],
-                __WEBPACK_IMPORTED_MODULE_12__services_iconsearch_service_client__["a" /* IconSearchService */],
-                __WEBPACK_IMPORTED_MODULE_13__services_utils_service_client__["a" /* UtilService */],
-                __WEBPACK_IMPORTED_MODULE_21__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
-                __WEBPACK_IMPORTED_MODULE_20__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
+                __WEBPACK_IMPORTED_MODULE_13__services_iconsearch_service_client__["a" /* IconSearchService */],
+                __WEBPACK_IMPORTED_MODULE_14__services_utils_service_client__["a" /* UtilService */],
+                __WEBPACK_IMPORTED_MODULE_22__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
+                __WEBPACK_IMPORTED_MODULE_21__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         })
@@ -282,6 +295,12 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_project_new_new_component__ = __webpack_require__("../../../../../src/app/components/project/new/new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_project_edit_edit_component__ = __webpack_require__("../../../../../src/app/components/project/edit/edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_project_list_list_component__ = __webpack_require__("../../../../../src/app/components/project/list/list.component.ts");
+
+
+
 
 
 
@@ -289,6 +308,9 @@ var AppModule = (function () {
 
 var APP_ROUTES = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */] },
+    { path: 'project', component: __WEBPACK_IMPORTED_MODULE_7__components_project_list_list_component__["a" /* ListProjectComponent */] },
+    { path: 'project/new', component: __WEBPACK_IMPORTED_MODULE_5__components_project_new_new_component__["a" /* NewProjectComponent */] },
+    { path: 'project/:projectId', component: __WEBPACK_IMPORTED_MODULE_6__components_project_edit_edit_component__["a" /* EditProjectComponent */] },
     { path: 'markdown/:markdownId', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_4__components_user_register_register_component__["a" /* RegisterComponent */] },
     { path: 'test', component: __WEBPACK_IMPORTED_MODULE_2__app_components_test_test_component__["a" /* TestComponent */], data: { skipAuth: true } },
@@ -1975,6 +1997,266 @@ var HomeComponent = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/project/edit/edit.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/project/edit/edit.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  edit works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/project/edit/edit.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditProjectComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var EditProjectComponent = (function () {
+    function EditProjectComponent() {
+    }
+    EditProjectComponent.prototype.ngOnInit = function () {
+    };
+    EditProjectComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-edit-project',
+            template: __webpack_require__("../../../../../src/app/components/project/edit/edit.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/project/edit/edit.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], EditProjectComponent);
+    return EditProjectComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/project/list/list.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/project/list/list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n    <div class=\"col\">\n        <div class=\"list-group\">\n            <a *ngFor=\"let project of projects\"\n               [routerLink]=\"['/project/', project._id]\"\n               class=\"list-group-item list-group-item-action \">\n                {{project.name}}\n            </a>\n        </div>\n        <div class=\"mt-2\">\n            <a class=\"btn btn-secondary btn-sm\"\n               [routerLink]=\"['/project','new']\">\n               <i class=\"fa fa-plus fa-lg mr-2\" aria-hidden=\"true\"></i>\n               <span>Create Project</span>\n              </a>\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/project/list/list.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListProjectComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_project_service_client__ = __webpack_require__("../../../../../src/app/services/project.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var ListProjectComponent = (function () {
+    function ListProjectComponent(projectService, authService, interactionService, errorHandlerService, route) {
+        this.projectService = projectService;
+        this.authService = authService;
+        this.interactionService = interactionService;
+        this.errorHandlerService = errorHandlerService;
+        this.route = route;
+    }
+    ListProjectComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var user = this.authService.getLoggedInUser();
+        if (user) {
+            this.interactionService.showLoader(true);
+            this.projectService.findProjectsByMembership(user._id)
+                .subscribe(function (projects) {
+                _this.projects = projects;
+                _this.interactionService.showLoader(false);
+            });
+        }
+        else {
+            this.interactionService.showAlert('You must be logged in to view this page');
+        }
+    };
+    ListProjectComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-list-project',
+            template: __webpack_require__("../../../../../src/app/components/project/list/list.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/project/list/list.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_project_service_client__["a" /* ProjectService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_error_handler_service_client__["a" /* ErrorHandlerService */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]])
+    ], ListProjectComponent);
+    return ListProjectComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/project/new/new.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/project/new/new.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col\">\n            <h4>New Project</h4>\n            <form #newProjectForm=\"ngForm\"\n                  (submit)=\"createProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label\"\n                           for=\"name\">Name</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Members -->\n                <div class=\"form-group\">\n                    <label class=\"control-label\"\n                           for=\"name\">Members</label>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary btn-sm\"\n                            [hidden]=\"inProgres\"\n                            [disabled]=\"!newProjectForm.valid\">Create</button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/project/new/new.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewProjectComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_project_service_client__ = __webpack_require__("../../../../../src/app/services/project.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var NewProjectComponent = (function () {
+    function NewProjectComponent(router, activatedRoute, projectService, interactionsService, errorHandlerService) {
+        this.router = router;
+        this.activatedRoute = activatedRoute;
+        this.projectService = projectService;
+        this.interactionsService = interactionsService;
+        this.errorHandlerService = errorHandlerService;
+    }
+    NewProjectComponent.prototype.ngOnInit = function () {
+    };
+    NewProjectComponent.prototype.createProject = function () {
+        var _this = this;
+        if (this.inProgress) {
+            return;
+        }
+        if (this.newProjectForm.invalid) {
+            // touch controls to highlight validation
+            this.newProjectForm.controls.name.markAsTouched({ onlySelf: true });
+            return;
+        }
+        var project = {
+            name: this.name
+        };
+        this.interactionsService.showLoader(true);
+        this.projectService.createProject(project)
+            .subscribe(function (createdProject) {
+            _this.interactionsService.showLoader(false);
+            _this.router.navigate(['/project', createdProject._id]);
+        }, function (err) {
+            _this.errorHandlerService.handleError('Error creating project', err);
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('newProjectForm'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* NgForm */])
+    ], NewProjectComponent.prototype, "newProjectForm", void 0);
+    NewProjectComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-new-project',
+            template: __webpack_require__("../../../../../src/app/components/project/new/new.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/project/new/new.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_3__services_project_service_client__["a" /* ProjectService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
+    ], NewProjectComponent);
+    return NewProjectComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/shared/alert/alert.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2164,7 +2446,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand navbar-inverse bg-primary fixed-top py-0\">\r\n    <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n            type=\"button\"\r\n            data-toggle=\"collapse\"\r\n            data-target=\"#navbar-content\"\r\n            aria-controls=\"navbarColor01\"\r\n            aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n    <a class=\"navbar-brand text-white\"\r\n       href=\"#\">WriteMe.md</a>\r\n\r\n    <div class=\"collapse navbar-collapse pb-3 pb-lg-0\"\r\n         id=\"navbar-content\">\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\"\r\n                   href=\"#\">Editor</a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\"\r\n                   href=\"#\">Projects</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\"\r\n                   href=\"#\">Profile</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Login form -->\r\n        <form class=\"form-inline float-right ml-auto\"\r\n              (submit)=\"login()\"\r\n              *ngIf=\"!loggedIn\">\r\n            <input class=\"form-control mr-sm-2 form-control-sm py-1 pt-2\"\r\n                   type=\"text\"\r\n                   placeholder=\"Username\"\r\n                   name=\"username\"\r\n                   [(ngModel)]=\"username\">\r\n            <input class=\"form-control mr-sm-2 form-control-sm py-1 pt-2\"\r\n                   type=\"password\"\r\n                   placeholder=\"Password\"\r\n                   name=\"password\"\r\n                   [(ngModel)]=\"password\">\r\n            <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm border-top-0\"\r\n                    type=\"submit\">Login</button>\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm p-1\"\r\n               href=\"http://localhost:3100/api/auth/github\"\r\n               target=\"_self\">\r\n                <i class=\"fa fa-github fa-2x\" aria-hidden=\"true\"></i>\r\n            </a>\r\n            <a class=\"btn border text-white ml-2 my-2 my-sm-0 btn-sm\"\r\n               [routerLink]=\"['/register']\">Register</a>\r\n        </form>\r\n        <!-- / Login form -->\r\n\r\n        <!-- Logout form -->\r\n        <ul class=\"float-right ml-auto navbar-nav form-inline\"\r\n            *ngIf=\"loggedIn\">\r\n            <li class=\"nav-item\">\r\n                <span class=\"fa fa-user-circle fa-lg\"></span>\r\n                <span> {{loggedIn.name || loggedIn.username}}</span>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <button class=\"btn btn-secondary btn-sm\"\r\n                        (click)=\"logout()\">Logout</button>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand navbar-inverse bg-primary fixed-top py-0\">\r\n    <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n            type=\"button\"\r\n            data-toggle=\"collapse\"\r\n            data-target=\"#navbar-content\"\r\n            aria-controls=\"navbarColor01\"\r\n            aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n    <a class=\"navbar-brand text-white\"\r\n       href=\"#\">WriteMe.md</a>\r\n\r\n    <div class=\"collapse navbar-collapse pb-3 pb-lg-0 text-white\"\r\n         id=\"navbar-content\">\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   routerLink=\"['/']\">Editor</a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/project']\">Projects</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   href=\"#\">Profile</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Login form -->\r\n        <form class=\"form-inline float-right ml-auto\"\r\n              (submit)=\"login()\"\r\n              *ngIf=\"!loggedIn\">\r\n            <input class=\"form-control mr-sm-2 form-control-sm py-1 pt-2\"\r\n                   type=\"text\"\r\n                   placeholder=\"Username\"\r\n                   name=\"username\"\r\n                   [(ngModel)]=\"username\">\r\n            <input class=\"form-control mr-sm-2 form-control-sm py-1 pt-2\"\r\n                   type=\"password\"\r\n                   placeholder=\"Password\"\r\n                   name=\"password\"\r\n                   [(ngModel)]=\"password\">\r\n            <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm border-top-0\"\r\n                    type=\"submit\">Login</button>\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm p-1\"\r\n               href=\"http://localhost:3100/api/auth/github\"\r\n               target=\"_self\">\r\n                <i class=\"fa fa-github fa-2x\" aria-hidden=\"true\"></i>\r\n            </a>\r\n            <a class=\"btn border text-white ml-2 my-2 my-sm-0 btn-sm\"\r\n               [routerLink]=\"['/register']\">Register</a>\r\n        </form>\r\n        <!-- / Login form -->\r\n\r\n        <!-- Logout form -->\r\n        <ul class=\"float-right ml-auto navbar-nav form-inline\"\r\n            *ngIf=\"loggedIn\">\r\n            <li class=\"nav-item\">\r\n                <span class=\"fa fa-user-circle fa-lg\"></span>\r\n                <span> {{loggedIn.name || loggedIn.username}}</span>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <button class=\"btn btn-secondary btn-sm\"\r\n                        (click)=\"logout()\">Logout</button>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>"
 
 /***/ }),
 
@@ -4202,6 +4484,7 @@ var faIconsList = ['500px', 'adjust', 'adn', 'align-center', 'align-justify', 'a
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return User; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Markdown; });
+/* unused harmony export Project */
 /** Models a User object */
 var User = (function () {
     function User() {
@@ -4214,6 +4497,13 @@ var Markdown = (function () {
     function Markdown() {
     }
     return Markdown;
+}());
+
+/** Models a Project object */
+var Project = (function () {
+    function Project() {
+    }
+    return Project;
 }());
 
 
@@ -5082,6 +5372,93 @@ var MarkdownService = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
     ], MarkdownService);
     return MarkdownService;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/project.service.client.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProjectService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_constant__ = __webpack_require__("../../../../../src/app/app.constant.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ProjectService = (function () {
+    function ProjectService(http) {
+        this.http = http;
+        this.endpoint = {
+            'createProject': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/project',
+            'findProjectById': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/project/{projectId}',
+            'findProjectsByAuthor': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/project/byMembership/{userId}',
+            'updateProject': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/project/{projectId}',
+            'deleteProject': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/project/{projectId}'
+        };
+    }
+    /**
+     * Create a new project
+     * @param project project object to create
+     * @returns Observable that resolves to the created project
+     */
+    ProjectService.prototype.createProject = function (project) {
+        return this.http.post(this.endpoint.createProject, project, { withCredentials: true });
+    };
+    /**
+     * Find project by project id
+     * @param projectId id of the project
+     * @returns Observable that resolves to project with the specifed id; null if id doesn't exist
+     */
+    ProjectService.prototype.findProjectById = function (projectId) {
+        var url = this.endpoint.findProjectById.replace('{projectId}', projectId);
+        return this.http.get(url);
+    };
+    /**
+     * Find project by project name
+     * @param userId id of the user
+     * @returns Observable that resolves to project with the specifed projectname; null if id doesn't exist
+     */
+    ProjectService.prototype.findProjectsByMembership = function (userId) {
+        var url = this.endpoint.findProjectsByAuthor.replace('{userId}', userId);
+        return this.http.get(url);
+    };
+    /**
+     * Update project by project id
+     * @param {string} projectId id of the project
+     * @param project updated project object
+     * @returns Observable that resolves to updated project object
+     */
+    ProjectService.prototype.updateProject = function (projectId, project) {
+        var url = this.endpoint.updateProject.replace('{projectId}', projectId);
+        return this.http.put(url, project);
+    };
+    /**
+     * Delete project by project id
+     * @param {string} projectId id of the project
+     * @returns Observable that resolves to deleted project object
+     */
+    ProjectService.prototype.deleteProject = function (projectId) {
+        var url = this.endpoint.deleteProject.replace('{projectId}', projectId);
+        return this.http.delete(url);
+    };
+    ProjectService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    ], ProjectService);
+    return ProjectService;
 }());
 
 

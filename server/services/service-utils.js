@@ -1,5 +1,5 @@
 /** Common Utilities for Services */
-module.exports = (function () {
+module.exports = (function() {
 
     /**
      * Invoke a backend model function and send the response
@@ -23,8 +23,17 @@ module.exports = (function () {
         }
     }
 
+    function checkAuth(req, res, next) {
+        if (req.isAuthenticated()) {
+            next();
+        } else {
+            res.send(401);
+        }
+    }
+
     return {
-        sendResponse: sendResponse
+        sendResponse: sendResponse,
+        checkAuth: checkAuth
     };
 
 })();
