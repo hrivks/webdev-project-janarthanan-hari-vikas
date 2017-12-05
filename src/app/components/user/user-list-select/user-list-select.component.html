@@ -1,0 +1,17 @@
+<div class="user-list-select">
+    <div class="list-group">
+        <a class="list-group-item list-group-item-action"
+           *ngFor="let user of users"
+           (click)="selectUser(user)">
+           <span class="fa fa-lg" 
+            [ngClass]="selectedUsers.indexOf(user) === -1 ? 'fa-square-o' : 'fa-check-square-o'">
+          </span>
+          <span *ngIf="user.name">
+            {{user.name}} <small class="text-muted">{{user.username}}</small>
+          </span>
+          <span *ngIf="!user.name">
+              {{user.username}}
+          </span>
+        </a>
+    </div>
+</div>

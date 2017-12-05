@@ -7,23 +7,12 @@ import { AppConstants } from '../app.constant';
 @Injectable()
 export class UserService {
 
-    api = {
-        'login': this.login,
-        'logout': this.logout,
-        'loggedIn': this.loggedIn,
-        'register': this.register,
-        'findUserById': this.findUserById,
-        'findUserByUsername': this.findUserByUsername,
-        'findUserByCredentials': this.findUserByCredentials,
-        'updateUser': this.updateUser,
-        'deleteUser': this.deleteUser
-    };
-
     endpoint = {
         'login': AppConstants.ENDPOINT.baseUrl + '/user/login',
         'logout': AppConstants.ENDPOINT.baseUrl + '/user/logout',
         'loggedIn': AppConstants.ENDPOINT.baseUrl + '/user/loggedIn',
         'register': AppConstants.ENDPOINT.baseUrl + '/user/register',
+        'getAllUsers': AppConstants.ENDPOINT.baseUrl + '/user/all',
         'findUserByUsername': AppConstants.ENDPOINT.baseUrl + '/user?username={username}',
         'findUserByCredentials': AppConstants.ENDPOINT.baseUrl + '/user?username={username}&password={password}',
         'findUserById': AppConstants.ENDPOINT.baseUrl + '/user/{userId}',
@@ -39,6 +28,7 @@ export class UserService {
      * Login user
      * @param username username
      * @param password password
+     * @returns Observable that resolves to the user if the creds match; null other wise
      */
     login(username: string, password: string) {
         const url = this.endpoint.login;
@@ -50,13 +40,18 @@ export class UserService {
         return this.http.post<User>(url, creds, { withCredentials: true });
     }
 
+
     /** Logout user */
     logout() {
         const url = this.endpoint.logout;
         return this.http.post<User>(url, '', { withCredentials: true });
     }
 
-    /** Check if current user is logged in */
+
+    /**
+     * Check if current user is logged in
+     * @returns Observable that resolves to the logged-in user; null other wise
+     * */
     loggedIn() {
         const url = this.endpoint.loggedIn;
         return this.http.post<User>(url, '', { withCredentials: true });
@@ -66,11 +61,22 @@ export class UserService {
 
 
     /**
+     * Get all avaiable users
+     * @returns Observable that resolves to the list of available users
+     */
+    getAllUsers(): Observable<User[]> {
+        const url = this.endpoint.getAllUsers;
+        return this.http.post<User[]>(url, '', { withCredentials: true });
+    }
+
+
+    /**
        * Register new user
        * @param username username
        * @param password password
+       * @returns Observable that resolves to user if the creds match
        */
-    register(username: string, password: string) {
+    register(username: string, password: string): Observable<User> {
         const url = this.endpoint.register;
         const creds = {
             username: username,
@@ -79,6 +85,7 @@ export class UserService {
 
         return this.http.post<User>(url, creds, { withCredentials: true });
     }
+
 
     /**
      * Find user by user id
@@ -90,6 +97,7 @@ export class UserService {
         return this.http.get<User>(url);
     }
 
+
     /**
      * Find user by user name
      * @param username username of the user
@@ -99,6 +107,7 @@ export class UserService {
         const url = this.endpoint.findUserByUsername.replace('{username}', username);
         return this.http.get<User>(url);
     }
+
 
     /**
      * Find user by credentials
@@ -113,6 +122,7 @@ export class UserService {
         return this.http.get<User>(url);
     }
 
+
     /**
      * Update user by user id
      * @param {string} userId id of the user
@@ -123,6 +133,7 @@ export class UserService {
         const url = this.endpoint.updateUser.replace('{userId}', userId);
         return this.http.put<User>(url, user);
     }
+
 
     /**
      * Delete user by user id

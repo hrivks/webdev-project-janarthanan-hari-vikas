@@ -14,6 +14,7 @@ module.exports = (function() {
     const exp = {
         router: router, // router object
         api: { // list of functions supported by this service
+            getAllUsers: getAllUsers,
             createUser: createUser,
             findUserByUsername: findUserByUsername,
             findUserById: findUserById,
@@ -22,6 +23,7 @@ module.exports = (function() {
             deleteUser: deleteUser
         }
     };
+
 
     //#region: Login User
 
@@ -94,6 +96,24 @@ module.exports = (function() {
     }
 
     //#endregion: Register User
+
+
+    //#region: Get all users
+
+    // route: [GET] '/api/user/all'
+    router.post('/all', (req, res) => {
+        Utils.sendResponse(res, getAllUsers, []);
+    });
+
+    /**
+     * Get all available users
+     * @returns {Promise<UserSchema[]>} promise that resolves to the list of available users
+     */
+    function getAllUsers() {
+        return UserModel.getAllUsers();
+    }
+
+    //#endregion: Get all users
 
 
     //#region : Create User

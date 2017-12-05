@@ -5,9 +5,9 @@ import { TestComponent } from '../app/components/test/test.component';
 import { ModuleWithProviders } from '@angular/core';
 import { IconSearchComponent } from './components/editor/tiny-editor/insert-media/icon-search/icon-search.component';
 import { RegisterComponent } from './components/user/register/register.component';
-import { NewProjectComponent } from './components/project/new/new.component';
-import { EditProjectComponent } from './components/project/edit/edit.component';
-import { ListProjectComponent } from './components/project/list/list.component';
+import { NewProjectComponent } from './components/project/project-new/project-new.component';
+import { EditProjectComponent } from './components/project/project-edit/project-edit.component';
+import { ListProjectComponent } from './components/project/project-list/project-list.component';
 
 const APP_ROUTES: Routes = [
   { path: '', component: EditorComponent },

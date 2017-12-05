@@ -9,6 +9,7 @@ module.exports = (function() {
     var UserModel = mongoose.model('UserModel', UserSchema);
 
     // API
+    UserModel.getAllUsers = getAllUsers;
     UserModel.createUser = createUser;
     UserModel.findUserById = findUserById;
     UserModel.findUserByUsername = findUserByUsername;
@@ -42,6 +43,13 @@ module.exports = (function() {
         if (errors.length > 0) {
             throw errors;
         }
+    }
+
+    /** Get all users
+     * @returns {Promise<UserSchema[]>} promise that resolves to the list of all users
+     */
+    function getAllUsers(){
+        return UserModel.find();
     }
 
     /**

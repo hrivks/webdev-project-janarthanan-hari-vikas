@@ -36,7 +36,26 @@ module.exports = (function() {
      * @returns {Promise<ProjectSchema>} promise that resolves to the created project object
      */
     function createProject(project, admin) {
-        return ProjectModel.createProject(project, admin._id);
+        if (project.admins) {
+            project.admins.push(admin._id.toString());
+        } else {
+            project.admins = [admin._id.toString()];
+        }
+
+        // add all admins to members
+        if (project.members && project.members.length) {
+            project.admins.forEach((i) => {
+                if (project.members.indexOf(i) === -1) {
+                    project.members.push(i);
+                }
+            });
+        } else {
+            project.members = [admin._id.toString()];
+        }
+
+
+
+        return ProjectModel.createProject(project);
     }
 
     //#endregion: Create Project
@@ -76,7 +95,6 @@ module.exports = (function() {
     function findProjectsByMembership(userId) {
         return ProjectModel.findProjectsByMembership(userId);
     }
-
 
     //#endregion: Find projects by author
 

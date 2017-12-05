@@ -46,16 +46,18 @@ import { TestComponent } from './components/test/test.component';
 import { InsertYoutubeComponent } from './components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component';
 import { InsertGlyphComponent } from './components/editor/tiny-editor/insert-glyph/insert-glyph.component';
 
+import { SaveMarkdownComponent } from './components/editor/markdown/save-markdown/save-markdown.component';
 import { CommitComponent } from './components/editor/git/commit/commit.component';
 
 // user components
 import { RegisterComponent } from './components/user/register/register.component';
-import { SaveMarkdownComponent } from './components/editor/markdown/save-markdown/save-markdown.component';
+import { UserListSelectComponent } from './components/user/user-list-select/user-list-select.component';
 
 // project components
-import { ListProjectComponent } from './components/project/list/list.component';
-import { NewProjectComponent } from './components/project/new/new.component';
-import { EditProjectComponent } from './components/project/edit/edit.component';
+import { ListProjectComponent } from './components/project/project-list/project-list.component';
+import { NewProjectComponent } from './components/project/project-new/project-new.component';
+import { EditProjectComponent } from './components/project/project-edit/project-edit.component';
+
 
 // #endregion
 
@@ -85,7 +87,8 @@ import { EditProjectComponent } from './components/project/edit/edit.component';
     SaveMarkdownComponent,
     ListProjectComponent,
     NewProjectComponent,
-    EditProjectComponent
+    EditProjectComponent,
+    UserListSelectComponent
   ],
   imports: [
     BrowserModule,

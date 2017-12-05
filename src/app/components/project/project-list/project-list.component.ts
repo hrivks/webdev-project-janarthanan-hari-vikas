@@ -8,8 +8,8 @@ import { AuthService } from '../../../services/auth.service.client';
 
 @Component({
   selector: 'app-list-project',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  templateUrl: './project-list.component.html',
+  styleUrls: ['./project-list.component.css']
 })
 export class ListProjectComponent implements OnInit {
 

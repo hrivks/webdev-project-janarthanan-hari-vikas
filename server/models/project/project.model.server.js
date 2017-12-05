@@ -43,31 +43,18 @@ module.exports = (function() {
      * @param {ProjectSchema} project 
      * @returns {Promise<ProjectSchema>} promise that resolves to the created project
      */
-    function createProject(project, adminId) {
+    function createProject(project) {
         var def = q.defer();
 
         validate(project);
-
-        UserModel.findById(adminId, (err, admin) => {
-            if (admin) {
-                var x = adminId.toString();
-                project.admins = [adminId];
-                project.members = [adminId];
-                ProjectModel.create(project, (err, createdProject) => {
-                    if (err) {
-                        def.reject(err.message);
-                    } else {
-                        def.resolve(createdProject);
-                    }
-                });
-
+        ProjectModel.create(project, (err, createdProject) => {
+            if (err) {
+                def.reject(err.message);
             } else {
-                def.reject({
-                    message: 'User with id ' + adminId + 'does not exist'
-                });
+                def.resolve(createdProject);
             }
         });
-
+        
         return def.promise;
     }
 

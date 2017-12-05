@@ -3,11 +3,11 @@ import { IAppEntity } from './IAppEntity';
 /** Models a User object */
 export class User implements IAppEntity {
     _id: string;
-    username: string;
-    password: string;
-    name: string;
+    username?: string;
+    password?: string;
+    name?: string;
     email?: string;
-    github: {
+    github?: {
         id: string,
         token: string
     };
@@ -27,6 +27,6 @@ export class Markdown implements IAppEntity {
 export class Project {
     _id?: string;
     name: string;
-    members?: [string];
-    admin?: [string];
+    members?: (User | string)[];
+    admins?: (User | string)[];
 }
