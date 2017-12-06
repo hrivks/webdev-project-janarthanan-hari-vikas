@@ -75,6 +75,11 @@ export class InteractionsService {
         this.invoke(AppConstants.EVENTS.showAlert, { text: text, type: type, autoClose: autoClose });
     }
 
+    /** Hide Alert */
+    hideAlert() {
+        this.invoke(AppConstants.EVENTS.hideAlert);
+    }
+
     /**
      * Show / hide loading screen
      * @param show true, to show; false, to hide

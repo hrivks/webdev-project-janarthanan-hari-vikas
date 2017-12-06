@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { User } from '../model/model';
 import { UserService } from './user.service.client';
@@ -7,6 +7,7 @@ import { ErrorHandlerService } from './error-handler.service.client';
 import { CanActivate } from '@angular/router';
 import { InteractionsService } from './interactions.service.client';
 import { AppConstants } from '../app.constant';
+import { RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router/src/router_state';
 
 @Injectable()
 export class AuthService implements CanActivate {
@@ -21,13 +22,15 @@ export class AuthService implements CanActivate {
     };
 
     constructor(private router: Router,
+        private activatedRouter: ActivatedRoute,
         private userService: UserService,
         private interactionService: InteractionsService,
         private errorHandlerService: ErrorHandlerService) { }
 
-    canActivate() {
-        return this.checkLoggedIn();
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        return this.checkLoggedIn(false, state.url);
     }
+
 
     /**
      * Check if user is logged in
@@ -80,29 +83,32 @@ export class AuthService implements CanActivate {
         return obs;
     }
 
+
     /**
-     *  Check if user is logged in
+     * Check if user is logged in
+     * @param disableRedirect true, if redirect to login page must be disabled
+     * @param accessedRoute route that was tried to be accessed
      * @returns subscription that resolves to true if the user is logged in, false otherwise
      */
-    checkLoggedIn(disableRedirect?: boolean): Observable<boolean> {
+    checkLoggedIn(disableRedirect?: boolean, accessedRoute?: string): Observable<boolean> {
         const obs = new Observable<boolean>((observer) => {
             this.userService.loggedIn()
                 .subscribe((res) => {
                     if (res) {
-                        console.log(res);
                         this.setLoggedInUser(res);
                         observer.next(true);
                         observer.complete();
                     } else {
                         this.removeLoggedInUser();
                         if (!disableRedirect) {
-                            this.router.navigate(['/login']);
+                            this.interactionService.showAlert('Login to continue', 'danger', true);
+                            this.router.navigate(['/login'], { queryParams: { next: accessedRoute } });
                         }
                         observer.next(false);
                         observer.complete();
                     }
                 }, (err) => {
-                    console.log(err);
+                    console.error('Error checking login status', err);
                     this.removeLoggedInUser();
                     observer.next(false);
                     observer.complete();
@@ -111,6 +117,7 @@ export class AuthService implements CanActivate {
 
         return obs;
     }
+
 
     /**
      * Logout user

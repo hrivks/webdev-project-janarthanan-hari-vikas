@@ -50,6 +50,7 @@ import { SaveMarkdownComponent } from './components/editor/markdown/save-markdow
 import { CommitComponent } from './components/editor/git/commit/commit.component';
 
 // user components
+import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { UserListSelectComponent } from './components/user/user-list-select/user-list-select.component';
 
@@ -57,6 +58,7 @@ import { UserListSelectComponent } from './components/user/user-list-select/user
 import { ListProjectComponent } from './components/project/project-list/project-list.component';
 import { NewProjectComponent } from './components/project/project-new/project-new.component';
 import { EditProjectComponent } from './components/project/project-edit/project-edit.component';
+
 
 
 // #endregion
@@ -88,7 +90,8 @@ import { EditProjectComponent } from './components/project/project-edit/project-
     ListProjectComponent,
     NewProjectComponent,
     EditProjectComponent,
-    UserListSelectComponent
+    UserListSelectComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

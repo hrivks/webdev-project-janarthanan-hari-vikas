@@ -58,7 +58,7 @@ export class NewProjectComponent implements OnInit {
     this.projectService.createProject(project)
       .subscribe((createdProject) => {
         this.interactionService.showLoader(false);
-        this.router.navigate(['/project', createdProject._id]);
+        this.router.navigate(['/projects']);
       }, (err) => {
         this.errorHandlerService.handleError('Error creating project', err);
       });

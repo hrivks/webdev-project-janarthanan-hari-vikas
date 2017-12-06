@@ -48,8 +48,8 @@ export class EditorComponent implements OnInit {
     };
 
     // get saved markdown
-    this.activatedRoute.params.subscribe((params: any) => {
-      this.markdownId = params['markdownId'];
+    this.activatedRoute.paramMap.subscribe((params: any) => {
+      this.markdownId = params.get('markdownId');
       if (this.markdownId) {
         this.markdownService.api.findMarkdownById(this.markdownId)
           .subscribe((markdown) => {

@@ -16,13 +16,13 @@
         <ul class="navbar-nav ml-4">
             <li class="nav-item">
                 <a class="nav-link text-white"
-                   routerLink="['/']">Editor</a>
+                   [routerLink]="['/']">Editor</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-4">
             <li class="nav-item">
                 <a class="nav-link text-white"
-                   [routerLink]="['/project']">Projects</a>
+                   [routerLink]="['/projects']">Projects</a>
             </li>
         </ul>
 
@@ -34,21 +34,12 @@
         </ul>
 
         <!-- Login form -->
-        <form class="form-inline float-right ml-auto"
-              (submit)="login()"
-              *ngIf="!loggedIn">
-            <input class="form-control mr-sm-2 form-control-sm py-1 pt-2"
-                   type="text"
-                   placeholder="Username"
-                   name="username"
-                   [(ngModel)]="username">
-            <input class="form-control mr-sm-2 form-control-sm py-1 pt-2"
-                   type="password"
-                   placeholder="Password"
-                   name="password"
-                   [(ngModel)]="password">
-            <button class="btn btn-secondary my-2 my-sm-0 btn-sm border-top-0"
-                    type="submit">Login</button>
+        <div class="form-inline float-right ml-auto"
+             *ngIf="!loggedIn">
+            <!-- Login button -->
+            <a class="btn btn-secondary my-2 my-sm-0 btn-sm border-top-0"
+               [routerLink]="['/login']">Login</a>
+            <!-- Register button -->
             <a class="btn btn-secondary my-2 my-sm-0 btn-sm p-1"
                href="http://localhost:3100/api/auth/github"
                target="_self">
@@ -56,7 +47,7 @@
             </a>
             <a class="btn border text-white ml-2 my-2 my-sm-0 btn-sm"
                [routerLink]="['/register']">Register</a>
-        </form>
+        </div>
         <!-- / Login form -->
 
         <!-- Logout form -->

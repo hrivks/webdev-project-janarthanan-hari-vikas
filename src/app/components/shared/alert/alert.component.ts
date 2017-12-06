@@ -23,6 +23,7 @@ export class AlertComponent implements OnInit {
   ngOnInit() {
     this.alertVisible = false;
     this.interactionsService.registerCallback(AppConstants.EVENTS.showAlert, (d) => { this.showAlert(d); });
+    this.interactionsService.registerCallback(AppConstants.EVENTS.hideAlert, () => { this.hideAlert(); });
   }
 
   /**
@@ -41,6 +42,11 @@ export class AlertComponent implements OnInit {
         }, 3000);
       }
     }
+  }
+
+  /** Hide alert */
+  hideAlert() {
+    this.alertVisible = false;
   }
 
 }

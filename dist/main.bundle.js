@@ -113,6 +113,7 @@ var AppConstants = (function () {
     }
     AppConstants.EVENTS = {
         showAlert: 'showAlert',
+        hideAlert: 'hideAlert',
         showLoader: 'showLoader',
         loginChange: 'loginChange'
     };
@@ -166,11 +167,12 @@ var AppConstants = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_editor_tiny_editor_insert_glyph_insert_glyph_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-glyph/insert-glyph.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_editor_markdown_save_markdown_save_markdown_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_editor_git_commit_commit_component__ = __webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_user_user_list_select_user_list_select_component__ = __webpack_require__("../../../../../src/app/components/user/user-list-select/user-list-select.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_project_project_list_project_list_component__ = __webpack_require__("../../../../../src/app/components/project/project-list/project-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_project_project_new_project_new_component__ = __webpack_require__("../../../../../src/app/components/project/project-new/project-new.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_project_project_edit_project_edit_component__ = __webpack_require__("../../../../../src/app/components/project/project-edit/project-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_user_login_login_component__ = __webpack_require__("../../../../../src/app/components/user/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_user_user_list_select_user_list_select_component__ = __webpack_require__("../../../../../src/app/components/user/user-list-select/user-list-select.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_project_project_list_project_list_component__ = __webpack_require__("../../../../../src/app/components/project/project-list/project-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_project_project_new_project_new_component__ = __webpack_require__("../../../../../src/app/components/project/project-new/project-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__components_project_project_edit_project_edit_component__ = __webpack_require__("../../../../../src/app/components/project/project-edit/project-edit.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -221,6 +223,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 // user components
 
 
+
 // project components
 
 
@@ -250,14 +253,15 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_16__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
                 __WEBPACK_IMPORTED_MODULE_31__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
                 __WEBPACK_IMPORTED_MODULE_21__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */],
-                __WEBPACK_IMPORTED_MODULE_34__components_user_register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_35__components_user_register_register_component__["a" /* RegisterComponent */],
                 __WEBPACK_IMPORTED_MODULE_22__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
                 __WEBPACK_IMPORTED_MODULE_33__components_editor_git_commit_commit_component__["a" /* CommitComponent */],
                 __WEBPACK_IMPORTED_MODULE_32__components_editor_markdown_save_markdown_save_markdown_component__["a" /* SaveMarkdownComponent */],
-                __WEBPACK_IMPORTED_MODULE_36__components_project_project_list_project_list_component__["a" /* ListProjectComponent */],
-                __WEBPACK_IMPORTED_MODULE_37__components_project_project_new_project_new_component__["a" /* NewProjectComponent */],
-                __WEBPACK_IMPORTED_MODULE_38__components_project_project_edit_project_edit_component__["a" /* EditProjectComponent */],
-                __WEBPACK_IMPORTED_MODULE_35__components_user_user_list_select_user_list_select_component__["a" /* UserListSelectComponent */]
+                __WEBPACK_IMPORTED_MODULE_37__components_project_project_list_project_list_component__["a" /* ListProjectComponent */],
+                __WEBPACK_IMPORTED_MODULE_38__components_project_project_new_project_new_component__["a" /* NewProjectComponent */],
+                __WEBPACK_IMPORTED_MODULE_39__components_project_project_edit_project_edit_component__["a" /* EditProjectComponent */],
+                __WEBPACK_IMPORTED_MODULE_36__components_user_user_list_select_user_list_select_component__["a" /* UserListSelectComponent */],
+                __WEBPACK_IMPORTED_MODULE_34__components_user_login_login_component__["a" /* LoginComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -301,6 +305,10 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_project_project_new_project_new_component__ = __webpack_require__("../../../../../src/app/components/project/project-new/project-new.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_project_project_edit_project_edit_component__ = __webpack_require__("../../../../../src/app/components/project/project-edit/project-edit.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_project_project_list_project_list_component__ = __webpack_require__("../../../../../src/app/components/project/project-list/project-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_user_login_login_component__ = __webpack_require__("../../../../../src/app/components/user/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+
+
 
 
 
@@ -311,11 +319,12 @@ var AppModule = (function () {
 
 var APP_ROUTES = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */] },
-    { path: 'project', component: __WEBPACK_IMPORTED_MODULE_7__components_project_project_list_project_list_component__["a" /* ListProjectComponent */] },
-    { path: 'project/new', component: __WEBPACK_IMPORTED_MODULE_5__components_project_project_new_project_new_component__["a" /* NewProjectComponent */] },
-    { path: 'project/:projectId', component: __WEBPACK_IMPORTED_MODULE_6__components_project_project_edit_project_edit_component__["a" /* EditProjectComponent */] },
+    { path: 'projects', component: __WEBPACK_IMPORTED_MODULE_7__components_project_project_list_project_list_component__["a" /* ListProjectComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
+    { path: 'project/new', component: __WEBPACK_IMPORTED_MODULE_5__components_project_project_new_project_new_component__["a" /* NewProjectComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
+    { path: 'project/:projectId', component: __WEBPACK_IMPORTED_MODULE_6__components_project_project_edit_project_edit_component__["a" /* EditProjectComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
     { path: 'markdown/:markdownId', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_4__components_user_register_register_component__["a" /* RegisterComponent */] },
+    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_8__components_user_login_login_component__["a" /* LoginComponent */] },
     { path: 'test', component: __WEBPACK_IMPORTED_MODULE_2__app_components_test_test_component__["a" /* TestComponent */], data: { skipAuth: true } },
     { path: 'iconSearch', component: __WEBPACK_IMPORTED_MODULE_3__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */], data: { skipAuth: true } }
 ];
@@ -391,8 +400,8 @@ var EditorComponent = (function () {
             'save': { title: 'Save Markdown' }
         };
         // get saved markdown
-        this.activatedRoute.params.subscribe(function (params) {
-            _this.markdownId = params['markdownId'];
+        this.activatedRoute.paramMap.subscribe(function (params) {
+            _this.markdownId = params.get('markdownId');
             if (_this.markdownId) {
                 _this.markdownService.api.findMarkdownById(_this.markdownId)
                     .subscribe(function (markdown) {
@@ -2021,7 +2030,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/project/project-edit/project-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"project\">\n        <div class=\"col\">\n            <h4>Edit Project</h4>\n            <form #editProjectForm=\"ngForm\"\n                  (submit)=\"updateProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label\"\n                           for=\"name\">Name</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Admins -->\n                <div class=\"form-group\">\n                    <label class=\"control-label\"\n                           for=\"name\">Admins</label>\n                    <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                          [(selectedUsers)]=\"admins\"></app-user-list-select>\n                </div>\n\n                <!-- Members -->\n                <div class=\"form-group\">\n                    <label class=\"control-label\"\n                           for=\"name\">Members</label>\n                    <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                          [(selectedUsers)]=\"members\"></app-user-list-select>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary btn-sm\"\n                            [hidden]=\"inProgres\"\n                            [disabled]=\"!editProjectForm.valid\">Update</button>\n\n                    <button class=\"btn btn-danger btn-sm\"\n                            [hidden]=\"inProgres\">\n                            <i class=\"fa fa-trash fa-lg\"></i>\n                          </button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"project\">\n        <div class=\"col\">\n            <h4>Edit Project</h4>\n            <hr>\n            <form #editProjectForm=\"ngForm\"\n                  (submit)=\"updateProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label\"\n                           for=\"name\">Name</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Users -->\n                <div class=\"row mb-2\">\n                    <span class=\"btn btn-secondary px-1 py-1\"\n                          data-toggle=\"collapse\"\n                          data-target=\"#user-wrap\">\n                            <i class=\"fa fa-chevron-down mr-1\"></i>\n                            <span>Users</span>\n                    </span>\n                </div>\n                <div id=\"user-wrap\"\n                     class=\"collapse\">\n                    <div class=\"row\">\n                        <div class=\"col-12 col-sm-6\">\n                            <!-- Admins -->\n                            <div class=\"form-group\">\n                                <label class=\"control-label\"\n                                       for=\"name\">Admins</label>\n                                <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                      [(selectedUsers)]=\"admins\"></app-user-list-select>\n                            </div>\n                        </div>\n                        <div class=\"col-12 col-sm-6\">\n                            <!-- Members -->\n                            <div class=\"form-group\">\n                                <label class=\"control-label\"\n                                       for=\"name\">Members</label>\n                                <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                      [(selectedUsers)]=\"members\"></app-user-list-select>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary btn-sm\"\n                            type=\"submit\"\n                            [disabled]=\"!editProjectForm.valid\">Update</button>\n\n                    <button class=\"btn btn-danger btn-sm\"\n                            type=\"button\"\n                            [hidden]=\"confirmDelete\"\n                            (click)=\"confirmDelete=true\">\n                            <i class=\"fa fa-trash fa-lg\"></i>\n                          </button>\n                    <button class=\"btn btn-danger btn-sm\"\n                            type=\"button\"\n                            [hidden]=\"!confirmDelete\"\n                            (click)=\"deleteProject()\">\n                          <i class=\"fa fa-trash fa-lg\"></i> Sure?\n                        </button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2069,8 +2078,8 @@ var EditProjectComponent = (function () {
             this.interactionService.showAlert('You must be logged in to view this page');
         }
         else {
-            this.activatedRoute.params.subscribe(function (params) {
-                _this.projectService.findProjectById(params.projectId)
+            this.activatedRoute.paramMap.subscribe(function (params) {
+                _this.projectService.findProjectById(params.get('projectId'))
                     .subscribe(function (project) {
                     console.log(project);
                     _this.project = project;
@@ -2094,16 +2103,41 @@ var EditProjectComponent = (function () {
             this.editProjectForm.controls.name.markAsTouched({ onlySelf: true });
             return;
         }
+        this.inProgress = true;
         this.project.name = this.name;
         this.project.members = this.members.map(function (u) { return u._id; });
         this.project.admins = this.admins.map(function (u) { return u._id; });
         this.interactionService.showLoader(true);
         this.projectService.updateProject(this.project._id, this.project)
             .subscribe(function (createdProject) {
+            _this.inProgress = false;
             _this.interactionService.showLoader(false);
-            _this.router.navigate(['/project', createdProject._id]);
+            _this.interactionService.showAlert('Project updated successfully', 'success', true);
         }, function (err) {
+            console.error('Error updating project', err);
+            _this.inProgress = false;
+            _this.interactionService.showLoader(false);
             _this.errorHandlerService.handleError('Error updating project', err);
+        });
+    };
+    /** Delete Project */
+    EditProjectComponent.prototype.deleteProject = function () {
+        var _this = this;
+        if (this.inProgress) {
+            return;
+        }
+        this.interactionService.showLoader(true);
+        this.projectService.deleteProject(this.project._id)
+            .subscribe(function (createdProject) {
+            _this.inProgress = false;
+            _this.interactionService.showLoader(false);
+            _this.interactionService.showAlert('Project deleted successfully', 'success', true);
+            _this.router.navigate(['/projects']);
+        }, function (err) {
+            console.error('Error deleting project', err);
+            _this.inProgress = false;
+            _this.interactionService.showLoader(false);
+            _this.errorHandlerService.handleError('Error deleting project', err);
         });
     };
     __decorate([
@@ -2151,7 +2185,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/project/project-list/project-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col\">\n        <div class=\"list-group\">\n            <a *ngFor=\"let project of projects\"\n               [routerLink]=\"['/project/', project._id]\"\n               class=\"list-group-item list-group-item-action \">\n                {{project.name}}\n            </a>\n        </div>\n        <div class=\"mt-2\">\n            <a class=\"btn btn-secondary btn-sm\"\n               [routerLink]=\"['/project','new']\">\n               <i class=\"fa fa-plus fa-lg mr-2\" aria-hidden=\"true\"></i>\n               <span>Create Project</span>\n              </a>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col\">\n            <h4>My Projects</h4>\n            <hr>\n            <!-- Project list -->\n            <div class=\"list-group\">\n                <a *ngFor=\"let project of projects\"\n                   [routerLink]=\"['/project/', project._id]\"\n                   class=\"list-group-item list-group-item-action \">\n                {{project.name}}\n            </a>\n            </div>\n\n            <!-- no project message -->\n            <div *ngIf=\"!projects || projects.length === 0\">\n                <em class=\"ml-3\">No projects to display</em>\n            </div>\n\n            <!-- New project button -->\n            <div class=\"mt-2\">\n                <a class=\"btn btn-secondary btn-sm\"\n                   [routerLink]=\"['/project','new']\">\n               <i class=\"fa fa-plus fa-lg mr-2\" aria-hidden=\"true\"></i>\n               <span>Create Project</span>\n              </a>\n            </div>\n\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2244,7 +2278,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/project/project-new/project-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"loggedInUser\">\n        <div class=\"col\">\n            <h4>New Project</h4>\n            <form #newProjectForm=\"ngForm\"\n                  (submit)=\"createProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label\"\n                           for=\"name\">Name</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Admins -->\n                <div class=\"form-group\">\n                    <label class=\"control-label\"\n                           for=\"name\">Admins</label>\n                    <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                          [(selectedUsers)]=\"admins\"></app-user-list-select>\n                </div>\n\n                <!-- Members -->\n                <div class=\"form-group\">\n                    <label class=\"control-label\"\n                           for=\"name\">Members</label>\n                    <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                          [(selectedUsers)]=\"members\"></app-user-list-select>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary btn-sm\"\n                            [hidden]=\"inProgres\"\n                            [disabled]=\"!newProjectForm.valid\">Create</button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"loggedInUser\">\n        <div class=\"col\">\n            <h4>New Project</h4>\n            <hr>\n\n            <form #newProjectForm=\"ngForm\"\n                  (submit)=\"createProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label\"\n                           for=\"name\">Name</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <div class=\"row\">\n                    <div class=\"col-12 col-sm-6\">\n                        <!-- Admins -->\n                        <div class=\"form-group\">\n                            <label class=\"control-label\"\n                                   for=\"name\">Admins</label>\n                            <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                  [(selectedUsers)]=\"admins\"></app-user-list-select>\n                        </div>\n                    </div>\n                    <div class=\"col-12 col-sm-6\">\n                        <!-- Members -->\n                        <div class=\"form-group\">\n                            <label class=\"control-label\"\n                                   for=\"name\">Members</label>\n                            <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                  [(selectedUsers)]=\"members\"></app-user-list-select>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary btn-sm\"\n                            [hidden]=\"inProgres\"\n                            [disabled]=\"!newProjectForm.valid\">Create</button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2310,7 +2344,7 @@ var NewProjectComponent = (function () {
         this.projectService.createProject(project)
             .subscribe(function (createdProject) {
             _this.interactionService.showLoader(false);
-            _this.router.navigate(['/project', createdProject._id]);
+            _this.router.navigate(['/projects']);
         }, function (err) {
             _this.errorHandlerService.handleError('Error creating project', err);
         });
@@ -2394,6 +2428,7 @@ var AlertComponent = (function () {
         var _this = this;
         this.alertVisible = false;
         this.interactionsService.registerCallback(__WEBPACK_IMPORTED_MODULE_3__app_constant__["a" /* AppConstants */].EVENTS.showAlert, function (d) { _this.showAlert(d); });
+        this.interactionsService.registerCallback(__WEBPACK_IMPORTED_MODULE_3__app_constant__["a" /* AppConstants */].EVENTS.hideAlert, function () { _this.hideAlert(); });
     };
     /**
      * show alert on page
@@ -2411,6 +2446,10 @@ var AlertComponent = (function () {
                 }, 3000);
             }
         }
+    };
+    /** Hide alert */
+    AlertComponent.prototype.hideAlert = function () {
+        this.alertVisible = false;
     };
     AlertComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -2527,7 +2566,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand navbar-inverse bg-primary fixed-top py-0\">\r\n    <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n            type=\"button\"\r\n            data-toggle=\"collapse\"\r\n            data-target=\"#navbar-content\"\r\n            aria-controls=\"navbarColor01\"\r\n            aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n    <a class=\"navbar-brand text-white\"\r\n       href=\"#\">WriteMe.md</a>\r\n\r\n    <div class=\"collapse navbar-collapse pb-3 pb-lg-0 text-white\"\r\n         id=\"navbar-content\">\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   routerLink=\"['/']\">Editor</a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/project']\">Projects</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   href=\"#\">Profile</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Login form -->\r\n        <form class=\"form-inline float-right ml-auto\"\r\n              (submit)=\"login()\"\r\n              *ngIf=\"!loggedIn\">\r\n            <input class=\"form-control mr-sm-2 form-control-sm py-1 pt-2\"\r\n                   type=\"text\"\r\n                   placeholder=\"Username\"\r\n                   name=\"username\"\r\n                   [(ngModel)]=\"username\">\r\n            <input class=\"form-control mr-sm-2 form-control-sm py-1 pt-2\"\r\n                   type=\"password\"\r\n                   placeholder=\"Password\"\r\n                   name=\"password\"\r\n                   [(ngModel)]=\"password\">\r\n            <button class=\"btn btn-secondary my-2 my-sm-0 btn-sm border-top-0\"\r\n                    type=\"submit\">Login</button>\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm p-1\"\r\n               href=\"http://localhost:3100/api/auth/github\"\r\n               target=\"_self\">\r\n                <i class=\"fa fa-github fa-2x\" aria-hidden=\"true\"></i>\r\n            </a>\r\n            <a class=\"btn border text-white ml-2 my-2 my-sm-0 btn-sm\"\r\n               [routerLink]=\"['/register']\">Register</a>\r\n        </form>\r\n        <!-- / Login form -->\r\n\r\n        <!-- Logout form -->\r\n        <ul class=\"float-right ml-auto navbar-nav form-inline\"\r\n            *ngIf=\"loggedIn\">\r\n            <li class=\"nav-item\">\r\n                <span class=\"fa fa-user-circle fa-lg\"></span>\r\n                <span> {{loggedIn.name || loggedIn.username}}</span>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <button class=\"btn btn-secondary btn-sm\"\r\n                        (click)=\"logout()\">Logout</button>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand navbar-inverse bg-primary fixed-top py-0\">\r\n    <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n            type=\"button\"\r\n            data-toggle=\"collapse\"\r\n            data-target=\"#navbar-content\"\r\n            aria-controls=\"navbarColor01\"\r\n            aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n    <a class=\"navbar-brand text-white\"\r\n       href=\"#\">WriteMe.md</a>\r\n\r\n    <div class=\"collapse navbar-collapse pb-3 pb-lg-0 text-white\"\r\n         id=\"navbar-content\">\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/']\">Editor</a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/projects']\">Projects</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   href=\"#\">Profile</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Login form -->\r\n        <div class=\"form-inline float-right ml-auto\"\r\n             *ngIf=\"!loggedIn\">\r\n            <!-- Login button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm border-top-0\"\r\n               [routerLink]=\"['/login']\">Login</a>\r\n            <!-- Register button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm p-1\"\r\n               href=\"http://localhost:3100/api/auth/github\"\r\n               target=\"_self\">\r\n                <i class=\"fa fa-github fa-2x\" aria-hidden=\"true\"></i>\r\n            </a>\r\n            <a class=\"btn border text-white ml-2 my-2 my-sm-0 btn-sm\"\r\n               [routerLink]=\"['/register']\">Register</a>\r\n        </div>\r\n        <!-- / Login form -->\r\n\r\n        <!-- Logout form -->\r\n        <ul class=\"float-right ml-auto navbar-nav form-inline\"\r\n            *ngIf=\"loggedIn\">\r\n            <li class=\"nav-item\">\r\n                <span class=\"fa fa-user-circle fa-lg\"></span>\r\n                <span> {{loggedIn.name || loggedIn.username}}</span>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <button class=\"btn btn-secondary btn-sm\"\r\n                        (click)=\"logout()\">Logout</button>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>"
 
 /***/ }),
 
@@ -2676,6 +2715,113 @@ var TestComponent = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/user/login/login.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/user/login/login.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n    <div class=\"user-registration mt-3\">\n        <h3>Login</h3>\n        <hr>\n        <br>\n        <!--form-->\n        <form class=\"form\"\n              (ngSubmit)=\"login()\"\n              #loginForm=\"ngForm\">\n            <!-- User Name -->\n            <div class=\"form-group\">\n                <input placeholder=\"User Name\"\n                       type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"usernameField\"\n                       [(ngModel)]=\"username\"\n                       #usernameField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': !usernameField.valid && usernameField.touched}\"\n                       required />\n                <span *ngIf=\"usernameField.invalid && usernameField.touched\"\n                      class=\"text-danger ml-2\">Username is required</span>\n            </div>\n\n            <!-- Password -->\n            <div class=\"form-group\">\n                <input placeholder=\"Password\"\n                       type=\"password\"\n                       class=\"form-control form-control-sm\"\n                       name=\"passwordField\"\n                       [(ngModel)]=\"password\"\n                       #passwordField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': (!passwordField.valid && passwordField.touched)}\"\n                       required />\n                <span *ngIf=\"passwordField.invalid && passwordField.touched\"\n                      class=\"text-danger ml-2\">Password is required</span>\n            </div>\n\n            <!-- form actions -->\n            <div>\n                <button type=\"submit\"\n                        class=\"btn btn-sm btn-primary\"\n                        [disabled]=\"loginForm.invalid\">Login</button>\n\n                <a class=\"btn btn-sm btn-secondary py-1\"\n                   href=\"http://localhost:3100/api/auth/github\">\n                  Login with GitHub <i class=\"fa fa-github fa-2x ml-2\"></i>\n            </a>\n\n            </div>\n            <!-- /form actions -->\n        </form>\n        <!--/form-->\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/user/login/login.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var LoginComponent = (function () {
+    function LoginComponent(userService, router, activatedRoute, authService, interactionsService, errorHanderService) {
+        var _this = this;
+        this.userService = userService;
+        this.router = router;
+        this.activatedRoute = activatedRoute;
+        this.authService = authService;
+        this.interactionsService = interactionsService;
+        this.errorHanderService = errorHanderService;
+        this.activatedRoute.queryParamMap.subscribe(function (params) {
+            _this.redirectTo = params.get('next');
+        });
+    }
+    LoginComponent.prototype.ngOnInit = function () {
+    };
+    /** Login User */
+    LoginComponent.prototype.login = function () {
+        var _this = this;
+        this.interactionsService.hideAlert();
+        this.authService.login(this.username, this.password)
+            .subscribe(function (usr) {
+            if (_this.redirectTo) {
+                _this.router.navigateByUrl(_this.redirectTo);
+            }
+            else {
+                _this.router.navigate(['/projects']);
+            }
+        }, function (err) {
+            if (err.status === 401) {
+                _this.interactionsService.showAlert('Login failed. Please check username and password and try again');
+            }
+            else {
+                _this.errorHanderService.handleError('Login Failed', err);
+            }
+        });
+    };
+    LoginComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-login',
+            template: __webpack_require__("../../../../../src/app/components/user/login/login.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/user/login/login.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_3__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
+    ], LoginComponent);
+    return LoginComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/user/register/register.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2697,7 +2843,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"user-registration mt-3\">\n        <div class=\"display-4\">Register</div>\n        <hr>\n        <br>\n        <!--form-->\n        <form class=\"form\"\n              (ngSubmit)=\"register()\"\n              #registerForm=\"ngForm\">\n            <!-- User Name -->\n            <div class=\"form-group\">\n                <input placeholder=\"User Name\"\n                       type=\"text\"\n                       class=\"form-control\"\n                       name=\"usernameField\"\n                       [(ngModel)]=\"username\"\n                       #usernameField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': registrationErrors.username || (!usernameField.valid && usernameField.touched)}\"\n                       required />\n                <span *ngIf=\"usernameField.invalid && usernameField.touched\"\n                      class=\"text-danger ml-2\">Username is required</span>\n                <span *ngIf=\"registrationErrors.username\"\n                      class=\"text-danger ml-2\">{{registrationErrors.username}}</span>\n            </div>\n\n            <!-- Password -->\n            <div class=\"form-group\">\n                <input placeholder=\"Password\"\n                       type=\"password\"\n                       class=\"form-control\"\n                       name=\"passwordField\"\n                       [(ngModel)]=\"password\"\n                       #passwordField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': (!passwordField.valid && passwordField.touched)}\"\n                       required />\n                <span *ngIf=\"passwordField.invalid && passwordField.touched\"\n                      class=\"text-danger ml-2\">Password is required</span>\n            </div>\n\n            <!-- Verify Password -->\n            <div class=\"form-group\">\n                <input placeholder=\"Verify Password\"\n                       type=\"password\"\n                       class=\"form-control\"\n                       name=\"verifyPasswordField\"\n                       [(ngModel)]=\"verifyPassword\"\n                       #verifyPasswordField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': verifyPassword !== password && verifyPasswordField.touched}\"\n                       required />\n                <span *ngIf=\"verifyPasswordField.invalid && verifyPasswordField.touched\"\n                      class=\"text-danger ml-2\">Verify Password is required</span>\n                <span *ngIf=\"verifyPassword && verifyPassword !== password && verifyPasswordField.touched\"\n                      class=\"text-danger ml-2\">Passwords do not match</span>\n            </div>\n\n            <!-- form actions -->\n            <div>\n                <button type=\"submit\"\n                        class=\"btn btn-royal btn-block\"\n                        [disabled]=\"registerForm.invalid || verifyPassword !== password\">Register</button>\n                <!-- <a class=\"btn btn-danger btn-block\"\n                   [routerLink]=\"['/login']\">Cancel</a> -->\n            </div>\n            <!-- /form actions -->\n        </form>\n        <!--/form-->\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"user-registration mt-3\">\n            <h3>Register</h3>\n        <hr>\n        <br>\n        <!--form-->\n        <form class=\"form\"\n              (ngSubmit)=\"register()\"\n              #registerForm=\"ngForm\">\n            <!-- User Name -->\n            <div class=\"form-group\">\n                <input placeholder=\"User Name\"\n                       type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"usernameField\"\n                       [(ngModel)]=\"username\"\n                       #usernameField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': registrationErrors.username || (!usernameField.valid && usernameField.touched)}\"\n                       required />\n                <span *ngIf=\"usernameField.invalid && usernameField.touched\"\n                      class=\"text-danger ml-2\">Username is required</span>\n                <span *ngIf=\"registrationErrors.username\"\n                      class=\"text-danger ml-2\">{{registrationErrors.username}}</span>\n            </div>\n\n            <!-- Password -->\n            <div class=\"form-group\">\n                <input placeholder=\"Password\"\n                       type=\"password\"\n                       class=\"form-control form-control-sm\"\n                       name=\"passwordField\"\n                       [(ngModel)]=\"password\"\n                       #passwordField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': (!passwordField.valid && passwordField.touched)}\"\n                       required />\n                <span *ngIf=\"passwordField.invalid && passwordField.touched\"\n                      class=\"text-danger ml-2\">Password is required</span>\n            </div>\n\n            <!-- Verify Password -->\n            <div class=\"form-group\">\n                <input placeholder=\"Verify Password\"\n                       type=\"password\"\n                       class=\"form-control form-control-sm\"\n                       name=\"verifyPasswordField\"\n                       [(ngModel)]=\"verifyPassword\"\n                       #verifyPasswordField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': verifyPassword !== password && verifyPasswordField.touched}\"\n                       required />\n                <span *ngIf=\"verifyPasswordField.invalid && verifyPasswordField.touched\"\n                      class=\"text-danger ml-2\">Verify Password is required</span>\n                <span *ngIf=\"verifyPassword && verifyPassword !== password && verifyPasswordField.touched\"\n                      class=\"text-danger ml-2\">Passwords do not match</span>\n            </div>\n\n            <!-- form actions -->\n            <div>\n                <button type=\"submit\"\n                        class=\"btn btn-sm btn-royal btn-block\"\n                        [disabled]=\"registerForm.invalid || verifyPassword !== password\">Register</button>\n            </div>\n            <!-- /form actions -->\n        </form>\n        <!--/form-->\n    </div>\n</div>"
 
 /***/ }),
 
@@ -4897,8 +5043,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var AuthService = (function () {
-    function AuthService(router, userService, interactionService, errorHandlerService) {
+    function AuthService(router, activatedRouter, userService, interactionService, errorHandlerService) {
         this.router = router;
+        this.activatedRouter = activatedRouter;
         this.userService = userService;
         this.interactionService = interactionService;
         this.errorHandlerService = errorHandlerService;
@@ -4909,8 +5056,8 @@ var AuthService = (function () {
             'logout': this.logout
         };
     }
-    AuthService.prototype.canActivate = function () {
-        return this.checkLoggedIn();
+    AuthService.prototype.canActivate = function (route, state) {
+        return this.checkLoggedIn(false, state.url);
     };
     /**
      * Check if user is logged in
@@ -4960,16 +5107,17 @@ var AuthService = (function () {
         return obs;
     };
     /**
-     *  Check if user is logged in
+     * Check if user is logged in
+     * @param disableRedirect true, if redirect to login page must be disabled
+     * @param accessedRoute route that was tried to be accessed
      * @returns subscription that resolves to true if the user is logged in, false otherwise
      */
-    AuthService.prototype.checkLoggedIn = function (disableRedirect) {
+    AuthService.prototype.checkLoggedIn = function (disableRedirect, accessedRoute) {
         var _this = this;
         var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */](function (observer) {
             _this.userService.loggedIn()
                 .subscribe(function (res) {
                 if (res) {
-                    console.log(res);
                     _this.setLoggedInUser(res);
                     observer.next(true);
                     observer.complete();
@@ -4977,13 +5125,14 @@ var AuthService = (function () {
                 else {
                     _this.removeLoggedInUser();
                     if (!disableRedirect) {
-                        _this.router.navigate(['/login']);
+                        _this.interactionService.showAlert('Login to continue', 'danger', true);
+                        _this.router.navigate(['/login'], { queryParams: { next: accessedRoute } });
                     }
                     observer.next(false);
                     observer.complete();
                 }
             }, function (err) {
-                console.log(err);
+                console.error('Error checking login status', err);
                 _this.removeLoggedInUser();
                 observer.next(false);
                 observer.complete();
@@ -5007,6 +5156,7 @@ var AuthService = (function () {
     AuthService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
             __WEBPACK_IMPORTED_MODULE_3__user_service_client__["a" /* UserService */],
             __WEBPACK_IMPORTED_MODULE_5__interactions_service_client__["a" /* InteractionsService */],
             __WEBPACK_IMPORTED_MODULE_4__error_handler_service_client__["a" /* ErrorHandlerService */]])
@@ -5461,6 +5611,10 @@ var InteractionsService = (function () {
      */
     InteractionsService.prototype.showAlert = function (text, type, autoClose) {
         this.invoke(__WEBPACK_IMPORTED_MODULE_1__app_constant__["a" /* AppConstants */].EVENTS.showAlert, { text: text, type: type, autoClose: autoClose });
+    };
+    /** Hide Alert */
+    InteractionsService.prototype.hideAlert = function () {
+        this.invoke(__WEBPACK_IMPORTED_MODULE_1__app_constant__["a" /* AppConstants */].EVENTS.hideAlert);
     };
     /**
      * Show / hide loading screen

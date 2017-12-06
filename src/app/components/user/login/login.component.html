@@ -1,12 +1,12 @@
 <div class="container">
     <div class="user-registration mt-3">
-            <h3>Register</h3>
+        <h3>Login</h3>
         <hr>
         <br>
         <!--form-->
         <form class="form"
-              (ngSubmit)="register()"
-              #registerForm="ngForm">
+              (ngSubmit)="login()"
+              #loginForm="ngForm">
             <!-- User Name -->
             <div class="form-group">
                 <input placeholder="User Name"
@@ -15,12 +15,10 @@
                        name="usernameField"
                        [(ngModel)]="username"
                        #usernameField="ngModel"
-                       [ngClass]="{'border-danger': registrationErrors.username || (!usernameField.valid && usernameField.touched)}"
+                       [ngClass]="{'border-danger': !usernameField.valid && usernameField.touched}"
                        required />
                 <span *ngIf="usernameField.invalid && usernameField.touched"
                       class="text-danger ml-2">Username is required</span>
-                <span *ngIf="registrationErrors.username"
-                      class="text-danger ml-2">{{registrationErrors.username}}</span>
             </div>
 
             <!-- Password -->
@@ -37,27 +35,17 @@
                       class="text-danger ml-2">Password is required</span>
             </div>
 
-            <!-- Verify Password -->
-            <div class="form-group">
-                <input placeholder="Verify Password"
-                       type="password"
-                       class="form-control form-control-sm"
-                       name="verifyPasswordField"
-                       [(ngModel)]="verifyPassword"
-                       #verifyPasswordField="ngModel"
-                       [ngClass]="{'border-danger': verifyPassword !== password && verifyPasswordField.touched}"
-                       required />
-                <span *ngIf="verifyPasswordField.invalid && verifyPasswordField.touched"
-                      class="text-danger ml-2">Verify Password is required</span>
-                <span *ngIf="verifyPassword && verifyPassword !== password && verifyPasswordField.touched"
-                      class="text-danger ml-2">Passwords do not match</span>
-            </div>
-
             <!-- form actions -->
             <div>
                 <button type="submit"
-                        class="btn btn-sm btn-royal btn-block"
-                        [disabled]="registerForm.invalid || verifyPassword !== password">Register</button>
+                        class="btn btn-sm btn-primary"
+                        [disabled]="loginForm.invalid">Login</button>
+
+                <a class="btn btn-sm btn-secondary py-1"
+                   href="http://localhost:3100/api/auth/github">
+                  Login with GitHub <i class="fa fa-github fa-2x ml-2"></i>
+            </a>
+
             </div>
             <!-- /form actions -->
         </form>

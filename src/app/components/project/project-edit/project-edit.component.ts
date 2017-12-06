@@ -23,6 +23,7 @@ export class EditProjectComponent implements OnInit {
   private project: Project;
 
   private inProgress: boolean;
+  private confirmDelete: boolean;
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -36,8 +37,8 @@ export class EditProjectComponent implements OnInit {
     if (!this.loggedInUser) {
       this.interactionService.showAlert('You must be logged in to view this page');
     } else {
-      this.activatedRoute.params.subscribe((params: any) => {
-        this.projectService.findProjectById(params.projectId)
+      this.activatedRoute.paramMap.subscribe((params: any) => {
+        this.projectService.findProjectById(params.get('projectId'))
           .subscribe((project) => {
             console.log(project);
             this.project = project;
@@ -63,6 +64,8 @@ export class EditProjectComponent implements OnInit {
       return;
     }
 
+    this.inProgress = true;
+
     this.project.name = this.name;
     this.project.members = this.members.map(u => u._id);
     this.project.admins = this.admins.map(u => u._id);
@@ -70,10 +73,36 @@ export class EditProjectComponent implements OnInit {
     this.interactionService.showLoader(true);
     this.projectService.updateProject(this.project._id, this.project)
       .subscribe((createdProject) => {
+        this.inProgress = false;
         this.interactionService.showLoader(false);
-        this.router.navigate(['/project', createdProject._id]);
+        this.interactionService.showAlert('Project updated successfully', 'success', true);
       }, (err) => {
+        console.error('Error updating project', err);
+        this.inProgress = false;
+        this.interactionService.showLoader(false);
         this.errorHandlerService.handleError('Error updating project', err);
+      });
+
+  }
+
+  /** Delete Project */
+  deleteProject() {
+    if (this.inProgress) {
+      return;
+    }
+
+    this.interactionService.showLoader(true);
+    this.projectService.deleteProject(this.project._id)
+      .subscribe((createdProject) => {
+        this.inProgress = false;
+        this.interactionService.showLoader(false);
+        this.interactionService.showAlert('Project deleted successfully', 'success', true);
+        this.router.navigate(['/projects']);
+      }, (err) => {
+        console.error('Error deleting project', err);
+        this.inProgress = false;
+        this.interactionService.showLoader(false);
+        this.errorHandlerService.handleError('Error deleting project', err);
       });
 
   }
