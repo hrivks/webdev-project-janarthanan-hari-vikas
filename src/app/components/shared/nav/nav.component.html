@@ -8,8 +8,7 @@
             aria-label="Toggle navigation">
     <span class="fa fa-bars"></span>
   </button>
-    <a class="navbar-brand text-white"
-       href="#">WriteMe.md</a>
+    <a class="navbar-brand text-white">WriteMe.md</a>
 
     <div class="collapse navbar-collapse pb-3 pb-lg-0 text-white"
          id="navbar-content">
@@ -24,12 +23,9 @@
                 <a class="nav-link text-white"
                    [routerLink]="['/projects']">Projects</a>
             </li>
-        </ul>
-
-        <ul class="navbar-nav ml-4">
-            <li class="nav-item">
+            <li class="nav-item ml-0">
                 <a class="nav-link text-white"
-                   href="#">Profile</a>
+                   [routerLink]="['/project', 'new']"><i class="fa fa-plus fa-lg"></i></a>
             </li>
         </ul>
 
@@ -54,7 +50,7 @@
         <ul class="float-right ml-auto navbar-nav form-inline"
             *ngIf="loggedIn">
             <li class="nav-item">
-                <span class="fa fa-user-circle fa-lg"></span>
+                <span class="fa fa-user-circle fa-lg mr-2"></span>
                 <span> {{loggedIn.name || loggedIn.username}}</span>
             </li>
             <li class="nav-item">

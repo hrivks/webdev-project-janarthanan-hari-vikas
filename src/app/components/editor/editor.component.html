@@ -46,7 +46,7 @@
                         <div *ngIf="activeTab === 'preview'"
                              class="tab-pane-inner"
                              [style.height.px]="compHeight">
-                            <div class="markdown-body"
+                            <div class="markdown-body text-dark"
                                  [innerHtml]="markdownHtml"></div>
                         </div>
                     </div>
@@ -96,12 +96,14 @@
                     <!-- Commit to Git modal -->
                     <div *ngIf="openModalKey === 'commitToGit'">
                         <app-commit-to-git [fileContent]="markdownHtml | markdownConvertor"
+                                           [repoName]="project?.gitRepo"
                                            (onComplete)="closeModal($event)"></app-commit-to-git>
                     </div>
 
                     <!-- Save Markdown modal -->
                     <div *ngIf="openModalKey === 'save'">
                         <app-save-markdown [markdown]="markdownServerObject"
+                                           [project]="project"
                                            (onComplete)="closeModal($event)"></app-save-markdown>
                     </div>
 
@@ -114,6 +116,19 @@
 
 <!-- footer -->
 <nav class="navbar navbar-expand bg-faded border-faded fixed-bottom hvj-footer p-1 px-3">
+    <div class="mr-auto form-inline"
+         *ngIf="project">
+        <a class="btn btn-primary btn-sm ml-2 py-1"
+           [routerLink]="['/project', project._id]"> 
+           <i class="fa fa-gear fa-lg"></i> 
+           <span>{{project.name}}</span>
+        </a>
+        <span class="ml-2">
+            <small><em>Last Edited by <span class="text-dark font-weight-bold">{{markdown.editedBy}}</span> on <span class="text-dark">{{markdown.editedOn | date: 'short'}}</span></em>
+        </small>
+        </span>
+    </div>
+
     <div class="ml-auto form-inline">
         <button class="btn btn-primary btn-sm ml-2 py-1"
                 (click)="showSaveModal()"> 

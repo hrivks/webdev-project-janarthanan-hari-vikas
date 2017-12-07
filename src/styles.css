@@ -46,6 +46,13 @@
     padding: 0;
   }
   
+  .hvj .text-size-normal {
+    font-size: 0.875rem !important;
+  }
+
+  .hvj .list-group > a {
+    cursor: pointer;
+  } 
   
   /** Bootstrap Enhancements end **/
   

@@ -1,15 +1,21 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h4>My Projects</h4>
-            <hr>
+            <h4 class="mb-0">My Projects</h4>
+            <hr class="mt-2">
             <!-- Project list -->
             <div class="list-group">
-                <a *ngFor="let project of projects"
-                   [routerLink]="['/project/', project._id]"
-                   class="list-group-item list-group-item-action ">
-                {{project.name}}
-            </a>
+                <div class="list-group-item py-2"
+                     *ngFor="let project of projects">
+                    <a [routerLink]="['/project/', project._id, 'editor', project.markdown]">
+                         {{project.name}}
+                    </a>
+                    <a [routerLink]="['/project/', project._id]"
+                       class="float-right">
+                        <i class="fa fa-gear fa-lg" aria-hidden="true"></i>
+                   </a>
+                </div>
+
             </div>
 
             <!-- no project message -->

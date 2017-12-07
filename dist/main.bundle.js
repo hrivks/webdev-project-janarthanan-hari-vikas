@@ -322,7 +322,7 @@ var APP_ROUTES = [
     { path: 'projects', component: __WEBPACK_IMPORTED_MODULE_7__components_project_project_list_project_list_component__["a" /* ListProjectComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
     { path: 'project/new', component: __WEBPACK_IMPORTED_MODULE_5__components_project_project_new_project_new_component__["a" /* NewProjectComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
     { path: 'project/:projectId', component: __WEBPACK_IMPORTED_MODULE_6__components_project_project_edit_project_edit_component__["a" /* EditProjectComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
-    { path: 'markdown/:markdownId', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */] },
+    { path: 'project/:projectId/editor/:markdownId', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_4__components_user_register_register_component__["a" /* RegisterComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_8__components_user_login_login_component__["a" /* LoginComponent */] },
     { path: 'test', component: __WEBPACK_IMPORTED_MODULE_2__app_components_test_test_component__["a" /* TestComponent */], data: { skipAuth: true } },
@@ -355,7 +355,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row no-gutters editor pb-4\"\r\n     [hidden]=\"!loadComplete\">\r\n\r\n    <!-- Editor -->\r\n    <div class=\"col pr-md-2 editor-wrapper\">\r\n        <app-tiny-editor [(markdownHtml)]=\"markdownHtml\"\r\n                         [height]=\"compHeight + 27\"\r\n                         (loadComplete)=\"onEditorLoad($event)\"></app-tiny-editor>\r\n    </div>\r\n\r\n    <!-- Preview -->\r\n    <div class=\"col pl-md-2 preview-wrapper\">\r\n        <div class=\"card text-center\">\r\n            <div class=\"card-header bg-editor-gray pt-2\">\r\n\r\n                <ul class=\"nav nav-tabs card-header-tabs\"\r\n                    role=\"tablist\">\r\n\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'preview' }\"\r\n                           (click)=\"activeTab='preview'\"\r\n                           role=\"tab\">Preview</a>\r\n                    </li>\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'markdown' }\"\r\n                           (click)=\"activeTab='markdown'\"\r\n                           role=\"tab\">Markdown</a>\r\n                    </li>\r\n\r\n                </ul>\r\n\r\n            </div>\r\n            <div class=\"card-body p-1\"\r\n                 #previewTabBody>\r\n                <!-- Tab panes -->\r\n                <div class=\"tab-content p-2\">\r\n\r\n                    <!-- Preview tab -->\r\n                    <div class=\"tab-pane active show fade text-left\"\r\n                         [ngClass]=\"{'show': activeTab === 'preview' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'preview'\"\r\n                             class=\"tab-pane-inner\"\r\n                             [style.height.px]=\"compHeight\">\r\n                            <div class=\"markdown-body\"\r\n                                 [innerHtml]=\"markdownHtml\"></div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <!-- markdown tab -->\r\n                    <div class=\"tab-pane active fade\"\r\n                         [ngClass]=\"{'show': activeTab === 'markdown' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'markdown'\"\r\n                             [style.height.px]=\"compHeight\"\r\n                             class=\"tab-pane-inner\">\r\n                            <textarea class=\"w-100 h-100 border-0 markdown-preview\"\r\n                                      [ngModel]=\"markdownHtml | markdownConvertor\"\r\n                                      readonly></textarea>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n                <!-- tab content -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <!-- preview wrapper -->\r\n</div>\r\n\r\n<!-- Editor Modals -->\r\n<div class=\"models-wrap\">\r\n    <div id=\"editor-modal\"\r\n         #modal\r\n         class=\"modal fade p-0\">\r\n        <div class=\"modal-dialog\"\r\n             [ngClass]=\"modals[openModalKey]?.size\"\r\n             role=\"document\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\">{{modals[openModalKey]?.title}}</h5>\r\n                    <button type=\"button\"\r\n                            class=\"close\"\r\n                            (click)=\"closeModal()\">\r\n                  <span aria-hidden=\"true\">&times;</span>\r\n                </button>\r\n                </div>\r\n                <div class=\"modal-body pb-2\"\r\n                     [style.height.px]=\"modalHeight\">\r\n\r\n                    <!-- Commit to Git modal -->\r\n                    <div *ngIf=\"openModalKey === 'commitToGit'\">\r\n                        <app-commit-to-git [fileContent]=\"markdownHtml | markdownConvertor\"\r\n                                           (onComplete)=\"closeModal($event)\"></app-commit-to-git>\r\n                    </div>\r\n\r\n                    <!-- Save Markdown modal -->\r\n                    <div *ngIf=\"openModalKey === 'save'\">\r\n                        <app-save-markdown [markdown]=\"markdownServerObject\"\r\n                                           (onComplete)=\"closeModal($event)\"></app-save-markdown>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- / Editor Modals -->\r\n\r\n<!-- footer -->\r\n<nav class=\"navbar navbar-expand bg-faded border-faded fixed-bottom hvj-footer p-1 px-3\">\r\n    <div class=\"ml-auto form-inline\">\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"showSaveModal()\"> \r\n                <span>Save</span>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"showCommitToGitModal()\">\r\n                <span>Commit to Git</span> <i class=\"fa fa-github fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"download()\">\r\n                <span>Download</span> <i class=\"fa fa-download fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n    </div>\r\n</nav>"
+module.exports = "<div class=\"row no-gutters editor pb-4\"\r\n     [hidden]=\"!loadComplete\">\r\n\r\n    <!-- Editor -->\r\n    <div class=\"col pr-md-2 editor-wrapper\">\r\n        <app-tiny-editor [(markdownHtml)]=\"markdownHtml\"\r\n                         [height]=\"compHeight + 27\"\r\n                         (loadComplete)=\"onEditorLoad($event)\"></app-tiny-editor>\r\n    </div>\r\n\r\n    <!-- Preview -->\r\n    <div class=\"col pl-md-2 preview-wrapper\">\r\n        <div class=\"card text-center\">\r\n            <div class=\"card-header bg-editor-gray pt-2\">\r\n\r\n                <ul class=\"nav nav-tabs card-header-tabs\"\r\n                    role=\"tablist\">\r\n\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'preview' }\"\r\n                           (click)=\"activeTab='preview'\"\r\n                           role=\"tab\">Preview</a>\r\n                    </li>\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'markdown' }\"\r\n                           (click)=\"activeTab='markdown'\"\r\n                           role=\"tab\">Markdown</a>\r\n                    </li>\r\n\r\n                </ul>\r\n\r\n            </div>\r\n            <div class=\"card-body p-1\"\r\n                 #previewTabBody>\r\n                <!-- Tab panes -->\r\n                <div class=\"tab-content p-2\">\r\n\r\n                    <!-- Preview tab -->\r\n                    <div class=\"tab-pane active show fade text-left\"\r\n                         [ngClass]=\"{'show': activeTab === 'preview' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'preview'\"\r\n                             class=\"tab-pane-inner\"\r\n                             [style.height.px]=\"compHeight\">\r\n                            <div class=\"markdown-body text-dark\"\r\n                                 [innerHtml]=\"markdownHtml\"></div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <!-- markdown tab -->\r\n                    <div class=\"tab-pane active fade\"\r\n                         [ngClass]=\"{'show': activeTab === 'markdown' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'markdown'\"\r\n                             [style.height.px]=\"compHeight\"\r\n                             class=\"tab-pane-inner\">\r\n                            <textarea class=\"w-100 h-100 border-0 markdown-preview\"\r\n                                      [ngModel]=\"markdownHtml | markdownConvertor\"\r\n                                      readonly></textarea>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n                <!-- tab content -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <!-- preview wrapper -->\r\n</div>\r\n\r\n<!-- Editor Modals -->\r\n<div class=\"models-wrap\">\r\n    <div id=\"editor-modal\"\r\n         #modal\r\n         class=\"modal fade p-0\">\r\n        <div class=\"modal-dialog\"\r\n             [ngClass]=\"modals[openModalKey]?.size\"\r\n             role=\"document\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\">{{modals[openModalKey]?.title}}</h5>\r\n                    <button type=\"button\"\r\n                            class=\"close\"\r\n                            (click)=\"closeModal()\">\r\n                  <span aria-hidden=\"true\">&times;</span>\r\n                </button>\r\n                </div>\r\n                <div class=\"modal-body pb-2\"\r\n                     [style.height.px]=\"modalHeight\">\r\n\r\n                    <!-- Commit to Git modal -->\r\n                    <div *ngIf=\"openModalKey === 'commitToGit'\">\r\n                        <app-commit-to-git [fileContent]=\"markdownHtml | markdownConvertor\"\r\n                                           [repoName]=\"project?.gitRepo\"\r\n                                           (onComplete)=\"closeModal($event)\"></app-commit-to-git>\r\n                    </div>\r\n\r\n                    <!-- Save Markdown modal -->\r\n                    <div *ngIf=\"openModalKey === 'save'\">\r\n                        <app-save-markdown [markdown]=\"markdownServerObject\"\r\n                                           [project]=\"project\"\r\n                                           (onComplete)=\"closeModal($event)\"></app-save-markdown>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- / Editor Modals -->\r\n\r\n<!-- footer -->\r\n<nav class=\"navbar navbar-expand bg-faded border-faded fixed-bottom hvj-footer p-1 px-3\">\r\n    <div class=\"mr-auto form-inline\"\r\n         *ngIf=\"project\">\r\n        <a class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n           [routerLink]=\"['/project', project._id]\"> \r\n           <i class=\"fa fa-gear fa-lg\"></i> \r\n           <span>{{project.name}}</span>\r\n        </a>\r\n        <span class=\"ml-2\">\r\n            <small><em>Last Edited by <span class=\"text-dark font-weight-bold\">{{markdown.editedBy}}</span> on <span class=\"text-dark\">{{markdown.editedOn | date: 'short'}}</span></em>\r\n        </small>\r\n        </span>\r\n    </div>\r\n\r\n    <div class=\"ml-auto form-inline\">\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"showSaveModal()\"> \r\n                <span>Save</span>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"showCommitToGitModal()\">\r\n                <span>Commit to Git</span> <i class=\"fa fa-github fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"download()\">\r\n                <span>Download</span> <i class=\"fa fa-download fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n    </div>\r\n</nav>"
 
 /***/ }),
 
@@ -370,6 +370,7 @@ module.exports = "<div class=\"row no-gutters editor pb-4\"\r\n     [hidden]=\"!
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_project_service_client__ = __webpack_require__("../../../../../src/app/services/project.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -385,11 +386,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var EditorComponent = (function () {
-    function EditorComponent(activatedRoute, markdownService, interactionService, errorHandlerService, markdownConvertor) {
+    function EditorComponent(activatedRoute, markdownService, projectService, interactionService, errorHandlerService, markdownConvertor) {
         var _this = this;
         this.activatedRoute = activatedRoute;
         this.markdownService = markdownService;
+        this.projectService = projectService;
         this.interactionService = interactionService;
         this.errorHandlerService = errorHandlerService;
         this.markdownConvertor = markdownConvertor;
@@ -403,18 +406,32 @@ var EditorComponent = (function () {
         this.activatedRoute.paramMap.subscribe(function (params) {
             _this.markdownId = params.get('markdownId');
             if (_this.markdownId) {
-                _this.markdownService.api.findMarkdownById(_this.markdownId)
+                // get markdown
+                _this.markdownService.findMarkdownById(_this.markdownId)
                     .subscribe(function (markdown) {
-                    _this.markdownServerObject = markdown;
-                    if (_this.markdownServerObject.content) {
+                    _this.markdown = markdown;
+                    if (_this.markdown && _this.markdown.content) {
                         // check if page reloaded as a result of git login
                         if (localStorage.getItem('openModalOnLoad') !== 'commitToGit') {
-                            _this.markdownHtml = _this.markdownServerObject.content;
+                            _this.markdownHtml = _this.markdown.content;
                         }
                     }
                 }, function (err) {
-                    console.error('Error getting markdown object', err);
                     _this.errorHandlerService.handleError('Error getting markdown info', err);
+                });
+                // get project
+                var projectId_1 = params.get('projectId');
+                _this.projectService.findProjectById(projectId_1)
+                    .subscribe(function (project) {
+                    if (project) {
+                        _this.project = project;
+                    }
+                    else {
+                        console.error('Project with id ' + projectId_1 + ' does not exist');
+                        _this.interactionService.showAlert('Project with id ' + projectId_1 + ' does not exist');
+                    }
+                }, function (err) {
+                    _this.errorHandlerService.handleError('Error getting project', err);
                 });
             }
         });
@@ -452,14 +469,10 @@ var EditorComponent = (function () {
     };
     /** Show save markdown modal */
     EditorComponent.prototype.showSaveModal = function () {
-        if (!this.markdownServerObject) {
-            this.markdownServerObject = {
-                _id: null,
-                author: null,
-                title: null,
+        if (!this.markdown) {
+            this.markdown = {
                 content: this.markdownHtml,
-                description: null,
-                fileName: null
+                fileName: 'README.md'
             };
         }
         this.openModal('save');
@@ -474,7 +487,7 @@ var EditorComponent = (function () {
     /** Close open modal */
     EditorComponent.prototype.closeModal = function (data) {
         if (this.openModalKey === 'save') {
-            this.markdownServerObject = data;
+            this.markdown = data;
         }
         this.openModalKey = null;
         $(this.editorModal.nativeElement).modal('hide');
@@ -500,6 +513,7 @@ var EditorComponent = (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
             __WEBPACK_IMPORTED_MODULE_3__services_markdown_service_client__["a" /* MarkdownService */],
+            __WEBPACK_IMPORTED_MODULE_6__services_project_service_client__["a" /* ProjectService */],
             __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__["a" /* InteractionsService */],
             __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */],
             __WEBPACK_IMPORTED_MODULE_2__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */]])
@@ -545,8 +559,9 @@ module.exports = "<div class=\"git-commit\">\n\n    <div *ngIf=\"!gitToken\">\n 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_constant__ = __webpack_require__("../../../../../src/app/app.constant.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -562,6 +577,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CommitComponent = (function () {
     function CommitComponent(authService, interactionService, githubService, errorHandlerService) {
         this.authService = authService;
@@ -571,13 +587,25 @@ var CommitComponent = (function () {
         this.onComplete = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
     }
     CommitComponent.prototype.ngOnInit = function () {
+        var _this = this;
         var loggedInUser = this.authService.getLoggedInUser();
         this.fileName = 'README.md';
+        this.repo = this.repoName;
         this.branch = 'master';
         if (loggedInUser && loggedInUser.github && loggedInUser.github.token) {
             this.gitToken = loggedInUser.github.token;
             this.getUserRepos();
         }
+        // register for login change
+        this.interactionService.registerCallback(__WEBPACK_IMPORTED_MODULE_4__app_constant__["a" /* AppConstants */].EVENTS.loginChange, function (user) {
+            if (user && user.github && user.github.token) {
+                _this.gitToken = loggedInUser.github.token;
+                _this.getUserRepos();
+            }
+            else {
+                _this.gitToken = null;
+            }
+        });
     };
     /** Get list of user repositories */
     CommitComponent.prototype.getUserRepos = function () {
@@ -626,6 +654,10 @@ var CommitComponent = (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
     ], CommitComponent.prototype, "onComplete", void 0);
     __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", String)
+    ], CommitComponent.prototype, "repoName", void 0);
+    __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('commitForm'),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* NgForm */])
     ], CommitComponent.prototype, "commitForm", void 0);
@@ -637,8 +669,8 @@ var CommitComponent = (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_auth_service_client__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__["a" /* InteractionsService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_github_service_client__["a" /* GitHubService */],
-            __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
+            __WEBPACK_IMPORTED_MODULE_5__services_github_service_client__["a" /* GitHubService */],
+            __WEBPACK_IMPORTED_MODULE_6__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
     ], CommitComponent);
     return CommitComponent;
 }());
@@ -668,7 +700,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"save-markdown\">\n\n    <div *ngIf=\"!authorId\">\n        <!-- Login prompt -->\n        <div class=\"my-3 text-center\">\n            <i class=\"fa fa-user-circle fa-5x text-dark\"></i>\n            <br>\n            <br>\n            <p>You must be logged in to save markdown <br> Please login to continue</p>\n        </div>\n    </div>\n\n    <div *ngIf=\"authorId\">\n\n        <form (submit)=\"saveMarkdown()\"\n              #saveForm=\"ngForm\">\n\n            <!-- Title -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"repo\">Title</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"title\"\n                       #titleField=\"ngModel\"\n                       [(ngModel)]=\"title\"\n                       [ngClass]=\"{'btn-outline-danger': titleField.touched && !titleField.valid }\"\n                       required>\n            </div>\n\n            <!-- File Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"fileName\">File Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"fileName\"\n                       [(ngModel)]=\"fileName\"\n                       #fileNameField=\"ngModel\"\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\n                       required>\n            </div>\n\n            <!-- Description -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"commitMessage\">Description</label> <small>[optional]</small>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       #descriptionField=\"ngModel\"\n                       name=\"description\"\n                       [(ngModel)]=\"description\">\n            </div>\n\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary btn-sm\"\n                        [hidden]=\"saveInProgres\"\n                        [disabled]=\"!saveForm.valid\">Save</button>\n\n                <div class=\"progress\"\n                     [hidden]=\"!saveInProgres\">\n                    <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                         role=\"progressbar\"></div>\n                </div>\n            </div>\n        </form>\n    </div>\n\n</div>"
+module.exports = "<div class=\"save-markdown\">\n\n    <div *ngIf=\"!loggedInUser\">\n        <!-- Login prompt -->\n        <div class=\"my-3 text-center\">\n            <i class=\"fa fa-user-circle fa-5x text-dark\"></i>\n            <br>\n            <br>\n            <p>You must be logged in to save markdown <br> Please login to continue</p>\n        </div>\n    </div>\n\n    <div *ngIf=\"loggedInUser\">\n\n        <form (submit)=\"saveMarkdown()\"\n              #saveForm=\"ngForm\">\n\n            <!-- Project Name -->\n            <div class=\"form-group\"\n                 *ngIf=\"!project\">\n                <label class=\"control-label\"\n                       for=\"repo\">Project Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"projectName\"\n                       #projectNameField=\"ngModel\"\n                       [(ngModel)]=\"projectName\"\n                       [ngClass]=\"{'btn-outline-danger': projectNameField.touched && !projectNameField.valid }\"\n                       required>\n            </div>\n\n            <!-- File Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"fileName\">File Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"fileName\"\n                       [(ngModel)]=\"fileName\"\n                       #fileNameField=\"ngModel\"\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\n                       required>\n            </div>\n\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary btn-sm\"\n                        [hidden]=\"saveInProgres\"\n                        [disabled]=\"!saveForm.valid\">Save</button>\n\n                <div class=\"progress\"\n                     [hidden]=\"!saveInProgres\">\n                    <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                         role=\"progressbar\"></div>\n                </div>\n            </div>\n        </form>\n    </div>\n\n</div>"
 
 /***/ }),
 
@@ -678,11 +710,15 @@ module.exports = "<div class=\"save-markdown\">\n\n    <div *ngIf=\"!authorId\">
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SaveMarkdownComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_model__ = __webpack_require__("../../../../../src/app/model/model.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_constant__ = __webpack_require__("../../../../../src/app/app.constant.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__model_model__ = __webpack_require__("../../../../../src/app/model/model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_project_service_client__ = __webpack_require__("../../../../../src/app/services/project.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -698,56 +734,73 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
 var SaveMarkdownComponent = (function () {
-    function SaveMarkdownComponent(authService, markdownService, errorHanderService) {
+    function SaveMarkdownComponent(authService, markdownService, projectService, interactionService, errorHanderService, router) {
         this.authService = authService;
         this.markdownService = markdownService;
+        this.projectService = projectService;
+        this.interactionService = interactionService;
         this.errorHanderService = errorHanderService;
+        this.router = router;
         this.onComplete = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
-        if (!this.markdown) {
-            this.markdown = new __WEBPACK_IMPORTED_MODULE_3__model_model__["a" /* Markdown */]();
-        }
     }
     SaveMarkdownComponent.prototype.ngOnInit = function () {
-        var loggedInUser = this.authService.getLoggedInUser();
-        if (loggedInUser) {
-            this.authorId = loggedInUser._id;
+        var _this = this;
+        this.loggedInUser = this.authService.getLoggedInUser();
+        if (!this.markdown) {
+            this.markdown = new __WEBPACK_IMPORTED_MODULE_6__model_model__["a" /* Markdown */]();
         }
         this.fileName = this.markdown.fileName || 'README.md';
-        this.title = this.markdown.title || 'Markdown - ' + (new Date()).toUTCString() + '.md';
-        this.description = this.markdown.description;
+        // register for login change
+        this.interactionService.registerCallback(__WEBPACK_IMPORTED_MODULE_5__app_constant__["a" /* AppConstants */].EVENTS.loginChange, function (user) {
+            _this.loggedInUser = _this.authService.getLoggedInUser();
+        });
     };
     /** Save markdown */
     SaveMarkdownComponent.prototype.saveMarkdown = function () {
         var _this = this;
+        if (this.saveInProgres) {
+            return;
+        }
         if (this.saveForm.invalid) {
             // touch controls to highlight validation
-            this.saveForm.controls.title.markAsTouched({ onlySelf: true });
-            this.saveForm.controls.fileName.markAsTouched({ onlySelf: true });
+            if (!this.project) {
+                this.saveForm.controls.projectName.markAsTouched({ onlySelf: true });
+            }
             this.saveForm.controls.fileName.markAsTouched({ onlySelf: true });
             this.saveForm.controls.commitMessage.markAsTouched({ onlySelf: true });
             return;
         }
-        if (this.saveInProgres) {
-            return;
-        }
         this.saveInProgres = true;
+        this.markdown.fileName = this.fileName;
         if (this.markdown._id) {
-            // edit existing markdown
+            this.markdownService.updateMarkdown(this.markdown._id, this.markdown)
+                .subscribe(function (updatedMarkdown) {
+                _this.saveInProgres = false;
+                _this.onComplete.emit(updatedMarkdown);
+            }, function (err) {
+                _this.errorHanderService.handleError('Error saving markdown', err);
+            });
         }
         else {
             // create new markdown
-            this.markdown.title = this.title;
-            this.markdown.author = this.authorId;
-            this.markdown.description = this.description;
-            this.markdown.fileName = this.fileName;
             this.markdownService.createMarkdown(this.markdown)
                 .subscribe(function (createdMarkdown) {
-                _this.markdown.title = createdMarkdown.title;
-                _this.markdown.author = createdMarkdown.author;
-                _this.markdown.content = createdMarkdown.content;
-                _this.markdown.fileName = createdMarkdown.fileName;
-                _this.markdown.description = createdMarkdown.description;
+                // create project and associate with created markdown
+                var project = {
+                    name: _this.projectName,
+                    markdown: createdMarkdown._id
+                };
+                _this.projectService.createProject(project)
+                    .subscribe(function (createdProject) {
+                    _this.router.navigate(['/project', createdProject._id, 'editor', createdMarkdown._id]);
+                }, function (err) {
+                    _this.errorHanderService.handleError('Error saving markdown', err);
+                });
                 _this.saveInProgres = false;
                 _this.onComplete.emit(createdMarkdown);
             }, function (err) {
@@ -757,15 +810,19 @@ var SaveMarkdownComponent = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3__model_model__["a" /* Markdown */])
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_6__model_model__["a" /* Markdown */])
     ], SaveMarkdownComponent.prototype, "markdown", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_6__model_model__["b" /* Project */])
+    ], SaveMarkdownComponent.prototype, "project", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
     ], SaveMarkdownComponent.prototype, "onComplete", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('saveForm'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* NgForm */])
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* NgForm */])
     ], SaveMarkdownComponent.prototype, "saveForm", void 0);
     SaveMarkdownComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -773,9 +830,12 @@ var SaveMarkdownComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_auth_service_client__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_markdown_service_client__["a" /* MarkdownService */],
-            __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_7__services_markdown_service_client__["a" /* MarkdownService */],
+            __WEBPACK_IMPORTED_MODULE_9__services_project_service_client__["a" /* ProjectService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_8__services_error_handler_service_client__["a" /* ErrorHandlerService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
     ], SaveMarkdownComponent);
     return SaveMarkdownComponent;
 }());
@@ -2030,7 +2090,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/project/project-edit/project-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"project\">\n        <div class=\"col\">\n            <h4>Edit Project</h4>\n            <hr>\n            <form #editProjectForm=\"ngForm\"\n                  (submit)=\"updateProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label\"\n                           for=\"name\">Name</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Users -->\n                <div class=\"row mb-2\">\n                    <span class=\"btn btn-secondary px-1 py-1\"\n                          data-toggle=\"collapse\"\n                          data-target=\"#user-wrap\">\n                            <i class=\"fa fa-chevron-down mr-1\"></i>\n                            <span>Users</span>\n                    </span>\n                </div>\n                <div id=\"user-wrap\"\n                     class=\"collapse\">\n                    <div class=\"row\">\n                        <div class=\"col-12 col-sm-6\">\n                            <!-- Admins -->\n                            <div class=\"form-group\">\n                                <label class=\"control-label\"\n                                       for=\"name\">Admins</label>\n                                <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                      [(selectedUsers)]=\"admins\"></app-user-list-select>\n                            </div>\n                        </div>\n                        <div class=\"col-12 col-sm-6\">\n                            <!-- Members -->\n                            <div class=\"form-group\">\n                                <label class=\"control-label\"\n                                       for=\"name\">Members</label>\n                                <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                      [(selectedUsers)]=\"members\"></app-user-list-select>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary btn-sm\"\n                            type=\"submit\"\n                            [disabled]=\"!editProjectForm.valid\">Update</button>\n\n                    <button class=\"btn btn-danger btn-sm\"\n                            type=\"button\"\n                            [hidden]=\"confirmDelete\"\n                            (click)=\"confirmDelete=true\">\n                            <i class=\"fa fa-trash fa-lg\"></i>\n                          </button>\n                    <button class=\"btn btn-danger btn-sm\"\n                            type=\"button\"\n                            [hidden]=\"!confirmDelete\"\n                            (click)=\"deleteProject()\">\n                          <i class=\"fa fa-trash fa-lg\"></i> Sure?\n                        </button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"project\">\n        <div class=\"col\">\n            <h4>\n                Edit Project\n                <a class=\"btn float-sm-right small py-1 px-3 btn-success\"\n                   [routerLink]=\"['editor', project.markdown]\">\n                   <i class=\"fa fa-lg fa-pencil-square-o\"></i> Open in Editor</a>\n            </h4>\n            <hr class=\"mt-2\">\n            <form #editProjectForm=\"ngForm\"\n                  (submit)=\"updateProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Description -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">DESCRIPTION</label>\n                    <textarea type=\"text\"\n                              class=\"form-control form-control-sm\"\n                              name=\"description\"\n                              #nameField=\"ngModel\"\n                              [(ngModel)]=\"description\"></textarea>\n                </div>\n\n                <!-- Github Repo -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"repo\">LINK WITH GITHUB REPO</label>\n                    <div>\n                        <a *ngIf=\"!loggedInUser.github || !loggedInUser.github.token\"\n                           href=\"http://localhost:3100/api/auth/github\"\n                           class=\"btn btn-primary py-1\">Login to Github</a>\n                        <div class=\"input-group input-group-sm\"\n                             *ngIf=\"loggedInUser.github && loggedInUser.github.token\">\n                            <div class=\"input-group-btn\">\n                                <div class=\"btn-group\">\n                                    <button class=\"btn btn-primary py-2 px-3 m-0\"\n                                            type=\"button\"\n                                            data-toggle=\"dropdown\">\n                                            <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n                                    </button>\n                                    <div class=\"dropdown-menu\">\n                                        <a class=\"dropdown-item\"\n                                           *ngFor=\"let r of repos\"\n                                           (click)=\"repo=r\">{{r}}</a>\n                                    </div>\n                                </div>\n                            </div>\n                            <input type=\"text\"\n                                   class=\"form-control\"\n                                   name=\"repo\"\n                                   #repoField=\"ngModel\"\n                                   [(ngModel)]=\"repo\"\n                                   placeholder=\"Select or enter Repo full name\">\n\n                        </div>\n                    </div>\n                </div>\n\n                <!-- Users -->\n                <div class=\"mt-2\">\n                    <div class=\"row mb-2\">\n                        <span class=\"btn btn-secondary px-1 py-1 text-muted\"\n                              data-toggle=\"collapse\"\n                              data-target=\"#user-wrap\">\n                                <i class=\"fa fa-chevron-down mr-1\"></i>\n                                <span class=\"text-size-normal font-weight-normal\">Users</span>\n                        </span>\n                    </div>\n                    <div id=\"user-wrap\"\n                         class=\"collapse\">\n                        <div class=\"row\">\n                            <div class=\"col-12 col-sm-6\">\n                                <!-- Admins -->\n                                <div class=\"form-group\">\n                                    <label class=\"control-label small text-dark\"\n                                           for=\"name\">ADMINS</label>\n                                    <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                          [(selectedUsers)]=\"admins\"></app-user-list-select>\n                                </div>\n                            </div>\n                            <div class=\"col-12 col-sm-6\">\n                                <!-- Members -->\n                                <div class=\"form-group\">\n                                    <label class=\"control-label small text-dark\"\n                                           for=\"name\">MEMBERS</label>\n                                    <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                          [(selectedUsers)]=\"members\"></app-user-list-select>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary py-1\"\n                            type=\"submit\"\n                            [disabled]=\"!editProjectForm.valid\">Update</button>\n\n                    <button class=\"btn btn-danger py-1\"\n                            type=\"button\"\n                            [hidden]=\"confirmDelete\"\n                            (click)=\"confirmDelete=true\">\n                            <i class=\"fa fa-trash fa-lg\"></i>\n                          </button>\n                    <button class=\"btn btn-danger py-1\"\n                            type=\"button\"\n                            [hidden]=\"!confirmDelete\"\n                            (click)=\"deleteProject()\">\n                          <i class=\"fa fa-trash fa-lg mr-2\"></i> Sure?\n                        </button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2046,6 +2106,7 @@ module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *n
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2062,11 +2123,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var EditProjectComponent = (function () {
-    function EditProjectComponent(router, activatedRoute, projectService, interactionService, errorHandlerService, authService) {
+    function EditProjectComponent(router, activatedRoute, projectService, githubService, interactionService, errorHandlerService, authService) {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.projectService = projectService;
+        this.githubService = githubService;
         this.interactionService = interactionService;
         this.errorHandlerService = errorHandlerService;
         this.authService = authService;
@@ -2078,18 +2141,38 @@ var EditProjectComponent = (function () {
             this.interactionService.showAlert('You must be logged in to view this page');
         }
         else {
+            this.interactionService.showLoader(true);
+            this.getUserRepos();
             this.activatedRoute.paramMap.subscribe(function (params) {
+                // get project details
                 _this.projectService.findProjectById(params.get('projectId'))
                     .subscribe(function (project) {
-                    console.log(project);
                     _this.project = project;
                     _this.name = _this.project.name;
+                    _this.description = _this.project.description;
                     _this.members = _this.project.members.map(function (i) { return ({ _id: i.toString() }); });
                     _this.admins = _this.project.admins.map(function (i) { return ({ _id: i.toString() }); });
+                    _this.repo = _this.project.gitRepo;
+                    _this.interactionService.showLoader(false);
                 }, function (err) {
                     _this.errorHandlerService.handleError('Error getting project', err);
+                    _this.interactionService.showLoader(false);
                 });
             });
+        }
+    };
+    /** Get list of user repositories */
+    EditProjectComponent.prototype.getUserRepos = function () {
+        var _this = this;
+        if (this.loggedInUser.github && this.loggedInUser.github.token) {
+            this.githubService.getRepos()
+                .subscribe(function (repos) {
+                _this.repos = repos;
+            }, function (err) {
+                _this.errorHandlerService.handleError('Error getting GitHub Repositories', err);
+            });
+        }
+        else {
         }
     };
     /** Update project */
@@ -2105,6 +2188,8 @@ var EditProjectComponent = (function () {
         }
         this.inProgress = true;
         this.project.name = this.name;
+        this.project.description = this.description;
+        this.project.gitRepo = this.repo;
         this.project.members = this.members.map(function (u) { return u._id; });
         this.project.admins = this.admins.map(function (u) { return u._id; });
         this.interactionService.showLoader(true);
@@ -2134,7 +2219,6 @@ var EditProjectComponent = (function () {
             _this.interactionService.showAlert('Project deleted successfully', 'success', true);
             _this.router.navigate(['/projects']);
         }, function (err) {
-            console.error('Error deleting project', err);
             _this.inProgress = false;
             _this.interactionService.showLoader(false);
             _this.errorHandlerService.handleError('Error deleting project', err);
@@ -2153,6 +2237,7 @@ var EditProjectComponent = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
             __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
             __WEBPACK_IMPORTED_MODULE_3__services_project_service_client__["a" /* ProjectService */],
+            __WEBPACK_IMPORTED_MODULE_7__services_github_service_client__["a" /* GitHubService */],
             __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__["a" /* InteractionsService */],
             __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */],
             __WEBPACK_IMPORTED_MODULE_6__services_auth_service_client__["a" /* AuthService */]])
@@ -2185,7 +2270,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/project/project-list/project-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col\">\n            <h4>My Projects</h4>\n            <hr>\n            <!-- Project list -->\n            <div class=\"list-group\">\n                <a *ngFor=\"let project of projects\"\n                   [routerLink]=\"['/project/', project._id]\"\n                   class=\"list-group-item list-group-item-action \">\n                {{project.name}}\n            </a>\n            </div>\n\n            <!-- no project message -->\n            <div *ngIf=\"!projects || projects.length === 0\">\n                <em class=\"ml-3\">No projects to display</em>\n            </div>\n\n            <!-- New project button -->\n            <div class=\"mt-2\">\n                <a class=\"btn btn-secondary btn-sm\"\n                   [routerLink]=\"['/project','new']\">\n               <i class=\"fa fa-plus fa-lg mr-2\" aria-hidden=\"true\"></i>\n               <span>Create Project</span>\n              </a>\n            </div>\n\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col\">\n            <h4 class=\"mb-0\">My Projects</h4>\n            <hr class=\"mt-2\">\n            <!-- Project list -->\n            <div class=\"list-group\">\n                <div class=\"list-group-item py-2\"\n                     *ngFor=\"let project of projects\">\n                    <a [routerLink]=\"['/project/', project._id, 'editor', project.markdown]\">\n                         {{project.name}}\n                    </a>\n                    <a [routerLink]=\"['/project/', project._id]\"\n                       class=\"float-right\">\n                        <i class=\"fa fa-gear fa-lg\" aria-hidden=\"true\"></i>\n                   </a>\n                </div>\n\n            </div>\n\n            <!-- no project message -->\n            <div *ngIf=\"!projects || projects.length === 0\">\n                <em class=\"ml-3\">No projects to display</em>\n            </div>\n\n            <!-- New project button -->\n            <div class=\"mt-2\">\n                <a class=\"btn btn-secondary btn-sm\"\n                   [routerLink]=\"['/project','new']\">\n               <i class=\"fa fa-plus fa-lg mr-2\" aria-hidden=\"true\"></i>\n               <span>Create Project</span>\n              </a>\n            </div>\n\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2278,7 +2363,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/project/project-new/project-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"loggedInUser\">\n        <div class=\"col\">\n            <h4>New Project</h4>\n            <hr>\n\n            <form #newProjectForm=\"ngForm\"\n                  (submit)=\"createProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label\"\n                           for=\"name\">Name</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <div class=\"row\">\n                    <div class=\"col-12 col-sm-6\">\n                        <!-- Admins -->\n                        <div class=\"form-group\">\n                            <label class=\"control-label\"\n                                   for=\"name\">Admins</label>\n                            <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                  [(selectedUsers)]=\"admins\"></app-user-list-select>\n                        </div>\n                    </div>\n                    <div class=\"col-12 col-sm-6\">\n                        <!-- Members -->\n                        <div class=\"form-group\">\n                            <label class=\"control-label\"\n                                   for=\"name\">Members</label>\n                            <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                  [(selectedUsers)]=\"members\"></app-user-list-select>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary btn-sm\"\n                            [hidden]=\"inProgres\"\n                            [disabled]=\"!newProjectForm.valid\">Create</button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"loggedInUser\">\n        <div class=\"col\">\n            <h4>New Project</h4>\n            <hr class=\"mt-2\">\n\n            <form #newProjectForm=\"ngForm\"\n                  (submit)=\"createProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Description -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">DESCRIPTION</label>\n                    <textarea type=\"text\"\n                              class=\"form-control form-control-sm\"\n                              name=\"description\"\n                              #descriptionField=\"ngModel\"\n                              [(ngModel)]=\"description\"></textarea>\n                </div>\n\n                <!-- Markdown file name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">MARKDOWN FILE NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"markdownFileName\"\n                           #markdownFileNameField=\"ngModel\"\n                           [(ngModel)]=\"markdownFileName\"\n                           [ngClass]=\"{'btn-outline-danger': markdownFileNameField.touched && !markdownFileNameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Users -->\n                <div class=\"row\">\n                    <div class=\"col-12 col-sm-6\">\n                        <!-- Admins -->\n                        <div class=\"form-group\">\n                            <label class=\"control-label small text-dark\"\n                                   for=\"name\">ADMINS</label>\n                            <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                  [(selectedUsers)]=\"admins\"></app-user-list-select>\n                        </div>\n                    </div>\n                    <div class=\"col-12 col-sm-6\">\n                        <!-- Members -->\n                        <div class=\"form-group\">\n                            <label class=\"control-label small text-dark\"\n                                   for=\"name\">MEMBERS</label>\n                            <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                  [(selectedUsers)]=\"members\"></app-user-list-select>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary py-1\"\n                            [hidden]=\"inProgres\"\n                            [disabled]=\"!newProjectForm.valid\">Create</button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2294,6 +2379,7 @@ module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *n
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2310,13 +2396,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var NewProjectComponent = (function () {
-    function NewProjectComponent(router, projectService, interactionService, errorHandlerService, authService) {
+    function NewProjectComponent(router, projectService, markdownService, interactionService, errorHandlerService, authService) {
         this.router = router;
         this.projectService = projectService;
+        this.markdownService = markdownService;
         this.interactionService = interactionService;
         this.errorHandlerService = errorHandlerService;
         this.authService = authService;
+        this.markdownFileName = 'README.md';
     }
     NewProjectComponent.prototype.ngOnInit = function () {
         this.loggedInUser = this.authService.getLoggedInUser();
@@ -2335,16 +2424,26 @@ var NewProjectComponent = (function () {
             this.newProjectForm.controls.name.markAsTouched({ onlySelf: true });
             return;
         }
-        var project = {
-            name: this.name,
-            members: this.members.map(function (u) { return u._id; }),
-            admins: this.admins.map(function (u) { return u._id; })
+        var markdown = {
+            fileName: this.markdownFileName,
+            content: ''
         };
-        this.interactionService.showLoader(true);
-        this.projectService.createProject(project)
-            .subscribe(function (createdProject) {
-            _this.interactionService.showLoader(false);
-            _this.router.navigate(['/projects']);
+        this.markdownService.createMarkdown(markdown)
+            .subscribe(function (createdMarkdown) {
+            var project = {
+                name: _this.name,
+                members: _this.members ? _this.members.map(function (u) { return u._id; }) : [],
+                admins: _this.admins ? _this.admins.map(function (u) { return u._id; }) : [],
+                markdown: createdMarkdown._id
+            };
+            _this.interactionService.showLoader(true);
+            _this.projectService.createProject(project)
+                .subscribe(function (createdProject) {
+                _this.interactionService.showLoader(false);
+                _this.router.navigate(['/projects']);
+            }, function (err) {
+                _this.errorHandlerService.handleError('Error creating project', err);
+            });
         }, function (err) {
             _this.errorHandlerService.handleError('Error creating project', err);
         });
@@ -2361,6 +2460,7 @@ var NewProjectComponent = (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
             __WEBPACK_IMPORTED_MODULE_3__services_project_service_client__["a" /* ProjectService */],
+            __WEBPACK_IMPORTED_MODULE_7__services_markdown_service_client__["a" /* MarkdownService */],
             __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__["a" /* InteractionsService */],
             __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */],
             __WEBPACK_IMPORTED_MODULE_6__services_auth_service_client__["a" /* AuthService */]])
@@ -2566,7 +2666,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand navbar-inverse bg-primary fixed-top py-0\">\r\n    <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n            type=\"button\"\r\n            data-toggle=\"collapse\"\r\n            data-target=\"#navbar-content\"\r\n            aria-controls=\"navbarColor01\"\r\n            aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n    <a class=\"navbar-brand text-white\"\r\n       href=\"#\">WriteMe.md</a>\r\n\r\n    <div class=\"collapse navbar-collapse pb-3 pb-lg-0 text-white\"\r\n         id=\"navbar-content\">\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/']\">Editor</a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/projects']\">Projects</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   href=\"#\">Profile</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Login form -->\r\n        <div class=\"form-inline float-right ml-auto\"\r\n             *ngIf=\"!loggedIn\">\r\n            <!-- Login button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm border-top-0\"\r\n               [routerLink]=\"['/login']\">Login</a>\r\n            <!-- Register button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm p-1\"\r\n               href=\"http://localhost:3100/api/auth/github\"\r\n               target=\"_self\">\r\n                <i class=\"fa fa-github fa-2x\" aria-hidden=\"true\"></i>\r\n            </a>\r\n            <a class=\"btn border text-white ml-2 my-2 my-sm-0 btn-sm\"\r\n               [routerLink]=\"['/register']\">Register</a>\r\n        </div>\r\n        <!-- / Login form -->\r\n\r\n        <!-- Logout form -->\r\n        <ul class=\"float-right ml-auto navbar-nav form-inline\"\r\n            *ngIf=\"loggedIn\">\r\n            <li class=\"nav-item\">\r\n                <span class=\"fa fa-user-circle fa-lg\"></span>\r\n                <span> {{loggedIn.name || loggedIn.username}}</span>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <button class=\"btn btn-secondary btn-sm\"\r\n                        (click)=\"logout()\">Logout</button>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand navbar-inverse bg-primary fixed-top py-0\">\r\n    <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n            type=\"button\"\r\n            data-toggle=\"collapse\"\r\n            data-target=\"#navbar-content\"\r\n            aria-controls=\"navbarColor01\"\r\n            aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n    <a class=\"navbar-brand text-white\">WriteMe.md</a>\r\n\r\n    <div class=\"collapse navbar-collapse pb-3 pb-lg-0 text-white\"\r\n         id=\"navbar-content\">\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/']\">Editor</a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/projects']\">Projects</a>\r\n            </li>\r\n            <li class=\"nav-item ml-0\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/project', 'new']\"><i class=\"fa fa-plus fa-lg\"></i></a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Login form -->\r\n        <div class=\"form-inline float-right ml-auto\"\r\n             *ngIf=\"!loggedIn\">\r\n            <!-- Login button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm border-top-0\"\r\n               [routerLink]=\"['/login']\">Login</a>\r\n            <!-- Register button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm p-1\"\r\n               href=\"http://localhost:3100/api/auth/github\"\r\n               target=\"_self\">\r\n                <i class=\"fa fa-github fa-2x\" aria-hidden=\"true\"></i>\r\n            </a>\r\n            <a class=\"btn border text-white ml-2 my-2 my-sm-0 btn-sm\"\r\n               [routerLink]=\"['/register']\">Register</a>\r\n        </div>\r\n        <!-- / Login form -->\r\n\r\n        <!-- Logout form -->\r\n        <ul class=\"float-right ml-auto navbar-nav form-inline\"\r\n            *ngIf=\"loggedIn\">\r\n            <li class=\"nav-item\">\r\n                <span class=\"fa fa-user-circle fa-lg mr-2\"></span>\r\n                <span> {{loggedIn.name || loggedIn.username}}</span>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <button class=\"btn btn-secondary btn-sm\"\r\n                        (click)=\"logout()\">Logout</button>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>"
 
 /***/ }),
 
@@ -2631,6 +2731,7 @@ var NavComponent = (function () {
         });
     };
     NavComponent.prototype.logout = function () {
+        localStorage.clear();
         this.authService.logout();
     };
     NavComponent = __decorate([
@@ -2888,7 +2989,7 @@ var RegisterComponent = (function () {
     };
     RegisterComponent.prototype.register = function () {
         var _this = this;
-        var newUser = new __WEBPACK_IMPORTED_MODULE_2__model_model__["b" /* User */]();
+        var newUser = new __WEBPACK_IMPORTED_MODULE_2__model_model__["c" /* User */]();
         newUser.username = this.username;
         newUser.password = this.password;
         // create new user
@@ -2949,7 +3050,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/user-list-select/user-list-select.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"user-list-select\">\n    <div class=\"list-group\">\n        <a class=\"list-group-item list-group-item-action\"\n           *ngFor=\"let user of users\"\n           (click)=\"selectUser(user)\">\n           <span class=\"fa fa-lg\" \n            [ngClass]=\"selectedUsers.indexOf(user) === -1 ? 'fa-square-o' : 'fa-check-square-o'\">\n          </span>\n          <span *ngIf=\"user.name\">\n            {{user.name}} <small class=\"text-muted\">{{user.username}}</small>\n          </span>\n          <span *ngIf=\"!user.name\">\n              {{user.username}}\n          </span>\n        </a>\n    </div>\n</div>"
+module.exports = "<div class=\"user-list-select\">\n    <div class=\"list-group\">\n        <a class=\"list-group-item list-group-item-action py-2\"\n           *ngFor=\"let user of users\"\n           (click)=\"selectUser(user)\">\n           <span class=\"fa fa-lg\" \n            [ngClass]=\"selectedUsers.indexOf(user) === -1 ? 'fa-square-o' : 'fa-check-square-o'\">\n          </span>\n          <span *ngIf=\"user.name\">\n            {{user.name}} <small class=\"text-muted\">{{user.username}}</small>\n          </span>\n          <span *ngIf=\"!user.name\">\n              {{user.username}}\n          </span>\n        </a>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -4824,9 +4925,9 @@ var faIconsList = ['500px', 'adjust', 'adn', 'align-center', 'align-justify', 'a
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return User; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return User; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Markdown; });
-/* unused harmony export Project */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Project; });
 /** Models a User object */
 var User = (function () {
     function User() {
@@ -5095,7 +5196,7 @@ var AuthService = (function () {
         var obs = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */](function (observer) {
             _this.userService.login(username, password)
                 .subscribe(function (loggedInUser) {
-                console.log(loggedInUser);
+                _this.interactionService.invoke(__WEBPACK_IMPORTED_MODULE_6__app_constant__["a" /* AppConstants */].EVENTS.loginChange);
                 _this.setLoggedInUser(loggedInUser);
                 observer.next(Object.assign({}, loggedInUser));
                 observer.complete();
@@ -5147,6 +5248,7 @@ var AuthService = (function () {
         var _this = this;
         this.userService.logout()
             .subscribe(function (res) {
+            _this.interactionService.invoke(__WEBPACK_IMPORTED_MODULE_6__app_constant__["a" /* AppConstants */].EVENTS.loginChange);
             _this.removeLoggedInUser();
             _this.router.navigate(['/']);
         }, function (err) {
@@ -5661,6 +5763,7 @@ var MarkdownService = (function () {
             'createMarkdown': this.createMarkdown,
             'findMarkdownById': this.findMarkdownById,
             'findMarkdownsByAuthor': this.findMarkdownsByAuthor,
+            'findMarkdownsByProject': this.findMarkdownsByProject,
             'updateMarkdown': this.updateMarkdown,
             'deleteMarkdown': this.deleteMarkdown
         };
@@ -5668,6 +5771,7 @@ var MarkdownService = (function () {
             'createMarkdown': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/markdown',
             'findMarkdownById': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/markdown/{markdownId}',
             'findMarkdownsByAuthor': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/markdown/byAuthor/{authorId}',
+            'findMarkdownsByProject': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/markdown/byProject/{projectId}',
             'updateMarkdown': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/markdown/{markdownId}',
             'deleteMarkdown': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/markdown/{markdownId}'
         };
@@ -5690,12 +5794,21 @@ var MarkdownService = (function () {
         return this.http.get(url);
     };
     /**
-     * Find markdown by markdown name
-     * @param markdownname markdownname of the markdown
-     * @returns Observable that resolves to markdown with the specifed markdownname; null if id doesn't exist
+     * Find markdown by author
+     * @param authorId user id of the author
+     * @returns Observable that resolves to the list of markdowns created by the specified user
      */
     MarkdownService.prototype.findMarkdownsByAuthor = function (authorId) {
         var url = this.endpoint.findMarkdownsByAuthor.replace('{authorId}', authorId);
+        return this.http.get(url);
+    };
+    /**
+     * Find markdown by project
+     * @param projectId markdownname of the markdown
+     * @returns Observable that resolves to the list of markdowns created in the specified project
+     */
+    MarkdownService.prototype.findMarkdownsByProject = function (projectId) {
+        var url = this.endpoint.findMarkdownsByProject.replace('{projectId}', projectId);
         return this.http.get(url);
     };
     /**

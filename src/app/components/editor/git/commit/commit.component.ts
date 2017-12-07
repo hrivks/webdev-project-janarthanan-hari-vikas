@@ -16,6 +16,7 @@ export class CommitComponent implements OnInit {
   // properties
   @Input() fileContent: string;
   @Output() onComplete: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() repoName: string;
   private gitToken: string;
   private repos: string[];
   private commitInProgres: boolean;
@@ -36,11 +37,22 @@ export class CommitComponent implements OnInit {
   ngOnInit() {
     const loggedInUser = this.authService.getLoggedInUser();
     this.fileName = 'README.md';
+    this.repo = this.repoName;
     this.branch = 'master';
     if (loggedInUser && loggedInUser.github && loggedInUser.github.token) {
       this.gitToken = loggedInUser.github.token;
       this.getUserRepos();
     }
+
+    // register for login change
+    this.interactionService.registerCallback(AppConstants.EVENTS.loginChange, (user) => {
+      if (user && user.github && user.github.token) {
+        this.gitToken = loggedInUser.github.token;
+        this.getUserRepos();
+      } else {
+        this.gitToken = null;
+      }
+    });
   }
 
   /** Get list of user repositories */

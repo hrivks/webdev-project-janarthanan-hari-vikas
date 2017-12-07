@@ -7,7 +7,7 @@ module.exports = (function() {
     const MarkdownModel = require('../models/model.server').Markdown;
     const Utils = require('./service-utils.js');
     const q = require('q');
-    
+
     /** Exported objects */
     const exp = {
         router: router, // router object
@@ -25,7 +25,7 @@ module.exports = (function() {
 
     // route: [POST] '/api/markdown'
     router.post('/', function(req, res) {
-        Utils.sendResponse(res, createMarkdown, [req.body]);
+        Utils.sendResponse(res, createMarkdown, [req.body, req.user]);
     });
 
     /**
@@ -33,7 +33,8 @@ module.exports = (function() {
      * @param {MarkdownSchema} markdown markdown object to create
      * @returns {Promise<MarkdownSchema>} promise that resolves to the created markdown object
      */
-    function createMarkdown(markdown) {
+    function createMarkdown(markdown, user) {
+        markdown.editedBy = user.name || user.username;
         return MarkdownModel.createMarkdown(markdown);
     }
 
@@ -75,6 +76,22 @@ module.exports = (function() {
         return MarkdownModel.findMarkdownsByAuthor(authorId);
     }
 
+    //#endregion: Find markdowns by author
+
+
+    // route: [GET] '/api/markdown/byProject/:projectId'
+    router.get('/byProject/:projectId', function(req, res) {
+        Utils.sendResponse(res, findMarkdownsByProject, [req.params.projectId]);
+    });
+
+    /**
+     * Find markdowns by author id
+     * @param {String} authorId id of the author
+     * @returns {Promise<MarkdownSchema[]>} promise that resolves to list of markdowns in the specified project
+     */
+    function findMarkdownsByProject(projectId) {
+        return MarkdownModel.findMarkdownsByProject(projectId);
+    }
 
     //#endregion: Find markdowns by author
 
@@ -83,7 +100,7 @@ module.exports = (function() {
 
     // route: [PUT] '/api/markdown/:markdownId'
     router.put('/:markdownId', function(req, res) {
-        Utils.sendResponse(res, updateMarkdown, [req.params.markdownId, req.body]);
+        Utils.sendResponse(res, updateMarkdown, [req.params.markdownId, req.body, req.user]);
     });
 
     /**
@@ -92,7 +109,8 @@ module.exports = (function() {
      * @param {MarkdownSchema} markdown updated markdown object
      * @returns {Promise<MarkdownSchema>} promise that resolves to updated markdown object
      */
-    function updateMarkdown(markdownId, markdown) {
+    function updateMarkdown(markdownId, markdown, user) {
+        markdown.editedBy = user._id;
         return MarkdownModel.updateMarkdown(markdownId, markdown);
     }
 

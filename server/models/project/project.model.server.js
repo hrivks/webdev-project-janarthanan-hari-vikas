@@ -33,6 +33,10 @@ module.exports = (function() {
             errors.push('Project name is required');
         }
 
+        if (!project.markdown) {
+            errors.push('Markdown is required');
+        }
+
         if (errors.length > 0) {
             throw errors;
         }

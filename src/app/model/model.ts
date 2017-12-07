@@ -1,7 +1,5 @@
-import { IAppEntity } from './IAppEntity';
-
 /** Models a User object */
-export class User implements IAppEntity {
+export class User {
     _id: string;
     username?: string;
     password?: string;
@@ -14,19 +12,21 @@ export class User implements IAppEntity {
 }
 
 /** Models a Markdown object */
-export class Markdown implements IAppEntity {
-    _id: string;
-    title: string;
-    author: string;
+export class Markdown {
+    _id?: string;
+    editedBy?: string;
     fileName: string;
-    description: string;
     content: string;
+    editedOn?: string;
 }
 
 /** Models a Project object */
 export class Project {
     _id?: string;
     name: string;
+    description?: string;
     members?: (User | string)[];
     admins?: (User | string)[];
+    markdown: string;
+    gitRepo?: string;
 }

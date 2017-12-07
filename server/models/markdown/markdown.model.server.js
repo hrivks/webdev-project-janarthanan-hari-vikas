@@ -4,15 +4,16 @@
 module.exports = (function() {
     const q = require('q');
     const mongoose = require('mongoose');
-    const MarkdownSchema = require('./markdown.schema.server');
+    const UserModel = require('../user/user.model.server');
+    const ProjectModel = require('../project/project.model.server');
 
-    var MarkdownModel = mongoose.model('MarkdownModel', MarkdownSchema);
-    var UserModel = require('../user/user.model.server');
+    const MarkdownSchema = require('./markdown.schema.server');
+    const MarkdownModel = mongoose.model('MarkdownModel', MarkdownSchema);
+
 
     // API
     MarkdownModel.createMarkdown = createMarkdown;
     MarkdownModel.findMarkdownById = findMarkdownById;
-    MarkdownModel.findMarkdownsByAuthor = findMarkdownsByAuthor;
     MarkdownModel.updateMarkdown = updateMarkdown;
     MarkdownModel.deleteMarkdown = deleteMarkdown;
 
@@ -30,12 +31,12 @@ module.exports = (function() {
             throw ['Markdown object expected'];
         }
 
-        if (!markdown.author) {
-            errors.push('Author is required');
+        if (!markdown.editedBy) {
+            errors.push('Edited By is required');
         }
 
-        if (!markdown.title) {
-            errors.push('Title is required');
+        if (!markdown.fileName) {
+            errors.push('File Name is required');
         }
 
         if (errors.length > 0) {
@@ -52,25 +53,17 @@ module.exports = (function() {
         var def = q.defer();
 
         validate(markdown);
-        UserModel.findById(markdown.author, (err, authorExists) => {
-            if (authorExists) {
-                MarkdownModel.create(markdown, (err, createdMarkdown) => {
-                    if (err) {
-                        def.reject(err.message);
-                    } else {
-                        def.resolve(createdMarkdown);
-                    }
-                });
+        MarkdownModel.create(markdown, (err, createdMarkdown) => {
+            if (err) {
+                def.reject(err.message);
             } else {
-                def.reject({
-                    message: 'Author with id ' + markdown.author + ' does not exists'
-                });
-
+                def.resolve(createdMarkdown);
             }
         });
 
         return def.promise;
     }
+
 
     /**
      * Find markdown by markdown id
@@ -81,16 +74,6 @@ module.exports = (function() {
         return MarkdownModel.findById(markdownId);
     }
 
-    /**
-     * Find all markdowns of user
-     * @param {string} userId 
-     * @returns {DocumentQuery<MarkdownSchema[]>} query that resolves to the list of markdowns of the specified user
-     */
-    function findMarkdownsByAuthor(userId) {
-        return MarkdownModel.find({
-            author: author
-        });
-    }
 
     /**
      * Update markdown by  id
@@ -100,10 +83,12 @@ module.exports = (function() {
      */
     function updateMarkdown(markdownId, markdown) {
         validate(markdown);
+        markdown.editedOn = new Date();
         return MarkdownModel.findByIdAndUpdate(markdownId, markdown, {
             new: true
         });
     }
+
 
     /**
      * Delete markdown by markdown id

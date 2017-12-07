@@ -47,7 +47,6 @@ module.exports = (function() {
                             done(null, user);
                         } else {
                             // user does not exist. create user
-
                             const newGitUser = {
                                 name: profile.displayName,
                                 github: {

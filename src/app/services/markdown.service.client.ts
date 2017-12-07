@@ -11,6 +11,7 @@ export class MarkdownService {
         'createMarkdown': this.createMarkdown,
         'findMarkdownById': this.findMarkdownById,
         'findMarkdownsByAuthor': this.findMarkdownsByAuthor,
+        'findMarkdownsByProject': this.findMarkdownsByProject,
         'updateMarkdown': this.updateMarkdown,
         'deleteMarkdown': this.deleteMarkdown
     };
@@ -19,6 +20,7 @@ export class MarkdownService {
         'createMarkdown': AppConstants.ENDPOINT.baseUrl + '/markdown',
         'findMarkdownById': AppConstants.ENDPOINT.baseUrl + '/markdown/{markdownId}',
         'findMarkdownsByAuthor': AppConstants.ENDPOINT.baseUrl + '/markdown/byAuthor/{authorId}',
+        'findMarkdownsByProject': AppConstants.ENDPOINT.baseUrl + '/markdown/byProject/{projectId}',
         'updateMarkdown': AppConstants.ENDPOINT.baseUrl + '/markdown/{markdownId}',
         'deleteMarkdown': AppConstants.ENDPOINT.baseUrl + '/markdown/{markdownId}'
     };
@@ -45,12 +47,22 @@ export class MarkdownService {
     }
 
     /**
-     * Find markdown by markdown name
-     * @param markdownname markdownname of the markdown
-     * @returns Observable that resolves to markdown with the specifed markdownname; null if id doesn't exist
+     * Find markdown by author
+     * @param authorId user id of the author
+     * @returns Observable that resolves to the list of markdowns created by the specified user
      */
     findMarkdownsByAuthor(authorId: string): Observable<Markdown[]> {
         const url = this.endpoint.findMarkdownsByAuthor.replace('{authorId}', authorId);
+        return this.http.get<Markdown[]>(url);
+    }
+
+    /**
+     * Find markdown by project
+     * @param projectId markdownname of the markdown
+     * @returns Observable that resolves to the list of markdowns created in the specified project
+     */
+    findMarkdownsByProject(projectId: string): Observable<Markdown[]> {
+        const url = this.endpoint.findMarkdownsByProject.replace('{projectId}', projectId);
         return this.http.get<Markdown[]>(url);
     }
 

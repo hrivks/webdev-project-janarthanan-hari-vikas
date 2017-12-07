@@ -3,15 +3,15 @@
          *ngIf="loggedInUser">
         <div class="col">
             <h4>New Project</h4>
-            <hr>
+            <hr class="mt-2">
 
             <form #newProjectForm="ngForm"
                   (submit)="createProject()">
 
                 <!-- Name -->
                 <div class="form-group">
-                    <label class="control-label"
-                           for="name">Name</label>
+                    <label class="control-label small text-dark"
+                           for="name">NAME</label>
                     <input type="text"
                            class="form-control form-control-sm"
                            name="name"
@@ -21,12 +21,37 @@
                            required>
                 </div>
 
+                <!-- Description -->
+                <div class="form-group">
+                    <label class="control-label small text-dark"
+                           for="name">DESCRIPTION</label>
+                    <textarea type="text"
+                              class="form-control form-control-sm"
+                              name="description"
+                              #descriptionField="ngModel"
+                              [(ngModel)]="description"></textarea>
+                </div>
+
+                <!-- Markdown file name -->
+                <div class="form-group">
+                    <label class="control-label small text-dark"
+                           for="name">MARKDOWN FILE NAME</label>
+                    <input type="text"
+                           class="form-control form-control-sm"
+                           name="markdownFileName"
+                           #markdownFileNameField="ngModel"
+                           [(ngModel)]="markdownFileName"
+                           [ngClass]="{'btn-outline-danger': markdownFileNameField.touched && !markdownFileNameField.valid }"
+                           required>
+                </div>
+
+                <!-- Users -->
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <!-- Admins -->
                         <div class="form-group">
-                            <label class="control-label"
-                                   for="name">Admins</label>
+                            <label class="control-label small text-dark"
+                                   for="name">ADMINS</label>
                             <app-user-list-select [ignoreById]="[loggedInUser._id]"
                                                   [(selectedUsers)]="admins"></app-user-list-select>
                         </div>
@@ -34,8 +59,8 @@
                     <div class="col-12 col-sm-6">
                         <!-- Members -->
                         <div class="form-group">
-                            <label class="control-label"
-                                   for="name">Members</label>
+                            <label class="control-label small text-dark"
+                                   for="name">MEMBERS</label>
                             <app-user-list-select [ignoreById]="[loggedInUser._id]"
                                                   [(selectedUsers)]="members"></app-user-list-select>
                         </div>
@@ -43,7 +68,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-primary btn-sm"
+                    <button class="btn btn-primary py-1"
                             [hidden]="inProgres"
                             [disabled]="!newProjectForm.valid">Create</button>
 

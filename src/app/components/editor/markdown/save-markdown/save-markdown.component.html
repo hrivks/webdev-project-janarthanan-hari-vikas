@@ -1,6 +1,6 @@
 <div class="save-markdown">
 
-    <div *ngIf="!authorId">
+    <div *ngIf="!loggedInUser">
         <!-- Login prompt -->
         <div class="my-3 text-center">
             <i class="fa fa-user-circle fa-5x text-dark"></i>
@@ -10,21 +10,22 @@
         </div>
     </div>
 
-    <div *ngIf="authorId">
+    <div *ngIf="loggedInUser">
 
         <form (submit)="saveMarkdown()"
               #saveForm="ngForm">
 
-            <!-- Title -->
-            <div class="form-group">
+            <!-- Project Name -->
+            <div class="form-group"
+                 *ngIf="!project">
                 <label class="control-label"
-                       for="repo">Title</label>
+                       for="repo">Project Name</label>
                 <input type="text"
                        class="form-control form-control-sm"
-                       name="title"
-                       #titleField="ngModel"
-                       [(ngModel)]="title"
-                       [ngClass]="{'btn-outline-danger': titleField.touched && !titleField.valid }"
+                       name="projectName"
+                       #projectNameField="ngModel"
+                       [(ngModel)]="projectName"
+                       [ngClass]="{'btn-outline-danger': projectNameField.touched && !projectNameField.valid }"
                        required>
             </div>
 
@@ -39,17 +40,6 @@
                        #fileNameField="ngModel"
                        [ngClass]="{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }"
                        required>
-            </div>
-
-            <!-- Description -->
-            <div class="form-group">
-                <label class="control-label"
-                       for="commitMessage">Description</label> <small>[optional]</small>
-                <input type="text"
-                       class="form-control form-control-sm"
-                       #descriptionField="ngModel"
-                       name="description"
-                       [(ngModel)]="description">
             </div>
 
             <div class="form-group">

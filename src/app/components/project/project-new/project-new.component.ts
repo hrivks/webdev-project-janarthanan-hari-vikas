@@ -5,7 +5,8 @@ import { ProjectService } from '../../../services/project.service.client';
 import { InteractionsService } from '../../../services/interactions.service.client';
 import { ErrorHandlerService } from '../../../services/error-handler.service.client';
 import { AuthService } from '../../../services/auth.service.client';
-import { User } from '../../../model/model';
+import { User, Markdown, Project } from '../../../model/model';
+import { MarkdownService } from '../../../services/markdown.service.client';
 
 @Component({
   selector: 'app-new-project',
@@ -17,6 +18,8 @@ export class NewProjectComponent implements OnInit {
   // properties
   @ViewChild('newProjectForm') newProjectForm: NgForm;
   private name: string;
+  private description: string;
+  private markdownFileName = 'README.md';
   private members: User[];
   private admins: User[];
   private loggedInUser: User;
@@ -25,6 +28,7 @@ export class NewProjectComponent implements OnInit {
 
   constructor(private router: Router,
     private projectService: ProjectService,
+    private markdownService: MarkdownService,
     private interactionService: InteractionsService,
     private errorHandlerService: ErrorHandlerService,
     private authService: AuthService) { }
@@ -48,17 +52,30 @@ export class NewProjectComponent implements OnInit {
       return;
     }
 
-    const project = {
-      name: this.name,
-      members: this.members.map(u => u._id),
-      admins: this.admins.map(u => u._id)
+    const markdown: Markdown = {
+      fileName: this.markdownFileName,
+      content: ''
     };
 
-    this.interactionService.showLoader(true);
-    this.projectService.createProject(project)
-      .subscribe((createdProject) => {
-        this.interactionService.showLoader(false);
-        this.router.navigate(['/projects']);
+    this.markdownService.createMarkdown(markdown)
+      .subscribe((createdMarkdown) => {
+
+        const project: Project = {
+          name: this.name,
+          members: this.members ? this.members.map(u => u._id) : [],
+          admins: this.admins ? this.admins.map(u => u._id) : [],
+          markdown: createdMarkdown._id
+        };
+
+        this.interactionService.showLoader(true);
+        this.projectService.createProject(project)
+          .subscribe((createdProject) => {
+            this.interactionService.showLoader(false);
+            this.router.navigate(['/projects']);
+          }, (err) => {
+            this.errorHandlerService.handleError('Error creating project', err);
+          });
+
       }, (err) => {
         this.errorHandlerService.handleError('Error creating project', err);
       });

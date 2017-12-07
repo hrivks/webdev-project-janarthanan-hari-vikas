@@ -5,7 +5,8 @@ import { ProjectService } from '../../../services/project.service.client';
 import { InteractionsService } from '../../../services/interactions.service.client';
 import { ErrorHandlerService } from '../../../services/error-handler.service.client';
 import { AuthService } from '../../../services/auth.service.client';
-import { User, Project } from '../../../model/model';
+import { User, Project, Markdown } from '../../../model/model';
+import { GitHubService } from '../../../services/github.service.client';
 
 @Component({
   selector: 'app-edit-project',
@@ -17,10 +18,13 @@ export class EditProjectComponent implements OnInit {
   // properties
   @ViewChild('editProjectForm') editProjectForm: NgForm;
   private name: string;
+  private description: string;
   private members: User[];
   private admins: User[];
   private loggedInUser: User;
   private project: Project;
+  private repos: string[];
+  private repo: string;
 
   private inProgress: boolean;
   private confirmDelete: boolean;
@@ -28,6 +32,7 @@ export class EditProjectComponent implements OnInit {
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private projectService: ProjectService,
+    private githubService: GitHubService,
     private interactionService: InteractionsService,
     private errorHandlerService: ErrorHandlerService,
     private authService: AuthService) { }
@@ -37,18 +42,39 @@ export class EditProjectComponent implements OnInit {
     if (!this.loggedInUser) {
       this.interactionService.showAlert('You must be logged in to view this page');
     } else {
+      this.interactionService.showLoader(true);
+      this.getUserRepos();
       this.activatedRoute.paramMap.subscribe((params: any) => {
+        // get project details
         this.projectService.findProjectById(params.get('projectId'))
           .subscribe((project) => {
-            console.log(project);
             this.project = project;
             this.name = this.project.name;
+            this.description = this.project.description;
             this.members = this.project.members.map((i) => ({ _id: i.toString() }));
             this.admins = this.project.admins.map((i) => ({ _id: i.toString() }));
+            this.repo = this.project.gitRepo;
+            this.interactionService.showLoader(false);
           }, (err) => {
             this.errorHandlerService.handleError('Error getting project', err);
+            this.interactionService.showLoader(false);
           });
       });
+    }
+  }
+
+  /** Get list of user repositories */
+  getUserRepos() {
+
+    if (this.loggedInUser.github && this.loggedInUser.github.token) {
+      this.githubService.getRepos()
+        .subscribe((repos) => {
+          this.repos = repos;
+        }, (err) => {
+          this.errorHandlerService.handleError('Error getting GitHub Repositories', err);
+        });
+    } else {
+
     }
   }
 
@@ -67,6 +93,8 @@ export class EditProjectComponent implements OnInit {
     this.inProgress = true;
 
     this.project.name = this.name;
+    this.project.description = this.description;
+    this.project.gitRepo = this.repo;
     this.project.members = this.members.map(u => u._id);
     this.project.admins = this.admins.map(u => u._id);
 
@@ -99,7 +127,6 @@ export class EditProjectComponent implements OnInit {
         this.interactionService.showAlert('Project deleted successfully', 'success', true);
         this.router.navigate(['/projects']);
       }, (err) => {
-        console.error('Error deleting project', err);
         this.inProgress = false;
         this.interactionService.showLoader(false);
         this.errorHandlerService.handleError('Error deleting project', err);

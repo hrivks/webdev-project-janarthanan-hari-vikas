@@ -55,6 +55,7 @@ export class NavComponent implements OnInit {
   }
 
   logout() {
+    localStorage.clear();
     this.authService.logout();
   }
 

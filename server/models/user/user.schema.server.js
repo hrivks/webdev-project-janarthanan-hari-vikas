@@ -1,7 +1,7 @@
 /**
  * User schema
  */
-module.exports = (function () {
+module.exports = (function() {
     var mongoose = require('mongoose');
 
     var UserSchema = new mongoose.Schema({
@@ -13,8 +13,13 @@ module.exports = (function () {
         },
         name: String,
         email: String,
-        dateCreated: { type: Date, default: Date.now }
-    }, { collection: 'users' });
+        dateCreated: {
+            type: Date,
+            default: Date.now
+        }
+    }, {
+        collection: 'users'
+    });
 
     return UserSchema;
 })();

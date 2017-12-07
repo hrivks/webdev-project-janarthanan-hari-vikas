@@ -70,7 +70,7 @@ export class AuthService implements CanActivate {
         const obs = new Observable<User>((observer) => {
             this.userService.login(username, password)
                 .subscribe((loggedInUser) => {
-                    console.log(loggedInUser);
+                    this.interactionService.invoke(AppConstants.EVENTS.loginChange);
                     this.setLoggedInUser(loggedInUser);
                     observer.next(Object.assign({}, loggedInUser));
                     observer.complete();
@@ -125,6 +125,7 @@ export class AuthService implements CanActivate {
     logout() {
         this.userService.logout()
             .subscribe((res) => {
+                this.interactionService.invoke(AppConstants.EVENTS.loginChange);
                 this.removeLoggedInUser();
                 this.router.navigate(['/']);
             }, (err) => {
