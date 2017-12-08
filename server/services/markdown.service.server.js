@@ -7,6 +7,7 @@ module.exports = (function() {
     const MarkdownModel = require('../models/model.server').Markdown;
     const Utils = require('./service-utils.js');
     const q = require('q');
+    const Acl = require('./access-control.service.server');
 
     /** Exported objects */
     const exp = {
@@ -14,12 +15,27 @@ module.exports = (function() {
         api: { // list of functions supported by this service
             createMarkdown: createMarkdown,
             findMarkdownById: findMarkdownById,
-            findMarkdownsByAuthor: findMarkdownsByAuthor,
             updateMarkdown: updateMarkdown,
             deleteMarkdown: deleteMarkdown
         }
     };
 
+    // ACL checkers
+    const hasReadAccess = function(req, res, next) {
+        Acl.checkAccess(req, res, next, 'MarkdownRead');
+    };
+
+    const hasEditAccess = function(req, res, next) {
+        Acl.checkAccess(req, res, next, 'MarkdownEdit');
+    };
+
+    const hasDeleteAccess = function(req, res, next) {
+        Acl.checkAccess(req, res, next, 'MarkdownDelete');
+    };
+
+    const hasProjectReadAccess = function(req, res, next) {
+        Acl.checkAccess(req, res, next, 'ProjectRead');
+    };
 
     //#region : Create Markdown
 
@@ -44,8 +60,12 @@ module.exports = (function() {
     //#region : Find Markdown by Id
 
     // route: [GET] '/api/markdown/:markdownId'
-    router.get('/:markdownId', function(req, res) {
-        Utils.sendResponse(res, findMarkdownById, [req.params.markdownId]);
+    router.get('/:markdownId', hasReadAccess, function(req, res) {
+        if (res.locals.markdown) {
+            res.json(res.locals.markdown);
+        } else {
+            Utils.sendResponse(res, findMarkdownById, [req.params.markdownId]);
+        }
     });
 
     /**
@@ -59,28 +79,8 @@ module.exports = (function() {
 
     //#endregion Find markdown by id
 
-
-    //#region: Find markdowns by author
-
-    // route: [GET] '/api/markdown/byAuthor/:authorId'
-    router.get('/byAuthor/:authorId', function(req, res) {
-        Utils.sendResponse(res, findMarkdownsByAuthor, [req.params.authorId]);
-    });
-
-    /**
-     * Find markdowns by author id
-     * @param {String} authorId id of the author
-     * @returns {Promise<MarkdownSchema[]>} promise that resolves to list of markdowns created by the specified author
-     */
-    function findMarkdownsByAuthor(authorId) {
-        return MarkdownModel.findMarkdownsByAuthor(authorId);
-    }
-
-    //#endregion: Find markdowns by author
-
-
     // route: [GET] '/api/markdown/byProject/:projectId'
-    router.get('/byProject/:projectId', function(req, res) {
+    router.get('/byProject/:projectId', hasProjectReadAccess, function(req, res) {
         Utils.sendResponse(res, findMarkdownsByProject, [req.params.projectId]);
     });
 
@@ -99,7 +99,7 @@ module.exports = (function() {
     //#region: Update markdown
 
     // route: [PUT] '/api/markdown/:markdownId'
-    router.put('/:markdownId', function(req, res) {
+    router.put('/:markdownId', hasEditAccess, function(req, res) {
         Utils.sendResponse(res, updateMarkdown, [req.params.markdownId, req.body, req.user]);
     });
 
@@ -110,7 +110,7 @@ module.exports = (function() {
      * @returns {Promise<MarkdownSchema>} promise that resolves to updated markdown object
      */
     function updateMarkdown(markdownId, markdown, user) {
-        markdown.editedBy = user._id;
+        markdown.editedBy = user.name || user.username;
         return MarkdownModel.updateMarkdown(markdownId, markdown);
     }
 
@@ -120,7 +120,7 @@ module.exports = (function() {
     //#region : Delete markdown
 
     // route: [DELETE] '/api/markdown/:markdownId'
-    router.delete('/:markdownId', function(req, res) {
+    router.delete('/:markdownId', hasDeleteAccess, function(req, res) {
         Utils.sendResponse(res, deleteMarkdown, [req.params.markdownId]);
     });
 

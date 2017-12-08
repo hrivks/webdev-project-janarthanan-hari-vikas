@@ -8,6 +8,7 @@ module.exports = (function() {
     const Utils = require('./service-utils.js');
     const q = require('q');
     const passport = require('passport');
+    const Acl = require('./access-control.service.server');
 
     /** Exported objects */
     const exp = {
@@ -16,9 +17,27 @@ module.exports = (function() {
             createProject: createProject,
             findProjectById: findProjectById,
             findProjectsByMembership: findProjectsByMembership,
+            getAllProjects: getAllProjects,
             updateProject: updateProject,
             deleteProject: deleteProject
         }
+    };
+
+    // ACL checkers
+    const hasReadAccess = function(req, res, next) {
+        Acl.checkAccess(req, res, next, 'ProjectRead');
+    };
+
+    const hasEditAccess = function(req, res, next) {
+        Acl.checkAccess(req, res, next, 'ProjectEdit');
+    };
+
+    const hasDeleteAccess = function(req, res, next) {
+        Acl.checkAccess(req, res, next, 'ProjectDelete');
+    };
+
+    const hasSiteAdmin = function(req, res, next) {
+        Acl.checkAccess(req, res, next, 'SiteAdmin');
     };
 
 
@@ -53,19 +72,59 @@ module.exports = (function() {
             project.members = [admin._id.toString()];
         }
 
-
-
         return ProjectModel.createProject(project);
     }
 
     //#endregion: Create Project
 
 
+    //#region: Find projects by author
+
+    // route: [GET] '/api/project/my'
+    router.get('/my', Utils.checkAuth, function(req, res) {
+        Utils.sendResponse(res, findProjectsByMembership, [req.user._id]);
+    });
+
+    /**
+     * Find projects by user id
+     * @param {String} userId id of the user
+     * @returns {Promise<ProjectSchema[]>} promise that resolves to list of projects where the user is a member/admin
+     */
+    function findProjectsByMembership(userId) {
+        return ProjectModel.findProjectsByMembership(userId);
+    }
+
+    //#endregion: Find projects by author
+
+
+    //#region: Get all projects
+
+    // route: [GET] '/api/project/all'
+    router.get('/all', hasSiteAdmin, function(req, res) {
+        Utils.sendResponse(res, getAllProjects, []);
+    });
+
+    /**
+     * Find projects by user id
+     * @param {String} userId id of the user
+     * @returns {Promise<ProjectSchema[]>} promise that resolves to list of all projects
+     */
+    function getAllProjects() {
+        return ProjectModel.find({});
+    }
+
+    //#endregion: Find projects by author
+
+
     //#region : Find Project by Id
 
     // route: [GET] '/api/project/:projectId'
-    router.get('/:projectId', function(req, res) {
-        Utils.sendResponse(res, findProjectById, [req.params.projectId]);
+    router.get('/:projectId', hasReadAccess, function(req, res) {
+        if (res.locals.project) {
+            res.json(res.locals.project);
+        } else {
+            Utils.sendResponse(res, findProjectById, [req.params.projectId]);
+        }
     });
 
     /**
@@ -80,29 +139,10 @@ module.exports = (function() {
     //#endregion Find project by id
 
 
-    //#region: Find projects by author
-
-    // route: [GET] '/api/project/byMembership/:userId'
-    router.get('/byMembership/:userId', function(req, res) {
-        Utils.sendResponse(res, findProjectsByMembership, [req.params.userId]);
-    });
-
-    /**
-     * Find projects by author id
-     * @param {String} authorId id of the author
-     * @returns {Promise<ProjectSchema[]>} promise that resolves to list of projects created by the specified author
-     */
-    function findProjectsByMembership(userId) {
-        return ProjectModel.findProjectsByMembership(userId);
-    }
-
-    //#endregion: Find projects by author
-
-
     //#region: Update project
 
     // route: [PUT] '/api/project/:projectId'
-    router.put('/:projectId', function(req, res) {
+    router.put('/:projectId', hasEditAccess, function(req, res) {
         Utils.sendResponse(res, updateProject, [req.params.projectId, req.body]);
     });
 
@@ -122,7 +162,7 @@ module.exports = (function() {
     //#region : Delete project
 
     // route: [DELETE] '/api/project/:projectId'
-    router.delete('/:projectId', function(req, res) {
+    router.delete('/:projectId', hasDeleteAccess, function(req, res) {
         Utils.sendResponse(res, deleteProject, [req.params.projectId]);
     });
 

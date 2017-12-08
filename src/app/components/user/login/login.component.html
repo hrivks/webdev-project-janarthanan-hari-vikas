@@ -41,8 +41,8 @@
                         class="btn btn-sm btn-primary"
                         [disabled]="loginForm.invalid">Login</button>
 
-                <a class="btn btn-sm btn-secondary py-1"
-                   href="http://localhost:3100/api/auth/github">
+                <a class="btn btn-sm btn-secondary py-1 text-dark"
+                   (click)="loginToGit()">
                   Login with GitHub <i class="fa fa-github fa-2x ml-2"></i>
             </a>
 

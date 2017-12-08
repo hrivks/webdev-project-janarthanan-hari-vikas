@@ -139,47 +139,47 @@ var AppConstants = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_home_component__ = __webpack_require__("../../../../../src/app/components/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_project_service_client__ = __webpack_require__("../../../../../src/app/services/project.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_iconsearch_service_client__ = __webpack_require__("../../../../../src/app/services/iconsearch.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_utils_service_client__ = __webpack_require__("../../../../../src/app/services/utils.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_resizable_resizable_directive__ = __webpack_require__("../../../../../src/app/directives/resizable/resizable.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pipes_string_filter_string_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/string-filter/string-filter.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_code_insert_code_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-code/insert-code.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_media_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_editor_tiny_editor_insert_glyph_insert_glyph_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-glyph/insert-glyph.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_editor_markdown_save_markdown_save_markdown_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_editor_git_commit_commit_component__ = __webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_user_login_login_component__ = __webpack_require__("../../../../../src/app/components/user/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_user_user_list_select_user_list_select_component__ = __webpack_require__("../../../../../src/app/components/user/user-list-select/user-list-select.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_project_project_list_project_list_component__ = __webpack_require__("../../../../../src/app/components/project/project-list/project-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_project_project_new_project_new_component__ = __webpack_require__("../../../../../src/app/components/project/project-new/project-new.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__components_project_project_edit_project_edit_component__ = __webpack_require__("../../../../../src/app/components/project/project-edit/project-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_project_service_client__ = __webpack_require__("../../../../../src/app/services/project.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_iconsearch_service_client__ = __webpack_require__("../../../../../src/app/services/iconsearch.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_utils_service_client__ = __webpack_require__("../../../../../src/app/services/utils.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__directives_resizable_resizable_directive__ = __webpack_require__("../../../../../src/app/directives/resizable/resizable.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pipes_string_filter_string_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/string-filter/string-filter.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_code_insert_code_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-code/insert-code.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_media_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_glyph_insert_glyph_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-glyph/insert-glyph.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_editor_markdown_save_markdown_save_markdown_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_editor_git_commit_commit_component__ = __webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_user_login_login_component__ = __webpack_require__("../../../../../src/app/components/user/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_user_user_list_select_user_list_select_component__ = __webpack_require__("../../../../../src/app/components/user/user-list-select/user-list-select.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_project_project_list_project_list_component__ = __webpack_require__("../../../../../src/app/components/project/project-list/project-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_project_project_new_project_new_component__ = __webpack_require__("../../../../../src/app/components/project/project-new/project-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_project_project_edit_project_edit_component__ = __webpack_require__("../../../../../src/app/components/project/project-edit/project-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__components_user_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/user/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__components_admin_admin_component__ = __webpack_require__("../../../../../src/app/components/admin/admin.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -228,6 +228,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 // #endregion
 var AppModule = (function () {
     function AppModule() {
@@ -237,31 +239,32 @@ var AppModule = (function () {
             // Declare components here
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_6__components_home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__components_shared_alert_alert_component__["a" /* AlertComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__components_shared_loader_loader_component__["a" /* LoaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__components_shared_nav_nav_component__["a" /* NavComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
-                __WEBPACK_IMPORTED_MODULE_23__components_editor_editor_component__["a" /* EditorComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_code_insert_code_component__["a" /* InsertCodeComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_media_component__["a" /* InsertMediaComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__components_test_test_component__["a" /* TestComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__["a" /* InsertImageComponent */],
-                __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__["a" /* InsertYoutubeComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
-                __WEBPACK_IMPORTED_MODULE_31__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
-                __WEBPACK_IMPORTED_MODULE_21__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */],
-                __WEBPACK_IMPORTED_MODULE_35__components_user_register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
-                __WEBPACK_IMPORTED_MODULE_33__components_editor_git_commit_commit_component__["a" /* CommitComponent */],
-                __WEBPACK_IMPORTED_MODULE_32__components_editor_markdown_save_markdown_save_markdown_component__["a" /* SaveMarkdownComponent */],
-                __WEBPACK_IMPORTED_MODULE_37__components_project_project_list_project_list_component__["a" /* ListProjectComponent */],
-                __WEBPACK_IMPORTED_MODULE_38__components_project_project_new_project_new_component__["a" /* NewProjectComponent */],
-                __WEBPACK_IMPORTED_MODULE_39__components_project_project_edit_project_edit_component__["a" /* EditProjectComponent */],
-                __WEBPACK_IMPORTED_MODULE_36__components_user_user_list_select_user_list_select_component__["a" /* UserListSelectComponent */],
-                __WEBPACK_IMPORTED_MODULE_34__components_user_login_login_component__["a" /* LoginComponent */]
+                __WEBPACK_IMPORTED_MODULE_17__components_shared_alert_alert_component__["a" /* AlertComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__components_shared_loader_loader_component__["a" /* LoaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components_shared_nav_nav_component__["a" /* NavComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
+                __WEBPACK_IMPORTED_MODULE_22__components_editor_editor_component__["a" /* EditorComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_code_insert_code_component__["a" /* InsertCodeComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_media_component__["a" /* InsertMediaComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__components_test_test_component__["a" /* TestComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__["a" /* InsertImageComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__["a" /* InsertYoutubeComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
+                __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */],
+                __WEBPACK_IMPORTED_MODULE_34__components_user_register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
+                __WEBPACK_IMPORTED_MODULE_32__components_editor_git_commit_commit_component__["a" /* CommitComponent */],
+                __WEBPACK_IMPORTED_MODULE_31__components_editor_markdown_save_markdown_save_markdown_component__["a" /* SaveMarkdownComponent */],
+                __WEBPACK_IMPORTED_MODULE_36__components_project_project_list_project_list_component__["a" /* ListProjectComponent */],
+                __WEBPACK_IMPORTED_MODULE_37__components_project_project_new_project_new_component__["a" /* NewProjectComponent */],
+                __WEBPACK_IMPORTED_MODULE_38__components_project_project_edit_project_edit_component__["a" /* EditProjectComponent */],
+                __WEBPACK_IMPORTED_MODULE_35__components_user_user_list_select_user_list_select_component__["a" /* UserListSelectComponent */],
+                __WEBPACK_IMPORTED_MODULE_33__components_user_login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_39__components_user_profile_profile_component__["a" /* ProfileComponent */],
+                __WEBPACK_IMPORTED_MODULE_40__components_admin_admin_component__["a" /* AdminComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -270,17 +273,17 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__app_routing__["a" /* Routing */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_10__services_user_service_client__["a" /* UserService */],
-                __WEBPACK_IMPORTED_MODULE_11__services_markdown_service_client__["a" /* MarkdownService */],
-                __WEBPACK_IMPORTED_MODULE_12__services_project_service_client__["a" /* ProjectService */],
-                __WEBPACK_IMPORTED_MODULE_8__services_auth_service_client__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_15__services_github_service_client__["a" /* GitHubService */],
-                __WEBPACK_IMPORTED_MODULE_9__services_error_handler_service_client__["a" /* ErrorHandlerService */],
-                __WEBPACK_IMPORTED_MODULE_7__services_interactions_service_client__["a" /* InteractionsService */],
-                __WEBPACK_IMPORTED_MODULE_13__services_iconsearch_service_client__["a" /* IconSearchService */],
-                __WEBPACK_IMPORTED_MODULE_14__services_utils_service_client__["a" /* UtilService */],
-                __WEBPACK_IMPORTED_MODULE_22__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
-                __WEBPACK_IMPORTED_MODULE_21__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
+                __WEBPACK_IMPORTED_MODULE_9__services_user_service_client__["a" /* UserService */],
+                __WEBPACK_IMPORTED_MODULE_10__services_markdown_service_client__["a" /* MarkdownService */],
+                __WEBPACK_IMPORTED_MODULE_11__services_project_service_client__["a" /* ProjectService */],
+                __WEBPACK_IMPORTED_MODULE_7__services_auth_service_client__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_14__services_github_service_client__["a" /* GitHubService */],
+                __WEBPACK_IMPORTED_MODULE_8__services_error_handler_service_client__["a" /* ErrorHandlerService */],
+                __WEBPACK_IMPORTED_MODULE_6__services_interactions_service_client__["a" /* InteractionsService */],
+                __WEBPACK_IMPORTED_MODULE_12__services_iconsearch_service_client__["a" /* IconSearchService */],
+                __WEBPACK_IMPORTED_MODULE_13__services_utils_service_client__["a" /* UtilService */],
+                __WEBPACK_IMPORTED_MODULE_21__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
+                __WEBPACK_IMPORTED_MODULE_20__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         })
@@ -307,6 +310,10 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_project_project_list_project_list_component__ = __webpack_require__("../../../../../src/app/components/project/project-list/project-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_user_login_login_component__ = __webpack_require__("../../../../../src/app/components/user/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_user_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/user/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_admin_admin_component__ = __webpack_require__("../../../../../src/app/components/admin/admin.component.ts");
+
+
 
 
 
@@ -322,14 +329,146 @@ var APP_ROUTES = [
     { path: 'projects', component: __WEBPACK_IMPORTED_MODULE_7__components_project_project_list_project_list_component__["a" /* ListProjectComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
     { path: 'project/new', component: __WEBPACK_IMPORTED_MODULE_5__components_project_project_new_project_new_component__["a" /* NewProjectComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
     { path: 'project/:projectId', component: __WEBPACK_IMPORTED_MODULE_6__components_project_project_edit_project_edit_component__["a" /* EditProjectComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
-    { path: 'project/:projectId/editor/:markdownId', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */] },
+    { path: 'project/:projectId/editor/:markdownId', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
+    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_10__components_user_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_4__components_user_register_register_component__["a" /* RegisterComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_8__components_user_login_login_component__["a" /* LoginComponent */] },
     { path: 'test', component: __WEBPACK_IMPORTED_MODULE_2__app_components_test_test_component__["a" /* TestComponent */], data: { skipAuth: true } },
-    { path: 'iconSearch', component: __WEBPACK_IMPORTED_MODULE_3__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */], data: { skipAuth: true } }
+    { path: 'iconSearch', component: __WEBPACK_IMPORTED_MODULE_3__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */], data: { skipAuth: true } },
+    { path: 'admin', component: __WEBPACK_IMPORTED_MODULE_11__components_admin_admin_component__["a" /* AdminComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
 ];
 // Export the routes as module providers
 var Routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["d" /* RouterModule */].forRoot(APP_ROUTES);
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin/admin.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin/admin.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"isSiteAdmin\">\n        <div class=\"col\">\n            <h4>Admin</h4>\n            <hr class=\"mt-2\">\n\n            <ul class=\"nav nav-tabs\">\n                <li class=\"nav-item\">\n                    <a class=\"nav-link active\"\n                       data-toggle=\"tab\"\n                       data-target=\"#projects\"\n                       role=\"tab\">Projects</a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"nav-link\"\n                       data-toggle=\"tab\"\n                       data-target=\"#users\"\n                       role=\"tab\">Users</a>\n                </li>\n            </ul>\n\n            <div class=\"tab-content p-2 py-4\">\n\n                <!-- Projects  -->\n                <div class=\"tab-pane active show fade\"\n                     id=\"projects\"\n                     role=\"tabpanel\">\n\n                    <!-- Create new project -->\n                    <form (submit)=\"createProject()\">\n                        <div class=\"input-group\">\n                            <button class=\"input-group-btn btn btn-sm py-2 btn-success\"\n                                    title=\"Add new project\">\n                                <i class=\"fa fa-plus-circle fa-lg\"></i>\n                            </button>\n                            <input type=\"text\"\n                                   class=\"form-control form-control-sm py-2\"\n                                   name=\"newProjectName\"\n                                   [(ngModel)]=\"newProjectName\"\n                                   placeholder=\"New Project Name\"\n                                   required>\n                        </div>\n                    </form>\n\n                    <ul class=\"list-group mt-2\">\n                        <li class=\"list-group-item p-0\"\n                            *ngFor=\"let project of projects\">\n\n                            <div class=\"input-group\">\n                                <!-- Delete Project -->\n                                <button class=\"btn btn-danger py-2 px-3\"\n                                        (click)=\"deleteProject(project)\"\n                                        title=\"Delete Project\">\n                                        <i class=\"fa fa-minus-circle\"></i>\n                                </button>\n\n                                <!-- Edit Project -->\n                                <a class=\"btn btn-info py-2 px-3\"\n                                   [routerLink]=\"['/project', project._id]\"\n                                   title=\"Edit Project\"><i class=\"fa fa-gear\"></i>\n                                </a>\n\n                                <!-- Project Name -->\n                                <a class=\"form-control btn py-2 nt\"\n                                   [routerLink]=\"['/project', project._id, 'editor', project.markdown]\">{{project.name}}</a>\n                            </div>\n\n                        </li>\n                    </ul>\n\n\n                </div>\n\n                <!-- Users  -->\n                <div class=\"tab-pane active fade\"\n                     id=\"users\"\n                     role=\"tabpanel\">\n                    Users\n                </div>\n            </div>\n\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin/admin.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_project_service_client__ = __webpack_require__("../../../../../src/app/services/project.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var AdminComponent = (function () {
+    function AdminComponent(authService, projectService, userService, markdownService, interactionService, errorHandlerService) {
+        this.authService = authService;
+        this.projectService = projectService;
+        this.userService = userService;
+        this.markdownService = markdownService;
+        this.interactionService = interactionService;
+        this.errorHandlerService = errorHandlerService;
+    }
+    AdminComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.me = this.authService.getLoggedInUser();
+        if (this.me.isSiteAdmin) {
+            this.isSiteAdmin = true;
+            this.projectService.getAllProjects()
+                .subscribe(function (projects) {
+                _this.projects = projects;
+            }, function (err) {
+                _this.errorHandlerService.handleError('Error getting list of all projects', err);
+            });
+            this.userService.getAllUsers()
+                .subscribe(function (users) {
+                _this.users = users.filter(function (i) { return i._id !== _this.me._id; });
+            }, function (err) {
+                _this.errorHandlerService.handleError('Error getting list of all users', err);
+            });
+        }
+    };
+    AdminComponent.prototype.createProject = function () {
+        var _this = this;
+        if (!this.newProjectName) {
+            this.interactionService.showAlert('Project name cannot be empty', 'danger', true);
+            return;
+        }
+        var newMarkdown = {
+            content: ''
+        };
+        this.markdownService.createMarkdown(newMarkdown)
+            .subscribe(function (createdMarkdown) {
+            // create project and associate with created markdown
+            var project = {
+                name: _this.newProjectName,
+                fileName: 'README.md',
+                markdown: createdMarkdown._id
+            };
+            _this.projectService.createProject(project)
+                .subscribe(function (createdProject) {
+                _this.newProjectName = '';
+                _this.projects.push(createdProject);
+                _this.interactionService.showAlert('Project created successfully', 'success', true);
+            }, function (err) {
+                _this.errorHandlerService.handleError('Error creating project', err);
+            });
+        }, function (err) {
+            _this.errorHandlerService.handleError('Error creating project markdown', err);
+        });
+    };
+    AdminComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-admin',
+            template: __webpack_require__("../../../../../src/app/components/admin/admin.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/admin/admin.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_project_service_client__["a" /* ProjectService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_user_service_client__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_6__services_markdown_service_client__["a" /* MarkdownService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
+    ], AdminComponent);
+    return AdminComponent;
+}());
+
 
 
 /***/ }),
@@ -355,7 +494,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row no-gutters editor pb-4\"\r\n     [hidden]=\"!loadComplete\">\r\n\r\n    <!-- Editor -->\r\n    <div class=\"col pr-md-2 editor-wrapper\">\r\n        <app-tiny-editor [(markdownHtml)]=\"markdownHtml\"\r\n                         [height]=\"compHeight + 27\"\r\n                         (loadComplete)=\"onEditorLoad($event)\"></app-tiny-editor>\r\n    </div>\r\n\r\n    <!-- Preview -->\r\n    <div class=\"col pl-md-2 preview-wrapper\">\r\n        <div class=\"card text-center\">\r\n            <div class=\"card-header bg-editor-gray pt-2\">\r\n\r\n                <ul class=\"nav nav-tabs card-header-tabs\"\r\n                    role=\"tablist\">\r\n\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'preview' }\"\r\n                           (click)=\"activeTab='preview'\"\r\n                           role=\"tab\">Preview</a>\r\n                    </li>\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           href=\"#\"\r\n                           [ngClass]=\"{'active': activeTab === 'markdown' }\"\r\n                           (click)=\"activeTab='markdown'\"\r\n                           role=\"tab\">Markdown</a>\r\n                    </li>\r\n\r\n                </ul>\r\n\r\n            </div>\r\n            <div class=\"card-body p-1\"\r\n                 #previewTabBody>\r\n                <!-- Tab panes -->\r\n                <div class=\"tab-content p-2\">\r\n\r\n                    <!-- Preview tab -->\r\n                    <div class=\"tab-pane active show fade text-left\"\r\n                         [ngClass]=\"{'show': activeTab === 'preview' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'preview'\"\r\n                             class=\"tab-pane-inner\"\r\n                             [style.height.px]=\"compHeight\">\r\n                            <div class=\"markdown-body text-dark\"\r\n                                 [innerHtml]=\"markdownHtml\"></div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <!-- markdown tab -->\r\n                    <div class=\"tab-pane active fade\"\r\n                         [ngClass]=\"{'show': activeTab === 'markdown' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'markdown'\"\r\n                             [style.height.px]=\"compHeight\"\r\n                             class=\"tab-pane-inner\">\r\n                            <textarea class=\"w-100 h-100 border-0 markdown-preview\"\r\n                                      [ngModel]=\"markdownHtml | markdownConvertor\"\r\n                                      readonly></textarea>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n                <!-- tab content -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <!-- preview wrapper -->\r\n</div>\r\n\r\n<!-- Editor Modals -->\r\n<div class=\"models-wrap\">\r\n    <div id=\"editor-modal\"\r\n         #modal\r\n         class=\"modal fade p-0\">\r\n        <div class=\"modal-dialog\"\r\n             [ngClass]=\"modals[openModalKey]?.size\"\r\n             role=\"document\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\">{{modals[openModalKey]?.title}}</h5>\r\n                    <button type=\"button\"\r\n                            class=\"close\"\r\n                            (click)=\"closeModal()\">\r\n                  <span aria-hidden=\"true\">&times;</span>\r\n                </button>\r\n                </div>\r\n                <div class=\"modal-body pb-2\"\r\n                     [style.height.px]=\"modalHeight\">\r\n\r\n                    <!-- Commit to Git modal -->\r\n                    <div *ngIf=\"openModalKey === 'commitToGit'\">\r\n                        <app-commit-to-git [fileContent]=\"markdownHtml | markdownConvertor\"\r\n                                           [repoName]=\"project?.gitRepo\"\r\n                                           (onComplete)=\"closeModal($event)\"></app-commit-to-git>\r\n                    </div>\r\n\r\n                    <!-- Save Markdown modal -->\r\n                    <div *ngIf=\"openModalKey === 'save'\">\r\n                        <app-save-markdown [markdown]=\"markdownServerObject\"\r\n                                           [project]=\"project\"\r\n                                           (onComplete)=\"closeModal($event)\"></app-save-markdown>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- / Editor Modals -->\r\n\r\n<!-- footer -->\r\n<nav class=\"navbar navbar-expand bg-faded border-faded fixed-bottom hvj-footer p-1 px-3\">\r\n    <div class=\"mr-auto form-inline\"\r\n         *ngIf=\"project\">\r\n        <a class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n           [routerLink]=\"['/project', project._id]\"> \r\n           <i class=\"fa fa-gear fa-lg\"></i> \r\n           <span>{{project.name}}</span>\r\n        </a>\r\n        <span class=\"ml-2\">\r\n            <small><em>Last Edited by <span class=\"text-dark font-weight-bold\">{{markdown.editedBy}}</span> on <span class=\"text-dark\">{{markdown.editedOn | date: 'short'}}</span></em>\r\n        </small>\r\n        </span>\r\n    </div>\r\n\r\n    <div class=\"ml-auto form-inline\">\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"showSaveModal()\"> \r\n                <span>Save</span>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"showCommitToGitModal()\">\r\n                <span>Commit to Git</span> <i class=\"fa fa-github fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"download()\">\r\n                <span>Download</span> <i class=\"fa fa-download fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n    </div>\r\n</nav>"
+module.exports = "<div class=\"row no-gutters editor pb-4\"\r\n     [hidden]=\"!loadComplete\">\r\n\r\n    <!-- Editor -->\r\n    <div class=\"col pr-md-2 editor-wrapper\">\r\n        <app-tiny-editor [(markdownHtml)]=\"markdownHtml\"\r\n                         [height]=\"compHeight + 27\"\r\n                         (loadComplete)=\"onEditorLoad($event)\"></app-tiny-editor>\r\n    </div>\r\n\r\n    <!-- Preview -->\r\n    <div class=\"col pl-md-2 preview-wrapper\">\r\n        <div class=\"card text-center\">\r\n            <div class=\"card-header bg-editor-gray pt-2\">\r\n\r\n                <ul class=\"nav nav-tabs card-header-tabs\"\r\n                    role=\"tablist\">\r\n\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           [ngClass]=\"{'active': activeTab === 'preview' }\"\r\n                           (click)=\"activeTab='preview'\"\r\n                           role=\"tab\">Preview</a>\r\n                    </li>\r\n                    <li class=\"nav-item\">\r\n                        <a class=\"nav-link\"\r\n                           [ngClass]=\"{'active': activeTab === 'markdown' }\"\r\n                           (click)=\"activeTab='markdown'\"\r\n                           role=\"tab\">Markdown</a>\r\n                    </li>\r\n\r\n                </ul>\r\n\r\n            </div>\r\n            <div class=\"card-body p-1\"\r\n                 #previewTabBody>\r\n                <!-- Tab panes -->\r\n                <div class=\"tab-content p-2\">\r\n\r\n                    <!-- Preview tab -->\r\n                    <div class=\"tab-pane active show fade text-left\"\r\n                         [ngClass]=\"{'show': activeTab === 'preview' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'preview'\"\r\n                             class=\"tab-pane-inner\"\r\n                             [style.height.px]=\"compHeight\">\r\n                            <div class=\"markdown-body text-dark\"\r\n                                 [innerHtml]=\"markdownHtml\"></div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <!-- markdown tab -->\r\n                    <div class=\"tab-pane active fade\"\r\n                         [ngClass]=\"{'show': activeTab === 'markdown' }\"\r\n                         role=\"tabpanel\">\r\n                        <div *ngIf=\"activeTab === 'markdown'\"\r\n                             [style.height.px]=\"compHeight\"\r\n                             class=\"tab-pane-inner\">\r\n                            <textarea class=\"w-100 h-100 border-0 markdown-preview\"\r\n                                      [ngModel]=\"markdownHtml | markdownConvertor\"\r\n                                      readonly></textarea>\r\n\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n                <!-- tab content -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <!-- preview wrapper -->\r\n</div>\r\n\r\n<!-- Editor Modals -->\r\n<div class=\"models-wrap\">\r\n    <div id=\"editor-modal\"\r\n         #modal\r\n         class=\"modal fade p-0\">\r\n        <div class=\"modal-dialog\"\r\n             [ngClass]=\"modals[openModalKey]?.size\"\r\n             role=\"document\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\">{{modals[openModalKey]?.title}}</h5>\r\n                    <button type=\"button\"\r\n                            class=\"close\"\r\n                            (click)=\"closeModal()\">\r\n                  <span aria-hidden=\"true\">&times;</span>\r\n                </button>\r\n                </div>\r\n                <div class=\"modal-body pb-2\"\r\n                     [style.height.px]=\"modalHeight\">\r\n\r\n                    <!-- Commit to Git modal -->\r\n                    <div *ngIf=\"openModalKey === 'commitToGit'\">\r\n                        <app-commit-to-git [fileContent]=\"markdownHtml | markdownConvertor\"\r\n                                           [repoName]=\"project?.gitRepo\"\r\n                                           (onComplete)=\"closeModal($event)\"></app-commit-to-git>\r\n                    </div>\r\n\r\n                    <!-- Save Markdown modal -->\r\n                    <div *ngIf=\"openModalKey === 'save'\">\r\n                        <app-save-markdown [markdown]=\"markdown\"\r\n                                           [project]=\"project\"\r\n                                           (onComplete)=\"closeModal($event)\"></app-save-markdown>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- / Editor Modals -->\r\n\r\n<!-- footer -->\r\n<nav class=\"navbar navbar-expand bg-faded border-faded fixed-bottom hvj-footer p-1 px-3\">\r\n    <div class=\"mr-auto form-inline\"\r\n         *ngIf=\"project\">\r\n        <a class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n           [routerLink]=\"['/project', project._id]\"> \r\n           <i class=\"fa fa-gear fa-lg\"></i> \r\n           <span>{{project.name}}</span>\r\n        </a>\r\n        <span class=\"ml-2\"\r\n              *ngIf=\"markdown\">\r\n            <small><em>Last Edited by <span class=\"text-dark font-weight-bold\">{{markdown.editedBy}}</span> on <span class=\"text-dark\">{{markdown.editedOn | date: 'short'}}</span></em>\r\n        </small>\r\n        </span>\r\n    </div>\r\n\r\n    <div class=\"ml-auto form-inline\">\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"save()\"> \r\n                <span>Save</span>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"showCommitToGitModal()\">\r\n                <span>Commit to Git</span> <i class=\"fa fa-github fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n        <button class=\"btn btn-primary btn-sm ml-2 py-1\"\r\n                (click)=\"download()\">\r\n                <span>Download</span> <i class=\"fa fa-download fa-lg ml-2\" aria-hidden=\"true\"></i>\r\n        </button>\r\n    </div>\r\n</nav>"
 
 /***/ }),
 
@@ -388,9 +527,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var EditorComponent = (function () {
-    function EditorComponent(activatedRoute, markdownService, projectService, interactionService, errorHandlerService, markdownConvertor) {
+    function EditorComponent(activatedRoute, router, markdownService, projectService, interactionService, errorHandlerService, markdownConvertor) {
         var _this = this;
         this.activatedRoute = activatedRoute;
+        this.router = router;
         this.markdownService = markdownService;
         this.projectService = projectService;
         this.interactionService = interactionService;
@@ -418,6 +558,7 @@ var EditorComponent = (function () {
                     }
                 }, function (err) {
                     _this.errorHandlerService.handleError('Error getting markdown info', err);
+                    _this.router.navigate(['/']);
                 });
                 // get project
                 var projectId_1 = params.get('projectId');
@@ -429,9 +570,11 @@ var EditorComponent = (function () {
                     else {
                         console.error('Project with id ' + projectId_1 + ' does not exist');
                         _this.interactionService.showAlert('Project with id ' + projectId_1 + ' does not exist');
+                        _this.router.navigate(['/']);
                     }
                 }, function (err) {
                     _this.errorHandlerService.handleError('Error getting project', err);
+                    _this.router.navigate(['/']);
                 });
             }
         });
@@ -467,12 +610,31 @@ var EditorComponent = (function () {
     EditorComponent.prototype.showCommitToGitModal = function () {
         this.openModal('commitToGit');
     };
+    /** Save markdown */
+    EditorComponent.prototype.save = function () {
+        var _this = this;
+        if (this.markdown && this.markdown._id) {
+            this.interactionService.showLoader(true);
+            this.markdown.content = this.markdownConvertor.transform(this.markdownHtml);
+            this.markdownService.updateMarkdown(this.markdown._id, this.markdown)
+                .subscribe(function (updatedMarkdown) {
+                _this.markdown = updatedMarkdown;
+                _this.interactionService.showLoader(false);
+                _this.interactionService.showAlert('Saved successfully', 'success', true);
+            }, function (err) {
+                _this.interactionService.showLoader(false);
+                _this.errorHandlerService.handleError('Error saving markdown', err);
+            });
+        }
+        else {
+            this.showSaveModal();
+        }
+    };
     /** Show save markdown modal */
     EditorComponent.prototype.showSaveModal = function () {
         if (!this.markdown) {
             this.markdown = {
-                content: this.markdownHtml,
-                fileName: 'README.md'
+                content: this.markdownHtml
             };
         }
         this.openModal('save');
@@ -512,6 +674,7 @@ var EditorComponent = (function () {
             encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* ViewEncapsulation */].None
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
             __WEBPACK_IMPORTED_MODULE_3__services_markdown_service_client__["a" /* MarkdownService */],
             __WEBPACK_IMPORTED_MODULE_6__services_project_service_client__["a" /* ProjectService */],
             __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__["a" /* InteractionsService */],
@@ -546,7 +709,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/git/commit/commit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"git-commit\">\n\n    <div *ngIf=\"!gitToken\">\n        <!-- Git Login prompt -->\n        <div class=\"my-3 text-center\">\n            <i class=\"fa fa-github fa-5x text-dark\"></i>\n            <br>\n            <a class=\"btn btn-primary btn-sm mt-3\"\n               (click)=\"loginToGit()\">Login to Github</a>\n        </div>\n    </div>\n\n    <div *ngIf=\"gitToken\">\n\n        <form (submit)=\"commit()\"\n              #commitForm=\"ngForm\">\n\n            <!-- Repos list -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"repo\">Repository</label>\n                <div class=\"input-group input-group-sm\">\n                    <div class=\"input-group-btn\">\n                        <div class=\"btn-group\">\n                            <button class=\"btn btn-primary py-2 px-3 m-0\"\n                                    type=\"button\"\n                                    data-toggle=\"dropdown\">\n                                    <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n                            </button>\n                            <div class=\"dropdown-menu\">\n                                <a class=\"dropdown-item\"\n                                   *ngFor=\"let r of repos\"\n                                   (click)=\"repo=r\">{{r}}</a>\n                            </div>\n                        </div>\n                    </div>\n                    <input type=\"text\"\n                           class=\"form-control\"\n                           name=\"repo\"\n                           #repoField=\"ngModel\"\n                           [(ngModel)]=\"repo\"\n                           [ngClass]=\"{'btn-outline-danger': repoField.touched && !repoField.valid }\"\n                           placeholder=\"Select or enter Repo full name\"\n                           required>\n\n                </div>\n            </div>\n\n            <!-- Branch -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"branch\">Branch Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"branch\"\n                       #branchField=\"ngModel\"\n                       [(ngModel)]=\"branch\"\n                       [ngClass]=\"{'btn-outline-danger': branchField.touched && !branchField.valid }\"\n                       required>\n            </div>\n\n            <!-- File Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"fileName\">File Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"fileName\"\n                       [(ngModel)]=\"fileName\"\n                       #fileNameField=\"ngModel\"\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\n                       required>\n            </div>\n\n            <!-- Commit message -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"commitMessage\">Commit Message</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       #commitMessageField=\"ngModel\"\n                       [(ngModel)]=\"commitMessage\"\n                       [ngClass]=\"{'btn-outline-danger': commitMessageField.touched && !commitMessageField.valid }\"\n                       name=\"commitMessage\"\n                       required>\n            </div>\n\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary btn-sm\"\n                        [hidden]=\"commitInProgres\"\n                        [disabled]=\"!commitForm.valid\">Commit</button>\n\n                <div class=\"progress\" [hidden]=\"!commitInProgres\">\n                    <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                         role=\"progressbar\"></div>\n                </div>\n            </div>\n        </form>\n    </div>\n\n\n</div>"
+module.exports = "<div class=\"git-commit\">\n\n    <div *ngIf=\"!gitToken\">\n        <!-- Git Login prompt -->\n        <div class=\"my-3 text-center\">\n            <i class=\"fa fa-github fa-5x text-dark\"></i>\n            <br>\n            <button type=\"button\"\n                    class=\"btn btn-primary btn-sm mt-3\"\n                    (click)=\"loginToGit()\">Login to Github</button>\n        </div>\n    </div>\n\n    <div *ngIf=\"gitToken\">\n\n        <form (submit)=\"commit()\"\n              #commitForm=\"ngForm\">\n\n            <!-- Repos list -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"repo\">Repository</label>\n                <div class=\"input-group input-group-sm\">\n                    <div class=\"input-group-btn\">\n                        <div class=\"btn-group\">\n                            <button class=\"btn btn-primary py-2 px-3 m-0\"\n                                    type=\"button\"\n                                    data-toggle=\"dropdown\">\n                                    <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n                            </button>\n                            <div class=\"dropdown-menu\">\n                                <a class=\"dropdown-item\"\n                                   *ngFor=\"let r of repos\"\n                                   (click)=\"repo=r\">{{r}}</a>\n                            </div>\n                        </div>\n                    </div>\n                    <input type=\"text\"\n                           class=\"form-control\"\n                           name=\"repo\"\n                           #repoField=\"ngModel\"\n                           [(ngModel)]=\"repo\"\n                           [ngClass]=\"{'btn-outline-danger': repoField.touched && !repoField.valid }\"\n                           placeholder=\"Select or enter Repo full name\"\n                           required>\n\n                </div>\n            </div>\n\n            <!-- Branch -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"branch\">Branch Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"branch\"\n                       #branchField=\"ngModel\"\n                       [(ngModel)]=\"branch\"\n                       [ngClass]=\"{'btn-outline-danger': branchField.touched && !branchField.valid }\"\n                       required>\n            </div>\n\n            <!-- File Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"fileName\">File Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"fileName\"\n                       [(ngModel)]=\"fileName\"\n                       #fileNameField=\"ngModel\"\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\n                       required>\n            </div>\n\n            <!-- Commit message -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"commitMessage\">Commit Message</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       #commitMessageField=\"ngModel\"\n                       [(ngModel)]=\"commitMessage\"\n                       [ngClass]=\"{'btn-outline-danger': commitMessageField.touched && !commitMessageField.valid }\"\n                       name=\"commitMessage\"\n                       required>\n            </div>\n\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary btn-sm\"\n                        [hidden]=\"commitInProgres\"\n                        [disabled]=\"!commitForm.valid\">Commit</button>\n\n                <div class=\"progress\"\n                     [hidden]=\"!commitInProgres\">\n                    <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                         role=\"progressbar\"></div>\n                </div>\n            </div>\n        </form>\n    </div>\n\n\n</div>"
 
 /***/ }),
 
@@ -643,7 +806,7 @@ var CommitComponent = (function () {
     };
     CommitComponent.prototype.loginToGit = function () {
         localStorage.setItem('openModalOnLoad', 'commitToGit');
-        location.href = 'http://localhost:3100/api/auth/github';
+        this.authService.loginToGit();
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
@@ -700,7 +863,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"save-markdown\">\n\n    <div *ngIf=\"!loggedInUser\">\n        <!-- Login prompt -->\n        <div class=\"my-3 text-center\">\n            <i class=\"fa fa-user-circle fa-5x text-dark\"></i>\n            <br>\n            <br>\n            <p>You must be logged in to save markdown <br> Please login to continue</p>\n        </div>\n    </div>\n\n    <div *ngIf=\"loggedInUser\">\n\n        <form (submit)=\"saveMarkdown()\"\n              #saveForm=\"ngForm\">\n\n            <!-- Project Name -->\n            <div class=\"form-group\"\n                 *ngIf=\"!project\">\n                <label class=\"control-label\"\n                       for=\"repo\">Project Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"projectName\"\n                       #projectNameField=\"ngModel\"\n                       [(ngModel)]=\"projectName\"\n                       [ngClass]=\"{'btn-outline-danger': projectNameField.touched && !projectNameField.valid }\"\n                       required>\n            </div>\n\n            <!-- File Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"fileName\">File Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"fileName\"\n                       [(ngModel)]=\"fileName\"\n                       #fileNameField=\"ngModel\"\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\n                       required>\n            </div>\n\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary btn-sm\"\n                        [hidden]=\"saveInProgres\"\n                        [disabled]=\"!saveForm.valid\">Save</button>\n\n                <div class=\"progress\"\n                     [hidden]=\"!saveInProgres\">\n                    <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                         role=\"progressbar\"></div>\n                </div>\n            </div>\n        </form>\n    </div>\n\n</div>"
+module.exports = "<div class=\"save-markdown\">\n\n    <div *ngIf=\"!loggedInUser\">\n        <!-- Login prompt -->\n        <div class=\"my-3 text-center\">\n            <i class=\"fa fa-user-circle fa-5x text-dark\"></i>\n            <br>\n            <br>\n            <p>You must be logged in to save markdown</p>\n            <p>\n                <a [routerLink]=\"['/login']\"\n                   class=\"btn btn-sm py-2 btn-primary\">Login</a>\n            </p>\n        </div>\n    </div>\n\n    <div *ngIf=\"loggedInUser\">\n\n        <form (submit)=\"saveMarkdown()\"\n              #saveForm=\"ngForm\">\n\n            <!-- Project Name -->\n            <div class=\"form-group\"\n                 *ngIf=\"!project\">\n                <label class=\"control-label\"\n                       for=\"repo\">Project Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"projectName\"\n                       #projectNameField=\"ngModel\"\n                       [(ngModel)]=\"projectName\"\n                       [ngClass]=\"{'btn-outline-danger': projectNameField.touched && !projectNameField.valid }\"\n                       required>\n            </div>\n\n            <!-- File Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"fileName\">File Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"fileName\"\n                       [(ngModel)]=\"fileName\"\n                       #fileNameField=\"ngModel\"\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\n                       required>\n            </div>\n\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary btn-sm\"\n                        [hidden]=\"saveInProgres\"\n                        [disabled]=\"!saveForm.valid\">Save</button>\n\n                <div class=\"progress\"\n                     [hidden]=\"!saveInProgres\">\n                    <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                         role=\"progressbar\"></div>\n                </div>\n            </div>\n        </form>\n    </div>\n\n</div>"
 
 /***/ }),
 
@@ -754,7 +917,7 @@ var SaveMarkdownComponent = (function () {
         if (!this.markdown) {
             this.markdown = new __WEBPACK_IMPORTED_MODULE_6__model_model__["a" /* Markdown */]();
         }
-        this.fileName = this.markdown.fileName || 'README.md';
+        this.fileName = this.project && this.project.fileName ? this.project.fileName : 'README.md';
         // register for login change
         this.interactionService.registerCallback(__WEBPACK_IMPORTED_MODULE_5__app_constant__["a" /* AppConstants */].EVENTS.loginChange, function (user) {
             _this.loggedInUser = _this.authService.getLoggedInUser();
@@ -776,7 +939,6 @@ var SaveMarkdownComponent = (function () {
             return;
         }
         this.saveInProgres = true;
-        this.markdown.fileName = this.fileName;
         if (this.markdown._id) {
             this.markdownService.updateMarkdown(this.markdown._id, this.markdown)
                 .subscribe(function (updatedMarkdown) {
@@ -793,6 +955,7 @@ var SaveMarkdownComponent = (function () {
                 // create project and associate with created markdown
                 var project = {
                     name: _this.projectName,
+                    fileName: _this.fileName,
                     markdown: createdMarkdown._id
                 };
                 _this.projectService.createProject(project)
@@ -2008,67 +2171,6 @@ var TinyEditorComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/home/home.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/home/home.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div>\r\n  <h1>\r\n    WriteMe.md\r\n  </h1>\r\n</div>\r\n\r\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/home/home.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var HomeComponent = (function () {
-    function HomeComponent() {
-    }
-    HomeComponent.prototype.ngOnInit = function () {
-    };
-    HomeComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'app-home',
-            template: __webpack_require__("../../../../../src/app/components/home/home.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/home/home.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], HomeComponent);
-    return HomeComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "../../../../../src/app/components/project/project-edit/project-edit.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2090,7 +2192,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/project/project-edit/project-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"project\">\n        <div class=\"col\">\n            <h4>\n                Edit Project\n                <a class=\"btn float-sm-right small py-1 px-3 btn-success\"\n                   [routerLink]=\"['editor', project.markdown]\">\n                   <i class=\"fa fa-lg fa-pencil-square-o\"></i> Open in Editor</a>\n            </h4>\n            <hr class=\"mt-2\">\n            <form #editProjectForm=\"ngForm\"\n                  (submit)=\"updateProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Description -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">DESCRIPTION</label>\n                    <textarea type=\"text\"\n                              class=\"form-control form-control-sm\"\n                              name=\"description\"\n                              #nameField=\"ngModel\"\n                              [(ngModel)]=\"description\"></textarea>\n                </div>\n\n                <!-- Github Repo -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"repo\">LINK WITH GITHUB REPO</label>\n                    <div>\n                        <a *ngIf=\"!loggedInUser.github || !loggedInUser.github.token\"\n                           href=\"http://localhost:3100/api/auth/github\"\n                           class=\"btn btn-primary py-1\">Login to Github</a>\n                        <div class=\"input-group input-group-sm\"\n                             *ngIf=\"loggedInUser.github && loggedInUser.github.token\">\n                            <div class=\"input-group-btn\">\n                                <div class=\"btn-group\">\n                                    <button class=\"btn btn-primary py-2 px-3 m-0\"\n                                            type=\"button\"\n                                            data-toggle=\"dropdown\">\n                                            <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n                                    </button>\n                                    <div class=\"dropdown-menu\">\n                                        <a class=\"dropdown-item\"\n                                           *ngFor=\"let r of repos\"\n                                           (click)=\"repo=r\">{{r}}</a>\n                                    </div>\n                                </div>\n                            </div>\n                            <input type=\"text\"\n                                   class=\"form-control\"\n                                   name=\"repo\"\n                                   #repoField=\"ngModel\"\n                                   [(ngModel)]=\"repo\"\n                                   placeholder=\"Select or enter Repo full name\">\n\n                        </div>\n                    </div>\n                </div>\n\n                <!-- Users -->\n                <div class=\"mt-2\">\n                    <div class=\"row mb-2\">\n                        <span class=\"btn btn-secondary px-1 py-1 text-muted\"\n                              data-toggle=\"collapse\"\n                              data-target=\"#user-wrap\">\n                                <i class=\"fa fa-chevron-down mr-1\"></i>\n                                <span class=\"text-size-normal font-weight-normal\">Users</span>\n                        </span>\n                    </div>\n                    <div id=\"user-wrap\"\n                         class=\"collapse\">\n                        <div class=\"row\">\n                            <div class=\"col-12 col-sm-6\">\n                                <!-- Admins -->\n                                <div class=\"form-group\">\n                                    <label class=\"control-label small text-dark\"\n                                           for=\"name\">ADMINS</label>\n                                    <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                          [(selectedUsers)]=\"admins\"></app-user-list-select>\n                                </div>\n                            </div>\n                            <div class=\"col-12 col-sm-6\">\n                                <!-- Members -->\n                                <div class=\"form-group\">\n                                    <label class=\"control-label small text-dark\"\n                                           for=\"name\">MEMBERS</label>\n                                    <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                          [(selectedUsers)]=\"members\"></app-user-list-select>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary py-1\"\n                            type=\"submit\"\n                            [disabled]=\"!editProjectForm.valid\">Update</button>\n\n                    <button class=\"btn btn-danger py-1\"\n                            type=\"button\"\n                            [hidden]=\"confirmDelete\"\n                            (click)=\"confirmDelete=true\">\n                            <i class=\"fa fa-trash fa-lg\"></i>\n                          </button>\n                    <button class=\"btn btn-danger py-1\"\n                            type=\"button\"\n                            [hidden]=\"!confirmDelete\"\n                            (click)=\"deleteProject()\">\n                          <i class=\"fa fa-trash fa-lg mr-2\"></i> Sure?\n                        </button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"project\">\n        <div class=\"col\">\n            <h4>\n                Edit Project\n                <a class=\"btn float-sm-right small py-1 px-3 btn-success\"\n                   [routerLink]=\"['editor', project.markdown]\">\n                   <i class=\"fa fa-lg fa-pencil-square-o\"></i> Open in Editor</a>\n            </h4>\n            <hr class=\"mt-2\">\n            <form #editProjectForm=\"ngForm\"\n                  (submit)=\"updateProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"project.name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Description -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">DESCRIPTION</label>\n                    <textarea type=\"text\"\n                              class=\"form-control form-control-sm\"\n                              name=\"project.description\"\n                              #nameField=\"ngModel\"\n                              [(ngModel)]=\"description\"></textarea>\n                </div>\n\n                <!-- Markdown file name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">MARKDOWN FILE NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"markdownFileName\"\n                           #markdownFileNameField=\"ngModel\"\n                           [(ngModel)]=\"project.fileName\"\n                           [ngClass]=\"{'btn-outline-danger': markdownFileNameField.touched && !markdownFileNameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Github Repo -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"repo\">LINK WITH GITHUB REPO</label>\n                    <div>\n                        <a *ngIf=\"!loggedInUser.github || !loggedInUser.github.token\"\n                           href=\"http://localhost:3100/api/auth/github\"\n                           class=\"btn btn-primary py-1\">Login to Github</a>\n                        <div class=\"input-group input-group-sm\"\n                             *ngIf=\"loggedInUser.github && loggedInUser.github.token\">\n                            <div class=\"input-group-btn\">\n                                <div class=\"btn-group\">\n                                    <button class=\"btn btn-primary py-2 px-3 m-0\"\n                                            type=\"button\"\n                                            data-toggle=\"dropdown\">\n                                            <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n                                    </button>\n                                    <div class=\"dropdown-menu\">\n                                        <a class=\"dropdown-item\"\n                                           *ngFor=\"let r of repos\"\n                                           (click)=\"project.repo=r\">{{r}}</a>\n                                    </div>\n                                </div>\n                            </div>\n                            <input type=\"text\"\n                                   class=\"form-control\"\n                                   name=\"repo\"\n                                   #repoField=\"ngModel\"\n                                   [(ngModel)]=\"project.repo\"\n                                   placeholder=\"Select or enter Repo full name\">\n\n                        </div>\n                    </div>\n                </div>\n\n                <!-- Users -->\n                <div class=\"mt-2\">\n                    <div class=\"row mb-2\">\n                        <span class=\"btn btn-secondary px-1 py-1 text-muted\"\n                              data-toggle=\"collapse\"\n                              data-target=\"#user-wrap\">\n                                <i class=\"fa fa-chevron-down mr-1\"></i>\n                                <span class=\"text-size-normal font-weight-normal\">Users</span>\n                        </span>\n                    </div>\n                    <div id=\"user-wrap\"\n                         class=\"collapse\">\n                        <div class=\"row\">\n                            <div class=\"col-12 col-sm-6\">\n                                <!-- Admins -->\n                                <div class=\"form-group\">\n                                    <label class=\"control-label small text-dark\"\n                                           for=\"name\">ADMINS</label>\n                                    <app-user-list-select [ignoreIds]=\"[loggedInUser._id]\"\n                                                          [(selectedUserIds)]=\"project.admins\"></app-user-list-select>\n                                </div>\n                            </div>\n                            <div class=\"col-12 col-sm-6\">\n                                <!-- Members -->\n                                <div class=\"form-group\">\n                                    <label class=\"control-label small text-dark\"\n                                           for=\"name\">MEMBERS</label>\n                                    <app-user-list-select [ignoreIds]=\"[loggedInUser._id]\"\n                                                          [(selectedUserIds)]=\"project.members\"></app-user-list-select>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <span class=\"small text-danger\" *ngIf=\"!canEdit\">\n                        You do not have permission to update this project\n                    </span>\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary py-1\"\n                            type=\"submit\"\n                            [disabled]=\"!editProjectForm.valid || !canEdit\">Update</button>\n\n                    <button class=\"btn btn-danger py-1\"\n                            type=\"button\"\n                            [disabled]=\"!canEdit\"\n                            [hidden]=\"confirmDelete\"\n                            (click)=\"confirmDelete=true\">\n                            <i class=\"fa fa-trash fa-lg\"></i>\n                          </button>\n                    <button class=\"btn btn-danger py-1\"\n                            type=\"button\"\n                            [hidden]=\"!confirmDelete\"\n                            (click)=\"deleteProject()\">\n                          <i class=\"fa fa-trash fa-lg mr-2\"></i> Sure?\n                        </button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2148,11 +2250,7 @@ var EditProjectComponent = (function () {
                 _this.projectService.findProjectById(params.get('projectId'))
                     .subscribe(function (project) {
                     _this.project = project;
-                    _this.name = _this.project.name;
-                    _this.description = _this.project.description;
-                    _this.members = _this.project.members.map(function (i) { return ({ _id: i.toString() }); });
-                    _this.admins = _this.project.admins.map(function (i) { return ({ _id: i.toString() }); });
-                    _this.repo = _this.project.gitRepo;
+                    _this.canEdit = _this.loggedInUser.isSiteAdmin || _this.project.admins && _this.project.admins.indexOf(_this.loggedInUser._id) > -1;
                     _this.interactionService.showLoader(false);
                 }, function (err) {
                     _this.errorHandlerService.handleError('Error getting project', err);
@@ -2187,11 +2285,6 @@ var EditProjectComponent = (function () {
             return;
         }
         this.inProgress = true;
-        this.project.name = this.name;
-        this.project.description = this.description;
-        this.project.gitRepo = this.repo;
-        this.project.members = this.members.map(function (u) { return u._id; });
-        this.project.admins = this.admins.map(function (u) { return u._id; });
         this.interactionService.showLoader(true);
         this.projectService.updateProject(this.project._id, this.project)
             .subscribe(function (createdProject) {
@@ -2313,7 +2406,7 @@ var ListProjectComponent = (function () {
         var user = this.authService.getLoggedInUser();
         if (user) {
             this.interactionService.showLoader(true);
-            this.projectService.findProjectsByMembership(user._id)
+            this.projectService.getMyProjects()
                 .subscribe(function (projects) {
                 _this.projects = projects;
                 _this.interactionService.showLoader(false);
@@ -2363,7 +2456,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/project/project-new/project-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"loggedInUser\">\n        <div class=\"col\">\n            <h4>New Project</h4>\n            <hr class=\"mt-2\">\n\n            <form #newProjectForm=\"ngForm\"\n                  (submit)=\"createProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Description -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">DESCRIPTION</label>\n                    <textarea type=\"text\"\n                              class=\"form-control form-control-sm\"\n                              name=\"description\"\n                              #descriptionField=\"ngModel\"\n                              [(ngModel)]=\"description\"></textarea>\n                </div>\n\n                <!-- Markdown file name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">MARKDOWN FILE NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"markdownFileName\"\n                           #markdownFileNameField=\"ngModel\"\n                           [(ngModel)]=\"markdownFileName\"\n                           [ngClass]=\"{'btn-outline-danger': markdownFileNameField.touched && !markdownFileNameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Users -->\n                <div class=\"row\">\n                    <div class=\"col-12 col-sm-6\">\n                        <!-- Admins -->\n                        <div class=\"form-group\">\n                            <label class=\"control-label small text-dark\"\n                                   for=\"name\">ADMINS</label>\n                            <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                  [(selectedUsers)]=\"admins\"></app-user-list-select>\n                        </div>\n                    </div>\n                    <div class=\"col-12 col-sm-6\">\n                        <!-- Members -->\n                        <div class=\"form-group\">\n                            <label class=\"control-label small text-dark\"\n                                   for=\"name\">MEMBERS</label>\n                            <app-user-list-select [ignoreById]=\"[loggedInUser._id]\"\n                                                  [(selectedUsers)]=\"members\"></app-user-list-select>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary py-1\"\n                            [hidden]=\"inProgres\"\n                            [disabled]=\"!newProjectForm.valid\">Create</button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"loggedInUser\">\n        <div class=\"col\">\n            <h4>New Project</h4>\n            <hr class=\"mt-2\">\n\n            <form #newProjectForm=\"ngForm\"\n                  (submit)=\"createProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Description -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">DESCRIPTION</label>\n                    <textarea type=\"text\"\n                              class=\"form-control form-control-sm\"\n                              name=\"description\"\n                              #descriptionField=\"ngModel\"\n                              [(ngModel)]=\"description\"></textarea>\n                </div>\n\n                <!-- Markdown file name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">MARKDOWN FILE NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"markdownFileName\"\n                           #markdownFileNameField=\"ngModel\"\n                           [(ngModel)]=\"markdownFileName\"\n                           [ngClass]=\"{'btn-outline-danger': markdownFileNameField.touched && !markdownFileNameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Users -->\n                <div class=\"row\">\n                    <div class=\"col-12 col-sm-6\">\n                        <!-- Admins -->\n                        <div class=\"form-group\">\n                            <label class=\"control-label small text-dark\"\n                                   for=\"name\">ADMINS</label>\n                            <app-user-list-select [ignoreIds]=\"[loggedInUser._id]\"\n                                                  [(selectedUserIds)]=\"admins\"></app-user-list-select>\n                        </div>\n                    </div>\n                    <div class=\"col-12 col-sm-6\">\n                        <!-- Members -->\n                        <div class=\"form-group\">\n                            <label class=\"control-label small text-dark\"\n                                   for=\"name\">MEMBERS</label>\n                            <app-user-list-select [ignoreIds]=\"[loggedInUser._id]\"\n                                                  [(selectedUserIds)]=\"members\"></app-user-list-select>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary py-1\"\n                            [hidden]=\"inProgres\"\n                            [disabled]=\"!newProjectForm.valid\">Create</button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2425,15 +2518,15 @@ var NewProjectComponent = (function () {
             return;
         }
         var markdown = {
-            fileName: this.markdownFileName,
             content: ''
         };
         this.markdownService.createMarkdown(markdown)
             .subscribe(function (createdMarkdown) {
             var project = {
                 name: _this.name,
-                members: _this.members ? _this.members.map(function (u) { return u._id; }) : [],
-                admins: _this.admins ? _this.admins.map(function (u) { return u._id; }) : [],
+                fileName: _this.markdownFileName,
+                members: _this.members ? _this.members : [],
+                admins: _this.admins ? _this.admins : [],
                 markdown: createdMarkdown._id
             };
             _this.interactionService.showLoader(true);
@@ -2666,7 +2759,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand navbar-inverse bg-primary fixed-top py-0\">\r\n    <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n            type=\"button\"\r\n            data-toggle=\"collapse\"\r\n            data-target=\"#navbar-content\"\r\n            aria-controls=\"navbarColor01\"\r\n            aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n    <a class=\"navbar-brand text-white\">WriteMe.md</a>\r\n\r\n    <div class=\"collapse navbar-collapse pb-3 pb-lg-0 text-white\"\r\n         id=\"navbar-content\">\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/']\">Editor</a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/projects']\">Projects</a>\r\n            </li>\r\n            <li class=\"nav-item ml-0\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/project', 'new']\"><i class=\"fa fa-plus fa-lg\"></i></a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Login form -->\r\n        <div class=\"form-inline float-right ml-auto\"\r\n             *ngIf=\"!loggedIn\">\r\n            <!-- Login button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm border-top-0\"\r\n               [routerLink]=\"['/login']\">Login</a>\r\n            <!-- Register button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm p-1\"\r\n               href=\"http://localhost:3100/api/auth/github\"\r\n               target=\"_self\">\r\n                <i class=\"fa fa-github fa-2x\" aria-hidden=\"true\"></i>\r\n            </a>\r\n            <a class=\"btn border text-white ml-2 my-2 my-sm-0 btn-sm\"\r\n               [routerLink]=\"['/register']\">Register</a>\r\n        </div>\r\n        <!-- / Login form -->\r\n\r\n        <!-- Logout form -->\r\n        <ul class=\"float-right ml-auto navbar-nav form-inline\"\r\n            *ngIf=\"loggedIn\">\r\n            <li class=\"nav-item\">\r\n                <span class=\"fa fa-user-circle fa-lg mr-2\"></span>\r\n                <span> {{loggedIn.name || loggedIn.username}}</span>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <button class=\"btn btn-secondary btn-sm\"\r\n                        (click)=\"logout()\">Logout</button>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand navbar-inverse bg-primary fixed-top py-0\">\r\n    <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n            type=\"button\"\r\n            data-toggle=\"collapse\"\r\n            data-target=\"#navbar-content\"\r\n            aria-controls=\"navbarColor01\"\r\n            aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n    <a class=\"navbar-brand text-white\">WriteMe.md</a>\r\n\r\n    <div class=\"collapse navbar-collapse pb-3 pb-lg-0 text-white\"\r\n         id=\"navbar-content\">\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/']\">Editor</a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/projects']\">Projects</a>\r\n            </li>\r\n            <li class=\"nav-item ml-0\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/project', 'new']\"><i class=\"fa fa-plus\"></i></a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\"\r\n            *ngIf=\"loggedIn?.isSiteAdmin\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-warning\"\r\n                   [routerLink]=\"['/admin']\">\r\n                   <i class=\"fa fa-bolt\"></i>\r\n                   <span>Admin</span>\r\n                </a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Login form -->\r\n        <div class=\"form-inline float-right ml-auto\"\r\n             *ngIf=\"!loggedIn\">\r\n            <!-- Login button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm border-top-0\"\r\n               [routerLink]=\"['/login']\">Login</a>\r\n            <!-- Register button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm p-1 text-dark\"\r\n               (click)=\"loginToGit()\">\r\n                <i class=\"fa fa-github fa-2x\" aria-hidden=\"true\"></i>\r\n            </a>\r\n            <a class=\"btn border text-white ml-2 my-2 my-sm-0 btn-sm\"\r\n               [routerLink]=\"['/register']\">Register</a>\r\n        </div>\r\n        <!-- / Login form -->\r\n\r\n        <!-- Logout form -->\r\n        <ul class=\"float-right ml-auto navbar-nav form-inline\"\r\n            *ngIf=\"loggedIn\">\r\n            <li class=\"nav-item\">\r\n                <a [routerLink]=\"['/profile']\"\r\n                   class=\"btn btn-primary text-light\">\r\n                    <span class=\"fa fa-user-circle fa-lg mr-2\"></span>\r\n                    <span> {{loggedIn.name || loggedIn.username}}</span>\r\n                </a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <button class=\"btn btn-secondary btn-sm\"\r\n                        (click)=\"logout()\">Logout</button>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>"
 
 /***/ }),
 
@@ -2730,6 +2823,9 @@ var NavComponent = (function () {
             _this.errorHanderService.handleError('Login Failed', err);
         });
     };
+    NavComponent.prototype.loginToGit = function () {
+        this.authService.loginToGit();
+    };
     NavComponent.prototype.logout = function () {
         localStorage.clear();
         this.authService.logout();
@@ -2772,7 +2868,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/test/test.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Test</h1>\r\n<app-save-markdown></app-save-markdown>"
+module.exports = "<h1>Test</h1>\r\n<app-user-list-select></app-user-list-select>"
 
 /***/ }),
 
@@ -2837,7 +2933,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"user-registration mt-3\">\n        <h3>Login</h3>\n        <hr>\n        <br>\n        <!--form-->\n        <form class=\"form\"\n              (ngSubmit)=\"login()\"\n              #loginForm=\"ngForm\">\n            <!-- User Name -->\n            <div class=\"form-group\">\n                <input placeholder=\"User Name\"\n                       type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"usernameField\"\n                       [(ngModel)]=\"username\"\n                       #usernameField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': !usernameField.valid && usernameField.touched}\"\n                       required />\n                <span *ngIf=\"usernameField.invalid && usernameField.touched\"\n                      class=\"text-danger ml-2\">Username is required</span>\n            </div>\n\n            <!-- Password -->\n            <div class=\"form-group\">\n                <input placeholder=\"Password\"\n                       type=\"password\"\n                       class=\"form-control form-control-sm\"\n                       name=\"passwordField\"\n                       [(ngModel)]=\"password\"\n                       #passwordField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': (!passwordField.valid && passwordField.touched)}\"\n                       required />\n                <span *ngIf=\"passwordField.invalid && passwordField.touched\"\n                      class=\"text-danger ml-2\">Password is required</span>\n            </div>\n\n            <!-- form actions -->\n            <div>\n                <button type=\"submit\"\n                        class=\"btn btn-sm btn-primary\"\n                        [disabled]=\"loginForm.invalid\">Login</button>\n\n                <a class=\"btn btn-sm btn-secondary py-1\"\n                   href=\"http://localhost:3100/api/auth/github\">\n                  Login with GitHub <i class=\"fa fa-github fa-2x ml-2\"></i>\n            </a>\n\n            </div>\n            <!-- /form actions -->\n        </form>\n        <!--/form-->\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"user-registration mt-3\">\n        <h3>Login</h3>\n        <hr>\n        <br>\n        <!--form-->\n        <form class=\"form\"\n              (ngSubmit)=\"login()\"\n              #loginForm=\"ngForm\">\n            <!-- User Name -->\n            <div class=\"form-group\">\n                <input placeholder=\"User Name\"\n                       type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"usernameField\"\n                       [(ngModel)]=\"username\"\n                       #usernameField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': !usernameField.valid && usernameField.touched}\"\n                       required />\n                <span *ngIf=\"usernameField.invalid && usernameField.touched\"\n                      class=\"text-danger ml-2\">Username is required</span>\n            </div>\n\n            <!-- Password -->\n            <div class=\"form-group\">\n                <input placeholder=\"Password\"\n                       type=\"password\"\n                       class=\"form-control form-control-sm\"\n                       name=\"passwordField\"\n                       [(ngModel)]=\"password\"\n                       #passwordField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': (!passwordField.valid && passwordField.touched)}\"\n                       required />\n                <span *ngIf=\"passwordField.invalid && passwordField.touched\"\n                      class=\"text-danger ml-2\">Password is required</span>\n            </div>\n\n            <!-- form actions -->\n            <div>\n                <button type=\"submit\"\n                        class=\"btn btn-sm btn-primary\"\n                        [disabled]=\"loginForm.invalid\">Login</button>\n\n                <a class=\"btn btn-sm btn-secondary py-1 text-dark\"\n                   (click)=\"loginToGit()\">\n                  Login with GitHub <i class=\"fa fa-github fa-2x ml-2\"></i>\n            </a>\n\n            </div>\n            <!-- /form actions -->\n        </form>\n        <!--/form-->\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2903,6 +2999,10 @@ var LoginComponent = (function () {
             }
         });
     };
+    /** Login through Github */
+    LoginComponent.prototype.loginToGit = function () {
+        this.authService.loginToGit();
+    };
     LoginComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-login',
@@ -2917,6 +3017,112 @@ var LoginComponent = (function () {
             __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
     ], LoginComponent);
     return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/user/profile/profile.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/user/profile/profile.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n    <div class=\"user-registration mt-3\">\n        <h3>\n            Profile\n        </h3>\n        <div *ngIf=\"user.isSiteAdmin\"\n             class=\"text-warning small\"> [<i class=\"fa fa-bolt\"></i> ADMIN ]\n        </div>\n        <hr>\n        <!--form-->\n        <form class=\"form\"\n              (ngSubmit)=\"save()\"\n              #profileForm=\"ngForm\">\n            <!-- User Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label small text-dark\"\n                       for=\"username\">USER NAME</label>\n                <input placeholder=\"User Name\"\n                       type=\"text\"\n                       class=\"form-control form-control-sm py-1\"\n                       name=\"usernameField\"\n                       [(ngModel)]=\"user.username\"\n                       #usernameField=\"ngModel\"\n                       disabled/>\n            </div>\n\n            <!-- Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label small text-dark\"\n                       for=\"name\">NAME</label>\n                <input placeholder=\"Name\"\n                       type=\"text\"\n                       class=\"form-control form-control-sm py-1\"\n                       name=\"nameField\"\n                       [(ngModel)]=\"user.name\"\n                       #nameField=\"ngModel\" />\n            </div>\n\n            <div class=\"row\">\n                <!-- Password -->\n                <div class=\"form-group col-sm-6 col-12\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"password\">CHANGE PASSWORD</label>\n                    <input placeholder=\"Password\"\n                           type=\"password\"\n                           class=\"form-control form-control-sm py-1\"\n                           name=\"passwordField\"\n                           [(ngModel)]=\"password\"\n                           #passwordField=\"ngModel\" />\n                </div>\n\n                <!-- Verify Password -->\n                <div class=\"form-group col-sm-6 col-12\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">CONFIRM CHANGE PASSWORD</label>\n                    <input placeholder=\"Verify Password\"\n                           type=\"password\"\n                           class=\"form-control form-control-sm py-1\"\n                           name=\"verifyPasswordField\"\n                           [(ngModel)]=\"verifyPassword\"\n                           #verifyPasswordField=\"ngModel\" />\n                    <span *ngIf=\"verifyPassword && verifyPassword !== password && verifyPasswordField.touched\"\n                          class=\"text-danger ml-2 small\">Passwords do not match</span>\n                </div>\n\n                <!-- Link to git -->\n                <div class=\"form-group col-sm-6 col-12\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">LINK To GIT</label>\n                    <div *ngIf=\"linkedToGit\">\n                        <span class=\"text-success\">Your profile is linked to GitHub</span>\n                        <span class=\"btn btn-danger btn-sm py-1 ml-2\"\n                              (click)=\"unlinkGit()\">\n                              <i class=\"fa fa-minus-circle\"></i>\n                              Unlink</span>\n                    </div>\n                    <div *ngIf=\"!linkedToGit\">\n                        <button class=\"btn btn-success btn-sm py-1\"\n                                type=\"button\"\n                                (click)=\"loginToGit()\">\n                                <i class=\"fa fa-github fa-lg mr-2\"></i>\n                                Link to Github</button>\n                    </div>\n                </div>\n            </div>\n\n            <!-- form actions -->\n            <div>\n                <button type=\"submit\"\n                        class=\"btn btn-sm btn-primary py-1\"\n                        [disabled]=\"profileForm.invalid\">Save</button>\n            </div>\n            <!-- /form actions -->\n        </form>\n        <!--/form-->\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/user/profile/profile.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ProfileComponent = (function () {
+    function ProfileComponent(authService, userService, interactionService, errorHandlerService) {
+        this.authService = authService;
+        this.userService = userService;
+        this.interactionService = interactionService;
+        this.errorHandlerService = errorHandlerService;
+    }
+    ProfileComponent.prototype.ngOnInit = function () {
+        this.user = this.authService.getLoggedInUser();
+        this.linkedToGit = this.user.github && this.user.github.id.length > 0;
+    };
+    /** Save user info */
+    ProfileComponent.prototype.save = function () {
+        var _this = this;
+        if (this.password && this.password !== this.verifyPassword) {
+            return;
+        }
+        else {
+            this.user.password = this.password;
+        }
+        this.userService.updateUser(this.user._id, this.user)
+            .subscribe(function (updatedUser) {
+            _this.user = updatedUser;
+            _this.linkedToGit = _this.user.github && _this.user.github.id.length > 0;
+            _this.authService.setLoggedInUser(updatedUser);
+            _this.interactionService.showAlert('Profile updated successfully', 'success', true);
+        }, function (err) {
+            _this.errorHandlerService.handleError('Error updating profile', err);
+        });
+    };
+    /** Unlink Github with user */
+    ProfileComponent.prototype.unlinkGit = function () {
+        this.user.github = null;
+        this.save();
+    };
+    /** Link with Github account */
+    ProfileComponent.prototype.loginToGit = function () {
+        this.authService.loginToGit();
+    };
+    ProfileComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-profile',
+            template: __webpack_require__("../../../../../src/app/components/user/profile/profile.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/user/profile/profile.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
+    ], ProfileComponent);
+    return ProfileComponent;
 }());
 
 
@@ -3050,7 +3256,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/user-list-select/user-list-select.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"user-list-select\">\n    <div class=\"list-group\">\n        <a class=\"list-group-item list-group-item-action py-2\"\n           *ngFor=\"let user of users\"\n           (click)=\"selectUser(user)\">\n           <span class=\"fa fa-lg\" \n            [ngClass]=\"selectedUsers.indexOf(user) === -1 ? 'fa-square-o' : 'fa-check-square-o'\">\n          </span>\n          <span *ngIf=\"user.name\">\n            {{user.name}} <small class=\"text-muted\">{{user.username}}</small>\n          </span>\n          <span *ngIf=\"!user.name\">\n              {{user.username}}\n          </span>\n        </a>\n    </div>\n</div>"
+module.exports = "<div class=\"user-list-select\">\n    <!-- Search -->\n    <form (submit)=\"searchUsers()\">\n        <div class=\"input-group input-group-sm\">\n            <input type=\"text\"\n                   name=\"searchQuery\"\n                   class=\"form-control py-1\"\n                   placeholder=\"Eg: alice, bob\"\n                   [(ngModel)]=\"searchQuery\">\n            <button type=\"submit\"\n                    class=\"input-group-btn btn btn-sm btn-primary\">\n                   <i class=\"fa fa-search\"></i>\n               </button>\n        </div>\n    </form>\n    <!-- Search results -->\n    <div class=\"list-group small\">\n        <a class=\"list-group-item list-group-item-action py-1 bg-dark\"\n           *ngFor=\"let user of searchResults\"\n           (click)=\"selectUser(user)\">\n                <i *ngIf=\"selectedUserIds.indexOf(user._id) === -1\" class=\"fa fa-plus-square text-warning\"></i>               \n              <span *ngIf=\"user.name\" class=\"ml-2\">\n                {{user.name}} <small class=\"text-muted\">{{user.username}}</small>\n              </span>\n              <span *ngIf=\"!user.name\">\n                  {{user.username}}\n              </span>\n              <span *ngIf=\"selectedUserIds.indexOf(user._id) > -1\" class=\"small text-warning\">\n                Already added\n              </span>\n            </a>\n    </div>\n    <!-- Selected users -->\n    <ul class=\"list-group mt-2\">\n        <li class=\"list-group-item list-group-item-action py-2\"\n            *ngFor=\"let user of users\">\n            <i class=\"fa fa-minus-circle fa-lg text-danger\"\n               (click)=\"removeUser(user)\"></i>\n            <span *ngIf=\"user.name\">\n            {{user.name}} <small class=\"text-muted\">{{user.username}}</small>\n          </span>\n            <span *ngIf=\"!user.name\">\n              {{user.username}}\n          </span>\n        </li>\n    </ul>\n</div>"
 
 /***/ }),
 
@@ -3078,56 +3284,62 @@ var UserListSelectComponent = (function () {
     function UserListSelectComponent(userService, errorHandlerService) {
         this.userService = userService;
         this.errorHandlerService = errorHandlerService;
-        this.selectedUsersChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
+        this.selectedUserIdsChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
     }
     UserListSelectComponent.prototype.ngOnInit = function () {
         var _this = this;
-        // get list of users
-        this.userService.getAllUsers()
+        this.userService.findUsersByIds(this.selectedUserIds.join(','))
             .subscribe(function (users) {
-            if (_this.ignoreById && _this.ignoreById.length) {
-                _this.users = users.filter(function (u) { return _this.ignoreById.indexOf(u._id) === -1; });
+            if (_this.ignoreIds && _this.ignoreIds.length) {
+                _this.users = users.filter(function (i) { return _this.ignoreIds.indexOf(i._id) === -1; });
             }
             else {
                 _this.users = users;
             }
-            if (!_this.selectedUsers) {
-                _this.selectedUsers = [];
-            }
-            else {
-                _this.selectedUsers = _this.users.filter(function (i) {
-                    return _this.selectedUsers.find(function (j) { return j._id === i._id; });
-                });
-            }
-        }, function (err) {
-            _this.errorHandlerService.handleError('Error getting list of users', err);
         });
+    };
+    /** Search for user based on username or name */
+    UserListSelectComponent.prototype.searchUsers = function () {
+        var _this = this;
+        if (this.searchQuery) {
+            this.userService.searchByName(this.searchQuery)
+                .subscribe(function (results) {
+                _this.searchResults = results;
+            });
+        }
     };
     /**
      * toggle select / unselect
      * @param user selected user
      */
     UserListSelectComponent.prototype.selectUser = function (user) {
-        if (this.selectedUsers.indexOf(user) === -1) {
-            this.selectedUsers.push(user);
+        if (this.selectedUserIds.indexOf(user._id) === -1) {
+            this.selectedUserIds.push(user._id);
+            this.users.push(user);
+            this.searchResults = this.searchResults.filter(function (i) { return i._id !== user._id; });
         }
-        else {
-            this.selectedUsers.splice(this.selectedUsers.indexOf(user), 1);
+        this.selectedUserIdsChange.emit(this.selectedUserIds);
+    };
+    /** Remove user from selected list of users */
+    UserListSelectComponent.prototype.removeUser = function (user) {
+        if (this.selectedUserIds.indexOf(user._id) > -1) {
+            this.selectedUserIds.splice(this.selectedUserIds.indexOf(user._id), 1);
+            this.users = this.users.filter(function (i) { return i._id !== user._id; });
+            this.selectedUserIdsChange.emit(this.selectedUserIds);
         }
-        this.selectedUsersChange.emit(this.selectedUsers);
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
         __metadata("design:type", Array)
-    ], UserListSelectComponent.prototype, "ignoreById", void 0);
+    ], UserListSelectComponent.prototype, "ignoreIds", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
         __metadata("design:type", Array)
-    ], UserListSelectComponent.prototype, "selectedUsers", void 0);
+    ], UserListSelectComponent.prototype, "selectedUserIds", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
         __metadata("design:type", Object)
-    ], UserListSelectComponent.prototype, "selectedUsersChange", void 0);
+    ], UserListSelectComponent.prototype, "selectedUserIdsChange", void 0);
     UserListSelectComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-user-list-select',
@@ -5207,6 +5419,16 @@ var AuthService = (function () {
         });
         return obs;
     };
+    /** Redirect to Github login */
+    AuthService.prototype.loginToGit = function () {
+        var next = this.router.url;
+        if (next.indexOf('/login') > -1) {
+            // already on login page
+            var nextParam = next.split('?next=')[1];
+            next = nextParam || '';
+        }
+        window.location.href = __WEBPACK_IMPORTED_MODULE_6__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/auth/github?next=' + next;
+    };
     /**
      * Check if user is logged in
      * @param disableRedirect true, if redirect to login page must be disabled
@@ -5306,7 +5528,12 @@ var ErrorHandlerService = (function () {
             // The response body may contain clues as to what went wrong,
             var errText = '';
             try {
-                errText = JSON.parse(err.error);
+                if (err.error instanceof Array) {
+                    errText = err.error.join('<br/>');
+                }
+                else {
+                    errText = err.error.toString();
+                }
             }
             catch (ex) {
                 errText = "code: " + err.status + " | error: " + err.message;
@@ -5762,8 +5989,6 @@ var MarkdownService = (function () {
         this.api = {
             'createMarkdown': this.createMarkdown,
             'findMarkdownById': this.findMarkdownById,
-            'findMarkdownsByAuthor': this.findMarkdownsByAuthor,
-            'findMarkdownsByProject': this.findMarkdownsByProject,
             'updateMarkdown': this.updateMarkdown,
             'deleteMarkdown': this.deleteMarkdown
         };
@@ -5791,25 +6016,7 @@ var MarkdownService = (function () {
      */
     MarkdownService.prototype.findMarkdownById = function (markdownId) {
         var url = this.endpoint.findMarkdownById.replace('{markdownId}', markdownId);
-        return this.http.get(url);
-    };
-    /**
-     * Find markdown by author
-     * @param authorId user id of the author
-     * @returns Observable that resolves to the list of markdowns created by the specified user
-     */
-    MarkdownService.prototype.findMarkdownsByAuthor = function (authorId) {
-        var url = this.endpoint.findMarkdownsByAuthor.replace('{authorId}', authorId);
-        return this.http.get(url);
-    };
-    /**
-     * Find markdown by project
-     * @param projectId markdownname of the markdown
-     * @returns Observable that resolves to the list of markdowns created in the specified project
-     */
-    MarkdownService.prototype.findMarkdownsByProject = function (projectId) {
-        var url = this.endpoint.findMarkdownsByProject.replace('{projectId}', projectId);
-        return this.http.get(url);
+        return this.http.get(url, { withCredentials: true });
     };
     /**
      * Update markdown by markdown id
@@ -5819,7 +6026,7 @@ var MarkdownService = (function () {
      */
     MarkdownService.prototype.updateMarkdown = function (markdownId, markdown) {
         var url = this.endpoint.updateMarkdown.replace('{markdownId}', markdownId);
-        return this.http.put(url, markdown);
+        return this.http.put(url, markdown, { withCredentials: true });
     };
     /**
      * Delete markdown by markdown id
@@ -5867,7 +6074,8 @@ var ProjectService = (function () {
         this.endpoint = {
             'createProject': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/project',
             'findProjectById': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/project/{projectId}',
-            'findProjectsByAuthor': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/project/byMembership/{userId}',
+            'getMyProjects': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/project/my',
+            'getAllProjects': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/project/all',
             'updateProject': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/project/{projectId}',
             'deleteProject': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/project/{projectId}'
         };
@@ -5887,16 +6095,23 @@ var ProjectService = (function () {
      */
     ProjectService.prototype.findProjectById = function (projectId) {
         var url = this.endpoint.findProjectById.replace('{projectId}', projectId);
-        return this.http.get(url);
+        return this.http.get(url, { withCredentials: true });
     };
     /**
      * Find project by project name
-     * @param userId id of the user
      * @returns Observable that resolves to project with the specifed projectname; null if id doesn't exist
      */
-    ProjectService.prototype.findProjectsByMembership = function (userId) {
-        var url = this.endpoint.findProjectsByAuthor.replace('{userId}', userId);
-        return this.http.get(url);
+    ProjectService.prototype.getMyProjects = function () {
+        var url = this.endpoint.getMyProjects;
+        return this.http.get(url, { withCredentials: true });
+    };
+    /**
+     * Get all projects
+     * @returns Observable that resolves to all the available projects
+     */
+    ProjectService.prototype.getAllProjects = function () {
+        var url = this.endpoint.getAllProjects;
+        return this.http.get(url, { withCredentials: true });
     };
     /**
      * Update project by project id
@@ -5906,7 +6121,7 @@ var ProjectService = (function () {
      */
     ProjectService.prototype.updateProject = function (projectId, project) {
         var url = this.endpoint.updateProject.replace('{projectId}', projectId);
-        return this.http.put(url, project);
+        return this.http.put(url, project, { withCredentials: true });
     };
     /**
      * Delete project by project id
@@ -5915,7 +6130,7 @@ var ProjectService = (function () {
      */
     ProjectService.prototype.deleteProject = function (projectId) {
         var url = this.endpoint.deleteProject.replace('{projectId}', projectId);
-        return this.http.delete(url);
+        return this.http.delete(url, { withCredentials: true });
     };
     ProjectService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
@@ -5959,7 +6174,9 @@ var UserService = (function () {
             'getAllUsers': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/user/all',
             'findUserByUsername': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/user?username={username}',
             'findUserByCredentials': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/user?username={username}&password={password}',
+            'searchByName': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/user/search?name={query}',
             'findUserById': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/user/{userId}',
+            'findUsersByIds': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/user/byIds?userIds={userIds}',
             'updateUser': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/user/{userId}',
             'deleteUser': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/user/{userId}'
         };
@@ -6002,6 +6219,15 @@ var UserService = (function () {
         return this.http.post(url, '', { withCredentials: true });
     };
     /**
+     * Search by name
+     * @param query comma seperated list of usernames
+     * @returns Observable that resolves to the list of users that match the given query
+     */
+    UserService.prototype.searchByName = function (query) {
+        var url = this.endpoint.searchByName.replace('{query}', query);
+        return this.http.get(url, { withCredentials: true });
+    };
+    /**
        * Register new user
        * @param username username
        * @param password password
@@ -6013,7 +6239,7 @@ var UserService = (function () {
             username: username,
             password: password
         };
-        return this.http.post(url, creds, { withCredentials: true });
+        return this.http.post(url, creds);
     };
     /**
      * Find user by user id
@@ -6022,16 +6248,16 @@ var UserService = (function () {
      */
     UserService.prototype.findUserById = function (userId) {
         var url = this.endpoint.findUserById.replace('{userId}', userId);
-        return this.http.get(url);
+        return this.http.get(url, { withCredentials: true });
     };
     /**
-     * Find user by user name
-     * @param username username of the user
-     * @returns Observable that resolves to user with the specifed username; null if id doesn't exist
+     * Find users by user ids
+     * @param userIds comma seperated list of user ids
+     * @returns Observable that resolves to the list of users with the given user ids
      */
-    UserService.prototype.findUserByUsername = function (username) {
-        var url = this.endpoint.findUserByUsername.replace('{username}', username);
-        return this.http.get(url);
+    UserService.prototype.findUsersByIds = function (userIds) {
+        var url = this.endpoint.findUsersByIds.replace('{userIds}', userIds);
+        return this.http.get(url, { withCredentials: true });
     };
     /**
      * Find user by credentials
@@ -6053,7 +6279,7 @@ var UserService = (function () {
      */
     UserService.prototype.updateUser = function (userId, user) {
         var url = this.endpoint.updateUser.replace('{userId}', userId);
-        return this.http.put(url, user);
+        return this.http.put(url, user, { withCredentials: true });
     };
     /**
      * Delete user by user id
@@ -6062,7 +6288,7 @@ var UserService = (function () {
      */
     UserService.prototype.deleteUser = function (userId) {
         var url = this.endpoint.deleteUser.replace('{userId}', userId);
-        return this.http.delete(url);
+        return this.http.delete(url, { withCredentials: true });
     };
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),

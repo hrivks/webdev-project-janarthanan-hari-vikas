@@ -42,7 +42,7 @@ export class SaveMarkdownComponent implements OnInit {
     if (!this.markdown) {
       this.markdown = new Markdown();
     }
-    this.fileName = this.markdown.fileName || 'README.md';
+    this.fileName = this.project && this.project.fileName ? this.project.fileName : 'README.md';
 
     // register for login change
     this.interactionService.registerCallback(AppConstants.EVENTS.loginChange, (user) => {
@@ -70,8 +70,6 @@ export class SaveMarkdownComponent implements OnInit {
 
     this.saveInProgres = true;
 
-    this.markdown.fileName = this.fileName;
-
     if (this.markdown._id) {
       this.markdownService.updateMarkdown(this.markdown._id, this.markdown)
         .subscribe((updatedMarkdown) => {
@@ -87,6 +85,7 @@ export class SaveMarkdownComponent implements OnInit {
           // create project and associate with created markdown
           const project: Project = {
             name: this.projectName,
+            fileName: this.fileName,
             markdown: createdMarkdown._id
           };
           this.projectService.createProject(project)

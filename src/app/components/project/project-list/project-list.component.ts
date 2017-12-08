@@ -26,7 +26,7 @@ export class ListProjectComponent implements OnInit {
     const user = this.authService.getLoggedInUser();
     if (user) {
       this.interactionService.showLoader(true);
-      this.projectService.findProjectsByMembership(user._id)
+      this.projectService.getMyProjects()
         .subscribe((projects) => {
           this.projects = projects;
           this.interactionService.showLoader(false);

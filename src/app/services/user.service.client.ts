@@ -15,7 +15,9 @@ export class UserService {
         'getAllUsers': AppConstants.ENDPOINT.baseUrl + '/user/all',
         'findUserByUsername': AppConstants.ENDPOINT.baseUrl + '/user?username={username}',
         'findUserByCredentials': AppConstants.ENDPOINT.baseUrl + '/user?username={username}&password={password}',
+        'searchByName': AppConstants.ENDPOINT.baseUrl + '/user/search?name={query}',
         'findUserById': AppConstants.ENDPOINT.baseUrl + '/user/{userId}',
+        'findUsersByIds': AppConstants.ENDPOINT.baseUrl + '/user/byIds?userIds={userIds}',
         'updateUser': AppConstants.ENDPOINT.baseUrl + '/user/{userId}',
         'deleteUser': AppConstants.ENDPOINT.baseUrl + '/user/{userId}'
     };
@@ -71,6 +73,16 @@ export class UserService {
 
 
     /**
+     * Search by name
+     * @param query comma seperated list of usernames
+     * @returns Observable that resolves to the list of users that match the given query
+     */
+    searchByName(query: string): Observable<User[]> {
+        const url = this.endpoint.searchByName.replace('{query}', query);
+        return this.http.get<User[]>(url, { withCredentials: true });
+    }
+
+    /**
        * Register new user
        * @param username username
        * @param password password
@@ -83,7 +95,7 @@ export class UserService {
             password: password
         };
 
-        return this.http.post<User>(url, creds, { withCredentials: true });
+        return this.http.post<User>(url, creds);
     }
 
 
@@ -94,20 +106,18 @@ export class UserService {
      */
     findUserById(userId: string): Observable<User> {
         const url = this.endpoint.findUserById.replace('{userId}', userId);
-        return this.http.get<User>(url);
+        return this.http.get<User>(url, { withCredentials: true });
     }
-
 
     /**
-     * Find user by user name
-     * @param username username of the user
-     * @returns Observable that resolves to user with the specifed username; null if id doesn't exist
+     * Find users by user ids
+     * @param userIds comma seperated list of user ids
+     * @returns Observable that resolves to the list of users with the given user ids
      */
-    findUserByUsername(username: string): Observable<User> {
-        const url = this.endpoint.findUserByUsername.replace('{username}', username);
-        return this.http.get<User>(url);
+    findUsersByIds(userIds: string): Observable<User[]> {
+        const url = this.endpoint.findUsersByIds.replace('{userIds}', userIds);
+        return this.http.get<User[]>(url, { withCredentials: true });
     }
-
 
     /**
      * Find user by credentials
@@ -131,7 +141,7 @@ export class UserService {
      */
     updateUser(userId: string, user: User): Observable<User> {
         const url = this.endpoint.updateUser.replace('{userId}', userId);
-        return this.http.put<User>(url, user);
+        return this.http.put<User>(url, user, { withCredentials: true });
     }
 
 
@@ -142,6 +152,6 @@ export class UserService {
      */
     deleteUser(userId: string): Observable<User> {
         const url = this.endpoint.deleteUser.replace('{userId}', userId);
-        return this.http.delete<User>(url);
+        return this.http.delete<User>(url, { withCredentials: true });
     }
 }

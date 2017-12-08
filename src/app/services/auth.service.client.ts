@@ -83,6 +83,17 @@ export class AuthService implements CanActivate {
         return obs;
     }
 
+    /** Redirect to Github login */
+    loginToGit() {
+        let next = this.router.url;
+        if (next.indexOf('/login') > -1) {
+            // already on login page
+            const nextParam = next.split('?next=')[1];
+            next = nextParam || '';
+        }
+        (<any>window).location.href = AppConstants.ENDPOINT.baseUrl + '/auth/github?next=' + next;
+    }
+
 
     /**
      * Check if user is logged in

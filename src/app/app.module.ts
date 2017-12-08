@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 
 // #region App services
 import { InteractionsService } from './services/interactions.service.client';
@@ -58,6 +57,8 @@ import { UserListSelectComponent } from './components/user/user-list-select/user
 import { ListProjectComponent } from './components/project/project-list/project-list.component';
 import { NewProjectComponent } from './components/project/project-new/project-new.component';
 import { EditProjectComponent } from './components/project/project-edit/project-edit.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 
@@ -67,7 +68,6 @@ import { EditProjectComponent } from './components/project/project-edit/project-
   // Declare components here
   declarations: [
     AppComponent,
-    HomeComponent,
     AlertComponent,
     LoaderComponent,
     NavComponent,
@@ -91,7 +91,9 @@ import { EditProjectComponent } from './components/project/project-edit/project-
     NewProjectComponent,
     EditProjectComponent,
     UserListSelectComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

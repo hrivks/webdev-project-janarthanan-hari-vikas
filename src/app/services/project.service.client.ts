@@ -10,7 +10,8 @@ export class ProjectService {
     endpoint = {
         'createProject': AppConstants.ENDPOINT.baseUrl + '/project',
         'findProjectById': AppConstants.ENDPOINT.baseUrl + '/project/{projectId}',
-        'findProjectsByAuthor': AppConstants.ENDPOINT.baseUrl + '/project/byMembership/{userId}',
+        'getMyProjects': AppConstants.ENDPOINT.baseUrl + '/project/my',
+        'getAllProjects': AppConstants.ENDPOINT.baseUrl + '/project/all',
         'updateProject': AppConstants.ENDPOINT.baseUrl + '/project/{projectId}',
         'deleteProject': AppConstants.ENDPOINT.baseUrl + '/project/{projectId}'
     };
@@ -33,17 +34,26 @@ export class ProjectService {
      */
     findProjectById(projectId: string): Observable<Project> {
         const url = this.endpoint.findProjectById.replace('{projectId}', projectId);
-        return this.http.get<Project>(url);
+        return this.http.get<Project>(url, { withCredentials: true });
     }
 
     /**
      * Find project by project name
-     * @param userId id of the user
      * @returns Observable that resolves to project with the specifed projectname; null if id doesn't exist
      */
-    findProjectsByMembership(userId: string): Observable<Project[]> {
-        const url = this.endpoint.findProjectsByAuthor.replace('{userId}', userId);
-        return this.http.get<Project[]>(url);
+    getMyProjects(): Observable<Project[]> {
+        const url = this.endpoint.getMyProjects;
+        return this.http.get<Project[]>(url, { withCredentials: true });
+    }
+
+
+    /**
+     * Get all projects
+     * @returns Observable that resolves to all the available projects
+     */
+    getAllProjects(): Observable<Project[]> {
+        const url = this.endpoint.getAllProjects;
+        return this.http.get<Project[]>(url, { withCredentials: true });
     }
 
     /**
@@ -54,7 +64,7 @@ export class ProjectService {
      */
     updateProject(projectId: string, project: Project): Observable<Project> {
         const url = this.endpoint.updateProject.replace('{projectId}', projectId);
-        return this.http.put<Project>(url, project);
+        return this.http.put<Project>(url, project, { withCredentials: true });
     }
 
     /**
@@ -64,6 +74,6 @@ export class ProjectService {
      */
     deleteProject(projectId: string): Observable<Project> {
         const url = this.endpoint.deleteProject.replace('{projectId}', projectId);
-        return this.http.delete<Project>(url);
+        return this.http.delete<Project>(url, { withCredentials: true });
     }
 }

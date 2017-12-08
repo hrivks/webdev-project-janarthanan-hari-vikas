@@ -9,14 +9,14 @@ export class User {
         id: string,
         token: string
     };
+    isSiteAdmin?: boolean;
 }
 
 /** Models a Markdown object */
 export class Markdown {
     _id?: string;
-    editedBy?: string;
-    fileName: string;
     content: string;
+    editedBy?: string;
     editedOn?: string;
 }
 
@@ -24,9 +24,10 @@ export class Markdown {
 export class Project {
     _id?: string;
     name: string;
+    markdown: string;
+    fileName: string;
     description?: string;
     members?: (User | string)[];
     admins?: (User | string)[];
-    markdown: string;
     gitRepo?: string;
 }

@@ -12,9 +12,12 @@ module.exports = (function() {
     UserModel.getAllUsers = getAllUsers;
     UserModel.createUser = createUser;
     UserModel.findUserById = findUserById;
+    UserModel.findUsersByIds = findUsersByIds;
     UserModel.findUserByUsername = findUserByUsername;
     UserModel.findUserByCredentials = findUserByCredentials;
+    UserModel.findUserByUsername = findUserByUsername;
     UserModel.findUserByGithubId = findUserByGithubId;
+    UserModel.searchUsersByName = searchUsersByName;
     UserModel.updateUser = updateUser;
     UserModel.deleteUser = deleteUser;
 
@@ -45,12 +48,14 @@ module.exports = (function() {
         }
     }
 
+
     /** Get all users
      * @returns {Promise<UserSchema[]>} promise that resolves to the list of all users
      */
-    function getAllUsers(){
+    function getAllUsers() {
         return UserModel.find();
     }
+
 
     /**
      * Create a new User
@@ -69,6 +74,7 @@ module.exports = (function() {
                     message: 'User with username ' + user.username + ' already exists'
                 });
             } else {
+                user.isSiteAdmin = false;
                 UserModel.create(user, (err, createdUser) => {
                     if (err) {
                         def.reject(err.message);
@@ -82,6 +88,7 @@ module.exports = (function() {
         return def.promise;
     }
 
+
     /**
      * Find user by user id
      * @param {string} userId 
@@ -90,6 +97,21 @@ module.exports = (function() {
     function findUserById(userId) {
         return UserModel.findById(userId);
     }
+
+    /**
+     * Find users by user ids
+     * @param {string[]} userIds list of user ids
+     * @returns {DocumentQuery<UserSchema[]>} query that resolves to the list of users corresponding to the user ids
+     */
+    function findUsersByIds(userIds) {
+        const Ids = userIds.split(',');
+        return UserModel.find({
+            '_id': {
+                '$in': Ids
+            }
+        });
+    }
+
 
     /**
      * Find user by username
@@ -101,6 +123,7 @@ module.exports = (function() {
             username: username
         });
     }
+
 
     /**
      * Find user by username and password
@@ -126,6 +149,7 @@ module.exports = (function() {
         return def.promise;
     }
 
+
     /**
      * Find user by facebookId
      * @param {string} githubId
@@ -138,17 +162,57 @@ module.exports = (function() {
     }
 
     /**
+     * Search for users based on name or username
+     * @param {string} query comma seperated list of name
+     */
+    function searchUsersByName(query) {
+        const def = q.defer();
+        var keywords = query ? query.split(',') : [];
+        if (keywords.length) {
+            const keywordsRegex = keywords.map((i) => {
+                return new RegExp(i.trim(), "i");
+            });
+
+            UserModel.find({
+                '$or': [{
+                        'username': {
+                            '$in': keywordsRegex
+                        }
+                    },
+                    {
+                        'name': {
+                            '$in': keywordsRegex
+                        }
+                    }
+                ]
+            }, (err, users) => {
+                if (err) {
+                    def.reject(err);
+                } else {
+                    def.resolve(users);
+                }
+            });
+
+        } else {
+            def.resolve([]);
+        }
+
+        return def.promise;
+    }
+
+
+    /**
      * Update user by user id
      * @param {string} userId 
      * @param {UserSchema} user 
      * @returns {DocumentQuery<UserSchema>} query that resolves to the updated user object
      */
     function updateUser(userId, user) {
-        validate(user);
         return UserModel.findByIdAndUpdate(userId, user, {
             new: true
         });
     }
+
 
     /**
      * Delete user by user id
@@ -158,6 +222,7 @@ module.exports = (function() {
     function deleteUser(userId) {
         return UserModel.findByIdAndRemove(userId);
     }
+
 
     return UserModel;
 })();

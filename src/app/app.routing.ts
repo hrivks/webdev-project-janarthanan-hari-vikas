@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { TestComponent } from '../app/components/test/test.component';
 import { ModuleWithProviders } from '@angular/core';
@@ -10,17 +9,21 @@ import { EditProjectComponent } from './components/project/project-edit/project-
 import { ListProjectComponent } from './components/project/project-list/project-list.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { AuthService } from './services/auth.service.client';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const APP_ROUTES: Routes = [
   { path: '', component: EditorComponent },
   { path: 'projects', component: ListProjectComponent, canActivate: [AuthService] },
   { path: 'project/new', component: NewProjectComponent, canActivate: [AuthService] },
   { path: 'project/:projectId', component: EditProjectComponent, canActivate: [AuthService] },
-  { path: 'project/:projectId/editor/:markdownId', component: EditorComponent },
+  { path: 'project/:projectId/editor/:markdownId', component: EditorComponent, canActivate: [AuthService] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthService] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'test', component: TestComponent, data: { skipAuth: true } },
-  { path: 'iconSearch', component: IconSearchComponent, data: { skipAuth: true } }
+  { path: 'iconSearch', component: IconSearchComponent, data: { skipAuth: true } },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthService] },
 ];
 
 // Export the routes as module providers

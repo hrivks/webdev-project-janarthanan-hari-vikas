@@ -3,7 +3,7 @@
 module.exports = (function() {
     const passport = require('passport');
     const LocalStrategy = require('passport-local').Strategy;
-    const UserService = require('./services/user.service.server.js');
+    const UserModel = require('./models/model.server').User;
     const bcrypt = require('bcrypt-nodejs');
 
     passport.serializeUser(serializeUser);
@@ -17,7 +17,7 @@ module.exports = (function() {
      * @param {function} done callback function to invoke upon authentication
      */
     function localStrategy(username, password, done) {
-        UserService.api.findUserByUsername(username)
+        UserModel.findUserByUsername(username)
             .then((user) => {
                 try {
                     if (user && bcrypt.compareSync(password, user.password)) {
@@ -41,7 +41,7 @@ module.exports = (function() {
 
     /** User deserializer function for passport js */
     function deserializeUser(user, done) {
-        UserService.api.findUserById(user._id)
+        UserModel.findUserById(user._id)
             .then((user) => {
                 if (user) {
                     done(null, user);

@@ -52,8 +52,8 @@
                         <div class="form-group">
                             <label class="control-label small text-dark"
                                    for="name">ADMINS</label>
-                            <app-user-list-select [ignoreById]="[loggedInUser._id]"
-                                                  [(selectedUsers)]="admins"></app-user-list-select>
+                            <app-user-list-select [ignoreIds]="[loggedInUser._id]"
+                                                  [(selectedUserIds)]="admins"></app-user-list-select>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6">
@@ -61,8 +61,8 @@
                         <div class="form-group">
                             <label class="control-label small text-dark"
                                    for="name">MEMBERS</label>
-                            <app-user-list-select [ignoreById]="[loggedInUser._id]"
-                                                  [(selectedUsers)]="members"></app-user-list-select>
+                            <app-user-list-select [ignoreIds]="[loggedInUser._id]"
+                                                  [(selectedUserIds)]="members"></app-user-list-select>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,6 @@ module.exports = (function() {
     var MarkdownSchema = new mongoose.Schema({
         content: String,
         editedBy: String,
-        fileName: String,
         editedOn: {
             type: Date,
             default: Date.now

@@ -16,7 +16,8 @@ module.exports = (function() {
         dateCreated: {
             type: Date,
             default: Date.now
-        }
+        },
+        isSiteAdmin: Boolean
     }, {
         collection: 'users'
     });

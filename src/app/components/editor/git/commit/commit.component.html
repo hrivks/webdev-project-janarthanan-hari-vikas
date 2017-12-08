@@ -5,8 +5,9 @@
         <div class="my-3 text-center">
             <i class="fa fa-github fa-5x text-dark"></i>
             <br>
-            <a class="btn btn-primary btn-sm mt-3"
-               (click)="loginToGit()">Login to Github</a>
+            <button type="button"
+                    class="btn btn-primary btn-sm mt-3"
+                    (click)="loginToGit()">Login to Github</button>
         </div>
     </div>
 
@@ -90,7 +91,8 @@
                         [hidden]="commitInProgres"
                         [disabled]="!commitForm.valid">Commit</button>
 
-                <div class="progress" [hidden]="!commitInProgres">
+                <div class="progress"
+                     [hidden]="!commitInProgres">
                     <div class="progress-bar progress-bar-striped progress-bar-animated w-100"
                          role="progressbar"></div>
                 </div>

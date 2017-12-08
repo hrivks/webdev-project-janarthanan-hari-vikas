@@ -37,6 +37,10 @@ module.exports = (function() {
             errors.push('Markdown is required');
         }
 
+        if (!project.fileName) {
+            errors.push('File Name is required');
+        }
+
         if (errors.length > 0) {
             throw errors;
         }
@@ -58,7 +62,7 @@ module.exports = (function() {
                 def.resolve(createdProject);
             }
         });
-        
+
         return def.promise;
     }
 
@@ -78,7 +82,13 @@ module.exports = (function() {
      */
     function findProjectsByMembership(userId) {
         return ProjectModel.find({
-            members: mongoose.Types.ObjectId(userId)
+            '$or': [{
+                    members: mongoose.Types.ObjectId(userId)
+                },
+                {
+                    admins: mongoose.Types.ObjectId(userId)
+                },
+            ]
         });
     }
 

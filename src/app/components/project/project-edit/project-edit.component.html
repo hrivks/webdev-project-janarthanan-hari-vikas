@@ -20,7 +20,7 @@
                            class="form-control form-control-sm"
                            name="name"
                            #nameField="ngModel"
-                           [(ngModel)]="name"
+                           [(ngModel)]="project.name"
                            [ngClass]="{'btn-outline-danger': nameField.touched && !nameField.valid }"
                            required>
                 </div>
@@ -31,9 +31,22 @@
                            for="name">DESCRIPTION</label>
                     <textarea type="text"
                               class="form-control form-control-sm"
-                              name="description"
+                              name="project.description"
                               #nameField="ngModel"
                               [(ngModel)]="description"></textarea>
+                </div>
+
+                <!-- Markdown file name -->
+                <div class="form-group">
+                    <label class="control-label small text-dark"
+                           for="name">MARKDOWN FILE NAME</label>
+                    <input type="text"
+                           class="form-control form-control-sm"
+                           name="markdownFileName"
+                           #markdownFileNameField="ngModel"
+                           [(ngModel)]="project.fileName"
+                           [ngClass]="{'btn-outline-danger': markdownFileNameField.touched && !markdownFileNameField.valid }"
+                           required>
                 </div>
 
                 <!-- Github Repo -->
@@ -56,7 +69,7 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item"
                                            *ngFor="let r of repos"
-                                           (click)="repo=r">{{r}}</a>
+                                           (click)="project.repo=r">{{r}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +77,7 @@
                                    class="form-control"
                                    name="repo"
                                    #repoField="ngModel"
-                                   [(ngModel)]="repo"
+                                   [(ngModel)]="project.repo"
                                    placeholder="Select or enter Repo full name">
 
                         </div>
@@ -89,8 +102,8 @@
                                 <div class="form-group">
                                     <label class="control-label small text-dark"
                                            for="name">ADMINS</label>
-                                    <app-user-list-select [ignoreById]="[loggedInUser._id]"
-                                                          [(selectedUsers)]="admins"></app-user-list-select>
+                                    <app-user-list-select [ignoreIds]="[loggedInUser._id]"
+                                                          [(selectedUserIds)]="project.admins"></app-user-list-select>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6">
@@ -98,21 +111,25 @@
                                 <div class="form-group">
                                     <label class="control-label small text-dark"
                                            for="name">MEMBERS</label>
-                                    <app-user-list-select [ignoreById]="[loggedInUser._id]"
-                                                          [(selectedUsers)]="members"></app-user-list-select>
+                                    <app-user-list-select [ignoreIds]="[loggedInUser._id]"
+                                                          [(selectedUserIds)]="project.members"></app-user-list-select>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <span class="small text-danger" *ngIf="!canEdit">
+                        You do not have permission to update this project
+                    </span>
                 <div class="form-group">
                     <button class="btn btn-primary py-1"
                             type="submit"
-                            [disabled]="!editProjectForm.valid">Update</button>
+                            [disabled]="!editProjectForm.valid || !canEdit">Update</button>
 
                     <button class="btn btn-danger py-1"
                             type="button"
+                            [disabled]="!canEdit"
                             [hidden]="confirmDelete"
                             (click)="confirmDelete=true">
                             <i class="fa fa-trash fa-lg"></i>

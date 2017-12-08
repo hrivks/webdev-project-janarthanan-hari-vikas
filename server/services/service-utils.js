@@ -23,6 +23,7 @@ module.exports = (function() {
         }
     }
 
+    /** Check if user is logged in */
     function checkAuth(req, res, next) {
         if (req.isAuthenticated()) {
             next();

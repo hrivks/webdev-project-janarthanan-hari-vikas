@@ -35,10 +35,6 @@ module.exports = (function() {
             errors.push('Edited By is required');
         }
 
-        if (!markdown.fileName) {
-            errors.push('File Name is required');
-        }
-
         if (errors.length > 0) {
             throw errors;
         }

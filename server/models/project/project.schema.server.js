@@ -10,6 +10,7 @@ module.exports = (function() {
         name: String,
         description: String,
         gitRepo: String,
+        fileName: String,
         markdown: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'markdowns'

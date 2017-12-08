@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MarkdownConvertorPipe } from '../../pipes/markdown-convertor/markdown-convertor.pipe';
 import { MarkdownService } from '../../services/markdown.service.client';
 import { Markdown, Project } from '../../model/model';
@@ -38,6 +38,7 @@ export class EditorComponent implements OnInit {
     private modals: any; // available modal objects
 
     constructor(private activatedRoute: ActivatedRoute,
+        private router: Router,
         private markdownService: MarkdownService,
         private projectService: ProjectService,
         private interactionService: InteractionsService,
@@ -67,6 +68,7 @@ export class EditorComponent implements OnInit {
                         }
                     }, (err) => {
                         this.errorHandlerService.handleError('Error getting markdown info', err);
+                        this.router.navigate(['/']);
                     });
 
                 // get project
@@ -78,9 +80,11 @@ export class EditorComponent implements OnInit {
                         } else {
                             console.error('Project with id ' + projectId + ' does not exist');
                             this.interactionService.showAlert('Project with id ' + projectId + ' does not exist');
+                            this.router.navigate(['/']);
                         }
                     }, (err) => {
                         this.errorHandlerService.handleError('Error getting project', err);
+                        this.router.navigate(['/']);
                     });
 
             }
@@ -127,12 +131,31 @@ export class EditorComponent implements OnInit {
         this.openModal('commitToGit');
     }
 
+    /** Save markdown */
+    save() {
+        if (this.markdown && this.markdown._id) {
+            this.interactionService.showLoader(true);
+            this.markdown.content = this.markdownConvertor.transform(this.markdownHtml);
+            this.markdownService.updateMarkdown(this.markdown._id, this.markdown)
+                .subscribe((updatedMarkdown) => {
+                    this.markdown = updatedMarkdown;
+                    this.interactionService.showLoader(false);
+                    this.interactionService.showAlert('Saved successfully', 'success', true);
+                }, (err) => {
+                    this.interactionService.showLoader(false);
+                    this.errorHandlerService.handleError('Error saving markdown', err);
+                });
+        } else {
+            this.showSaveModal();
+        }
+
+    }
+
     /** Show save markdown modal */
     showSaveModal() {
         if (!this.markdown) {
             this.markdown = {
-                content: this.markdownHtml,
-                fileName: 'README.md'
+                content: this.markdownHtml
             };
         }
 

@@ -80,15 +80,21 @@ module.exports = (function() {
     passport.use(new GithubPassportStrategy(githubConfig, githubStrategy));
 
     // route: [GET] '/api/auth/github'
-    router.get('/github', passport.authenticate('github', {
+    router.get('/github', (req, res, next) => {
+        if (req.query.next) {
+            req.session.redirectTo = req.query.next;
+        }
+        next();
+    }, passport.authenticate('github', {
         scope: 'repo'
     }));
 
     // route: [GET] '/api/auth/github/callback'
-    router.get('/github/callback', passport.authenticate('github', {
-        successRedirect: process.env.IS_SERVER ? '/profile' : 'http://localhost:4200/',
-        failureRedirect: process.env.IS_SERVER ? '/login' : 'http://localhost:4200/login'
-    }));
+    router.get('/github/callback', passport.authenticate('github'), (req, res) => {
+        const baseUrl = process.env.IS_SERVER ? '' : 'http://localhost:4200';
+        const redirectTo = req.session.redirectTo || '/';
+        res.redirect(baseUrl + req.session.redirectTo);
+    });
 
     //#endregion : Github Authentication
 

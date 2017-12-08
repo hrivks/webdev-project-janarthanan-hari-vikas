@@ -21,7 +21,11 @@ export class ErrorHandlerService {
 
       let errText = '';
       try {
-        errText = JSON.parse(err.error);
+        if (err.error instanceof Array) {
+          errText = err.error.join('<br/>');
+        } else {
+          errText = err.error.toString();
+        }
       } catch (ex) {
         errText = `code: ${err.status} | error: ${err.message}`;
       }

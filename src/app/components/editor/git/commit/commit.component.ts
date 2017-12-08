@@ -94,7 +94,7 @@ export class CommitComponent implements OnInit {
 
   loginToGit() {
     localStorage.setItem('openModalOnLoad', 'commitToGit');
-    location.href = 'http://localhost:3100/api/auth/github';
+    this.authService.loginToGit();
   }
 
 }

@@ -18,14 +18,12 @@
 
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="#"
                            [ngClass]="{'active': activeTab === 'preview' }"
                            (click)="activeTab='preview'"
                            role="tab">Preview</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="#"
                            [ngClass]="{'active': activeTab === 'markdown' }"
                            (click)="activeTab='markdown'"
                            role="tab">Markdown</a>
@@ -102,7 +100,7 @@
 
                     <!-- Save Markdown modal -->
                     <div *ngIf="openModalKey === 'save'">
-                        <app-save-markdown [markdown]="markdownServerObject"
+                        <app-save-markdown [markdown]="markdown"
                                            [project]="project"
                                            (onComplete)="closeModal($event)"></app-save-markdown>
                     </div>
@@ -123,7 +121,8 @@
            <i class="fa fa-gear fa-lg"></i> 
            <span>{{project.name}}</span>
         </a>
-        <span class="ml-2">
+        <span class="ml-2"
+              *ngIf="markdown">
             <small><em>Last Edited by <span class="text-dark font-weight-bold">{{markdown.editedBy}}</span> on <span class="text-dark">{{markdown.editedOn | date: 'short'}}</span></em>
         </small>
         </span>
@@ -131,7 +130,7 @@
 
     <div class="ml-auto form-inline">
         <button class="btn btn-primary btn-sm ml-2 py-1"
-                (click)="showSaveModal()"> 
+                (click)="save()"> 
                 <span>Save</span>
         </button>
         <button class="btn btn-primary btn-sm ml-2 py-1"

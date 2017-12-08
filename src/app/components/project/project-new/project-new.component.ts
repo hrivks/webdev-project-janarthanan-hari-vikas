@@ -20,8 +20,8 @@ export class NewProjectComponent implements OnInit {
   private name: string;
   private description: string;
   private markdownFileName = 'README.md';
-  private members: User[];
-  private admins: User[];
+  private members: string[];
+  private admins: string[];
   private loggedInUser: User;
 
   private inProgress: boolean;
@@ -53,7 +53,6 @@ export class NewProjectComponent implements OnInit {
     }
 
     const markdown: Markdown = {
-      fileName: this.markdownFileName,
       content: ''
     };
 
@@ -62,8 +61,9 @@ export class NewProjectComponent implements OnInit {
 
         const project: Project = {
           name: this.name,
-          members: this.members ? this.members.map(u => u._id) : [],
-          admins: this.admins ? this.admins.map(u => u._id) : [],
+          fileName: this.markdownFileName,
+          members: this.members ? this.members : [],
+          admins: this.admins ? this.admins : [],
           markdown: createdMarkdown._id
         };
 

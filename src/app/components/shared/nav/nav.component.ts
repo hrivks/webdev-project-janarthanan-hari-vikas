@@ -54,6 +54,10 @@ export class NavComponent implements OnInit {
       });
   }
 
+  loginToGit() {
+    this.authService.loginToGit();
+  }
+
   logout() {
     localStorage.clear();
     this.authService.logout();

@@ -10,38 +10,37 @@ import { ErrorHandlerService } from '../../../services/error-handler.service.cli
 })
 export class UserListSelectComponent implements OnInit {
 
-  @Input() ignoreById: string[];
-  @Input() selectedUsers: User[];
-  @Output() selectedUsersChange = new EventEmitter<User[]>();
+  @Input() ignoreIds: string[];
+  @Input() selectedUserIds: string[];
+  @Output() selectedUserIdsChange = new EventEmitter<string[]>();
+  private searchQuery: string;
+  private searchResults: User[];
   private users: User[];
-
 
   constructor(private userService: UserService,
     private errorHandlerService: ErrorHandlerService) {
   }
 
   ngOnInit() {
-
-    // get list of users
-    this.userService.getAllUsers()
+    this.userService.findUsersByIds(this.selectedUserIds.join(','))
       .subscribe((users) => {
-        if (this.ignoreById && this.ignoreById.length) {
-          this.users = users.filter((u) => this.ignoreById.indexOf(u._id) === -1);
+        if (this.ignoreIds && this.ignoreIds.length) {
+          this.users = users.filter((i) => this.ignoreIds.indexOf(i._id) === -1);
         } else {
           this.users = users;
         }
-
-        if (!this.selectedUsers) {
-          this.selectedUsers = [];
-        } else {
-          this.selectedUsers = this.users.filter((i) => {
-            return this.selectedUsers.find((j) => j._id === i._id);
-          });
-        }
-      }, (err) => {
-        this.errorHandlerService.handleError('Error getting list of users', err);
       });
 
+  }
+
+  /** Search for user based on username or name */
+  searchUsers() {
+    if (this.searchQuery) {
+      this.userService.searchByName(this.searchQuery)
+        .subscribe((results) => {
+          this.searchResults = results;
+        });
+    }
   }
 
   /**
@@ -49,13 +48,22 @@ export class UserListSelectComponent implements OnInit {
    * @param user selected user
    */
   selectUser(user) {
-    if (this.selectedUsers.indexOf(user) === -1) {
-      this.selectedUsers.push(user);
-    } else {
-      this.selectedUsers.splice(this.selectedUsers.indexOf(user), 1);
+    if (this.selectedUserIds.indexOf(user._id) === -1) {
+      this.selectedUserIds.push(user._id);
+      this.users.push(user);
+
+      this.searchResults = this.searchResults.filter((i) => i._id !== user._id);
     }
 
-    this.selectedUsersChange.emit(this.selectedUsers);
+    this.selectedUserIdsChange.emit(this.selectedUserIds);
   }
 
+  /** Remove user from selected list of users */
+  removeUser(user) {
+    if (this.selectedUserIds.indexOf(user._id) > -1) {
+      this.selectedUserIds.splice(this.selectedUserIds.indexOf(user._id), 1);
+      this.users = this.users.filter((i) => i._id !== user._id);
+      this.selectedUserIdsChange.emit(this.selectedUserIds);
+    }
+  }
 }

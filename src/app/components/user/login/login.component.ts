@@ -52,4 +52,9 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  /** Login through Github */
+  loginToGit() {
+    this.authService.loginToGit();
+  }
+
 }

@@ -10,8 +10,6 @@ export class MarkdownService {
     api = {
         'createMarkdown': this.createMarkdown,
         'findMarkdownById': this.findMarkdownById,
-        'findMarkdownsByAuthor': this.findMarkdownsByAuthor,
-        'findMarkdownsByProject': this.findMarkdownsByProject,
         'updateMarkdown': this.updateMarkdown,
         'deleteMarkdown': this.deleteMarkdown
     };
@@ -43,27 +41,7 @@ export class MarkdownService {
      */
     findMarkdownById(markdownId: string): Observable<Markdown> {
         const url = this.endpoint.findMarkdownById.replace('{markdownId}', markdownId);
-        return this.http.get<Markdown>(url);
-    }
-
-    /**
-     * Find markdown by author
-     * @param authorId user id of the author
-     * @returns Observable that resolves to the list of markdowns created by the specified user
-     */
-    findMarkdownsByAuthor(authorId: string): Observable<Markdown[]> {
-        const url = this.endpoint.findMarkdownsByAuthor.replace('{authorId}', authorId);
-        return this.http.get<Markdown[]>(url);
-    }
-
-    /**
-     * Find markdown by project
-     * @param projectId markdownname of the markdown
-     * @returns Observable that resolves to the list of markdowns created in the specified project
-     */
-    findMarkdownsByProject(projectId: string): Observable<Markdown[]> {
-        const url = this.endpoint.findMarkdownsByProject.replace('{projectId}', projectId);
-        return this.http.get<Markdown[]>(url);
+        return this.http.get<Markdown>(url, { withCredentials: true });
     }
 
     /**
@@ -74,7 +52,7 @@ export class MarkdownService {
      */
     updateMarkdown(markdownId: string, markdown: Markdown): Observable<Markdown> {
         const url = this.endpoint.updateMarkdown.replace('{markdownId}', markdownId);
-        return this.http.put<Markdown>(url, markdown);
+        return this.http.put<Markdown>(url, markdown, { withCredentials: true });
     }
 
     /**

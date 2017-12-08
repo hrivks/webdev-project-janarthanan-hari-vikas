@@ -25,7 +25,17 @@
             </li>
             <li class="nav-item ml-0">
                 <a class="nav-link text-white"
-                   [routerLink]="['/project', 'new']"><i class="fa fa-plus fa-lg"></i></a>
+                   [routerLink]="['/project', 'new']"><i class="fa fa-plus"></i></a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-4"
+            *ngIf="loggedIn?.isSiteAdmin">
+            <li class="nav-item">
+                <a class="nav-link text-warning"
+                   [routerLink]="['/admin']">
+                   <i class="fa fa-bolt"></i>
+                   <span>Admin</span>
+                </a>
             </li>
         </ul>
 
@@ -36,9 +46,8 @@
             <a class="btn btn-secondary my-2 my-sm-0 btn-sm border-top-0"
                [routerLink]="['/login']">Login</a>
             <!-- Register button -->
-            <a class="btn btn-secondary my-2 my-sm-0 btn-sm p-1"
-               href="http://localhost:3100/api/auth/github"
-               target="_self">
+            <a class="btn btn-secondary my-2 my-sm-0 btn-sm p-1 text-dark"
+               (click)="loginToGit()">
                 <i class="fa fa-github fa-2x" aria-hidden="true"></i>
             </a>
             <a class="btn border text-white ml-2 my-2 my-sm-0 btn-sm"
@@ -50,8 +59,11 @@
         <ul class="float-right ml-auto navbar-nav form-inline"
             *ngIf="loggedIn">
             <li class="nav-item">
-                <span class="fa fa-user-circle fa-lg mr-2"></span>
-                <span> {{loggedIn.name || loggedIn.username}}</span>
+                <a [routerLink]="['/profile']"
+                   class="btn btn-primary text-light">
+                    <span class="fa fa-user-circle fa-lg mr-2"></span>
+                    <span> {{loggedIn.name || loggedIn.username}}</span>
+                </a>
             </li>
             <li class="nav-item">
                 <button class="btn btn-secondary btn-sm"

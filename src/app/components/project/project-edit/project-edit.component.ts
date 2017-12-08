@@ -17,14 +17,13 @@ export class EditProjectComponent implements OnInit {
 
   // properties
   @ViewChild('editProjectForm') editProjectForm: NgForm;
-  private name: string;
-  private description: string;
-  private members: User[];
-  private admins: User[];
+
+  private members: string[];
+  private admins: string[];
   private loggedInUser: User;
+  private canEdit: boolean;
   private project: Project;
   private repos: string[];
-  private repo: string;
 
   private inProgress: boolean;
   private confirmDelete: boolean;
@@ -49,11 +48,7 @@ export class EditProjectComponent implements OnInit {
         this.projectService.findProjectById(params.get('projectId'))
           .subscribe((project) => {
             this.project = project;
-            this.name = this.project.name;
-            this.description = this.project.description;
-            this.members = this.project.members.map((i) => ({ _id: i.toString() }));
-            this.admins = this.project.admins.map((i) => ({ _id: i.toString() }));
-            this.repo = this.project.gitRepo;
+            this.canEdit = this.loggedInUser.isSiteAdmin || this.project.admins && this.project.admins.indexOf(this.loggedInUser._id) > -1;
             this.interactionService.showLoader(false);
           }, (err) => {
             this.errorHandlerService.handleError('Error getting project', err);
@@ -91,12 +86,6 @@ export class EditProjectComponent implements OnInit {
     }
 
     this.inProgress = true;
-
-    this.project.name = this.name;
-    this.project.description = this.description;
-    this.project.gitRepo = this.repo;
-    this.project.members = this.members.map(u => u._id);
-    this.project.admins = this.admins.map(u => u._id);
 
     this.interactionService.showLoader(true);
     this.projectService.updateProject(this.project._id, this.project)
