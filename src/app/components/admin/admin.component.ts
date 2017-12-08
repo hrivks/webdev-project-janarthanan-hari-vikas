@@ -20,6 +20,10 @@ export class AdminComponent implements OnInit {
   private users: User[];
   private me: User;
   private newProjectName: string;
+  private newUserName: string;
+  private newUserPassword: string;
+  private newlyCreatedProject: Project;
+  private newlyCreatedUser: User;
 
   constructor(private authService: AuthService,
     private projectService: ProjectService,
@@ -50,6 +54,7 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  /** Create a new project */
   createProject() {
     if (!this.newProjectName) {
       this.interactionService.showAlert('Project name cannot be empty', 'danger', true);
@@ -71,6 +76,7 @@ export class AdminComponent implements OnInit {
           .subscribe((createdProject) => {
             this.newProjectName = '';
             this.projects.push(createdProject);
+            this.newlyCreatedProject = createdProject;
             this.interactionService.showAlert('Project created successfully', 'success', true);
           }, (err) => {
             this.errorHandlerService.handleError('Error creating project', err);
@@ -78,6 +84,31 @@ export class AdminComponent implements OnInit {
 
       }, (err) => {
         this.errorHandlerService.handleError('Error creating project markdown', err);
+      });
+  }
+
+  /** Create new user */
+  createUser() {
+
+    if (!this.newUserName || !this.newUserPassword) {
+      this.interactionService.showAlert('Username or password cannot be empty', 'danger', true);
+      return;
+    }
+
+    if (this.users.find((i) => i.username === this.newUserName)) {
+      this.interactionService.showAlert('Username already exists', 'danger', true);
+      return;
+    }
+
+    this.userService.createUser(this.newUserName, this.newUserPassword)
+      .subscribe((createdUser) => {
+        this.newUserName = '';
+        this.newUserPassword = '';
+        this.users.push(createdUser);
+        this.newlyCreatedUser = createdUser;
+        this.interactionService.showAlert('User created successfully', 'success', true);
+      }, (err) => {
+        this.errorHandlerService.handleError('Error creating new user', err);
       });
 
   }

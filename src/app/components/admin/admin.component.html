@@ -52,18 +52,23 @@
                                 <button class="btn btn-danger py-2 px-3"
                                         (click)="deleteProject(project)"
                                         title="Delete Project">
-                                        <i class="fa fa-minus-circle"></i>
+                                    <i class="fa fa-minus-circle"></i>
                                 </button>
 
                                 <!-- Edit Project -->
                                 <a class="btn btn-info py-2 px-3"
                                    [routerLink]="['/project', project._id]"
-                                   title="Edit Project"><i class="fa fa-gear"></i>
+                                   title="Edit Project">
+                                    <i class="fa fa-gear"></i>
                                 </a>
 
                                 <!-- Project Name -->
                                 <a class="form-control btn py-2 nt"
-                                   [routerLink]="['/project', project._id, 'editor', project.markdown]">{{project.name}}</a>
+                                   [routerLink]="['/project', project._id, 'editor', project.markdown]">
+                                    {{project.name}}
+                                    <i class="fa fa-asterisk ml-2 text-success"
+                                       *ngIf="project === newlyCreatedProject"></i>
+                                </a>
                             </div>
 
                         </li>
@@ -76,7 +81,30 @@
                 <div class="tab-pane active fade"
                      id="users"
                      role="tabpanel">
-                    Users
+
+
+                    <!-- Create new user -->
+                    <form (submit)="createUser()">
+                        <div class="input-group">
+                            <button class="input-group-btn btn btn-sm py-2 btn-success"
+                                    title="Add new User">
+                                <i class="fa fa-plus-circle fa-lg"></i>
+                            </button>
+                            <input type="text"
+                                   class="form-control form-control-sm py-2"
+                                   name="newUserName"
+                                   [(ngModel)]="newUserName"
+                                   placeholder="New User Name"
+                                   required>
+                            <input type="password"
+                                   class="form-control form-control-sm py-2"
+                                   name="newUserPassword"
+                                   [(ngModel)]="newUserPassword"
+                                   placeholder="New User Password"
+                                   required>
+                        </div>
+                    </form>
+
                 </div>
             </div>
 

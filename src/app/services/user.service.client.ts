@@ -12,6 +12,7 @@ export class UserService {
         'logout': AppConstants.ENDPOINT.baseUrl + '/user/logout',
         'loggedIn': AppConstants.ENDPOINT.baseUrl + '/user/loggedIn',
         'register': AppConstants.ENDPOINT.baseUrl + '/user/register',
+        'createUser': AppConstants.ENDPOINT.baseUrl + '/user',
         'getAllUsers': AppConstants.ENDPOINT.baseUrl + '/user/all',
         'findUserByUsername': AppConstants.ENDPOINT.baseUrl + '/user?username={username}',
         'findUserByCredentials': AppConstants.ENDPOINT.baseUrl + '/user?username={username}&password={password}',
@@ -86,7 +87,7 @@ export class UserService {
        * Register new user
        * @param username username
        * @param password password
-       * @returns Observable that resolves to user if the creds match
+       * @returns Observable that resolves to newly registered user
        */
     register(username: string, password: string): Observable<User> {
         const url = this.endpoint.register;
@@ -98,6 +99,21 @@ export class UserService {
         return this.http.post<User>(url, creds);
     }
 
+    /**
+     * Create new user
+     * @param username username
+     * @param password password
+     * @returns Observable that resolves to newly created user
+     */
+    createUser(username: string, password: string) {
+        const url = this.endpoint.createUser;
+        const creds = {
+            username: username,
+            password: password
+        };
+
+        return this.http.post<User>(url, creds, { withCredentials: true });
+    }
 
     /**
      * Find user by user id
