@@ -5,7 +5,8 @@ export class AppConstants {
         showAlert: 'showAlert',
         hideAlert: 'hideAlert',
         showLoader: 'showLoader',
-        loginChange: 'loginChange'
+        loginChange: 'loginChange',
+        showFeeds: 'showFeeds'
     };
 
     public static ENDPOINT = environment.endpoint;

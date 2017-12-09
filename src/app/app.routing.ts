@@ -19,6 +19,7 @@ const APP_ROUTES: Routes = [
   { path: 'project/:projectId', component: EditProjectComponent, canActivate: [AuthService] },
   { path: 'project/:projectId/editor/:markdownId', component: EditorComponent, canActivate: [AuthService] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthService] },
+  { path: 'profile/:userId', component: ProfileComponent, canActivate: [AuthService] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'test', component: TestComponent, data: { skipAuth: true } },

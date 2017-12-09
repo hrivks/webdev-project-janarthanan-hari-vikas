@@ -10,6 +10,7 @@ export class User {
         token: string
     };
     isSiteAdmin?: boolean;
+    following?: string[];
 }
 
 /** Models a Markdown object */
@@ -30,4 +31,12 @@ export class Project {
     members?: (User | string)[];
     admins?: (User | string)[];
     gitRepo?: string;
+}
+
+/** Models a activity feed item */
+export class Activity {
+    _id?: string;
+    actor: string;
+    title: string;
+    createdOn?: string;
 }

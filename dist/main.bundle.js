@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-nav></app-nav>\r\n\r\n<app-loader></app-loader>\r\n\r\n<app-alert></app-alert>\r\n\r\n<router-outlet></router-outlet>"
+module.exports = "<app-nav></app-nav>\r\n\r\n<app-loader></app-loader>\r\n\r\n<app-alert></app-alert>\r\n\r\n<app-user-social></app-user-social>\r\n\r\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -115,7 +115,8 @@ var AppConstants = (function () {
         showAlert: 'showAlert',
         hideAlert: 'hideAlert',
         showLoader: 'showLoader',
-        loginChange: 'loginChange'
+        loginChange: 'loginChange',
+        showFeeds: 'showFeeds'
     };
     AppConstants.ENDPOINT = __WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].endpoint;
     AppConstants.APP_ROOT_URL = 'http://writeme-md.herokuapp.com';
@@ -148,32 +149,34 @@ var AppConstants = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_iconsearch_service_client__ = __webpack_require__("../../../../../src/app/services/iconsearch.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_utils_service_client__ = __webpack_require__("../../../../../src/app/services/utils.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_github_service_client__ = __webpack_require__("../../../../../src/app/services/github.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__directives_resizable_resizable_directive__ = __webpack_require__("../../../../../src/app/directives/resizable/resizable.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pipes_string_filter_string_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/string-filter/string-filter.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_code_insert_code_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-code/insert-code.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_media_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_glyph_insert_glyph_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-glyph/insert-glyph.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_editor_markdown_save_markdown_save_markdown_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_editor_git_commit_commit_component__ = __webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_user_login_login_component__ = __webpack_require__("../../../../../src/app/components/user/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_user_user_list_select_user_list_select_component__ = __webpack_require__("../../../../../src/app/components/user/user-list-select/user-list-select.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_project_project_list_project_list_component__ = __webpack_require__("../../../../../src/app/components/project/project-list/project-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_project_project_new_project_new_component__ = __webpack_require__("../../../../../src/app/components/project/project-new/project-new.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_project_project_edit_project_edit_component__ = __webpack_require__("../../../../../src/app/components/project/project-edit/project-edit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__components_user_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/user/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__components_admin_admin_component__ = __webpack_require__("../../../../../src/app/components/admin/admin.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_social_service_client__ = __webpack_require__("../../../../../src/app/services/social.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_resizable_resizable_directive__ = __webpack_require__("../../../../../src/app/directives/resizable/resizable.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__directives_auto_height_auto_height_directive__ = __webpack_require__("../../../../../src/app/directives/auto-height/auto-height.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_shared_alert_alert_component__ = __webpack_require__("../../../../../src/app/components/shared/alert/alert.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_shared_loader_loader_component__ = __webpack_require__("../../../../../src/app/components/shared/loader/loader.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_shared_nav_nav_component__ = __webpack_require__("../../../../../src/app/components/shared/nav/nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pipes_string_filter_string_filter_pipe__ = __webpack_require__("../../../../../src/app/pipes/string-filter/string-filter.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pipes_markdown_convertor_markdown_convertor_pipe__ = __webpack_require__("../../../../../src/app/pipes/markdown-convertor/markdown-convertor.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_editor_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_tiny_editor_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/tiny-editor.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/icon-search/icon-search.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_code_insert_code_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-code/insert-code.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_media_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-media.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-image/insert-image.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_test_test_component__ = __webpack_require__("../../../../../src/app/components/test/test.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_editor_tiny_editor_insert_glyph_insert_glyph_component__ = __webpack_require__("../../../../../src/app/components/editor/tiny-editor/insert-glyph/insert-glyph.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_editor_markdown_save_markdown_save_markdown_component__ = __webpack_require__("../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_editor_git_commit_commit_component__ = __webpack_require__("../../../../../src/app/components/editor/git/commit/commit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_user_login_login_component__ = __webpack_require__("../../../../../src/app/components/user/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_user_register_register_component__ = __webpack_require__("../../../../../src/app/components/user/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_user_user_list_select_user_list_select_component__ = __webpack_require__("../../../../../src/app/components/user/user-list-select/user-list-select.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_user_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/user/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_admin_admin_component__ = __webpack_require__("../../../../../src/app/components/admin/admin.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__components_user_social_social_component__ = __webpack_require__("../../../../../src/app/components/user/social/social.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__components_project_project_list_project_list_component__ = __webpack_require__("../../../../../src/app/components/project/project-list/project-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__components_project_project_new_project_new_component__ = __webpack_require__("../../../../../src/app/components/project/project-new/project-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__components_project_project_edit_project_edit_component__ = __webpack_require__("../../../../../src/app/components/project/project-edit/project-edit.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -187,6 +190,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // #region App services
+
 
 
 
@@ -224,9 +228,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 // project components
-
-
 
 
 
@@ -239,32 +244,33 @@ var AppModule = (function () {
             // Declare components here
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__components_shared_alert_alert_component__["a" /* AlertComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__components_shared_loader_loader_component__["a" /* LoaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__components_shared_nav_nav_component__["a" /* NavComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
-                __WEBPACK_IMPORTED_MODULE_22__components_editor_editor_component__["a" /* EditorComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_code_insert_code_component__["a" /* InsertCodeComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_media_insert_media_component__["a" /* InsertMediaComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__components_test_test_component__["a" /* TestComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__["a" /* InsertImageComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__["a" /* InsertYoutubeComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
-                __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */],
-                __WEBPACK_IMPORTED_MODULE_34__components_user_register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_21__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
-                __WEBPACK_IMPORTED_MODULE_32__components_editor_git_commit_commit_component__["a" /* CommitComponent */],
-                __WEBPACK_IMPORTED_MODULE_31__components_editor_markdown_save_markdown_save_markdown_component__["a" /* SaveMarkdownComponent */],
-                __WEBPACK_IMPORTED_MODULE_36__components_project_project_list_project_list_component__["a" /* ListProjectComponent */],
-                __WEBPACK_IMPORTED_MODULE_37__components_project_project_new_project_new_component__["a" /* NewProjectComponent */],
-                __WEBPACK_IMPORTED_MODULE_38__components_project_project_edit_project_edit_component__["a" /* EditProjectComponent */],
-                __WEBPACK_IMPORTED_MODULE_35__components_user_user_list_select_user_list_select_component__["a" /* UserListSelectComponent */],
-                __WEBPACK_IMPORTED_MODULE_33__components_user_login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_39__components_user_profile_profile_component__["a" /* ProfileComponent */],
-                __WEBPACK_IMPORTED_MODULE_40__components_admin_admin_component__["a" /* AdminComponent */]
+                __WEBPACK_IMPORTED_MODULE_18__components_shared_alert_alert_component__["a" /* AlertComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components_shared_loader_loader_component__["a" /* LoaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__components_shared_nav_nav_component__["a" /* NavComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__directives_auto_height_auto_height_directive__["a" /* AutoHeightDirective */],
+                __WEBPACK_IMPORTED_MODULE_23__components_editor_editor_component__["a" /* EditorComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__components_editor_tiny_editor_tiny_editor_component__["a" /* TinyEditorComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__components_editor_tiny_editor_insert_media_icon_search_icon_search_component__["a" /* IconSearchComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__components_editor_tiny_editor_insert_code_insert_code_component__["a" /* InsertCodeComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__components_editor_tiny_editor_insert_media_insert_media_component__["a" /* InsertMediaComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__components_test_test_component__["a" /* TestComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__components_editor_tiny_editor_insert_media_insert_image_insert_image_component__["a" /* InsertImageComponent */],
+                __WEBPACK_IMPORTED_MODULE_30__components_editor_tiny_editor_insert_media_insert_youtube_insert_youtube_component__["a" /* InsertYoutubeComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__directives_resizable_resizable_directive__["a" /* ResizableDirective */],
+                __WEBPACK_IMPORTED_MODULE_31__components_editor_tiny_editor_insert_glyph_insert_glyph_component__["a" /* InsertGlyphComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */],
+                __WEBPACK_IMPORTED_MODULE_35__components_user_register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
+                __WEBPACK_IMPORTED_MODULE_33__components_editor_git_commit_commit_component__["a" /* CommitComponent */],
+                __WEBPACK_IMPORTED_MODULE_32__components_editor_markdown_save_markdown_save_markdown_component__["a" /* SaveMarkdownComponent */],
+                __WEBPACK_IMPORTED_MODULE_40__components_project_project_list_project_list_component__["a" /* ListProjectComponent */],
+                __WEBPACK_IMPORTED_MODULE_41__components_project_project_new_project_new_component__["a" /* NewProjectComponent */],
+                __WEBPACK_IMPORTED_MODULE_42__components_project_project_edit_project_edit_component__["a" /* EditProjectComponent */],
+                __WEBPACK_IMPORTED_MODULE_36__components_user_user_list_select_user_list_select_component__["a" /* UserListSelectComponent */],
+                __WEBPACK_IMPORTED_MODULE_34__components_user_login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_37__components_user_profile_profile_component__["a" /* ProfileComponent */],
+                __WEBPACK_IMPORTED_MODULE_38__components_admin_admin_component__["a" /* AdminComponent */],
+                __WEBPACK_IMPORTED_MODULE_39__components_user_social_social_component__["a" /* SocialComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -282,8 +288,9 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_6__services_interactions_service_client__["a" /* InteractionsService */],
                 __WEBPACK_IMPORTED_MODULE_12__services_iconsearch_service_client__["a" /* IconSearchService */],
                 __WEBPACK_IMPORTED_MODULE_13__services_utils_service_client__["a" /* UtilService */],
-                __WEBPACK_IMPORTED_MODULE_21__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
-                __WEBPACK_IMPORTED_MODULE_20__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
+                __WEBPACK_IMPORTED_MODULE_15__services_social_service_client__["a" /* SocialService */],
+                __WEBPACK_IMPORTED_MODULE_22__pipes_markdown_convertor_markdown_convertor_pipe__["a" /* MarkdownConvertorPipe */],
+                __WEBPACK_IMPORTED_MODULE_21__pipes_string_filter_string_filter_pipe__["a" /* StringFilterPipe */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         })
@@ -331,6 +338,7 @@ var APP_ROUTES = [
     { path: 'project/:projectId', component: __WEBPACK_IMPORTED_MODULE_6__components_project_project_edit_project_edit_component__["a" /* EditProjectComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
     { path: 'project/:projectId/editor/:markdownId', component: __WEBPACK_IMPORTED_MODULE_1__components_editor_editor_component__["a" /* EditorComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
     { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_10__components_user_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
+    { path: 'profile/:userId', component: __WEBPACK_IMPORTED_MODULE_10__components_user_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_9__services_auth_service_client__["a" /* AuthService */]] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_4__components_user_register_register_component__["a" /* RegisterComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_8__components_user_login_login_component__["a" /* LoginComponent */] },
     { path: 'test', component: __WEBPACK_IMPORTED_MODULE_2__app_components_test_test_component__["a" /* TestComponent */], data: { skipAuth: true } },
@@ -364,7 +372,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/admin.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"row\"\r\n         *ngIf=\"isSiteAdmin\">\r\n        <div class=\"col\">\r\n            <h4>Admin</h4>\r\n            <hr class=\"mt-2\">\r\n\r\n            <ul class=\"nav nav-tabs\">\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link active\"\r\n                       data-toggle=\"tab\"\r\n                       data-target=\"#projects\"\r\n                       role=\"tab\">Projects</a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\"\r\n                       data-toggle=\"tab\"\r\n                       data-target=\"#users\"\r\n                       role=\"tab\">Users</a>\r\n                </li>\r\n            </ul>\r\n\r\n            <div class=\"tab-content p-2 py-4\">\r\n\r\n                <!-- Projects  -->\r\n                <div class=\"tab-pane active show fade\"\r\n                     id=\"projects\"\r\n                     role=\"tabpanel\">\r\n\r\n                    <!-- Create new project -->\r\n                    <form (submit)=\"createProject()\">\r\n                        <div class=\"input-group\">\r\n                            <button class=\"input-group-btn btn btn-sm py-2 btn-success\"\r\n                                    title=\"Add new project\">\r\n                                <i class=\"fa fa-plus-circle fa-lg\"></i>\r\n                            </button>\r\n                            <input type=\"text\"\r\n                                   class=\"form-control form-control-sm py-2\"\r\n                                   name=\"newProjectName\"\r\n                                   [(ngModel)]=\"newProjectName\"\r\n                                   placeholder=\"New Project Name\"\r\n                                   required>\r\n                        </div>\r\n                    </form>\r\n\r\n                    <ul class=\"list-group mt-2\">\r\n                        <li class=\"list-group-item p-0\"\r\n                            *ngFor=\"let project of projects\">\r\n\r\n                            <div class=\"input-group\">\r\n                                <!-- Delete Project -->\r\n                                <button class=\"btn btn-danger py-2 px-3\"\r\n                                        (click)=\"deleteProject(project)\"\r\n                                        title=\"Delete Project\">\r\n                                    <i class=\"fa fa-minus-circle\"></i>\r\n                                </button>\r\n\r\n                                <!-- Edit Project -->\r\n                                <a class=\"btn btn-info py-2 px-3\"\r\n                                   [routerLink]=\"['/project', project._id]\"\r\n                                   title=\"Edit Project\">\r\n                                    <i class=\"fa fa-gear\"></i>\r\n                                </a>\r\n\r\n                                <!-- Project Name -->\r\n                                <a class=\"form-control btn py-2 nt\"\r\n                                   [routerLink]=\"['/project', project._id, 'editor', project.markdown]\">\r\n                                    {{project.name}}\r\n                                    <i class=\"fa fa-asterisk ml-2 text-success\"\r\n                                       *ngIf=\"project === newlyCreatedProject\"></i>\r\n                                </a>\r\n                            </div>\r\n\r\n                        </li>\r\n                    </ul>\r\n\r\n\r\n                </div>\r\n\r\n                <!-- Users  -->\r\n                <div class=\"tab-pane active fade\"\r\n                     id=\"users\"\r\n                     role=\"tabpanel\">\r\n\r\n\r\n                    <!-- Create new user -->\r\n                    <form (submit)=\"createUser()\">\r\n                        <div class=\"input-group\">\r\n                            <button class=\"input-group-btn btn btn-sm py-2 btn-success\"\r\n                                    title=\"Add new User\">\r\n                                <i class=\"fa fa-plus-circle fa-lg\"></i>\r\n                            </button>\r\n                            <input type=\"text\"\r\n                                   class=\"form-control form-control-sm py-2\"\r\n                                   name=\"newUserName\"\r\n                                   [(ngModel)]=\"newUserName\"\r\n                                   placeholder=\"New User Name\"\r\n                                   required>\r\n                            <input type=\"password\"\r\n                                   class=\"form-control form-control-sm py-2\"\r\n                                   name=\"newUserPassword\"\r\n                                   [(ngModel)]=\"newUserPassword\"\r\n                                   placeholder=\"New User Password\"\r\n                                   required>\r\n                        </div>\r\n                    </form>\r\n\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n    <div class=\"row\"\r\n         *ngIf=\"isSiteAdmin\">\r\n        <div class=\"col\">\r\n            <h4>Admin</h4>\r\n            <hr class=\"mt-2\">\r\n\r\n            <ul class=\"nav nav-tabs\">\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link active\"\r\n                       data-toggle=\"tab\"\r\n                       data-target=\"#projects\"\r\n                       role=\"tab\">Projects</a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link\"\r\n                       data-toggle=\"tab\"\r\n                       data-target=\"#users\"\r\n                       role=\"tab\">Users</a>\r\n                </li>\r\n            </ul>\r\n\r\n            <div class=\"tab-content p-2 py-4\">\r\n\r\n                <!-- Projects  -->\r\n                <div class=\"tab-pane active show fade\"\r\n                     id=\"projects\"\r\n                     role=\"tabpanel\">\r\n\r\n                    <!-- Create new project -->\r\n                    <form (submit)=\"createProject()\">\r\n                        <div class=\"input-group\">\r\n                            <button class=\"input-group-btn btn btn-sm py-2 btn-success\"\r\n                                    title=\"Add new project\">\r\n                                <i class=\"fa fa-plus-circle fa-lg\"></i>\r\n                            </button>\r\n                            <input type=\"text\"\r\n                                   class=\"form-control form-control-sm py-2\"\r\n                                   name=\"newProjectName\"\r\n                                   [(ngModel)]=\"newProjectName\"\r\n                                   placeholder=\"New Project Name\"\r\n                                   required>\r\n                        </div>\r\n                    </form>\r\n\r\n                    <!-- Projects list -->\r\n                    <ul class=\"list-group mt-2\">\r\n                        <li class=\"list-group-item p-1\"\r\n                            *ngFor=\"let project of projects\">\r\n\r\n                            <div class=\"input-group\">\r\n                                <!-- Delete Project -->\r\n                                <button class=\"btn btn-outline-danger border-0 py-2 px-3\"\r\n                                        (click)=\"deleteProject(project)\"\r\n                                        title=\"Delete Project\">\r\n                                    <i class=\"fa fa-minus-circle\"></i>\r\n                                </button>\r\n\r\n                                <!-- Edit Project -->\r\n                                <a class=\"btn btn-outline-info border-0 py-2 px-3\"\r\n                                   [routerLink]=\"['/project', project._id]\"\r\n                                   title=\"Edit Project\">\r\n                                    <i class=\"fa fa-gear\"></i>\r\n                                </a>\r\n\r\n                                <!-- Project Name -->\r\n                                <a class=\"form-control border-0 bg-light btn py-2 nt\"\r\n                                   [routerLink]=\"['/project', project._id, 'editor', project.markdown]\">\r\n                                    {{project.name}}\r\n                                    <i class=\"fa fa-asterisk ml-2 text-success\"\r\n                                       *ngIf=\"project === newlyCreatedProject\"></i>\r\n                                </a>\r\n                            </div>\r\n\r\n                        </li>\r\n                    </ul>\r\n\r\n                </div>\r\n\r\n                <!-- Users  -->\r\n                <div class=\"tab-pane active fade\"\r\n                     id=\"users\"\r\n                     role=\"tabpanel\">\r\n\r\n\r\n                    <!-- Create new user -->\r\n                    <form (submit)=\"createUser()\">\r\n                        <div class=\"input-group\">\r\n                            <button class=\"input-group-btn btn btn-sm py-2 btn-success\"\r\n                                    title=\"Add new User\">\r\n                                <i class=\"fa fa-plus-circle fa-lg\"></i>\r\n                            </button>\r\n                            <input type=\"text\"\r\n                                   class=\"form-control form-control-sm py-2\"\r\n                                   name=\"newUserName\"\r\n                                   [(ngModel)]=\"newUserName\"\r\n                                   placeholder=\"New User Name\"\r\n                                   required>\r\n                            <input type=\"password\"\r\n                                   class=\"form-control form-control-sm py-2\"\r\n                                   name=\"newUserPassword\"\r\n                                   [(ngModel)]=\"newUserPassword\"\r\n                                   placeholder=\"New User Password\"\r\n                                   required>\r\n                        </div>\r\n                    </form>\r\n\r\n                    <!-- Users list -->\r\n                    <ul class=\"list-group mt-2\">\r\n                        <li class=\"list-group-item p-1\"\r\n                            *ngFor=\"let user of users\">\r\n\r\n                            <div class=\"input-group\">\r\n                                <!-- Delete User -->\r\n                                <button class=\"btn btn-outline-danger border-0 py-2 px-3\"\r\n                                        (click)=\"deleteUser(user)\"\r\n                                        title=\"Delete User\">\r\n                                    <i class=\"fa fa-minus-circle\"></i>\r\n                                </button>\r\n\r\n                                <!-- Edit User -->\r\n                                <a class=\"form-control border-0 bg-light btn py-2 nt\"\r\n                                   [routerLink]=\"['/profile', user._id]\">\r\n                                    {{user.name || user.username}}\r\n                                    <i class=\"fa fa-asterisk ml-2 text-success\"\r\n                                       *ngIf=\"user === newlyCreatedUser\"></i>\r\n                                </a>\r\n\r\n                                <!-- Make User Admin -->\r\n                                <button class=\"btn border-0 py-2 px-3\"\r\n                                        [ngClass]=\"user.isSiteAdmin? 'btn-warning':'btn-outline-warning'\"\r\n                                        (click)=\"makeUserAdmin(user)\"\r\n                                        title=\"Make Site Admin\">\r\n                                    <i class=\"fa fa-bolt\"></i>\r\n                                </button>\r\n                            </div>\r\n\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -374,12 +382,13 @@ module.exports = "<div class=\"container\">\r\n    <div class=\"row\"\r\n       
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_project_service_client__ = __webpack_require__("../../../../../src/app/services/project.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_project_service_client__ = __webpack_require__("../../../../../src/app/services/project.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_markdown_service_client__ = __webpack_require__("../../../../../src/app/services/markdown.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -396,14 +405,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AdminComponent = (function () {
-    function AdminComponent(authService, projectService, userService, markdownService, interactionService, errorHandlerService) {
+    function AdminComponent(authService, projectService, userService, markdownService, interactionService, errorHandlerService, router) {
         this.authService = authService;
         this.projectService = projectService;
         this.userService = userService;
         this.markdownService = markdownService;
         this.interactionService = interactionService;
         this.errorHandlerService = errorHandlerService;
+        this.router = router;
     }
     AdminComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -423,6 +434,9 @@ var AdminComponent = (function () {
                 _this.errorHandlerService.handleError('Error getting list of all users', err);
             });
         }
+        else {
+            this.interactionService.showAlert('You do not have access to view this page');
+        }
     };
     /** Create a new project */
     AdminComponent.prototype.createProject = function () {
@@ -434,6 +448,7 @@ var AdminComponent = (function () {
         var newMarkdown = {
             content: ''
         };
+        this.interactionService.showLoader(true);
         this.markdownService.createMarkdown(newMarkdown)
             .subscribe(function (createdMarkdown) {
             // create project and associate with created markdown
@@ -447,12 +462,32 @@ var AdminComponent = (function () {
                 _this.newProjectName = '';
                 _this.projects.push(createdProject);
                 _this.newlyCreatedProject = createdProject;
+                _this.interactionService.showLoader(false);
                 _this.interactionService.showAlert('Project created successfully', 'success', true);
             }, function (err) {
+                _this.interactionService.showLoader(false);
                 _this.errorHandlerService.handleError('Error creating project', err);
             });
         }, function (err) {
+            _this.interactionService.showLoader(false);
             _this.errorHandlerService.handleError('Error creating project markdown', err);
+        });
+    };
+    /**
+     * Delete project
+     * @param project projec to delete
+     */
+    AdminComponent.prototype.deleteProject = function (project) {
+        var _this = this;
+        this.interactionService.showLoader(true);
+        this.projectService.deleteProject(project._id)
+            .subscribe(function (deletedProject) {
+            _this.projects.splice(_this.projects.indexOf(project), 1);
+            _this.interactionService.showLoader(false);
+            _this.interactionService.showAlert('Project deleted successfully', 'success');
+        }, function (err) {
+            _this.interactionService.showLoader(false);
+            _this.errorHandlerService.handleError('Error deleting project', err);
         });
     };
     /** Create new user */
@@ -466,15 +501,48 @@ var AdminComponent = (function () {
             this.interactionService.showAlert('Username already exists', 'danger', true);
             return;
         }
+        this.interactionService.showLoader(true);
         this.userService.createUser(this.newUserName, this.newUserPassword)
             .subscribe(function (createdUser) {
             _this.newUserName = '';
             _this.newUserPassword = '';
             _this.users.push(createdUser);
             _this.newlyCreatedUser = createdUser;
+            _this.interactionService.showLoader(false);
             _this.interactionService.showAlert('User created successfully', 'success', true);
         }, function (err) {
+            _this.interactionService.showLoader(false);
             _this.errorHandlerService.handleError('Error creating new user', err);
+        });
+    };
+    /** Delete user
+     * @param user user to delete
+    */
+    AdminComponent.prototype.deleteUser = function (user) {
+        var _this = this;
+        this.userService.deleteUser(user._id)
+            .subscribe(function (deleted) {
+            _this.users.splice(_this.users.indexOf(user), 1);
+            _this.interactionService.showAlert('User deleted successfully', 'success', true);
+        }, function (err) {
+            _this.errorHandlerService.handleError('Error deleting user', err);
+        });
+    };
+    /** Toggle user's site admin status
+      * @param user user to be set/unset as site admin
+    */
+    AdminComponent.prototype.makeUserAdmin = function (user) {
+        var _this = this;
+        user.isSiteAdmin = user.isSiteAdmin ? false : true;
+        this.interactionService.showLoader(true);
+        this.userService.updateUser(user._id, user)
+            .subscribe(function (updatedUser) {
+            user = updatedUser;
+            _this.interactionService.showLoader(false);
+            _this.interactionService.showAlert('User updated successfully', 'success', true);
+        }, function (err) {
+            _this.interactionService.showLoader(false);
+            _this.errorHandlerService.handleError('Error updating User', err);
         });
     };
     AdminComponent = __decorate([
@@ -483,12 +551,13 @@ var AdminComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/admin/admin.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/admin/admin.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_2__services_project_service_client__["a" /* ProjectService */],
-            __WEBPACK_IMPORTED_MODULE_5__services_user_service_client__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_6__services_markdown_service_client__["a" /* MarkdownService */],
-            __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__["a" /* InteractionsService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_project_service_client__["a" /* ProjectService */],
+            __WEBPACK_IMPORTED_MODULE_6__services_user_service_client__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_7__services_markdown_service_client__["a" /* MarkdownService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
     ], AdminComponent);
     return AdminComponent;
 }());
@@ -733,7 +802,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/git/commit/commit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"git-commit\">\r\n\r\n    <div *ngIf=\"!gitToken\">\r\n        <!-- Git Login prompt -->\r\n        <div class=\"my-3 text-center\">\r\n            <i class=\"fa fa-github fa-5x text-dark\"></i>\r\n            <br>\r\n            <button type=\"button\"\r\n                    class=\"btn btn-primary btn-sm mt-3\"\r\n                    (click)=\"loginToGit()\">Login to Github</button>\r\n        </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"gitToken\">\r\n\r\n        <form (submit)=\"commit()\"\r\n              #commitForm=\"ngForm\">\r\n\r\n            <!-- Repos list -->\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label\"\r\n                       for=\"repo\">Repository</label>\r\n                <div class=\"input-group input-group-sm\">\r\n                    <div class=\"input-group-btn\">\r\n                        <div class=\"btn-group\">\r\n                            <button class=\"btn btn-primary py-2 px-3 m-0\"\r\n                                    type=\"button\"\r\n                                    data-toggle=\"dropdown\">\r\n                                    <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\r\n                            </button>\r\n                            <div class=\"dropdown-menu\">\r\n                                <a class=\"dropdown-item\"\r\n                                   *ngFor=\"let r of repos\"\r\n                                   (click)=\"repo=r\">{{r}}</a>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <input type=\"text\"\r\n                           class=\"form-control\"\r\n                           name=\"repo\"\r\n                           #repoField=\"ngModel\"\r\n                           [(ngModel)]=\"repo\"\r\n                           [ngClass]=\"{'btn-outline-danger': repoField.touched && !repoField.valid }\"\r\n                           placeholder=\"Select or enter Repo full name\"\r\n                           required>\r\n\r\n                </div>\r\n            </div>\r\n\r\n            <!-- Branch -->\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label\"\r\n                       for=\"branch\">Branch Name</label>\r\n                <input type=\"text\"\r\n                       class=\"form-control form-control-sm\"\r\n                       name=\"branch\"\r\n                       #branchField=\"ngModel\"\r\n                       [(ngModel)]=\"branch\"\r\n                       [ngClass]=\"{'btn-outline-danger': branchField.touched && !branchField.valid }\"\r\n                       required>\r\n            </div>\r\n\r\n            <!-- File Name -->\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label\"\r\n                       for=\"fileName\">File Name</label>\r\n                <input type=\"text\"\r\n                       class=\"form-control form-control-sm\"\r\n                       name=\"fileName\"\r\n                       [(ngModel)]=\"fileName\"\r\n                       #fileNameField=\"ngModel\"\r\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\r\n                       required>\r\n            </div>\r\n\r\n            <!-- Commit message -->\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label\"\r\n                       for=\"commitMessage\">Commit Message</label>\r\n                <input type=\"text\"\r\n                       class=\"form-control form-control-sm\"\r\n                       #commitMessageField=\"ngModel\"\r\n                       [(ngModel)]=\"commitMessage\"\r\n                       [ngClass]=\"{'btn-outline-danger': commitMessageField.touched && !commitMessageField.valid }\"\r\n                       name=\"commitMessage\"\r\n                       required>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <button class=\"btn btn-primary btn-sm\"\r\n                        [hidden]=\"commitInProgres\"\r\n                        [disabled]=\"!commitForm.valid\">Commit</button>\r\n\r\n                <div class=\"progress\"\r\n                     [hidden]=\"!commitInProgres\">\r\n                    <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\r\n                         role=\"progressbar\"></div>\r\n                </div>\r\n            </div>\r\n        </form>\r\n    </div>\r\n\r\n\r\n</div>"
+module.exports = "<div class=\"git-commit\">\n\n    <div *ngIf=\"!gitToken\">\n        <!-- Git Login prompt -->\n        <div class=\"my-3 text-center\">\n            <i class=\"fa fa-github fa-5x text-dark\"></i>\n            <br>\n            <button type=\"button\"\n                    class=\"btn btn-primary btn-sm mt-3\"\n                    (click)=\"loginToGit()\">Login to Github</button>\n        </div>\n    </div>\n\n    <div *ngIf=\"gitToken\">\n\n        <form (submit)=\"commit()\"\n              #commitForm=\"ngForm\">\n\n            <!-- Repos list -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"repo\">Repository</label>\n                <div class=\"input-group input-group-sm\">\n                    <div class=\"input-group-btn\">\n                        <div class=\"btn-group\">\n                            <button class=\"btn btn-primary py-2 px-3 m-0\"\n                                    type=\"button\"\n                                    data-toggle=\"dropdown\">\n                                    <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n                            </button>\n                            <div class=\"dropdown-menu\">\n                                <a class=\"dropdown-item\"\n                                   *ngFor=\"let r of repos\"\n                                   (click)=\"repo=r\">{{r}}</a>\n                            </div>\n                        </div>\n                    </div>\n                    <input type=\"text\"\n                           class=\"form-control\"\n                           name=\"repo\"\n                           #repoField=\"ngModel\"\n                           [(ngModel)]=\"repo\"\n                           [ngClass]=\"{'btn-outline-danger': repoField.touched && !repoField.valid }\"\n                           placeholder=\"Select or enter Repo full name\"\n                           required>\n\n                </div>\n            </div>\n\n            <!-- Branch -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"branch\">Branch Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"branch\"\n                       #branchField=\"ngModel\"\n                       [(ngModel)]=\"branch\"\n                       [ngClass]=\"{'btn-outline-danger': branchField.touched && !branchField.valid }\"\n                       required>\n            </div>\n\n            <!-- File Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"fileName\">File Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"fileName\"\n                       [(ngModel)]=\"fileName\"\n                       #fileNameField=\"ngModel\"\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\n                       required>\n            </div>\n\n            <!-- Commit message -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"commitMessage\">Commit Message</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       #commitMessageField=\"ngModel\"\n                       [(ngModel)]=\"commitMessage\"\n                       [ngClass]=\"{'btn-outline-danger': commitMessageField.touched && !commitMessageField.valid }\"\n                       name=\"commitMessage\"\n                       required>\n            </div>\n\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary btn-sm\"\n                        [hidden]=\"commitInProgres\"\n                        [disabled]=\"!commitForm.valid\">Commit</button>\n\n                <div class=\"progress\"\n                     [hidden]=\"!commitInProgres\">\n                    <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                         role=\"progressbar\"></div>\n                </div>\n            </div>\n        </form>\n    </div>\n\n\n</div>"
 
 /***/ }),
 
@@ -887,7 +956,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/markdown/save-markdown/save-markdown.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"save-markdown\">\r\n\r\n    <div *ngIf=\"!loggedInUser\">\r\n        <!-- Login prompt -->\r\n        <div class=\"my-3 text-center\">\r\n            <i class=\"fa fa-user-circle fa-5x text-dark\"></i>\r\n            <br>\r\n            <br>\r\n            <p>You must be logged in to save markdown</p>\r\n            <p>\r\n                <a [routerLink]=\"['/login']\"\r\n                   class=\"btn btn-sm py-2 btn-primary\">Login</a>\r\n            </p>\r\n        </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"loggedInUser\">\r\n\r\n        <form (submit)=\"saveMarkdown()\"\r\n              #saveForm=\"ngForm\">\r\n\r\n            <!-- Project Name -->\r\n            <div class=\"form-group\"\r\n                 *ngIf=\"!project\">\r\n                <label class=\"control-label\"\r\n                       for=\"repo\">Project Name</label>\r\n                <input type=\"text\"\r\n                       class=\"form-control form-control-sm\"\r\n                       name=\"projectName\"\r\n                       #projectNameField=\"ngModel\"\r\n                       [(ngModel)]=\"projectName\"\r\n                       [ngClass]=\"{'btn-outline-danger': projectNameField.touched && !projectNameField.valid }\"\r\n                       required>\r\n            </div>\r\n\r\n            <!-- File Name -->\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label\"\r\n                       for=\"fileName\">File Name</label>\r\n                <input type=\"text\"\r\n                       class=\"form-control form-control-sm\"\r\n                       name=\"fileName\"\r\n                       [(ngModel)]=\"fileName\"\r\n                       #fileNameField=\"ngModel\"\r\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\r\n                       required>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <button class=\"btn btn-primary btn-sm\"\r\n                        [hidden]=\"saveInProgres\"\r\n                        [disabled]=\"!saveForm.valid\">Save</button>\r\n\r\n                <div class=\"progress\"\r\n                     [hidden]=\"!saveInProgres\">\r\n                    <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\r\n                         role=\"progressbar\"></div>\r\n                </div>\r\n            </div>\r\n        </form>\r\n    </div>\r\n\r\n</div>"
+module.exports = "<div class=\"save-markdown\">\n\n    <div *ngIf=\"!loggedInUser\">\n        <!-- Login prompt -->\n        <div class=\"my-3 text-center\">\n            <i class=\"fa fa-user-circle fa-5x text-dark\"></i>\n            <br>\n            <br>\n            <p>You must be logged in to save markdown</p>\n            <p>\n                <a [routerLink]=\"['/login']\"\n                   class=\"btn btn-sm py-2 btn-primary\">Login</a>\n            </p>\n        </div>\n    </div>\n\n    <div *ngIf=\"loggedInUser\">\n\n        <form (submit)=\"saveMarkdown()\"\n              #saveForm=\"ngForm\">\n\n            <!-- Project Name -->\n            <div class=\"form-group\"\n                 *ngIf=\"!project\">\n                <label class=\"control-label\"\n                       for=\"repo\">Project Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"projectName\"\n                       #projectNameField=\"ngModel\"\n                       [(ngModel)]=\"projectName\"\n                       [ngClass]=\"{'btn-outline-danger': projectNameField.touched && !projectNameField.valid }\"\n                       required>\n            </div>\n\n            <!-- File Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label\"\n                       for=\"fileName\">File Name</label>\n                <input type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"fileName\"\n                       [(ngModel)]=\"fileName\"\n                       #fileNameField=\"ngModel\"\n                       [ngClass]=\"{'btn-outline-danger': fileNameField.touched && !fileNameField.valid }\"\n                       required>\n            </div>\n\n            <div class=\"form-group\">\n                <button class=\"btn btn-primary btn-sm\"\n                        [hidden]=\"saveInProgres\"\n                        [disabled]=\"!saveForm.valid\">Save</button>\n\n                <div class=\"progress\"\n                     [hidden]=\"!saveInProgres\">\n                    <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                         role=\"progressbar\"></div>\n                </div>\n            </div>\n        </form>\n    </div>\n\n</div>"
 
 /***/ }),
 
@@ -1587,7 +1656,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/editor/tiny-editor/insert-media/insert-youtube/insert-youtube.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"col\">\r\n\r\n        <!-- Input box -->\r\n        <div class=\"form-group\">\r\n            <div class=\"input-group\">\r\n                <span class=\"input-group-addon\">\r\n                  Video Url\r\n              </span>\r\n                <input type=\"text\"\r\n                       name=\"img.videoUrl\"\r\n                       class=\"form-control\"\r\n                       [(ngModel)]=\"img.videoUrl\">\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n            <div class=\"col text-center\">\r\n                <!-- Selected Img preview -->\r\n                <div class=\"preview-wrap m-3\"\r\n                     *ngIf=\"getImgUrl()\">\r\n                    <div class=\"border border-faded p-2 w-100 preview-img-outer\">\r\n                        <img id=\"preview-img\"\r\n                             appResizable\r\n                             [resizeEnabled]=\"img.customSize\"\r\n                             [aspectRatioLocked]=\"aspectRatioLocked\"\r\n                             [compControl]=\"imgResizeControl\"\r\n                             [src]=\"getImgUrl()\" />\r\n\r\n                        <!-- Aspect Ratio toggle -->\r\n                        <div *ngIf=\"img.customSize\"\r\n                             class=\"float-right text-secondary font-italic aspect-ratio-toggle\"\r\n                             (click)=\"aspectRatioLocked = !aspectRatioLocked\">\r\n                            <span class=\"fa fa-lg\"\r\n                                  [ngClass]=\"aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"></span>\r\n                            <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\r\n                        </div>\r\n\r\n                    </div>\r\n\r\n                </div>\r\n                <!-- Img preview placeholder -->\r\n                <div class=\"preview-placeholder\"\r\n                     *ngIf=\"!getImgUrl()\">\r\n                    <div class=\"preview-img-outer border border-faded p-2 w-100\">\r\n                        <img src=\"../../../assets/img-preview-placeholder.png\">\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"col-3\">\r\n                <div *ngIf=\"getImgUrl()\">\r\n                    <div class=\"form-group\">\r\n                        <span class=\"fa fa-2x align-middle\"\r\n                              [ngClass]=\"img.customSize ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"\r\n                              (click)=\"img.customSize = !img.customSize\"></span>\r\n                        <span>Custom Size</span>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label class=\"text-muted font-weight-bold\">Title</label>\r\n                        <input type=\"text\"\r\n                               class=\"form-control\"\r\n                               [(ngModel)]=\"img.title\">\r\n                    </div>\r\n                </div>\r\n                <div *ngIf=\"!getImgUrl()\"\r\n                     class=\"text-center text-muted font-italic mt-5\">Enter an Image URL to preview</div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"row\">\n    <div class=\"col\">\n\n        <!-- Input box -->\n        <div class=\"form-group\">\n            <div class=\"input-group\">\n                <span class=\"input-group-addon\">\n                  Video Url\n              </span>\n                <input type=\"text\"\n                       name=\"img.videoUrl\"\n                       class=\"form-control\"\n                       [(ngModel)]=\"img.videoUrl\">\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col text-center\">\n                <!-- Selected Img preview -->\n                <div class=\"preview-wrap m-3\"\n                     *ngIf=\"getImgUrl()\">\n                    <div class=\"border border-faded p-2 w-100 preview-img-outer\">\n                        <img id=\"preview-img\"\n                             appResizable\n                             [resizeEnabled]=\"img.customSize\"\n                             [aspectRatioLocked]=\"aspectRatioLocked\"\n                             [compControl]=\"imgResizeControl\"\n                             [src]=\"getImgUrl()\" />\n\n                        <!-- Aspect Ratio toggle -->\n                        <div *ngIf=\"img.customSize\"\n                             class=\"float-right text-secondary font-italic aspect-ratio-toggle\"\n                             (click)=\"aspectRatioLocked = !aspectRatioLocked\">\n                            <span class=\"fa fa-lg\"\n                                  [ngClass]=\"aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"></span>\n                            <label for=\"aspecRatioToggle\"> lock aspect ratio</label>\n                        </div>\n\n                    </div>\n\n                </div>\n                <!-- Img preview placeholder -->\n                <div class=\"preview-placeholder\"\n                     *ngIf=\"!getImgUrl()\">\n                    <div class=\"preview-img-outer border border-faded p-2 w-100\">\n                        <img src=\"../../../assets/img-preview-placeholder.png\">\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-3\">\n                <div *ngIf=\"getImgUrl()\">\n                    <div class=\"form-group\">\n                        <span class=\"fa fa-2x align-middle\"\n                              [ngClass]=\"img.customSize ? 'fa-toggle-on text-success' : 'fa-toggle-off'\"\n                              (click)=\"img.customSize = !img.customSize\"></span>\n                        <span>Custom Size</span>\n                    </div>\n                    <div class=\"form-group\">\n                        <label class=\"text-muted font-weight-bold\">Title</label>\n                        <input type=\"text\"\n                               class=\"form-control\"\n                               [(ngModel)]=\"img.title\">\n                    </div>\n                </div>\n                <div *ngIf=\"!getImgUrl()\"\n                     class=\"text-center text-muted font-italic mt-5\">Enter an Image URL to preview</div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2216,7 +2285,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/project/project-edit/project-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"row\"\r\n         *ngIf=\"project\">\r\n        <div class=\"col\">\r\n            <h4>\r\n                Edit Project\r\n                <a class=\"btn float-sm-right small py-1 px-3 btn-success\"\r\n                   [routerLink]=\"['editor', project.markdown]\">\r\n                   <i class=\"fa fa-lg fa-pencil-square-o\"></i> Open in Editor</a>\r\n            </h4>\r\n            <hr class=\"mt-2\">\r\n            <form #editProjectForm=\"ngForm\"\r\n                  (submit)=\"updateProject()\">\r\n\r\n                <!-- Name -->\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label small text-dark\"\r\n                           for=\"name\">NAME</label>\r\n                    <input type=\"text\"\r\n                           class=\"form-control form-control-sm\"\r\n                           name=\"name\"\r\n                           #nameField=\"ngModel\"\r\n                           [(ngModel)]=\"project.name\"\r\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\r\n                           required>\r\n                </div>\r\n\r\n                <!-- Description -->\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label small text-dark\"\r\n                           for=\"name\">DESCRIPTION</label>\r\n                    <textarea type=\"text\"\r\n                              class=\"form-control form-control-sm\"\r\n                              name=\"project.description\"\r\n                              #nameField=\"ngModel\"\r\n                              [(ngModel)]=\"description\"></textarea>\r\n                </div>\r\n\r\n                <!-- Markdown file name -->\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label small text-dark\"\r\n                           for=\"name\">MARKDOWN FILE NAME</label>\r\n                    <input type=\"text\"\r\n                           class=\"form-control form-control-sm\"\r\n                           name=\"markdownFileName\"\r\n                           #markdownFileNameField=\"ngModel\"\r\n                           [(ngModel)]=\"project.fileName\"\r\n                           [ngClass]=\"{'btn-outline-danger': markdownFileNameField.touched && !markdownFileNameField.valid }\"\r\n                           required>\r\n                </div>\r\n\r\n                <!-- Github Repo -->\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label small text-dark\"\r\n                           for=\"repo\">LINK WITH GITHUB REPO</label>\r\n                    <div>\r\n                        <a *ngIf=\"!loggedInUser.github || !loggedInUser.github.token\"\r\n                           href=\"http://localhost:3100/api/auth/github\"\r\n                           class=\"btn btn-primary py-1\">Login to Github</a>\r\n                        <div class=\"input-group input-group-sm\"\r\n                             *ngIf=\"loggedInUser.github && loggedInUser.github.token\">\r\n                            <div class=\"input-group-btn\">\r\n                                <div class=\"btn-group\">\r\n                                    <button class=\"btn btn-primary py-2 px-3 m-0\"\r\n                                            type=\"button\"\r\n                                            data-toggle=\"dropdown\">\r\n                                            <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\r\n                                    </button>\r\n                                    <div class=\"dropdown-menu\">\r\n                                        <a class=\"dropdown-item\"\r\n                                           *ngFor=\"let r of repos\"\r\n                                           (click)=\"project.repo=r\">{{r}}</a>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <input type=\"text\"\r\n                                   class=\"form-control\"\r\n                                   name=\"repo\"\r\n                                   #repoField=\"ngModel\"\r\n                                   [(ngModel)]=\"project.repo\"\r\n                                   placeholder=\"Select or enter Repo full name\">\r\n\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n\r\n                <!-- Users -->\r\n                <div class=\"mt-2\">\r\n                    <div class=\"row mb-2\">\r\n                        <span class=\"btn btn-secondary px-1 py-1 text-muted\"\r\n                              data-toggle=\"collapse\"\r\n                              data-target=\"#user-wrap\">\r\n                                <i class=\"fa fa-chevron-down mr-1\"></i>\r\n                                <span class=\"text-size-normal font-weight-normal\">Users</span>\r\n                        </span>\r\n                    </div>\r\n                    <div id=\"user-wrap\"\r\n                         class=\"collapse\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-12 col-sm-6\">\r\n                                <!-- Admins -->\r\n                                <div class=\"form-group\">\r\n                                    <label class=\"control-label small text-dark\"\r\n                                           for=\"name\">ADMINS</label>\r\n                                    <app-user-list-select [ignoreIds]=\"[loggedInUser._id]\"\r\n                                                          [(selectedUserIds)]=\"project.admins\"></app-user-list-select>\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"col-12 col-sm-6\">\r\n                                <!-- Members -->\r\n                                <div class=\"form-group\">\r\n                                    <label class=\"control-label small text-dark\"\r\n                                           for=\"name\">MEMBERS</label>\r\n                                    <app-user-list-select [ignoreIds]=\"[loggedInUser._id]\"\r\n                                                          [(selectedUserIds)]=\"project.members\"></app-user-list-select>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n\r\n                <span class=\"small text-danger\" *ngIf=\"!canEdit\">\r\n                        You do not have permission to update this project\r\n                    </span>\r\n                <div class=\"form-group\">\r\n                    <button class=\"btn btn-primary py-1\"\r\n                            type=\"submit\"\r\n                            [disabled]=\"!editProjectForm.valid || !canEdit\">Update</button>\r\n\r\n                    <button class=\"btn btn-danger py-1\"\r\n                            type=\"button\"\r\n                            [disabled]=\"!canEdit\"\r\n                            [hidden]=\"confirmDelete\"\r\n                            (click)=\"confirmDelete=true\">\r\n                            <i class=\"fa fa-trash fa-lg\"></i>\r\n                          </button>\r\n                    <button class=\"btn btn-danger py-1\"\r\n                            type=\"button\"\r\n                            [hidden]=\"!confirmDelete\"\r\n                            (click)=\"deleteProject()\">\r\n                          <i class=\"fa fa-trash fa-lg mr-2\"></i> Sure?\r\n                        </button>\r\n\r\n                    <div class=\"progress\"\r\n                         [hidden]=\"!inProgres\">\r\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\r\n                             role=\"progressbar\"></div>\r\n                    </div>\r\n                </div>\r\n\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"project\">\n        <div class=\"col\">\n            <h4>\n                Edit Project\n                <a class=\"btn float-sm-right small py-1 px-3 btn-success\"\n                   [routerLink]=\"['editor', project.markdown]\">\n                   <i class=\"fa fa-lg fa-pencil-square-o\"></i> Open in Editor</a>\n            </h4>\n            <hr class=\"mt-2\">\n            <form #editProjectForm=\"ngForm\"\n                  (submit)=\"updateProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"project.name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Description -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">DESCRIPTION</label>\n                    <textarea type=\"text\"\n                              class=\"form-control form-control-sm\"\n                              name=\"project.description\"\n                              #nameField=\"ngModel\"\n                              [(ngModel)]=\"description\"></textarea>\n                </div>\n\n                <!-- Markdown file name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">MARKDOWN FILE NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"markdownFileName\"\n                           #markdownFileNameField=\"ngModel\"\n                           [(ngModel)]=\"project.fileName\"\n                           [ngClass]=\"{'btn-outline-danger': markdownFileNameField.touched && !markdownFileNameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Github Repo -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"repo\">LINK WITH GITHUB REPO</label>\n                    <div>\n                        <a *ngIf=\"!loggedInUser.github || !loggedInUser.github.token\"\n                           href=\"http://localhost:3100/api/auth/github\"\n                           class=\"btn btn-primary py-1\">Login to Github</a>\n                        <div class=\"input-group input-group-sm\"\n                             *ngIf=\"loggedInUser.github && loggedInUser.github.token\">\n                            <div class=\"input-group-btn\">\n                                <div class=\"btn-group\">\n                                    <button class=\"btn btn-primary py-2 px-3 m-0\"\n                                            type=\"button\"\n                                            data-toggle=\"dropdown\">\n                                            <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n                                    </button>\n                                    <div class=\"dropdown-menu\">\n                                        <a class=\"dropdown-item\"\n                                           *ngFor=\"let r of repos\"\n                                           (click)=\"project.repo=r\">{{r}}</a>\n                                    </div>\n                                </div>\n                            </div>\n                            <input type=\"text\"\n                                   class=\"form-control\"\n                                   name=\"repo\"\n                                   #repoField=\"ngModel\"\n                                   [(ngModel)]=\"project.repo\"\n                                   placeholder=\"Select or enter Repo full name\">\n\n                        </div>\n                    </div>\n                </div>\n\n                <!-- Users -->\n                <div class=\"mt-2\">\n                    <div class=\"row mb-2\">\n                        <span class=\"btn btn-secondary px-1 py-1 text-muted\"\n                              data-toggle=\"collapse\"\n                              data-target=\"#user-wrap\">\n                                <i class=\"fa fa-chevron-down mr-1\"></i>\n                                <span class=\"text-size-normal font-weight-normal\">Users</span>\n                        </span>\n                    </div>\n                    <div id=\"user-wrap\"\n                         class=\"collapse\">\n                        <div class=\"row\">\n                            <div class=\"col-12 col-sm-6\">\n                                <!-- Admins -->\n                                <div class=\"form-group\">\n                                    <label class=\"control-label small text-dark\"\n                                           for=\"name\">ADMINS</label>\n                                    <app-user-list-select [ignoreIds]=\"[loggedInUser._id]\"\n                                                          [(selectedUserIds)]=\"project.admins\"></app-user-list-select>\n                                </div>\n                            </div>\n                            <div class=\"col-12 col-sm-6\">\n                                <!-- Members -->\n                                <div class=\"form-group\">\n                                    <label class=\"control-label small text-dark\"\n                                           for=\"name\">MEMBERS</label>\n                                    <app-user-list-select [ignoreIds]=\"[loggedInUser._id]\"\n                                                          [(selectedUserIds)]=\"project.members\"></app-user-list-select>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <span class=\"small text-danger\" *ngIf=\"!canEdit\">\n                        You do not have permission to update this project\n                    </span>\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary py-1\"\n                            type=\"submit\"\n                            [disabled]=\"!editProjectForm.valid || !canEdit\">Update</button>\n\n                    <button class=\"btn btn-danger py-1\"\n                            type=\"button\"\n                            [disabled]=\"!canEdit\"\n                            [hidden]=\"confirmDelete\"\n                            (click)=\"confirmDelete=true\">\n                            <i class=\"fa fa-trash fa-lg\"></i>\n                          </button>\n                    <button class=\"btn btn-danger py-1\"\n                            type=\"button\"\n                            [hidden]=\"!confirmDelete\"\n                            (click)=\"deleteProject()\">\n                          <i class=\"fa fa-trash fa-lg mr-2\"></i> Sure?\n                        </button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2387,7 +2456,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/project/project-list/project-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"col\">\r\n            <h4 class=\"mb-0\">My Projects</h4>\r\n            <hr class=\"mt-2\">\r\n            <!-- Project list -->\r\n            <div class=\"list-group\">\r\n                <div class=\"list-group-item py-2\"\r\n                     *ngFor=\"let project of projects\">\r\n                    <a [routerLink]=\"['/project/', project._id, 'editor', project.markdown]\">\r\n                         {{project.name}}\r\n                    </a>\r\n                    <a [routerLink]=\"['/project/', project._id]\"\r\n                       class=\"float-right\">\r\n                        <i class=\"fa fa-gear fa-lg\" aria-hidden=\"true\"></i>\r\n                   </a>\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <!-- no project message -->\r\n            <div *ngIf=\"!projects || projects.length === 0\">\r\n                <em class=\"ml-3\">No projects to display</em>\r\n            </div>\r\n\r\n            <!-- New project button -->\r\n            <div class=\"mt-2\">\r\n                <a class=\"btn btn-secondary btn-sm\"\r\n                   [routerLink]=\"['/project','new']\">\r\n               <i class=\"fa fa-plus fa-lg mr-2\" aria-hidden=\"true\"></i>\r\n               <span>Create Project</span>\r\n              </a>\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col\">\n            <h4 class=\"mb-0\">My Projects</h4>\n            <hr class=\"mt-2\">\n            <!-- Project list -->\n            <div class=\"list-group\">\n                <div class=\"list-group-item py-2\"\n                     *ngFor=\"let project of projects\">\n                    <a [routerLink]=\"['/project/', project._id, 'editor', project.markdown]\">\n                         {{project.name}}\n                    </a>\n                    <a [routerLink]=\"['/project/', project._id]\"\n                       class=\"float-right\">\n                        <i class=\"fa fa-gear fa-lg\" aria-hidden=\"true\"></i>\n                   </a>\n                </div>\n\n            </div>\n\n            <!-- no project message -->\n            <div *ngIf=\"!projects || projects.length === 0\">\n                <em class=\"ml-3\">No projects to display</em>\n            </div>\n\n            <!-- New project button -->\n            <div class=\"mt-2\">\n                <a class=\"btn btn-secondary btn-sm\"\n                   [routerLink]=\"['/project','new']\">\n               <i class=\"fa fa-plus fa-lg mr-2\" aria-hidden=\"true\"></i>\n               <span>Create Project</span>\n              </a>\n            </div>\n\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2480,7 +2549,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/project/project-new/project-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"row\"\r\n         *ngIf=\"loggedInUser\">\r\n        <div class=\"col\">\r\n            <h4>New Project</h4>\r\n            <hr class=\"mt-2\">\r\n\r\n            <form #newProjectForm=\"ngForm\"\r\n                  (submit)=\"createProject()\">\r\n\r\n                <!-- Name -->\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label small text-dark\"\r\n                           for=\"name\">NAME</label>\r\n                    <input type=\"text\"\r\n                           class=\"form-control form-control-sm\"\r\n                           name=\"name\"\r\n                           #nameField=\"ngModel\"\r\n                           [(ngModel)]=\"name\"\r\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\r\n                           required>\r\n                </div>\r\n\r\n                <!-- Description -->\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label small text-dark\"\r\n                           for=\"name\">DESCRIPTION</label>\r\n                    <textarea type=\"text\"\r\n                              class=\"form-control form-control-sm\"\r\n                              name=\"description\"\r\n                              #descriptionField=\"ngModel\"\r\n                              [(ngModel)]=\"description\"></textarea>\r\n                </div>\r\n\r\n                <!-- Markdown file name -->\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label small text-dark\"\r\n                           for=\"name\">MARKDOWN FILE NAME</label>\r\n                    <input type=\"text\"\r\n                           class=\"form-control form-control-sm\"\r\n                           name=\"markdownFileName\"\r\n                           #markdownFileNameField=\"ngModel\"\r\n                           [(ngModel)]=\"markdownFileName\"\r\n                           [ngClass]=\"{'btn-outline-danger': markdownFileNameField.touched && !markdownFileNameField.valid }\"\r\n                           required>\r\n                </div>\r\n\r\n                <!-- Users -->\r\n                <div class=\"row\">\r\n                    <div class=\"col-12 col-sm-6\">\r\n                        <!-- Admins -->\r\n                        <div class=\"form-group\">\r\n                            <label class=\"control-label small text-dark\"\r\n                                   for=\"name\">ADMINS</label>\r\n                            <app-user-list-select [ignoreIds]=\"[loggedInUser._id]\"\r\n                                                  [(selectedUserIds)]=\"admins\"></app-user-list-select>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-12 col-sm-6\">\r\n                        <!-- Members -->\r\n                        <div class=\"form-group\">\r\n                            <label class=\"control-label small text-dark\"\r\n                                   for=\"name\">MEMBERS</label>\r\n                            <app-user-list-select [ignoreIds]=\"[loggedInUser._id]\"\r\n                                                  [(selectedUserIds)]=\"members\"></app-user-list-select>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <button class=\"btn btn-primary py-1\"\r\n                            [hidden]=\"inProgres\"\r\n                            [disabled]=\"!newProjectForm.valid\">Create</button>\r\n\r\n                    <div class=\"progress\"\r\n                         [hidden]=\"!inProgres\">\r\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\r\n                             role=\"progressbar\"></div>\r\n                    </div>\r\n                </div>\r\n\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row\"\n         *ngIf=\"loggedInUser\">\n        <div class=\"col\">\n            <h4>New Project</h4>\n            <hr class=\"mt-2\">\n\n            <form #newProjectForm=\"ngForm\"\n                  (submit)=\"createProject()\">\n\n                <!-- Name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"name\"\n                           #nameField=\"ngModel\"\n                           [(ngModel)]=\"name\"\n                           [ngClass]=\"{'btn-outline-danger': nameField.touched && !nameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Description -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">DESCRIPTION</label>\n                    <textarea type=\"text\"\n                              class=\"form-control form-control-sm\"\n                              name=\"description\"\n                              #descriptionField=\"ngModel\"\n                              [(ngModel)]=\"description\"></textarea>\n                </div>\n\n                <!-- Markdown file name -->\n                <div class=\"form-group\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">MARKDOWN FILE NAME</label>\n                    <input type=\"text\"\n                           class=\"form-control form-control-sm\"\n                           name=\"markdownFileName\"\n                           #markdownFileNameField=\"ngModel\"\n                           [(ngModel)]=\"markdownFileName\"\n                           [ngClass]=\"{'btn-outline-danger': markdownFileNameField.touched && !markdownFileNameField.valid }\"\n                           required>\n                </div>\n\n                <!-- Users -->\n                <div class=\"row\">\n                    <div class=\"col-12 col-sm-6\">\n                        <!-- Admins -->\n                        <div class=\"form-group\">\n                            <label class=\"control-label small text-dark\"\n                                   for=\"name\">ADMINS</label>\n                            <app-user-list-select [ignoreIds]=\"[loggedInUser._id]\"\n                                                  [(selectedUserIds)]=\"admins\"></app-user-list-select>\n                        </div>\n                    </div>\n                    <div class=\"col-12 col-sm-6\">\n                        <!-- Members -->\n                        <div class=\"form-group\">\n                            <label class=\"control-label small text-dark\"\n                                   for=\"name\">MEMBERS</label>\n                            <app-user-list-select [ignoreIds]=\"[loggedInUser._id]\"\n                                                  [(selectedUserIds)]=\"members\"></app-user-list-select>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <button class=\"btn btn-primary py-1\"\n                            [hidden]=\"inProgres\"\n                            [disabled]=\"!newProjectForm.valid\">Create</button>\n\n                    <div class=\"progress\"\n                         [hidden]=\"!inProgres\">\n                        <div class=\"progress-bar progress-bar-striped progress-bar-animated w-100\"\n                             role=\"progressbar\"></div>\n                    </div>\n                </div>\n\n            </form>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2783,7 +2852,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shared/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand navbar-inverse bg-primary fixed-top py-0\">\r\n    <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n            type=\"button\"\r\n            data-toggle=\"collapse\"\r\n            data-target=\"#navbar-content\"\r\n            aria-controls=\"navbarColor01\"\r\n            aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n    <a class=\"navbar-brand text-white\">WriteMe.md</a>\r\n\r\n    <div class=\"collapse navbar-collapse pb-3 pb-lg-0 text-white\"\r\n         id=\"navbar-content\">\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/']\">Editor</a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/projects']\">Projects</a>\r\n            </li>\r\n            <li class=\"nav-item ml-0\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/project', 'new']\"><i class=\"fa fa-plus\"></i></a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\"\r\n            *ngIf=\"loggedIn?.isSiteAdmin\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-warning\"\r\n                   [routerLink]=\"['/admin']\">\r\n                   <i class=\"fa fa-bolt\"></i>\r\n                   <span>Admin</span>\r\n                </a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Login form -->\r\n        <div class=\"form-inline float-right ml-auto\"\r\n             *ngIf=\"!loggedIn\">\r\n            <!-- Login button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm border-top-0\"\r\n               [routerLink]=\"['/login']\">Login</a>\r\n            <!-- Register button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm p-1 text-dark\"\r\n               (click)=\"loginToGit()\">\r\n                <i class=\"fa fa-github fa-2x\" aria-hidden=\"true\"></i>\r\n            </a>\r\n            <a class=\"btn border text-white ml-2 my-2 my-sm-0 btn-sm\"\r\n               [routerLink]=\"['/register']\">Register</a>\r\n        </div>\r\n        <!-- / Login form -->\r\n\r\n        <!-- Logout form -->\r\n        <ul class=\"float-right ml-auto navbar-nav form-inline\"\r\n            *ngIf=\"loggedIn\">\r\n            <li class=\"nav-item\">\r\n                <a [routerLink]=\"['/profile']\"\r\n                   class=\"btn btn-primary text-light\">\r\n                    <span class=\"fa fa-user-circle fa-lg mr-2\"></span>\r\n                    <span> {{loggedIn.name || loggedIn.username}}</span>\r\n                </a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <button class=\"btn btn-secondary btn-sm\"\r\n                        (click)=\"logout()\">Logout</button>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand navbar-inverse bg-primary fixed-top py-0\">\r\n    <button class=\"navbar-toggler navbar-toggler-right btn-sm mt-2\"\r\n            type=\"button\"\r\n            data-toggle=\"collapse\"\r\n            data-target=\"#navbar-content\"\r\n            aria-controls=\"navbarColor01\"\r\n            aria-expanded=\"false\"\r\n            aria-label=\"Toggle navigation\">\r\n    <span class=\"fa fa-bars\"></span>\r\n  </button>\r\n    <a class=\"navbar-brand text-white\">WriteMe.md</a>\r\n\r\n    <div class=\"collapse navbar-collapse pb-3 pb-lg-0 text-white\"\r\n         id=\"navbar-content\">\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/']\">Editor</a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/projects']\">Projects</a>\r\n            </li>\r\n            <li class=\"nav-item ml-0\">\r\n                <a class=\"nav-link text-white\"\r\n                   [routerLink]=\"['/project', 'new']\"><i class=\"fa fa-plus\"></i></a>\r\n            </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-4\"\r\n            *ngIf=\"loggedIn?.isSiteAdmin\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link text-warning\"\r\n                   [routerLink]=\"['/admin']\">\r\n                   <i class=\"fa fa-bolt\"></i>\r\n                   <span>Admin</span>\r\n                </a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Login form -->\r\n        <div class=\"form-inline float-right ml-auto\"\r\n             *ngIf=\"!loggedIn\">\r\n            <!-- Login button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm border-top-0\"\r\n               [routerLink]=\"['/login']\">Login</a>\r\n            <!-- Register button -->\r\n            <a class=\"btn btn-secondary my-2 my-sm-0 btn-sm p-1 text-dark\"\r\n               (click)=\"loginToGit()\">\r\n                <i class=\"fa fa-github fa-2x\" aria-hidden=\"true\"></i>\r\n            </a>\r\n            <a class=\"btn border text-white ml-2 my-2 my-sm-0 btn-sm\"\r\n               [routerLink]=\"['/register']\">Register</a>\r\n        </div>\r\n        <!-- / Login form -->\r\n\r\n        <!-- Logout form -->\r\n        <ul class=\"float-right ml-auto navbar-nav form-inline\"\r\n            *ngIf=\"loggedIn\">\r\n            <li class=\"nav-item mx-1\">\r\n                <a [routerLink]=\"['/profile']\"\r\n                   class=\"btn btn-primary text-light\">\r\n                    <span class=\"fa fa-user-circle fa-lg mx-2\"></span>\r\n                    <span> {{loggedIn.name || loggedIn.username}}</span>\r\n                </a>\r\n            </li>\r\n            <!-- feeds -->\r\n            <li class=\"nav-item mx-2\">\r\n                <a class=\"btn btn-primary text-light py-2 px-3\"\r\n                   (click)=\"showFeeds()\">\r\n                   <span> <i class=\"fa fa-rss fa-2x\"></i> </span>\r\n                 </a>\r\n            </li>\r\n            <li class=\"nav-item mx-2\">\r\n                <button class=\"btn btn-secondary btn-sm\"\r\n                        (click)=\"logout()\">Logout</button>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>"
 
 /***/ }),
 
@@ -2838,6 +2907,7 @@ var NavComponent = (function () {
     }
     NavComponent.prototype.ngOnInit = function () {
     };
+    /** Login */
     NavComponent.prototype.login = function () {
         var _this = this;
         this.authService.login(this.username, this.password)
@@ -2847,12 +2917,18 @@ var NavComponent = (function () {
             _this.errorHanderService.handleError('Login Failed', err);
         });
     };
+    /** Login with Github */
     NavComponent.prototype.loginToGit = function () {
         this.authService.loginToGit();
     };
+    /** logout */
     NavComponent.prototype.logout = function () {
         localStorage.clear();
         this.authService.logout();
+    };
+    /** Show feeds */
+    NavComponent.prototype.showFeeds = function () {
+        this.interactionService.showFeeds();
     };
     NavComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -2892,7 +2968,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/test/test.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Test</h1>\r\n<app-user-list-select></app-user-list-select>"
+module.exports = "<h1>Test</h1>\r\n<app-user-social></app-user-social>"
 
 /***/ }),
 
@@ -2957,7 +3033,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"user-registration mt-3\">\r\n        <h3>Login</h3>\r\n        <hr>\r\n        <br>\r\n        <!--form-->\r\n        <form class=\"form\"\r\n              (ngSubmit)=\"login()\"\r\n              #loginForm=\"ngForm\">\r\n            <!-- User Name -->\r\n            <div class=\"form-group\">\r\n                <input placeholder=\"User Name\"\r\n                       type=\"text\"\r\n                       class=\"form-control form-control-sm\"\r\n                       name=\"usernameField\"\r\n                       [(ngModel)]=\"username\"\r\n                       #usernameField=\"ngModel\"\r\n                       [ngClass]=\"{'border-danger': !usernameField.valid && usernameField.touched}\"\r\n                       required />\r\n                <span *ngIf=\"usernameField.invalid && usernameField.touched\"\r\n                      class=\"text-danger ml-2\">Username is required</span>\r\n            </div>\r\n\r\n            <!-- Password -->\r\n            <div class=\"form-group\">\r\n                <input placeholder=\"Password\"\r\n                       type=\"password\"\r\n                       class=\"form-control form-control-sm\"\r\n                       name=\"passwordField\"\r\n                       [(ngModel)]=\"password\"\r\n                       #passwordField=\"ngModel\"\r\n                       [ngClass]=\"{'border-danger': (!passwordField.valid && passwordField.touched)}\"\r\n                       required />\r\n                <span *ngIf=\"passwordField.invalid && passwordField.touched\"\r\n                      class=\"text-danger ml-2\">Password is required</span>\r\n            </div>\r\n\r\n            <!-- form actions -->\r\n            <div>\r\n                <button type=\"submit\"\r\n                        class=\"btn btn-sm btn-primary\"\r\n                        [disabled]=\"loginForm.invalid\">Login</button>\r\n\r\n                <a class=\"btn btn-sm btn-secondary py-1 text-dark\"\r\n                   (click)=\"loginToGit()\">\r\n                  Login with GitHub <i class=\"fa fa-github fa-2x ml-2\"></i>\r\n            </a>\r\n\r\n            </div>\r\n            <!-- /form actions -->\r\n        </form>\r\n        <!--/form-->\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"user-registration mt-3\">\n        <h3>Login</h3>\n        <hr>\n        <br>\n        <!--form-->\n        <form class=\"form\"\n              (ngSubmit)=\"login()\"\n              #loginForm=\"ngForm\">\n            <!-- User Name -->\n            <div class=\"form-group\">\n                <input placeholder=\"User Name\"\n                       type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"usernameField\"\n                       [(ngModel)]=\"username\"\n                       #usernameField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': !usernameField.valid && usernameField.touched}\"\n                       required />\n                <span *ngIf=\"usernameField.invalid && usernameField.touched\"\n                      class=\"text-danger ml-2\">Username is required</span>\n            </div>\n\n            <!-- Password -->\n            <div class=\"form-group\">\n                <input placeholder=\"Password\"\n                       type=\"password\"\n                       class=\"form-control form-control-sm\"\n                       name=\"passwordField\"\n                       [(ngModel)]=\"password\"\n                       #passwordField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': (!passwordField.valid && passwordField.touched)}\"\n                       required />\n                <span *ngIf=\"passwordField.invalid && passwordField.touched\"\n                      class=\"text-danger ml-2\">Password is required</span>\n            </div>\n\n            <!-- form actions -->\n            <div>\n                <button type=\"submit\"\n                        class=\"btn btn-sm btn-primary\"\n                        [disabled]=\"loginForm.invalid\">Login</button>\n\n                <a class=\"btn btn-sm btn-secondary py-1 text-dark\"\n                   (click)=\"loginToGit()\">\n                  Login with GitHub <i class=\"fa fa-github fa-2x ml-2\"></i>\n            </a>\n\n            </div>\n            <!-- /form actions -->\n        </form>\n        <!--/form-->\n    </div>\n</div>"
 
 /***/ }),
 
@@ -3068,7 +3144,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"user-registration mt-3\">\r\n        <h3>\r\n            Profile\r\n        </h3>\r\n        <div *ngIf=\"user.isSiteAdmin\"\r\n             class=\"text-warning small\"> [<i class=\"fa fa-bolt\"></i> ADMIN ]\r\n        </div>\r\n        <hr>\r\n        <!--form-->\r\n        <form class=\"form\"\r\n              (ngSubmit)=\"save()\"\r\n              #profileForm=\"ngForm\">\r\n            <!-- User Name -->\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label small text-dark\"\r\n                       for=\"username\">USER NAME</label>\r\n                <input placeholder=\"User Name\"\r\n                       type=\"text\"\r\n                       class=\"form-control form-control-sm py-1\"\r\n                       name=\"usernameField\"\r\n                       [(ngModel)]=\"user.username\"\r\n                       #usernameField=\"ngModel\"\r\n                       disabled/>\r\n            </div>\r\n\r\n            <!-- Name -->\r\n            <div class=\"form-group\">\r\n                <label class=\"control-label small text-dark\"\r\n                       for=\"name\">NAME</label>\r\n                <input placeholder=\"Name\"\r\n                       type=\"text\"\r\n                       class=\"form-control form-control-sm py-1\"\r\n                       name=\"nameField\"\r\n                       [(ngModel)]=\"user.name\"\r\n                       #nameField=\"ngModel\" />\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <!-- Password -->\r\n                <div class=\"form-group col-sm-6 col-12\">\r\n                    <label class=\"control-label small text-dark\"\r\n                           for=\"password\">CHANGE PASSWORD</label>\r\n                    <input placeholder=\"Password\"\r\n                           type=\"password\"\r\n                           class=\"form-control form-control-sm py-1\"\r\n                           name=\"passwordField\"\r\n                           [(ngModel)]=\"password\"\r\n                           #passwordField=\"ngModel\" />\r\n                </div>\r\n\r\n                <!-- Verify Password -->\r\n                <div class=\"form-group col-sm-6 col-12\">\r\n                    <label class=\"control-label small text-dark\"\r\n                           for=\"name\">CONFIRM CHANGE PASSWORD</label>\r\n                    <input placeholder=\"Verify Password\"\r\n                           type=\"password\"\r\n                           class=\"form-control form-control-sm py-1\"\r\n                           name=\"verifyPasswordField\"\r\n                           [(ngModel)]=\"verifyPassword\"\r\n                           #verifyPasswordField=\"ngModel\" />\r\n                    <span *ngIf=\"verifyPassword && verifyPassword !== password && verifyPasswordField.touched\"\r\n                          class=\"text-danger ml-2 small\">Passwords do not match</span>\r\n                </div>\r\n\r\n                <!-- Link to git -->\r\n                <div class=\"form-group col-sm-6 col-12\">\r\n                    <label class=\"control-label small text-dark\"\r\n                           for=\"name\">LINK To GIT</label>\r\n                    <div *ngIf=\"linkedToGit\">\r\n                        <span class=\"text-success\">Your profile is linked to GitHub</span>\r\n                        <span class=\"btn btn-danger btn-sm py-1 ml-2\"\r\n                              (click)=\"unlinkGit()\">\r\n                              <i class=\"fa fa-minus-circle\"></i>\r\n                              Unlink</span>\r\n                    </div>\r\n                    <div *ngIf=\"!linkedToGit\">\r\n                        <button class=\"btn btn-success btn-sm py-1\"\r\n                                type=\"button\"\r\n                                (click)=\"loginToGit()\">\r\n                                <i class=\"fa fa-github fa-lg mr-2\"></i>\r\n                                Link to Github</button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <!-- form actions -->\r\n            <div>\r\n                <button type=\"submit\"\r\n                        class=\"btn btn-sm btn-primary py-1\"\r\n                        [disabled]=\"profileForm.invalid\">Save</button>\r\n            </div>\r\n            <!-- /form actions -->\r\n        </form>\r\n        <!--/form-->\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"user-registration mt-3\"\n         *ngIf=\"user\">\n        <h3>\n            Profile\n        </h3>\n        <div *ngIf=\"user.isSiteAdmin\"\n             class=\"text-warning small\"> [<i class=\"fa fa-bolt\"></i> ADMIN ]\n        </div>\n        <hr>\n        <!--form-->\n        <form class=\"form\"\n              (ngSubmit)=\"save()\"\n              #profileForm=\"ngForm\">\n            <!-- User Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label small text-dark\"\n                       for=\"username\">USER NAME</label>\n                <input placeholder=\"User Name\"\n                       type=\"text\"\n                       class=\"form-control form-control-sm py-1\"\n                       name=\"usernameField\"\n                       [(ngModel)]=\"user.username\"\n                       #usernameField=\"ngModel\"\n                       disabled/>\n            </div>\n\n            <!-- Name -->\n            <div class=\"form-group\">\n                <label class=\"control-label small text-dark\"\n                       for=\"name\">NAME</label>\n                <input placeholder=\"Name\"\n                       type=\"text\"\n                       class=\"form-control form-control-sm py-1\"\n                       name=\"nameField\"\n                       [(ngModel)]=\"user.name\"\n                       #nameField=\"ngModel\" />\n            </div>\n\n            <div class=\"row\">\n                <!-- Password -->\n                <div class=\"form-group col-sm-6 col-12\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"password\">CHANGE PASSWORD</label>\n                    <input placeholder=\"Password\"\n                           type=\"password\"\n                           class=\"form-control form-control-sm py-1\"\n                           name=\"passwordField\"\n                           [(ngModel)]=\"password\"\n                           #passwordField=\"ngModel\" />\n                </div>\n\n                <!-- Verify Password -->\n                <div class=\"form-group col-sm-6 col-12\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">CONFIRM CHANGE PASSWORD</label>\n                    <input placeholder=\"Verify Password\"\n                           type=\"password\"\n                           class=\"form-control form-control-sm py-1\"\n                           name=\"verifyPasswordField\"\n                           [(ngModel)]=\"verifyPassword\"\n                           #verifyPasswordField=\"ngModel\" />\n                    <span *ngIf=\"verifyPassword && verifyPassword !== password && verifyPasswordField.touched\"\n                          class=\"text-danger ml-2 small\">Passwords do not match</span>\n                </div>\n\n                <!-- Link to git -->\n                <div class=\"form-group col-sm-6 col-12\">\n                    <label class=\"control-label small text-dark\"\n                           for=\"name\">LINK To GIT</label>\n                    <div *ngIf=\"linkedToGit\">\n                        <span class=\"text-success\">Your profile is linked to GitHub</span>\n                        <span class=\"btn btn-danger btn-sm py-1 ml-2\"\n                              (click)=\"unlinkGit()\">\n                              <i class=\"fa fa-minus-circle\"></i>\n                              Unlink</span>\n                    </div>\n                    <div *ngIf=\"!linkedToGit\">\n                        <button class=\"btn btn-success btn-sm py-1\"\n                                type=\"button\"\n                                (click)=\"loginToGit()\">\n                                <i class=\"fa fa-github fa-lg mr-2\"></i>\n                                Link to Github</button>\n                    </div>\n                </div>\n            </div>\n\n            <!-- form actions -->\n            <div>\n                <button type=\"submit\"\n                        class=\"btn btn-sm btn-primary py-1\"\n                        [disabled]=\"profileForm.invalid\">Save</button>\n            </div>\n            <!-- /form actions -->\n        </form>\n        <!--/form-->\n    </div>\n</div>"
 
 /***/ }),
 
@@ -3078,10 +3154,11 @@ module.exports = "<div class=\"container\">\r\n    <div class=\"user-registratio
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__ = __webpack_require__("../../../../../src/app/services/error-handler.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3096,16 +3173,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ProfileComponent = (function () {
-    function ProfileComponent(authService, userService, interactionService, errorHandlerService) {
+    function ProfileComponent(activatedRoute, authService, userService, interactionService, errorHandlerService) {
+        this.activatedRoute = activatedRoute;
         this.authService = authService;
         this.userService = userService;
         this.interactionService = interactionService;
         this.errorHandlerService = errorHandlerService;
     }
     ProfileComponent.prototype.ngOnInit = function () {
-        this.user = this.authService.getLoggedInUser();
-        this.linkedToGit = this.user.github && this.user.github.id.length > 0;
+        var _this = this;
+        this.activatedRoute.paramMap.subscribe(function (param) {
+            if (param.get('userId')) {
+                _this.interactionService.showLoader(true);
+                _this.userService.findUserById(param.get('userId'))
+                    .subscribe(function (user) {
+                    _this.interactionService.showLoader(false);
+                    _this.user = user;
+                    _this.linkedToGit = _this.user.github && _this.user.github.id.length > 0;
+                }, function (err) {
+                    _this.interactionService.showLoader(false);
+                    _this.errorHandlerService.handleError('Error getting user', err);
+                });
+            }
+            else {
+                _this.user = _this.authService.getLoggedInUser();
+                _this.linkedToGit = _this.user.github && _this.user.github.id.length > 0;
+            }
+        });
     };
     /** Save user info */
     ProfileComponent.prototype.save = function () {
@@ -3141,10 +3237,11 @@ var ProfileComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/user/profile/profile.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/user/profile/profile.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_3__services_interactions_service_client__["a" /* InteractionsService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_2__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__["a" /* InteractionsService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_error_handler_service_client__["a" /* ErrorHandlerService */]])
     ], ProfileComponent);
     return ProfileComponent;
 }());
@@ -3174,7 +3271,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"user-registration mt-3\">\r\n            <h3>Register</h3>\r\n        <hr>\r\n        <br>\r\n        <!--form-->\r\n        <form class=\"form\"\r\n              (ngSubmit)=\"register()\"\r\n              #registerForm=\"ngForm\">\r\n            <!-- User Name -->\r\n            <div class=\"form-group\">\r\n                <input placeholder=\"User Name\"\r\n                       type=\"text\"\r\n                       class=\"form-control form-control-sm\"\r\n                       name=\"usernameField\"\r\n                       [(ngModel)]=\"username\"\r\n                       #usernameField=\"ngModel\"\r\n                       [ngClass]=\"{'border-danger': registrationErrors.username || (!usernameField.valid && usernameField.touched)}\"\r\n                       required />\r\n                <span *ngIf=\"usernameField.invalid && usernameField.touched\"\r\n                      class=\"text-danger ml-2\">Username is required</span>\r\n                <span *ngIf=\"registrationErrors.username\"\r\n                      class=\"text-danger ml-2\">{{registrationErrors.username}}</span>\r\n            </div>\r\n\r\n            <!-- Password -->\r\n            <div class=\"form-group\">\r\n                <input placeholder=\"Password\"\r\n                       type=\"password\"\r\n                       class=\"form-control form-control-sm\"\r\n                       name=\"passwordField\"\r\n                       [(ngModel)]=\"password\"\r\n                       #passwordField=\"ngModel\"\r\n                       [ngClass]=\"{'border-danger': (!passwordField.valid && passwordField.touched)}\"\r\n                       required />\r\n                <span *ngIf=\"passwordField.invalid && passwordField.touched\"\r\n                      class=\"text-danger ml-2\">Password is required</span>\r\n            </div>\r\n\r\n            <!-- Verify Password -->\r\n            <div class=\"form-group\">\r\n                <input placeholder=\"Verify Password\"\r\n                       type=\"password\"\r\n                       class=\"form-control form-control-sm\"\r\n                       name=\"verifyPasswordField\"\r\n                       [(ngModel)]=\"verifyPassword\"\r\n                       #verifyPasswordField=\"ngModel\"\r\n                       [ngClass]=\"{'border-danger': verifyPassword !== password && verifyPasswordField.touched}\"\r\n                       required />\r\n                <span *ngIf=\"verifyPasswordField.invalid && verifyPasswordField.touched\"\r\n                      class=\"text-danger ml-2\">Verify Password is required</span>\r\n                <span *ngIf=\"verifyPassword && verifyPassword !== password && verifyPasswordField.touched\"\r\n                      class=\"text-danger ml-2\">Passwords do not match</span>\r\n            </div>\r\n\r\n            <!-- form actions -->\r\n            <div>\r\n                <button type=\"submit\"\r\n                        class=\"btn btn-sm btn-royal btn-block\"\r\n                        [disabled]=\"registerForm.invalid || verifyPassword !== password\">Register</button>\r\n            </div>\r\n            <!-- /form actions -->\r\n        </form>\r\n        <!--/form-->\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"user-registration mt-3\">\n        <h3>Register</h3>\n        <hr>\n        <br>\n        <!--form-->\n        <form class=\"form\"\n              (ngSubmit)=\"register()\"\n              #registerForm=\"ngForm\">\n            <!-- User Name -->\n            <div class=\"form-group\">\n                <input placeholder=\"User Name\"\n                       type=\"text\"\n                       class=\"form-control form-control-sm\"\n                       name=\"usernameField\"\n                       [(ngModel)]=\"username\"\n                       #usernameField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': registrationErrors.username || (!usernameField.valid && usernameField.touched)}\"\n                       required />\n                <span *ngIf=\"usernameField.invalid && usernameField.touched\"\n                      class=\"text-danger ml-2\">Username is required</span>\n                <span *ngIf=\"registrationErrors.username\"\n                      class=\"text-danger ml-2\">{{registrationErrors.username}}</span>\n            </div>\n\n            <!-- Password -->\n            <div class=\"form-group\">\n                <input placeholder=\"Password\"\n                       type=\"password\"\n                       class=\"form-control form-control-sm\"\n                       name=\"passwordField\"\n                       [(ngModel)]=\"password\"\n                       #passwordField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': (!passwordField.valid && passwordField.touched)}\"\n                       required />\n                <span *ngIf=\"passwordField.invalid && passwordField.touched\"\n                      class=\"text-danger ml-2\">Password is required</span>\n            </div>\n\n            <!-- Verify Password -->\n            <div class=\"form-group\">\n                <input placeholder=\"Verify Password\"\n                       type=\"password\"\n                       class=\"form-control form-control-sm\"\n                       name=\"verifyPasswordField\"\n                       [(ngModel)]=\"verifyPassword\"\n                       #verifyPasswordField=\"ngModel\"\n                       [ngClass]=\"{'border-danger': verifyPassword !== password && verifyPasswordField.touched}\"\n                       required />\n                <span *ngIf=\"verifyPasswordField.invalid && verifyPasswordField.touched\"\n                      class=\"text-danger ml-2\">Verify Password is required</span>\n                <span *ngIf=\"verifyPassword && verifyPassword !== password && verifyPasswordField.touched\"\n                      class=\"text-danger ml-2\">Passwords do not match</span>\n            </div>\n\n            <!-- form actions -->\n            <div>\n                <button type=\"submit\"\n                        class=\"btn btn-sm btn-primary\"\n                        [disabled]=\"registerForm.invalid || verifyPassword !== password\">Register</button>\n            </div>\n            <!-- /form actions -->\n        </form>\n        <!--/form-->\n    </div>\n</div>"
 
 /***/ }),
 
@@ -3259,6 +3356,154 @@ var RegisterComponent = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/user/social/social.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".user-social {\r\n    position: absolute;\r\n    top: 0px;\r\n    right: 0px;\r\n    box-shadow: 0px 0px 15px -1px;\r\n    overflow-y: auto;\r\n    z-index: 500;\r\n}\r\n\r\n.user-social-mask {\r\n    position: absolute;\r\n    z-index: 499;\r\n    top: 0;\r\n    right: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/user/social/social.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"user-social-outer\"\n     *ngIf=\"showFeeds\">\n    <div class=\"user-social-mask\"\n         (click)=\"hideFeeds()\"></div>\n    <div class=\"user-social col-12 col-sm-5 col-md-3 bg-light py-5\"\n         [style.height.px]=\"compHeight\">\n        <div *ngIf=\"!me\">\n            <em class=\"mt-3\">You must be logged in to view feeds</em>\n        </div>\n        <div *ngIf=\"me\">\n            <!-- Follow -->\n            <div>\n                <span class=\"btn btn-secondary px-1 py-1 text-muted\"\n                      data-toggle=\"collapse\"\n                      data-target=\"#following\">\n                <i class=\"fa fa-chevron-down mr-1\"></i>\n                <span class=\"font-weight-normal\">Edit Following</span>\n                </span>\n            </div>\n            <div id=\"following\"\n                 class=\"collapse border border-top-0 border-right-0 border-top-0 pb-2\">\n                <app-user-list-select [ignoreIds]=\"[me._id]\"\n                                      [selectedUserIds]=\"me.following\"\n                                      (onUserSelect)=\"follow($event)\"\n                                      (onUserUnSelect)=\"unfollow($event)\"></app-user-list-select>\n            </div>\n\n            <!-- Feeds -->\n            <div class=\"user-feeds mt-3\">\n                <label class=\"control-label text-dark\">Feeds</label>\n                <ul class=\"list-group\">\n                    <li class=\"list-group-item py-2\"\n                        *ngFor=\"let feed of feeds\">\n                        <div class=\"text-dark\">\n                            {{feed.actor}} {{feed.title}}\n                        </div>\n                        <div class=\"small text-muted\">{{feed.createdOn | date: 'short'}}</div>\n                    </li>\n                    <li class=\"list-group-item py-2\"\n                        *ngIf=\"!feeds || feeds.length === 0\">\n                        <em class=\"small\">No feeds to show. Follow users to get updates</em>\n                    </li>\n                </ul>\n            </div>\n\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/user/social/social.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SocialComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__ = __webpack_require__("../../../../../src/app/services/auth.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_social_service_client__ = __webpack_require__("../../../../../src/app/services/social.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__ = __webpack_require__("../../../../../src/app/services/interactions.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_constant__ = __webpack_require__("../../../../../src/app/app.constant.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var SocialComponent = (function () {
+    function SocialComponent(authService, userService, socialService, interactionService) {
+        this.authService = authService;
+        this.userService = userService;
+        this.socialService = socialService;
+        this.interactionService = interactionService;
+    }
+    SocialComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.showFeeds = false;
+        this.interactionService.registerCallback(__WEBPACK_IMPORTED_MODULE_5__app_constant__["a" /* AppConstants */].EVENTS.showFeeds, function () {
+            _this.showFeeds = !_this.showFeeds;
+        });
+        this.compHeight = window.innerHeight;
+        this.me = this.authService.getLoggedInUser();
+        this.following = [];
+        if (this.me) {
+            // get user details of following users
+            if (this.me.following && this.me.following.length) {
+                this.userService.findUsersByIds(this.me.following.join(','))
+                    .subscribe(function (users) {
+                    _this.following = users;
+                    _this.getFeeds();
+                }, function (err) {
+                    console.log('Error getting following user info', err);
+                    _this.feedError = 'Error getting feeds';
+                });
+            }
+        }
+    };
+    /** Get feeds of user */
+    SocialComponent.prototype.getFeeds = function () {
+        var _this = this;
+        this.feeds = [];
+        this.socialService.getFeeds()
+            .subscribe(function (feeds) {
+            _this.feeds = feeds.map(function (i) {
+                var actor = _this.following.find(function (x) { return x._id === i.actor; });
+                if (actor) {
+                    i.actor = actor.name || actor.username;
+                }
+                return i;
+            });
+        }, function (err) {
+            console.error('Error getting feeds', err);
+            _this.feedError = 'Error getting feeds';
+        });
+    };
+    /** Follow user
+     * @param user user to follow
+     */
+    SocialComponent.prototype.follow = function (user) {
+        var _this = this;
+        this.socialService.follow(user._id)
+            .subscribe(function (res) {
+            _this.following.push(user);
+            console.log('follow successful', res);
+            _this.getFeeds();
+        }, function (err) {
+            console.log('error following user', err);
+        });
+    };
+    /** Unfollow user
+    * @param user user to unfollow
+    */
+    SocialComponent.prototype.unfollow = function (user) {
+        var _this = this;
+        this.socialService.unfollow(user._id)
+            .subscribe(function (res) {
+            console.log('unfollow successful', res);
+            _this.getFeeds();
+        }, function (err) {
+            console.log('error unfollowing user', err);
+        });
+    };
+    /** Hide feeds */
+    SocialComponent.prototype.hideFeeds = function () {
+        this.interactionService.showFeeds();
+    };
+    SocialComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-user-social',
+            template: __webpack_require__("../../../../../src/app/components/user/social/social.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/user/social/social.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service_client__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_social_service_client__["a" /* SocialService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_interactions_service_client__["a" /* InteractionsService */]])
+    ], SocialComponent);
+    return SocialComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/user/user-list-select/user-list-select.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3280,7 +3525,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/user-list-select/user-list-select.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"user-list-select\">\r\n    <!-- Search -->\r\n    <form (submit)=\"searchUsers()\">\r\n        <div class=\"input-group input-group-sm\">\r\n            <input type=\"text\"\r\n                   name=\"searchQuery\"\r\n                   class=\"form-control py-1\"\r\n                   placeholder=\"Eg: alice, bob\"\r\n                   [(ngModel)]=\"searchQuery\">\r\n            <button type=\"submit\"\r\n                    class=\"input-group-btn btn btn-sm btn-primary\">\r\n                   <i class=\"fa fa-search\"></i>\r\n               </button>\r\n        </div>\r\n    </form>\r\n    <!-- Search results -->\r\n    <div class=\"list-group small\">\r\n        <a class=\"list-group-item list-group-item-action py-1 bg-dark\"\r\n           *ngFor=\"let user of searchResults\"\r\n           (click)=\"selectUser(user)\">\r\n                <i *ngIf=\"selectedUserIds.indexOf(user._id) === -1\" class=\"fa fa-plus-square text-warning\"></i>               \r\n              <span *ngIf=\"user.name\" class=\"ml-2\">\r\n                {{user.name}} <small class=\"text-muted\">{{user.username}}</small>\r\n              </span>\r\n              <span *ngIf=\"!user.name\">\r\n                  {{user.username}}\r\n              </span>\r\n              <span *ngIf=\"selectedUserIds.indexOf(user._id) > -1\" class=\"small text-warning\">\r\n                Already added\r\n              </span>\r\n            </a>\r\n    </div>\r\n    <!-- Selected users -->\r\n    <ul class=\"list-group mt-2\">\r\n        <li class=\"list-group-item list-group-item-action py-2\"\r\n            *ngFor=\"let user of users\">\r\n            <i class=\"fa fa-minus-circle fa-lg text-danger\"\r\n               (click)=\"removeUser(user)\"></i>\r\n            <span *ngIf=\"user.name\">\r\n            {{user.name}} <small class=\"text-muted\">{{user.username}}</small>\r\n          </span>\r\n            <span *ngIf=\"!user.name\">\r\n              {{user.username}}\r\n          </span>\r\n        </li>\r\n    </ul>\r\n</div>"
+module.exports = "<div class=\"user-list-select\">\n    <!-- Search -->\n    <form (submit)=\"searchUsers()\">\n        <div class=\"input-group input-group-sm\">\n            <input type=\"text\"\n                   name=\"searchQuery\"\n                   class=\"form-control py-1\"\n                   placeholder=\"Eg: alice, bob\"\n                   [(ngModel)]=\"searchQuery\">\n            <button type=\"submit\"\n                    class=\"input-group-btn btn btn-sm btn-primary\">\n                   <i class=\"fa fa-search\"></i>\n               </button>\n        </div>\n    </form>\n    <!-- Search results -->\n    <div class=\"list-group small\">\n        <a class=\"list-group-item list-group-item-action py-1 bg-dark\"\n           *ngFor=\"let user of searchResults\"\n           (click)=\"selectUser(user)\">\n                <i *ngIf=\"selectedUserIds.indexOf(user._id) === -1\" class=\"fa fa-plus-square text-warning\"></i>               \n              <span *ngIf=\"user.name\" class=\"ml-2\">\n                {{user.name}} <small class=\"text-muted\">{{user.username}}</small>\n              </span>\n              <span *ngIf=\"!user.name\">\n                  {{user.username}}\n              </span>\n              <span *ngIf=\"selectedUserIds.indexOf(user._id) > -1\" class=\"small text-warning\">\n                Already added\n              </span>\n            </a>\n        <span class=\"list-group-item py-1 bg-danger text-light\"\n              *ngIf=\"zeroResults\">\n                <em>No users found</em>\n        </span>\n    </div>\n    <!-- Selected users -->\n    <ul class=\"list-group mt-2\">\n        <li class=\"list-group-item list-group-item-action py-2\"\n            *ngFor=\"let user of users\">\n            <i class=\"fa fa-minus-circle fa-lg text-danger\"\n               (click)=\"removeUser(user)\"></i>\n            <span *ngIf=\"user.name\">\n            {{user.name}} <small class=\"text-muted\">{{user.username}}</small>\n          </span>\n            <span *ngIf=\"!user.name\">\n              {{user.username}}\n          </span>\n        </li>\n    </ul>\n</div>"
 
 /***/ }),
 
@@ -3309,26 +3554,39 @@ var UserListSelectComponent = (function () {
         this.userService = userService;
         this.errorHandlerService = errorHandlerService;
         this.selectedUserIdsChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
+        this.onUserSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
+        this.onUserUnSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
     }
     UserListSelectComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.userService.findUsersByIds(this.selectedUserIds.join(','))
-            .subscribe(function (users) {
-            if (_this.ignoreIds && _this.ignoreIds.length) {
-                _this.users = users.filter(function (i) { return _this.ignoreIds.indexOf(i._id) === -1; });
-            }
-            else {
-                _this.users = users;
-            }
-        });
+        this.zeroResults = false;
+        this.users = [];
+        if (this.selectedUserIds && this.selectedUserIds.length) {
+            this.userService.findUsersByIds(this.selectedUserIds.join(','))
+                .subscribe(function (users) {
+                if (_this.ignoreIds && _this.ignoreIds.length) {
+                    _this.users = users.filter(function (i) { return _this.ignoreIds.indexOf(i._id) === -1; });
+                }
+                else {
+                    _this.users = users;
+                }
+            });
+        }
+        else {
+            this.selectedUserIds = [];
+        }
     };
     /** Search for user based on username or name */
     UserListSelectComponent.prototype.searchUsers = function () {
         var _this = this;
         if (this.searchQuery) {
+            this.zeroResults = false;
             this.userService.searchByName(this.searchQuery)
                 .subscribe(function (results) {
                 _this.searchResults = results;
+                if (results.length === 0) {
+                    _this.zeroResults = true;
+                }
             });
         }
     };
@@ -3343,6 +3601,7 @@ var UserListSelectComponent = (function () {
             this.searchResults = this.searchResults.filter(function (i) { return i._id !== user._id; });
         }
         this.selectedUserIdsChange.emit(this.selectedUserIds);
+        this.onUserSelect.emit(user);
     };
     /** Remove user from selected list of users */
     UserListSelectComponent.prototype.removeUser = function (user) {
@@ -3351,6 +3610,7 @@ var UserListSelectComponent = (function () {
             this.users = this.users.filter(function (i) { return i._id !== user._id; });
             this.selectedUserIdsChange.emit(this.selectedUserIds);
         }
+        this.onUserUnSelect.emit(user);
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
@@ -3364,6 +3624,14 @@ var UserListSelectComponent = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
         __metadata("design:type", Object)
     ], UserListSelectComponent.prototype, "selectedUserIdsChange", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
+        __metadata("design:type", Object)
+    ], UserListSelectComponent.prototype, "onUserSelect", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* Output */])(),
+        __metadata("design:type", Object)
+    ], UserListSelectComponent.prototype, "onUserUnSelect", void 0);
     UserListSelectComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-user-list-select',
@@ -5164,6 +5432,7 @@ var faIconsList = ['500px', 'adjust', 'adn', 'align-center', 'align-justify', 'a
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return User; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Markdown; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Project; });
+/* unused harmony export Activity */
 /** Models a User object */
 var User = (function () {
     function User() {
@@ -5183,6 +5452,13 @@ var Project = (function () {
     function Project() {
     }
     return Project;
+}());
+
+/** Models a activity feed item */
+var Activity = (function () {
+    function Activity() {
+    }
+    return Activity;
 }());
 
 
@@ -5976,6 +6252,12 @@ var InteractionsService = (function () {
     InteractionsService.prototype.showLoader = function (show) {
         this.invoke(__WEBPACK_IMPORTED_MODULE_1__app_constant__["a" /* AppConstants */].EVENTS.showLoader, show);
     };
+    /** Show / hide feeds sidebar
+     *  @param show true, to show; false, to hide
+     */
+    InteractionsService.prototype.showFeeds = function () {
+        this.invoke(__WEBPACK_IMPORTED_MODULE_1__app_constant__["a" /* AppConstants */].EVENTS.showFeeds);
+    };
     InteractionsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [])
@@ -6161,6 +6443,69 @@ var ProjectService = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
     ], ProjectService);
     return ProjectService;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/social.service.client.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SocialService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_constant__ = __webpack_require__("../../../../../src/app/app.constant.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SocialService = (function () {
+    function SocialService(http) {
+        this.http = http;
+        this.endpoint = {
+            'getFeeds': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/social/feeds',
+            'follow': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/social/follow',
+            'unfollow': __WEBPACK_IMPORTED_MODULE_2__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/social/unfollow'
+        };
+    }
+    /** Get feeds for current loggedIn user
+     * @returns Observable that resolves to the list of feeds for this user
+     */
+    SocialService.prototype.getFeeds = function () {
+        var url = this.endpoint.getFeeds;
+        return this.http.get(url, { withCredentials: true });
+    };
+    /**
+     * follow specified user
+     * @param userId user to follow
+     */
+    SocialService.prototype.follow = function (userId) {
+        var url = this.endpoint.follow;
+        return this.http.put(url, { follow: userId }, { withCredentials: true });
+    };
+    /**
+     * follow specified user
+     * @param userId user to follow
+     */
+    SocialService.prototype.unfollow = function (userId) {
+        var url = this.endpoint.unfollow;
+        return this.http.put(url, { unfollow: userId }, { withCredentials: true });
+    };
+    SocialService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    ], SocialService);
+    return SocialService;
 }());
 
 

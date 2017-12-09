@@ -16,6 +16,7 @@ import { ProjectService } from './services/project.service.client';
 import { IconSearchService } from './services/iconsearch.service.client';
 import { UtilService } from './services/utils.service.client';
 import { GitHubService } from './services/github.service.client';
+import { SocialService } from './services/social.service.client';
 // #endregion
 
 // #region App Components
@@ -52,13 +53,15 @@ import { CommitComponent } from './components/editor/git/commit/commit.component
 import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { UserListSelectComponent } from './components/user/user-list-select/user-list-select.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { SocialComponent } from './components/user/social/social.component';
 
 // project components
 import { ListProjectComponent } from './components/project/project-list/project-list.component';
 import { NewProjectComponent } from './components/project/project-new/project-new.component';
 import { EditProjectComponent } from './components/project/project-edit/project-edit.component';
-import { ProfileComponent } from './components/user/profile/profile.component';
-import { AdminComponent } from './components/admin/admin.component';
+
 
 
 
@@ -93,7 +96,8 @@ import { AdminComponent } from './components/admin/admin.component';
     UserListSelectComponent,
     LoginComponent,
     ProfileComponent,
-    AdminComponent
+    AdminComponent,
+    SocialComponent
   ],
   imports: [
     BrowserModule,
@@ -111,6 +115,7 @@ import { AdminComponent } from './components/admin/admin.component';
     InteractionsService,
     IconSearchService,
     UtilService,
+    SocialService,
     MarkdownConvertorPipe,
     StringFilterPipe
   ],

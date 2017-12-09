@@ -5,6 +5,7 @@ module.exports = (function() {
 
     const router = require('express').Router();
     const ProjectModel = require('../models/model.server').Project;
+    const ActivityModel = require('../models/model.server').Activity;
     const Utils = require('./service-utils.js');
     const q = require('q');
     const passport = require('passport');
@@ -55,6 +56,8 @@ module.exports = (function() {
      * @returns {Promise<ProjectSchema>} promise that resolves to the created project object
      */
     function createProject(project, admin) {
+        const def = q.defer();
+
         if (project.admins) {
             project.admins.push(admin._id.toString());
         } else {
@@ -72,7 +75,15 @@ module.exports = (function() {
             project.members = [admin._id.toString()];
         }
 
-        return ProjectModel.createProject(project);
+        ProjectModel.createProject(project).then((createdProject) => {
+            // add activity
+            ActivityModel.createActivity(admin._id, 'created project "' + project.name + '"');
+            def.resolve(createdProject);
+        }, (err) => {
+            def.reject(err);
+        });
+
+        return def.promise;
     }
 
     //#endregion: Create Project
@@ -153,7 +164,18 @@ module.exports = (function() {
      * @returns {Promise<ProjectSchema>} promise that resolves to updated project object
      */
     function updateProject(projectId, project) {
-        return ProjectModel.updateProject(projectId, project);
+        const def = q.defer();
+
+        ProjectModel.updateProject(projectId, project)
+            .then((updatedProject) => {
+                // add activity
+                ActivityModel.createActivity(admin._id, 'updated project "' + project.name + '"');
+                def.resolve(updatedProject);
+            }, (err) => {
+                def.reject(err);
+            });
+
+        return def.promise;
     }
 
     //#endregion: Update project
@@ -172,7 +194,16 @@ module.exports = (function() {
      * @returns {Promise<ProjectSchema>} promise that resolves to deleted project object
      */
     function deleteProject(projectId) {
-        return ProjectModel.deleteProject(projectId);
+        const def = q.defer();
+        ProjectModel.deleteProject(projectId)
+            .then((deletedProject) => {
+                // add activity
+                ActivityModel.createActivity(admin._id, 'deleted project "' + deletedProject.name + '"');
+                def.resolve(deletedProject);
+            }, (err) => {
+                def.reject(err);
+            });
+        return def.promise;
     }
 
     // #endregion: Delete project

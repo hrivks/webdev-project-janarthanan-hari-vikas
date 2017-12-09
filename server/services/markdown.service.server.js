@@ -5,6 +5,8 @@ module.exports = (function() {
 
     const router = require('express').Router();
     const MarkdownModel = require('../models/model.server').Markdown;
+    const ActivityModel = require('../models/model.server').Activity;
+    const ProjectModel = require('../models/model.server').Project;
     const Utils = require('./service-utils.js');
     const q = require('q');
     const Acl = require('./access-control.service.server');
@@ -110,8 +112,22 @@ module.exports = (function() {
      * @returns {Promise<MarkdownSchema>} promise that resolves to updated markdown object
      */
     function updateMarkdown(markdownId, markdown, user) {
+        const def = q.defer();
         markdown.editedBy = user.name || user.username;
-        return MarkdownModel.updateMarkdown(markdownId, markdown);
+        MarkdownModel.updateMarkdown(markdownId, markdown)
+            .then((updatedMarkdown) => {
+                // add activity
+                ProjectModel.find({
+                    markdown: updatedMarkdown._id
+                }, (err, project) => {
+                    ActivityModel.createActivity(user._id, 'saved markdown in project "' + project.name + '"');
+                });
+                def.resolve(updatedMarkdown);
+            }, (err) => {
+                def.reject(err);
+            });
+
+        return def.promise;
     }
 
     //#endregion: Update markdown

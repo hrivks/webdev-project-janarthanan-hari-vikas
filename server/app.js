@@ -22,6 +22,10 @@ router.use('/project', require('./services/project.service.server.js').router);
 // Auth route: /api/auth
 router.use('/auth', require('./services/auth.service.server.js').router);
 
+// Auth route: /api/social
+router.use('/social', require('./services/social.service.server.js').router);
+
+
 // Icon search route: /api/iconsearch
 router.use('/iconsearch', require('./services/iconSearch.service.server.js').router);
 

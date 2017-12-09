@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service.client';
 import { ProjectService } from '../../services/project.service.client';
 import { Project, User, Markdown } from '../../model/model';
@@ -30,7 +31,8 @@ export class AdminComponent implements OnInit {
     private userService: UserService,
     private markdownService: MarkdownService,
     private interactionService: InteractionsService,
-    private errorHandlerService: ErrorHandlerService) { }
+    private errorHandlerService: ErrorHandlerService,
+    private router: Router) { }
 
   ngOnInit() {
     this.me = this.authService.getLoggedInUser();
@@ -51,8 +53,11 @@ export class AdminComponent implements OnInit {
           this.errorHandlerService.handleError('Error getting list of all users', err);
         });
 
+    } else {
+      this.interactionService.showAlert('You do not have access to view this page');
     }
   }
+
 
   /** Create a new project */
   createProject() {
@@ -64,6 +69,7 @@ export class AdminComponent implements OnInit {
     const newMarkdown: Markdown = {
       content: ''
     };
+    this.interactionService.showLoader(true);
     this.markdownService.createMarkdown(newMarkdown)
       .subscribe((createdMarkdown) => {
         // create project and associate with created markdown
@@ -77,19 +83,38 @@ export class AdminComponent implements OnInit {
             this.newProjectName = '';
             this.projects.push(createdProject);
             this.newlyCreatedProject = createdProject;
+            this.interactionService.showLoader(false);
             this.interactionService.showAlert('Project created successfully', 'success', true);
           }, (err) => {
+            this.interactionService.showLoader(false);
             this.errorHandlerService.handleError('Error creating project', err);
           });
 
       }, (err) => {
+        this.interactionService.showLoader(false);
         this.errorHandlerService.handleError('Error creating project markdown', err);
+      });
+  }
+
+  /**
+   * Delete project
+   * @param project projec to delete
+   */
+  deleteProject(project: Project) {
+    this.interactionService.showLoader(true);
+    this.projectService.deleteProject(project._id)
+      .subscribe((deletedProject) => {
+        this.projects.splice(this.projects.indexOf(project), 1);
+        this.interactionService.showLoader(false);
+        this.interactionService.showAlert('Project deleted successfully', 'success');
+      }, (err) => {
+        this.interactionService.showLoader(false);
+        this.errorHandlerService.handleError('Error deleting project', err);
       });
   }
 
   /** Create new user */
   createUser() {
-
     if (!this.newUserName || !this.newUserPassword) {
       this.interactionService.showAlert('Username or password cannot be empty', 'danger', true);
       return;
@@ -100,17 +125,51 @@ export class AdminComponent implements OnInit {
       return;
     }
 
+    this.interactionService.showLoader(true);
     this.userService.createUser(this.newUserName, this.newUserPassword)
       .subscribe((createdUser) => {
         this.newUserName = '';
         this.newUserPassword = '';
         this.users.push(createdUser);
         this.newlyCreatedUser = createdUser;
+        this.interactionService.showLoader(false);
         this.interactionService.showAlert('User created successfully', 'success', true);
       }, (err) => {
+        this.interactionService.showLoader(false);
         this.errorHandlerService.handleError('Error creating new user', err);
       });
+  }
 
+
+  /** Delete user
+   * @param user user to delete
+  */
+  deleteUser(user: User) {
+    this.userService.deleteUser(user._id)
+      .subscribe((deleted) => {
+        this.users.splice(this.users.indexOf(user), 1);
+        this.interactionService.showAlert('User deleted successfully', 'success', true);
+      }, (err) => {
+        this.errorHandlerService.handleError('Error deleting user', err);
+      });
+  }
+
+
+  /** Toggle user's site admin status
+    * @param user user to be set/unset as site admin
+  */
+  makeUserAdmin(user) {
+    user.isSiteAdmin = user.isSiteAdmin ? false : true;
+    this.interactionService.showLoader(true);
+    this.userService.updateUser(user._id, user)
+      .subscribe((updatedUser) => {
+        user = updatedUser;
+        this.interactionService.showLoader(false);
+        this.interactionService.showAlert('User updated successfully', 'success', true);
+      }, (err) => {
+        this.interactionService.showLoader(false);
+        this.errorHandlerService.handleError('Error updating User', err);
+      });
   }
 
 }

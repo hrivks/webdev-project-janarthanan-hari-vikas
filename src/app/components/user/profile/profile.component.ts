@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../services/auth.service.client';
 import { UserService } from '../../../services/user.service.client';
 import { InteractionsService } from '../../../services/interactions.service.client';
 import { ErrorHandlerService } from '../../../services/error-handler.service.client';
 import { User } from '../../../model/model';
+import { ParamMap } from '@angular/router/src/shared';
 
 @Component({
   selector: 'app-profile',
@@ -18,14 +20,31 @@ export class ProfileComponent implements OnInit {
   private verifyPassword: string;
   private linkedToGit: boolean;
 
-  constructor(private authService: AuthService,
+  constructor(private activatedRoute: ActivatedRoute,
+    private authService: AuthService,
     private userService: UserService,
     private interactionService: InteractionsService,
     private errorHandlerService: ErrorHandlerService) { }
 
   ngOnInit() {
-    this.user = this.authService.getLoggedInUser();
-    this.linkedToGit = this.user.github && this.user.github.id.length > 0;
+    this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
+      if (param.get('userId')) {
+        this.interactionService.showLoader(true);
+        this.userService.findUserById(param.get('userId'))
+          .subscribe((user) => {
+            this.interactionService.showLoader(false);
+            this.user = user;
+            this.linkedToGit = this.user.github && this.user.github.id.length > 0;
+          }, (err) => {
+            this.interactionService.showLoader(false);
+            this.errorHandlerService.handleError('Error getting user', err);
+          });
+      } else {
+        this.user = this.authService.getLoggedInUser();
+        this.linkedToGit = this.user.github && this.user.github.id.length > 0;
+      }
+
+    });
   }
 
   /** Save user info */

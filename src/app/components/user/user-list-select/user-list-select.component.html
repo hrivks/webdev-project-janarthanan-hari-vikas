@@ -29,6 +29,10 @@
                 Already added
               </span>
             </a>
+        <span class="list-group-item py-1 bg-danger text-light"
+              *ngIf="zeroResults">
+                <em>No users found</em>
+        </span>
     </div>
     <!-- Selected users -->
     <ul class="list-group mt-2">

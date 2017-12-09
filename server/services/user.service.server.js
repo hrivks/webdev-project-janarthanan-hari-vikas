@@ -1,7 +1,7 @@
 // Provides CRUD for user model
 // Module Route Root: '/api/user'
 
-module.exports = (function () {
+module.exports = (function() {
 
     const router = require('express').Router();
     const UserModel = require('../models/model.server').User;
@@ -18,6 +18,7 @@ module.exports = (function () {
             getAllUsers: getAllUsers,
             createUser: createUser,
             findUserById: findUserById,
+            findUsersByIds: findUsersByIds,
             findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
             deleteUser: deleteUser
@@ -25,19 +26,19 @@ module.exports = (function () {
     };
 
     // ACL checkers
-    const hasReadAccess = function (req, res, next) {
+    const hasReadAccess = function(req, res, next) {
         Acl.checkAccess(req, res, next, 'UserRead');
     };
 
-    const hasEditAccess = function (req, res, next) {
+    const hasEditAccess = function(req, res, next) {
         Acl.checkAccess(req, res, next, 'UserEdit');
     };
 
-    const hasDeleteAccess = function (req, res, next) {
+    const hasDeleteAccess = function(req, res, next) {
         Acl.checkAccess(req, res, next, 'UserDelete');
     };
 
-    const hasSiteAdminAccess = function (req, res, next) {
+    const hasSiteAdminAccess = function(req, res, next) {
         Acl.checkAccess(req, res, next, 'SiteAdmin');
     };
 
@@ -81,7 +82,7 @@ module.exports = (function () {
     //#region: Register User
 
     // route: [POST] '/api/user/register'
-    router.post('/register', function (req, res) {
+    router.post('/register', function(req, res) {
         Utils.sendResponse(res, register, [req.body, req]);
     });
 
@@ -125,7 +126,7 @@ module.exports = (function () {
     //#region: Search user by name
 
     // route: [GET] '/api/user/search?name=name1,name2,name3'
-    router.get('/search', Utils.checkAuth, function (req, res) {
+    router.get('/search', Utils.checkAuth, function(req, res) {
         Utils.sendResponse(res, searchByName, [req.query.name]);
     });
 
@@ -138,7 +139,7 @@ module.exports = (function () {
     //#region : Create User
 
     // route: [POST] '/api/user'
-    router.post('/', hasSiteAdminAccess, function (req, res) {
+    router.post('/', hasSiteAdminAccess, function(req, res) {
         Utils.sendResponse(res, createUser, [req.body]);
     });
 
@@ -160,7 +161,7 @@ module.exports = (function () {
     //#region : Find users by Ids
 
     // route: [GET] '/api/user/byIds?userIds=id1,id2,id3..'
-    router.get('/byIds', Utils.checkAuth, function (req, res) {
+    router.get('/byIds', Utils.checkAuth, function(req, res) {
         Utils.sendResponse(res, findUsersByIds, [req.query.userIds]);
     });
 
@@ -179,7 +180,7 @@ module.exports = (function () {
     //#region : Find user by Id
 
     // route: [GET] '/api/user/:userId'
-    router.get('/:userId', hasReadAccess, function (req, res) {
+    router.get('/:userId', hasReadAccess, function(req, res) {
         Utils.sendResponse(res, findUserById, [req.params.userId]);
     });
 
@@ -198,7 +199,7 @@ module.exports = (function () {
     //#region : Find user username & credentials
 
     // route: [GET] '/api/user?username=username&password=password'
-    router.get('/', function (req, res) {
+    router.get('/', function(req, res) {
         Utils.sendResponse(res, findUserByCredentials, [req.query.username, req.query.password]);
     });
 
@@ -226,7 +227,11 @@ module.exports = (function () {
     //#region : Update User
 
     // route: [PUT] '/api/user/:userId'
-    router.put('/:userId', hasEditAccess, function (req, res) {
+    router.put('/:userId', hasEditAccess, function(req, res) {
+        const user = req.body;
+        if (user.isSiteAdmin && !req.user.isSiteAdmin) {
+            user.isSiteAdmin = false;
+        }
         Utils.sendResponse(res, updateUser, [req.params.userId, req.body]);
     });
 
@@ -249,7 +254,7 @@ module.exports = (function () {
     //#region : Delete User
 
     // route: [DELETE] '/api/user/:userId'
-    router.delete('/:userId', hasDeleteAccess, function (req, res) {
+    router.delete('/:userId', hasDeleteAccess, function(req, res) {
         Utils.sendResponse(res, deleteUser, [req.params.userId]);
     });
 

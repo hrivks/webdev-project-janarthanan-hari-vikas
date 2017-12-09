@@ -6,6 +6,7 @@ module.exports = (function() {
     const mongoose = require('mongoose');
     const ProjectSchema = require('./project.schema.server');
     const UserModel = require('../user/user.model.server');
+    const MarkdownModel = require('../markdown/markdown.model.server');
     var ProjectModel = mongoose.model('ProjectModel', ProjectSchema);
 
     // API
@@ -108,10 +109,25 @@ module.exports = (function() {
     /**
      * Delete project by project id
      * @param {string} projectId 
-     * @returns {DocumentQuery<ProjectSchema>} query that resolves successfully when the project is removed
+     * @returns {Promise<ProjectSchema>} promise that resolves successfully when the project is removed
      */
     function deleteProject(projectId) {
-        return ProjectModel.findByIdAndRemove(projectId);
+        var def = q.defer();
+        ProjectModel.findByIdAndRemove(projectId, (err, removedProject) => {
+            if (err) {
+                def.reject(err);
+            } else {
+                MarkdownModel.findByIdAndRemove(removedProject.markdown, (err, removedMarkdown) => {
+                    if (err) {
+                        def.reject(err);
+                    } else {
+                        def.resolve(removedProject);
+                    }
+                });
+            }
+        });
+
+        return def.promise;
     }
 
     return ProjectModel;

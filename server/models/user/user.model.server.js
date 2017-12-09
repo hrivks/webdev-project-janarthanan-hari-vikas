@@ -5,6 +5,7 @@ module.exports = (function() {
     const q = require('q');
     const mongoose = require('mongoose');
     const UserSchema = require('./user.schema.server');
+    const ProjectModel = require('../project/project.model.server');
 
     var UserModel = mongoose.model('UserModel', UserSchema);
 
@@ -220,7 +221,52 @@ module.exports = (function() {
      * @returns {DocumentQuery<UserSchema>} query that resolves successfully when the user is removed
      */
     function deleteUser(userId) {
-        return UserModel.findByIdAndRemove(userId);
+        const def = q.defer();
+        UserModel.findByIdAndRemove(userId, (err, res) => {
+            if (err) {
+                def.reject(err);
+            } else {
+                // remove user entry from all projects
+                ProjectModel.update({
+                    $or: [{
+                        admins: userId
+                    }, {
+                        members: userId
+                    }]
+                }, {
+                    $pull: {
+                        admins: userId,
+                        members: userId
+                    }
+                }, {
+                    multi: true
+                }, (err, projects) => {
+                    if (err) {
+                        def.reject(err);
+                    } else {
+                        def.resolve({
+                            result: 'deleted'
+                        });
+                    }
+                });
+            }
+        });
+        return def.promise;
+    }
+
+    /**
+     * Make user as site admin
+     * @param {string} userId id of the user
+     * @param {boolean} isSiteAdmin true, to make site admin
+     */
+    function makeSiteAdmin(userId, isSiteAdmin) {
+        return UserModel.findByIdAndUpdate(userId, {
+            $set: {
+                isSiteAdmin: isSiteAdmin
+            }
+        }, {
+            new: true
+        });
     }
 
 

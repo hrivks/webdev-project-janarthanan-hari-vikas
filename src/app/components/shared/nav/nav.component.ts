@@ -45,6 +45,7 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
 
+  /** Login */
   login() {
     this.authService.login(this.username, this.password)
       .subscribe((usr) => {
@@ -54,13 +55,20 @@ export class NavComponent implements OnInit {
       });
   }
 
+  /** Login with Github */
   loginToGit() {
     this.authService.loginToGit();
   }
 
+  /** logout */
   logout() {
     localStorage.clear();
     this.authService.logout();
+  }
+
+  /** Show feeds */
+  showFeeds() {
+    this.interactionService.showFeeds();
   }
 
 }

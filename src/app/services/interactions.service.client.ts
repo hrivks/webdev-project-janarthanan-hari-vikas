@@ -42,6 +42,7 @@ export class InteractionsService {
         }
     }
 
+
     /**
      * Invoke all registered callback for the specified event
      * @param name name of the event
@@ -65,6 +66,7 @@ export class InteractionsService {
         }
     }
 
+
     /**
      * Show alert
      * @param text alert text
@@ -75,10 +77,12 @@ export class InteractionsService {
         this.invoke(AppConstants.EVENTS.showAlert, { text: text, type: type, autoClose: autoClose });
     }
 
+
     /** Hide Alert */
     hideAlert() {
         this.invoke(AppConstants.EVENTS.hideAlert);
     }
+
 
     /**
      * Show / hide loading screen
@@ -86,6 +90,14 @@ export class InteractionsService {
      */
     showLoader(show: boolean) {
         this.invoke(AppConstants.EVENTS.showLoader, show);
+    }
+
+
+    /** Show / hide feeds sidebar
+     *  @param show true, to show; false, to hide
+     */
+    showFeeds() {
+        this.invoke(AppConstants.EVENTS.showFeeds);
     }
 
 }

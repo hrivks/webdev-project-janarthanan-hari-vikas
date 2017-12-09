@@ -58,14 +58,21 @@
         <!-- Logout form -->
         <ul class="float-right ml-auto navbar-nav form-inline"
             *ngIf="loggedIn">
-            <li class="nav-item">
+            <li class="nav-item mx-1">
                 <a [routerLink]="['/profile']"
                    class="btn btn-primary text-light">
-                    <span class="fa fa-user-circle fa-lg mr-2"></span>
+                    <span class="fa fa-user-circle fa-lg mx-2"></span>
                     <span> {{loggedIn.name || loggedIn.username}}</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- feeds -->
+            <li class="nav-item mx-2">
+                <a class="btn btn-primary text-light py-2 px-3"
+                   (click)="showFeeds()">
+                   <span> <i class="fa fa-rss fa-2x"></i> </span>
+                 </a>
+            </li>
+            <li class="nav-item mx-2">
                 <button class="btn btn-secondary btn-sm"
                         (click)="logout()">Logout</button>
             </li>

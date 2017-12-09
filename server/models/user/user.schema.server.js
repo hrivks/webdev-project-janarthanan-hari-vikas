@@ -17,7 +17,11 @@ module.exports = (function() {
             type: Date,
             default: Date.now
         },
-        isSiteAdmin: Boolean
+        isSiteAdmin: Boolean,
+        following: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'users'
+        }]
     }, {
         collection: 'users'
     });
