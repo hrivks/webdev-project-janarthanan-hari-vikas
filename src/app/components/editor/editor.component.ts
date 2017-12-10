@@ -141,12 +141,12 @@ export class EditorComponent implements OnInit {
             }</code></pre>
             <p>also with <code>inline code</code> support</p>
             <p><strong>Image Support</strong></p>
-            <p><strong><img src="https://i.pinimg.com/736x/71/df/db/71dfdb45ba647c5f0951dc0eec9815dc--computer
-            -jokes-computer-technology.jpg" alt="Sample Image" /></strong></p>
+            <p><strong><img src="https://i.pinimg.com/736x/71/df/db/71dfdb45ba647c5f0951dc0eec9815dc--computer` +
+            `-jokes-computer-technology.jpg" alt="Sample Image" /></strong></p>
             <p>Custom Size</p>
-            <p><img src="https://images1-focus-opensocial.googleusercontent
-            .com/gadgets/proxy?url=https://i.pinimg.com/736x/71/df/db/71dfdb45ba647c5f0951dc0eec9815dc-
-            -computer-jokes-computer-technology.jpg&amp;container=focus&amp;resize_w=192&amp;resize_h=192" alt="" /></p>
+            <p><img src="https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?` +
+            `url=https://i.pinimg.com/736x/71/df/db/71dfdb45ba647c5f0951dc0eec9815dc--computer-jokes-computer-technology.jpg` +
+            `&container=focus&resize_w=192&resize_h=192" alt="" /></p>
             <p>Search and Insert Icons: <em>(powered by IconsFinder.com)</em></p>
             <p><img src="https://cdn2.iconfinder.com/data/icons/snipicons/500/computer-64.png"
             alt="" />&nbsp;<img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/cat-64.png"
