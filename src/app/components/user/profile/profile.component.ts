@@ -59,7 +59,10 @@ export class ProfileComponent implements OnInit {
       .subscribe((updatedUser) => {
         this.user = updatedUser;
         this.linkedToGit = this.user.github && this.user.github.id.length > 0;
-        this.authService.setLoggedInUser(updatedUser);
+        const loggedInUser = this.authService.getLoggedInUser();
+        if (loggedInUser._id === updatedUser._id) {
+          this.authService.setLoggedInUser(updatedUser);
+        }
         this.interactionService.showAlert('Profile updated successfully', 'success', true);
       }, (err) => {
         this.errorHandlerService.handleError('Error updating profile', err);

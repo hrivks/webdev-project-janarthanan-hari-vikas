@@ -3246,7 +3246,10 @@ var ProfileComponent = (function () {
             .subscribe(function (updatedUser) {
             _this.user = updatedUser;
             _this.linkedToGit = _this.user.github && _this.user.github.id.length > 0;
-            _this.authService.setLoggedInUser(updatedUser);
+            var loggedInUser = _this.authService.getLoggedInUser();
+            if (loggedInUser._id === updatedUser._id) {
+                _this.authService.setLoggedInUser(updatedUser);
+            }
             _this.interactionService.showAlert('Profile updated successfully', 'success', true);
         }, function (err) {
             _this.errorHandlerService.handleError('Error updating profile', err);
