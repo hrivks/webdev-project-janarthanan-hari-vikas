@@ -111,7 +111,7 @@ module.exports = (function() {
 
     // route: [PUT] '/api/social/unfollow'
     router.put('/unfollow', (req, res) => {
-        Utils.sendResponse(res, unfollow, [req.user, res.body.follow]);
+        Utils.sendResponse(res, unfollow, [req.user, req.body.unfollow]);
     });
 
     /**

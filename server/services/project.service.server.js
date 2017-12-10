@@ -154,22 +154,23 @@ module.exports = (function() {
 
     // route: [PUT] '/api/project/:projectId'
     router.put('/:projectId', hasEditAccess, function(req, res) {
-        Utils.sendResponse(res, updateProject, [req.params.projectId, req.body]);
+        Utils.sendResponse(res, updateProject, [req.params.projectId, req.body, req.user]);
     });
 
     /**
      * Update project by project id
      * @param {string} projectId id of the project
      * @param {ProjectSchema} project updated project object
+     * @param {UserSchema} user user who requested the update
      * @returns {Promise<ProjectSchema>} promise that resolves to updated project object
      */
-    function updateProject(projectId, project) {
+    function updateProject(projectId, project, user) {
         const def = q.defer();
 
         ProjectModel.updateProject(projectId, project)
             .then((updatedProject) => {
                 // add activity
-                ActivityModel.createActivity(admin._id, 'updated project "' + project.name + '"');
+                ActivityModel.createActivity(user._id, 'updated project "' + project.name + '"');
                 def.resolve(updatedProject);
             }, (err) => {
                 def.reject(err);
@@ -185,20 +186,21 @@ module.exports = (function() {
 
     // route: [DELETE] '/api/project/:projectId'
     router.delete('/:projectId', hasDeleteAccess, function(req, res) {
-        Utils.sendResponse(res, deleteProject, [req.params.projectId]);
+        Utils.sendResponse(res, deleteProject, [req.params.projectId, req.user]);
     });
 
     /**
      * Delete project by project id
      * @param {string} projectId id of the project
+     * @param {UserSchema} user user who requested for deletion
      * @returns {Promise<ProjectSchema>} promise that resolves to deleted project object
      */
-    function deleteProject(projectId) {
+    function deleteProject(projectId, user) {
         const def = q.defer();
         ProjectModel.deleteProject(projectId)
             .then((deletedProject) => {
                 // add activity
-                ActivityModel.createActivity(admin._id, 'deleted project "' + deletedProject.name + '"');
+                ActivityModel.createActivity(user._id, 'deleted project "' + deletedProject.name + '"');
                 def.resolve(deletedProject);
             }, (err) => {
                 def.reject(err);
