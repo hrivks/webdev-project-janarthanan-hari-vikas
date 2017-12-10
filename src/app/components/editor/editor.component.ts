@@ -97,7 +97,7 @@ export class EditorComponent implements OnInit {
         let cachedMarkdown = localStorage.getItem('lastEditedMarkdownHtml');
 
         if (!cachedMarkdown) {
-            cachedMarkdown = `'<h2><img src="../../../resources/glyphicons/fa/48/bolt.png" />WriteMe.md&nbsp;&nbsp;</h2>
+            cachedMarkdown = `<h2><img src="../../../resources/glyphicons/fa/48/bolt.png" />WriteMe.md&nbsp;&nbsp;</h2>
             <p>Create your README.md through this fully equipped, live preview online editor</p>
             <hr />
             <h4>Features:</h4>
@@ -169,7 +169,7 @@ export class EditorComponent implements OnInit {
             <p><a href="https://www.youtube.com/watch?v=6ZfuNTqbHE8"><img class="youtube"
             src="http://img.youtube.com/vi/6ZfuNTqbHE8/0.jpg" alt="Sample Youtube link" /></a></p>
             <p>&nbsp;</p>
-            <p>&nbsp;</p>'`;
+            <p>&nbsp;</p>`;
         }
 
         if (cachedMarkdown && !this.markdownHtml) {
