@@ -94,7 +94,84 @@ export class EditorComponent implements OnInit {
 
     ngOnInit() {
         this.activeTab = 'preview';
-        const cachedMarkdown = localStorage.getItem('lastEditedMarkdownHtml');
+        let cachedMarkdown = localStorage.getItem('lastEditedMarkdownHtml');
+
+        if (!cachedMarkdown) {
+            cachedMarkdown = `'<h2><img src="../../../resources/glyphicons/fa/48/bolt.png" />WriteMe.md&nbsp;&nbsp;</h2>
+            <p>Create your README.md through this fully equipped, live preview online editor</p>
+            <hr />
+            <h4>Features:</h4>
+            <p>Text, Heading, <em>basic</em> <strong>formatting,&nbsp;</strong><a href="http://meetvikas.net/">links</a></p>
+            <p><strong>Lists</strong></p>
+            <ol>
+            <li>with numbers</li>
+            <li>like this</li>
+            </ol>
+            <ul>
+            <li>or bullets</li>
+            <li>like this
+            <ul>
+            <li>with nested lists support</li>
+            </ul>
+            </li>
+            </ul>
+            <p><strong>Tables</strong></p>
+            <table style="border-collapse: collapse; width: 100%;" border="1">
+            <tbody>
+            <tr>
+            <td style="width: 33.3333%; text-align: right;" align="right">Aligned Right</td>
+            <td style="width: 33.3333%; text-align: center;" align="center">Aligned Center</td>
+            <td style="width: 33.3333%;">Aligned Left</td>
+            </tr>
+            <tr>
+            <td style="width: 33.3333%;" align="right">gets</td>
+            <td style="width: 33.3333%;" align="center">generated</td>
+            <td style="width: 33.3333%;">as</td>
+            </tr>
+            <tr>
+            <td style="width: 33.3333%; text-align: right;" align="right">neatly</td>
+            <td style="width: 33.3333%; text-align: center;" align="center">aligned</td>
+            <td style="width: 33.3333%;">table markdown</td>
+            </tr>
+            </tbody>
+            </table>
+            <p><strong>Code</strong></p>
+            <pre class="language-java"><code>public static void main(String[] args) {
+                System.out.println("Hello World");
+            }</code></pre>
+            <p>also with <code>inline code</code> support</p>
+            <p><strong>Image Support</strong></p>
+            <p><strong><img src="https://i.pinimg.com/736x/71/df/db/71dfdb45ba647c5f0951dc0eec9815dc--computer
+            -jokes-computer-technology.jpg" alt="Sample Image" /></strong></p>
+            <p>Custom Size</p>
+            <p><img src="https://images1-focus-opensocial.googleusercontent
+            .com/gadgets/proxy?url=https://i.pinimg.com/736x/71/df/db/71dfdb45ba647c5f0951dc0eec9815dc-
+            -computer-jokes-computer-technology.jpg&amp;container=focus&amp;resize_w=192&amp;resize_h=192" alt="" /></p>
+            <p>Search and Insert Icons: <em>(powered by IconsFinder.com)</em></p>
+            <p><img src="https://cdn2.iconfinder.com/data/icons/snipicons/500/computer-64.png"
+            alt="" />&nbsp;<img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/cat-64.png"
+             alt="" />&nbsp;<img src="https://cdn2.iconfinder.com/data/icons/snipicons/500/phone-64.png" alt="" /></p>
+            <p>Font-Awesome Glyphs</p>
+            <p><img src="../../../resources/glyphicons/fa/24/desktop.png" />
+            &nbsp;<img src="../../../resources/glyphicons/fa/32/desktop.png" />
+            &nbsp;<img src="../../../resources/glyphicons/fa/48/desktop.png" />
+            &nbsp;<img src="../../../resources/glyphicons/fa/64/desktop.png" />&nbsp;&nbsp;</p>
+            <p>Git supported Emojis</p>
+            <p><img class="emoji" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png"
+             width="20" height="20" data-emoji="+1" />&nbsp;<img class="emoji"
+              src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f3b1.png"
+              width="20" height="20" data-emoji="8ball" />&nbsp;<img class="emoji"
+              src="https://assets-cdn.github.com/images/icons/emoji/unicode/2708.png"
+              width="20" height="20" data-emoji="airplane" />&nbsp;<img class="emoji"
+              src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f3c1.png"
+              width="20" height="20" data-emoji="checkered_flag" /></p>
+            <p><strong>Link to Youtube Vidoes</strong></p>
+            <p><a href="https://www.youtube.com/watch?v=6ZfuNTqbHE8"><img class="youtube"
+            src="http://img.youtube.com/vi/6ZfuNTqbHE8/0.jpg" alt="Sample Youtube link" /></a></p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>'`;
+        }
+
         if (cachedMarkdown && !this.markdownHtml) {
             this.markdownHtml = cachedMarkdown;
         }
