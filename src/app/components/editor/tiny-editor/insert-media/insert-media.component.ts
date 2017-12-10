@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, ViewChild, ElementRef } from '@angular/core';
 import { ComponentControl } from '../../../../model/ui-model';
 
 @Component({
@@ -12,6 +12,7 @@ export class InsertMediaComponent implements OnInit, OnChanges {
   @Input() compControl: ComponentControl;
   private subComponents: { [key: string]: ComponentControl };
   private openComponent: string;
+  private compHeight: number;
 
   constructor() {
     this.subComponents = {
@@ -24,6 +25,7 @@ export class InsertMediaComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.openComponent = 'image';
+    this.compHeight = window.innerHeight - 140;
   }
 
   ngOnChanges() {

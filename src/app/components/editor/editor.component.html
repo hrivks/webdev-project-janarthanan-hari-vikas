@@ -2,14 +2,16 @@
      [hidden]="!loadComplete">
 
     <!-- Editor -->
-    <div class="col pr-md-2 editor-wrapper">
+    <div class="col-12 col-sm-6 pr-md-2 editor-wrapper collapse show"
+         id="editor-wrapper">
         <app-tiny-editor [(markdownHtml)]="markdownHtml"
                          [height]="compHeight + 27"
                          (loadComplete)="onEditorLoad($event)"></app-tiny-editor>
     </div>
 
     <!-- Preview -->
-    <div class="col pl-md-2 preview-wrapper">
+    <div class="col-12 col-sm-6 pl-md-2 preview-wrapper collapse show"
+         id="preview-wrapper">
         <div class="card text-center">
             <div class="card-header bg-editor-gray pt-2">
 
@@ -113,33 +115,88 @@
 <!-- / Editor Modals -->
 
 <!-- footer -->
-<nav class="navbar navbar-expand bg-faded border-faded fixed-bottom hvj-footer p-1 px-3">
-    <div class="mr-auto form-inline"
-         *ngIf="project">
-        <a class="btn btn-primary btn-sm ml-2 py-1"
-           [routerLink]="['/project', project._id]"> 
-           <i class="fa fa-gear fa-lg"></i> 
-           <span>{{project.name}}</span>
-        </a>
-        <span class="ml-2"
-              *ngIf="markdown">
-            <small><em>Last Edited by <span class="text-dark font-weight-bold">{{markdown.editedBy}}</span> on <span class="text-dark">{{markdown.editedOn | date: 'short'}}</span></em>
-        </small>
-        </span>
+<nav class="navbar navbar-expand-md bg-faded border-faded fixed-bottom hvj-footer p-1 px-3">
+
+    <button class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#footer-options"
+            aria-label="Toggle navigation">
+        <i class="fa fa-bars text-primary"></i>
+    </button>
+
+    <!-- Mobile view toggles -->
+    <div class="mobile-view-toggles d-inline-block d-sm-none float-right ">
+        <!-- show editor -->
+        <button class="btn btn-sm btn-primary btn-success py-1 px-2"
+                id="show-editor-toggle"
+                type="button">
+            <i class="fa fa-pencil"></i> <span>Editor</span>
+        </button>
+        <!-- show preview -->
+        <button class="btn btn-sm btn-primary py-1 px-2"
+                id="show-preview-toggle"
+                type="button">
+            <i class="fa fa-eye"></i> <span>Preview</span>
+        </button>
     </div>
 
-    <div class="ml-auto form-inline">
-        <button class="btn btn-primary btn-sm ml-2 py-1"
-                (click)="save()"> 
-                <span>Save</span>
-        </button>
-        <button class="btn btn-primary btn-sm ml-2 py-1"
-                (click)="showCommitToGitModal()">
-                <span>Commit to Git</span> <i class="fa fa-github fa-lg ml-2" aria-hidden="true"></i>
-        </button>
-        <button class="btn btn-primary btn-sm ml-2 py-1"
-                (click)="download()">
-                <span>Download</span> <i class="fa fa-download fa-lg ml-2" aria-hidden="true"></i>
-        </button>
+    <div class="ml-auto collapse navbar-collapse mt-2 mt-sm-0"
+         id="footer-options">
+
+        <!-- Project and edit info -->
+        <div class="d-sm-inline-flex mr-auto"
+             *ngIf="project">
+            <ul class="navbar-nav mb-1 mb-sm-0 mx-sm-2">
+                <!-- Edit project -->
+                <li class="nav-item">
+                    <a class="nav-link text-white btn btn-sm btn-primary py-1"
+                       [routerLink]="['/project', project._id]">
+                       <i class="fa fa-gear fa-lg mr-2"></i> 
+                       <span>{{project.name}}</span>
+                    </a>
+                </li>
+                <!-- Edited info -->
+                <li class="nav-item m-0 ml-sm-3"
+                    *ngIf="markdown">
+                    <span class="nav-text py-1">
+                        <small>
+                            <em>Last Edited by <span class="text-dark font-weight-bold">{{markdown.editedBy}}</span> on <span class="text-dark">{{markdown.editedOn | date: 'short'}}</span></em>
+                    </small>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <!-- Markdown save options -->
+        <div class="d-sm-inline-flex ml-auto">
+            <!-- Save Markdown -->
+            <ul class="navbar-nav mb-1 mb-sm-0 mx-sm-2">
+                <li class="nav-item">
+                    <a class="nav-link text-white btn btn-sm btn-primary py-1"
+                       (click)="save()">Save</a>
+                </li>
+            </ul>
+            <!-- Commit to git -->
+            <ul class="navbar-nav mb-1 mb-sm-0 mx-sm-2">
+                <li class="nav-item">
+                    <a class="nav-link text-white btn btn-sm btn-primary py-1"
+                       (click)="showCommitToGitModal()">
+                       <i class="fa fa-github fa-lg mr-2" ></i>
+                       <span>Commit to Git</span> 
+                    </a>
+                </li>
+            </ul>
+            <!-- Download markdown -->
+            <ul class="navbar-nav mb-1 mb-sm-0 mx-sm-2">
+                <li class="nav-item">
+                    <a class="nav-link text-white btn btn-sm btn-primary py-1"
+                       (click)="download()">
+                        <i class="fa fa-download fa-lg mr-2"></i>
+                        <span>Download</span> 
+                    </a>
+                </li>
+            </ul>
+
+        </div>
     </div>
 </nav>

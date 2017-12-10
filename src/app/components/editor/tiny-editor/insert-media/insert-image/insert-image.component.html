@@ -2,24 +2,25 @@
     <div class="col">
         <!-- Input box -->
 
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon">
+        <div class="form-group mb-2">
+            <div class="input-group input-group-sm">
+                <span class="input-group-addon py-1">
                     Image Url
                 </span>
                 <input type="text"
                        name="img.url"
-                       class="form-control"
+                       class="form-control py-1"
                        [(ngModel)]="img.url">
             </div>
         </div>
 
         <div class="row">
-            <div class="col text-center">
+            <div class="col text-center"
+                 [style.height.px]="compHeight - 85">
                 <!-- Selected Img preview -->
-                <div class="preview-wrap m-3"
+                <div class="preview-wrap h-100"
                      *ngIf="img.url">
-                    <div class="border border-faded p-2 w-100 preview-img-outer">
+                    <div class="border border-faded p-2 w-100 preview-img-outer h-100">
                         <img id="preview-img"
                              appResizable
                              [resizeEnabled]="img.customSize"
@@ -29,7 +30,7 @@
 
                         <!-- Aspect Ratio toggle -->
                         <div *ngIf="img.customSize"
-                             class="float-right text-secondary font-italic aspect-ratio-toggle"
+                             class="float-right font-italic aspect-ratio-toggle"
                              (click)="aspectRatioLocked = !aspectRatioLocked">
                             <span class="fa fa-lg"
                                   [ngClass]="aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'"></span>
@@ -40,9 +41,9 @@
 
                 </div>
                 <!-- Img preview placeholder -->
-                <div class="preview-placeholder"
+                <div class="preview-placeholder h-100"
                      *ngIf="!img.url">
-                    <div class="preview-img-outer border border-faded p-2 w-100">
+                    <div class="preview-img-outer border border-faded p-2 w-100 h-100">
                         <img src="../../../assets/img-preview-placeholder.png">
                     </div>
                 </div>
@@ -58,7 +59,7 @@
                     <div class="form-group">
                         <label class="text-muted font-weight-bold">Title</label>
                         <input type="text"
-                               class="form-control"
+                               class="form-control form-control-sm py-1"
                                [(ngModel)]="img.title">
                     </div>
                 </div>

@@ -17,7 +17,7 @@ export class TinyEditorComponent implements OnInit {
     @Output('loadComplete') loadComplete = new EventEmitter<boolean>();
     @Output('markdownHtmlChange') markdownHtmlChange = new EventEmitter<string>();
     @ViewChild('tinyEditor') el: ElementRef;
-    @ViewChild('editorModal') editorModal: ElementRef;
+    @ViewChild('tinyEditorModal') tinyEditorModal: ElementRef;
 
 
     private editor: any; // tinyMce editor instance
@@ -30,7 +30,7 @@ export class TinyEditorComponent implements OnInit {
     private modalHeight: number;
 
     constructor(private zone: NgZone) {
-        this.modalHeight = window.innerHeight - 180;
+        this.modalHeight = window.innerHeight - 140;
     }
 
     ngOnInit() {
@@ -59,6 +59,8 @@ export class TinyEditorComponent implements OnInit {
     private initEditor() {
 
         this.toolbarButtons = {};
+        // window width < 1030 results in two rows of editor buttons
+        const editorHeight = window.innerWidth < 1032 ? this.height - 32 : this.height;
 
         // initialize TinyMCE editor
         tinymce.init({
@@ -66,7 +68,7 @@ export class TinyEditorComponent implements OnInit {
             theme: 'modern',
             content_css: '../../../../assets/tiny-editor-custom-styles.css',
             plugins: 'table link lists hr codesample emoticons',
-            height: this.height,
+            height: editorHeight,
             menubar: false,
             toolbar: 'btnTxt btnH btnCode btnInlineCode | btnBold btnItalic btnStrikethrough '
                 + '| numlist bullist | link btnMedia btnGlyph | table | btnColAlignLeft btnColAlignCenter btnColAlignRight | hr',
@@ -176,7 +178,6 @@ export class TinyEditorComponent implements OnInit {
             tooltip: 'Insert Code Block',
             icon: 'codesample',
             onclick: () => {
-                $('.modal').modal('show');
                 vm.openModel('code');
             }
         });
@@ -264,7 +265,6 @@ export class TinyEditorComponent implements OnInit {
             tooltip: 'Insert Image / Video',
             icon: 'image',
             onclick: () => {
-                $('.modal').modal('show');
                 vm.openModel('media');
             }
         });
@@ -345,20 +345,6 @@ export class TinyEditorComponent implements OnInit {
         });
 
         // endregion
-
-        // #region: test
-
-        editor.addButton('btnTest', {
-            icon: 'image',
-            tooltip: 'test',
-            onclick: (e) => {
-                this.openPopoverKey = 'glyph';
-                this.openPopover('glyph', $(e.target).offset());
-            }
-        });
-
-        // #endregion
-
     }
 
     /** Perform tasks on node change in editor */
@@ -436,7 +422,8 @@ export class TinyEditorComponent implements OnInit {
                     thisModel.control.reset();
                 }
             });
-            $(this.editorModal.nativeElement).modal('show');
+            console.log(this.tinyEditorModal.nativeElement);
+            $(this.tinyEditorModal.nativeElement).modal('show');
         }
 
     }

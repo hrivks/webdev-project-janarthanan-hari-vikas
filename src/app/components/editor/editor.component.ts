@@ -99,6 +99,26 @@ export class EditorComponent implements OnInit {
             this.markdownHtml = cachedMarkdown;
         }
 
+        // mobile view: show editor and hide preview
+        if ($('.mobile-view-toggles').is(':visible')) {
+            $('#preview-wrapper').removeClass('show');
+            // show editor toggle
+            $('#show-editor-toggle').click(function () {
+                $('#preview-wrapper').collapse('hide');
+                $('#editor-wrapper').collapse('show');
+                $('#show-editor-toggle').addClass('btn-success');
+                $('#show-preview-toggle').removeClass('btn-success');
+            });
+            // show preview toggle
+            $('#show-preview-toggle').click(function () {
+                $('#preview-wrapper').collapse('show');
+                $('#editor-wrapper').collapse('hide');
+                $('#show-editor-toggle').removeClass('btn-success');
+                $('#show-preview-toggle').addClass('btn-success');
+            });
+        }
+
+
     }
 
     onEditorLoad() {

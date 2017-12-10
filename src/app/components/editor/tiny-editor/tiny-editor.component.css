@@ -28,11 +28,11 @@
     right: 3px;
 }
 
-.tiny-editor #editor-modal .modal-dialog.modal-xl {
+.tiny-editor #tiny-editor-modal .modal-dialog.modal-xl {
     max-width: 85%;
 }
 
-.tiny-editor #editor-modal .modal-body {
+.tiny-editor #tiny-editor-modal .modal-body {
     overflow-y: auto;
 }
 

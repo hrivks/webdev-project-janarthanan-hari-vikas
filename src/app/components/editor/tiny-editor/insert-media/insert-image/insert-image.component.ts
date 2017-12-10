@@ -13,6 +13,7 @@ export class InsertImageComponent implements OnInit, OnChanges {
 
   // properties
   @Input() compControl: ComponentControl;
+  @Input() compHeight: number;
   private img: any;
   private aspectRatioLocked: boolean;
   private imgResizeControl: ComponentControl;
@@ -23,7 +24,8 @@ export class InsertImageComponent implements OnInit, OnChanges {
     this.imgResizeControl = {};
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   ngOnChanges() {
 

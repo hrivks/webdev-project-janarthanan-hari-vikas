@@ -2,18 +2,18 @@
     <div class="col text-center">
         <!-- Search box -->
         <form (ngSubmit)="search()">
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
+            <div class="form-group mb-2">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon py-1">
                         Search Icons
                     </span>
                     <input type="text"
                            name="keyword"
-                           class="form-control"
+                           class="form-control py-1"
                            [(ngModel)]="keyword"
                            placeholder="keyword...">
                     <button type="submit"
-                            class="btn btn-primary btn-sm"
+                            class="btn btn-primary btn-sm py-1"
                             [disabled]="!keyword">Search</button>
                 </div>
             </div>
@@ -28,12 +28,12 @@
             </div>
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-4" [style.height.px]="compHeight - 85">
         <!-- Selected Img preview -->
-        <div class="preview-wrap m-3"
+        <div class="preview-wrap h-100"
              *ngIf="selectedImg">
-            <div class="border border-faded p-2 w-100 preview-img-outer">
-                <img id="preview-img"
+            <div class="border border-faded p-2 w-100 h-100 preview-img-outer ">
+                <img id="preview-img h-100"
                      appResizable
                      [resizeEnabled]="selectedImg.selectedSize === 'custom'"
                      [aspectRatioLocked]="aspectRatioLocked"
@@ -42,7 +42,7 @@
 
                 <!-- Aspect Ratio toggle -->
                 <div *ngIf="selectedImg.selectedSize === 'custom'"
-                     class="float-right text-secondary font-italic aspect-ratio-toggle"
+                     class="float-right font-italic aspect-ratio-toggle"
                      (click)="aspectRatioLocked = !aspectRatioLocked">
                     <span class="fa fa-lg"
                           [ngClass]="aspectRatioLocked ? 'fa-toggle-on text-success' : 'fa-toggle-off'"></span>
@@ -54,7 +54,7 @@
 
                 <!-- Size dropdown -->
                 <div class="dropdown mt-2">
-                    <button class="btn btn-info form-control"
+                    <button class="btn btn-sm btn-info form-control"
                             type="button"
                             data-toggle="dropdown">
                         Size: {{selectedImg?.selectedSize}}
@@ -71,18 +71,18 @@
 
                 <input type="text"
                        [(ngModel)]="selectedImg.title"
-                       class="form-control mt-2"
+                       class="form-control form-control-sm py-1 mt-2"
                        placeholder="title">
             </div>
         </div>
         <!-- Img preview placeholder -->
-        <div class="preview-placeholder"
+        <div class="preview-placeholder h-100"
              *ngIf="!selectedImg">
-            <div class="preview-img-outer border p-2 w-100">
+            <div class="preview-img-outer border p-2 w-100 h-100">
                 <img class="w-50"
                      src="../../../assets/img-preview-placeholder.png">
             </div>
-            <div class="p-4 text-center text-secondary font-italic">
+            <div class="p-1 text-center font-italic">
                 Select an image to customize size
             </div>
         </div>

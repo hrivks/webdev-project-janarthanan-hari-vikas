@@ -14,6 +14,7 @@ export class IconSearchComponent implements OnInit, OnChanges {
 
   // properties
   @Input() compControl: ComponentControl;
+  @Input() compHeight: number;
   private keyword: string;
   private err: string;
   private searchResultIcons: string[];

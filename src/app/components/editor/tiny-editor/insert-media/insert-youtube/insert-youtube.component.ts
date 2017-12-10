@@ -12,6 +12,7 @@ export class InsertYoutubeComponent implements OnInit, OnChanges {
 
   // properties
   @Input() compControl: ComponentControl;
+  @Input() compHeight: number;
   private img: any;
   private aspectRatioLocked: boolean;
   private imgResizeControl: ComponentControl;

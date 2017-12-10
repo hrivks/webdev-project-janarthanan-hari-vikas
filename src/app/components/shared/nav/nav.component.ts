@@ -4,6 +4,7 @@ import { User } from '../../../model/model';
 import { ErrorHandlerService } from '../../../services/error-handler.service.client';
 import { InteractionsService } from '../../../services/interactions.service.client';
 import { AppConstants } from '../../../app.constant';
+declare var $; // jQuery
 
 
 @Component({
@@ -43,6 +44,13 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
+    // hide navbar in mobile view after link click
+    const toggler = $('nav .navbar-toggler');
+    $('nav.fixed-top .navbar-collapse').on('click', function () {
+      if (toggler.is(':visible')) {
+        $('nav.fixed-top .navbar-toggler').click();
+      }
+    });
   }
 
   /** Login */
