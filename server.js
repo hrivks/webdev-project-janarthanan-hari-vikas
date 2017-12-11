@@ -11,7 +11,7 @@ const app = express();
 
 // load environment variable when running locally
 if(!process.env.IS_SERVER) {
-  require('./server.local.js');
+  require('./env.local.js');
 }
 
 
