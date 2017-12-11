@@ -91,7 +91,11 @@ export class AuthService implements CanActivate {
             const nextParam = next.split('?next=')[1];
             next = nextParam || '';
         }
-        (<any>window).location.href = AppConstants.ENDPOINT.baseUrl + '/auth/github?next=' + next;
+        if (next) {
+            (<any>window).location.href = AppConstants.ENDPOINT.baseUrl + '/auth/github?next=' + next;
+        } else {
+            (<any>window).location.href = AppConstants.ENDPOINT.baseUrl + '/auth/github';
+        }
     }
 
 

@@ -5766,7 +5766,12 @@ var AuthService = (function () {
             var nextParam = next.split('?next=')[1];
             next = nextParam || '';
         }
-        window.location.href = __WEBPACK_IMPORTED_MODULE_6__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/auth/github?next=' + next;
+        if (next) {
+            window.location.href = __WEBPACK_IMPORTED_MODULE_6__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/auth/github?next=' + next;
+        }
+        else {
+            window.location.href = __WEBPACK_IMPORTED_MODULE_6__app_constant__["a" /* AppConstants */].ENDPOINT.baseUrl + '/auth/github';
+        }
     };
     /**
      * Check if user is logged in
