@@ -101,10 +101,9 @@ export class IconSearchComponent implements OnInit, OnChanges {
       const url = this.utilService.getResizedImgUrl(this.selectedImg.url, imgSize.width, imgSize.height);
       return { url: url, title: this.selectedImg.title };
     } else {
-      return { url: this.selectedImg.url, title: this.selectedImg.title };
+      return { url: this.selectedImg.selectedUrl, title: this.selectedImg.title };
     }
 
   }
-
 
 }
